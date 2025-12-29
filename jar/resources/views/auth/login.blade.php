@@ -25,7 +25,7 @@
         <div class="md:w-1/2 p-8">
             <div class="max-w-md mx-auto">
                 <div class="text-center mb-6">
-                    <img src="{{ asset('images/login/logo.svg') }}" alt="logo" class="mx-auto mb-4">
+                    <img src="{{ asset('images/login/path8.png') }}" alt="logo" class="mx-auto mb-4">
                     <h2 class="text-xl font-semibold text-emerald-600">تسجيل الدخول</h2>
                     <p class="text-gray-500 text-sm mt-1">أدخل رقم جوالك للمتابعة إلى حسابك.</p>
                 </div>
