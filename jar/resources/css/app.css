@@ -9,3 +9,21 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* Custom login page helpers */
+:root {
+    --tj-emerald: #0fb29a;
+}
+
+.login-rounded {
+    border-radius: 18px;
+}
+
+.login-teal {
+    background-color: var(--tj-emerald);
+    color: #fff;
+}
+
+.login-gradient {
+    background: linear-gradient(135deg, rgba(15,178,154,0.06), rgba(255,255,255,0));
+}
