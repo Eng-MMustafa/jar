@@ -21,6 +21,9 @@ class ProductController extends Controller
         }
 
         $products = $query->paginate(12);
+        $categories = Category::where('is_active', true)->get();
+
+        return view('products.index', compact('products', 'categories'));
     }
 
     public function show($slug)

@@ -8,6 +8,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=tajawal:400,500,700&display=swap" rel="stylesheet" />
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom Auth Styles -->
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
     <!-- Scripts -->
@@ -142,12 +144,20 @@
                             </svg>
                         </button>
                         <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md right-0 mt-1 w-56 z-50 border border-gray-100">
-                            @foreach(\App\Models\Category::take(8)->get() as $cat)
-                                <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-teal-50 text-sm border-b border-gray-50 last:border-b-0 first:rounded-t-md last:rounded-b-md transition duration-200">{{ $cat->name }}</a>
-                            @endforeach
+                            @php
+                                $categories = \App\Models\Category::where('is_active', true)->take(8)->get();
+                            @endphp
+                            @if($categories->count() > 0)
+                                @foreach($categories as $cat)
+                                    <a href="{{ route('categories.show', $cat->slug) }}" class="block px-4 py-3 text-gray-700 hover:bg-teal-50 text-sm border-b border-gray-50 last:border-b-0 first:rounded-t-md last:rounded-b-md transition duration-200">{{ $cat->name_ar ?? $cat->name_en }}</a>
+                                @endforeach
+                                <a href="{{ route('categories.index') }}" class="block px-4 py-3 text-teal-600 hover:bg-teal-50 text-sm font-medium border-t-2 border-teal-100 rounded-b-md transition duration-200">عرض جميع الأقسام</a>
+                            @else
+                                <span class="block px-4 py-3 text-gray-500 text-sm">لا توجد أقسام متاحة</span>
+                            @endif
                         </div>
                     </div>
-                    <a href="#" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">أحدث المنتجات</a>
+                    <a href="{{ route('products.index') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">جميع المنتجات</a>
                     <a href="#" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">تواصل معنا</a>
                 </div>
             </div>

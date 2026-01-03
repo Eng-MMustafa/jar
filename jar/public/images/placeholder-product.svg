@@ -1,0 +1,14 @@
+<!-- Simple SVG placeholder for products -->
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+        </pattern>
+    </defs>
+    <rect width="300" height="200" fill="#f8f9fa"/>
+    <rect width="300" height="200" fill="url(#grid)"/>
+    <circle cx="150" cy="100" r="30" fill="#e9ecef"/>
+    <rect x="120" y="120" width="60" height="8" fill="#dee2e6" rx="4"/>
+    <rect x="125" y="135" width="50" height="6" fill="#dee2e6" rx="3"/>
+    <text x="150" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#6c757d">صورة المنتج</text>
+</svg>
