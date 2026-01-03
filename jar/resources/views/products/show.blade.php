@@ -4,7 +4,7 @@
 
 @section('content')
 <style>
-    * {
+    .product-detail-container * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
