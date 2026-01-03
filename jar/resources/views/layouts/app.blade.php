@@ -216,71 +216,103 @@
         @yield('content')
     </main>
 
-    <footer class="site-footer text-white mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
+    <footer class="site-footer text-white py-12" style="background-color: #1a3a3a; background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.03) 10px, rgba(255,255,255,.03) 20px);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Column 1: About -->
                 <div class="footer-col">
-                    <h3 class="text-lg font-bold mb-4">ملخص</h3>
-                    <p class="text-teal-100 leading-relaxed">تي جار لتأجير الممتلكات
+                    <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">ملخص</h3>
+                    <p class="text-teal-100 text-sm leading-relaxed mb-6">في جار لتأجير الممتلكات
 شركة سعودية متخصصة تعمل كوسيط موثوق لتأجير مختلف أنواع الممتلكات، حيث تربط بين الملاك والمستأجرين عبر منصة سهلة الاستخدام تضمن السرعة، الأمان، ووضوح الإجراءات.</p>
-                    <div class="mt-4 flex space-x-3">
-                        <button class="footer-social w-8 h-8 rounded border border-teal-200/30 flex items-center justify-center">✕</button>
-                        <button class="footer-social w-8 h-8 rounded border border-teal-200/30 flex items-center justify-center">⒮</button>
-                        <button class="footer-social w-8 h-8 rounded border border-teal-200/30 flex items-center justify-center">◎</button>
-                        <button class="footer-social w-8 h-8 rounded border border-teal-200/30 flex items-center justify-center">♪</button>
+                    <div class="flex gap-3">
+                        <a href="#" class="footer-social w-8 h-8 rounded border border-teal-400 flex items-center justify-center hover:bg-teal-500/20 transition">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7z"/></svg>
+                        </a>
+                        <a href="#" class="footer-social w-8 h-8 rounded border border-teal-400 flex items-center justify-center hover:bg-teal-500/20 transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-5.293-5.93m0 0A1 1 0 0012 3c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12c0-.846-.092-1.667-.266-2.459m0 0h5m0 0"/></svg>
+                        </a>
+                        <a href="#" class="footer-social w-8 h-8 rounded border border-teal-400 flex items-center justify-center hover:bg-teal-500/20 transition">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37Z"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+                        </a>
+                        <a href="#" class="footer-social w-8 h-8 rounded border border-teal-400 flex items-center justify-center hover:bg-teal-500/20 transition">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm3.6 11.9h-2.4v8.4h-3.6v-8.4H8.4v-3h2.4v-1.8c0-2 .6-5.2 5.2-5.2h3.6v3h-2.6c-.4 0-.7.2-.7.9v1.3h3.4l-.8 3z"/></svg>
+                        </a>
                     </div>
                 </div>
 
+                <!-- Column 2: Quick Links -->
                 <div class="footer-col">
-                    <h4 class="text-lg font-semibold mb-4">روابط سريعة</h4>
-                    <ul class="space-y-2">
-                        <li><a href="{{ route('home') }}" class="text-teal-100 hover:text-white">الرئيسية</a></li>
-                        <li><a href="{{ route('products.index') }}" class="text-teal-100 hover:text-white">من نحن</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white">الأقسام الرئيسية</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white">أحدث المنتجات</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white">تواصل معنا</a></li>
+                    <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">روابط سريعة</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="{{ route('home') }}" class="text-teal-100 hover:text-white transition">الرئيسية</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">من نحن</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">الأقسام الرئيسية</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">أحدث المنتجات</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">تواصل معنا</a></li>
                     </ul>
                 </div>
 
+                <!-- Column 3: Popular Categories -->
                 <div class="footer-col">
-                    <h4 class="text-lg font-semibold mb-4">الفئات الشائعة</h4>
-                    <ul class="space-y-2">
-                        @foreach(\App\Models\Category::take(6)->get() as $category)
-                        <li><a href="{{ route('products.index', ['category' => $category->id]) }}" class="text-teal-100 hover:text-white">{{ $category->name }}</a></li>
-                        @endforeach
+                    <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">الفئات الشائعة</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">الالكترونيات</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">الألعاب</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">المنزل</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">أغراض الخيم</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">أغراض البحر والبر</a></li>
                     </ul>
                 </div>
 
+                <!-- Column 4: Contact & Support -->
                 <div class="footer-col">
-                    <h4 class="text-lg font-semibold mb-4">الاتصال والدعم</h4>
-                    <ul class="space-y-2 text-teal-100">
-                        <li>مركز العملاء</li>
-                        <li>تواصل معنا</li>
-                        <li>شارك معنا</li>
-                        <li>تقديم شكوى</li>
-                        <li>الإبلاغ عن مشكلة</li>
+                    <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">الاتصال والدعم</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">مركز العملاء</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">تواصل معنا</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">شارك معنا</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">تقديم شكوى</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition">الإبلاغ عن مشكلة</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="mt-8 border-t border-teal-700 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                <div class="payments flex items-center space-x-4">
-                    <img src="{{ asset('images/login/Frame 1597883802.png') }}" alt="mada" class="h-8 opacity-90">
-                    <img src="https://via.placeholder.com/80x28?text=PayPal" alt="paypal" class="h-8">
-                    <img src="https://via.placeholder.com/80x28?text=Mastercard" alt="mastercard" class="h-8">
-                    <img src="https://via.placeholder.com/80x28?text=Visa" alt="visa" class="h-8">
+            <!-- Footer Bottom -->
+            <div class="pt-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mb-6">
+                    <!-- Payment Methods & License -->
+                    <div class="flex flex-col md:flex-row items-center gap-6">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ asset('images/login/Frame 1597883802.png') }}" alt="mada" class="h-6 opacity-90">
+                            <svg class="w-12 h-6" viewBox="0 0 80 28" fill="none"><rect width="80" height="28" fill="none"/><text x="40" y="18" text-anchor="middle" fill="white" font-size="12" font-weight="bold">PayPal</text></svg>
+                            <svg class="w-12 h-6" viewBox="0 0 80 28" fill="none"><rect width="80" height="28" fill="none"/><text x="40" y="18" text-anchor="middle" fill="white" font-size="12" font-weight="bold">MasterCard</text></svg>
+                            <svg class="w-12 h-6" viewBox="0 0 80 28" fill="none"><rect width="80" height="28" fill="none"/><text x="40" y="18" text-anchor="middle" fill="white" font-size="12" font-weight="bold">VISA</text></svg>
+                        </div>
+                    </div>
+
+                    <!-- License Number -->
+                    <div class="text-center">
+                        <p class="text-teal-100 text-sm">الرقم الضريبي : <span class="font-bold text-white">5667776443</span></p>
+                    </div>
+
+                    <!-- Logo -->
+                    <div class="flex justify-end">
+                        <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR Logo" class="h-12 opacity-90">
+                    </div>
                 </div>
 
-                <div class="text-teal-100 text-sm md:text-base">الرقم الضريبي : <span class="font-semibold">5667776443</span></div>
-
-                <div class="text-center md:text-right w-full md:w-auto">
-                    <p class="text-teal-100">&copy; {{ date('Y') }} تي جار. جميع الحقوق محفوظة.</p>
-                </div>
-
-                <div class="w-28 md:w-36 ml-auto md:ml-0">
-                    <img src="{{ asset('images/login/path8.png') }}" alt="tjar logo" class="w-full h-auto opacity-90">
+                <!-- Copyright -->
+                <div class="text-center text-teal-200 text-sm py-6">
+                    <p>جميع الحقوق محفوظة في جار © {{ date('Y') }}</p>
                 </div>
             </div>
+        </div>
+
+        <!-- Decorative Pattern Bottom - Full Width -->
+        <div class="h-8 w-screen overflow-hidden -ml-[50vw] -mr-[50vw]">
+            <img src="{{ asset('images/Images/TJAR-PATTERN_PATTERN 2 (1) 1.png') }}" alt="pattern" class="w-full h-full object-cover">
+        </div>
         </div>
     </footer>
 </body>
