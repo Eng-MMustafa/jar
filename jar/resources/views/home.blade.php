@@ -58,38 +58,146 @@
     </div>
 </div>
 
-<!-- Categories Section -->
-<div class="py-12 bg-white border-b border-gray-100">
+<!-- Categories Carousel Section -->
+<section class="py-16 bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between mb-8">
-            <h2 class="text-2xl lg:text-3xl font-bold text-teal-700">الأقسام الرئيسية</h2>
-            <a href="#" class="text-teal-600 text-sm hover:text-teal-700">عرض الكل →</a>
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-bold text-teal-600 mb-3">الأقسام الرئيسية</h2>
+            <p class="text-gray-600 text-base">تصفح جميع الخدمات والمنتجات بكل سهولة</p>
         </div>
-        
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
-            @php
-                $categories = [
-                    ['name' => 'ملابس', 'icon' => 'Wallet Money.svg'],
-                    ['name' => 'كاميرا', 'icon' => 'Upload.svg'],
-                    ['name' => 'كتب', 'icon' => 'Widget 5.svg'],
-                    ['name' => 'أثاث', 'icon' => 'Box Minimalistic.svg'],
-                    ['name' => 'ألعاب', 'icon' => 'Widget Add.svg'],
-                    ['name' => 'سماعات', 'icon' => 'Button.svg'],
-                    ['name' => 'هاتف', 'icon' => 'Card.svg'],
-                ];
-            @endphp
 
-            @foreach($categories as $cat)
-            <a href="#" class="text-center hover:transform hover:scale-110 transition duration-300">
-                <div class="bg-teal-50 rounded-full w-16 h-16 mx-auto mb-3 flex items-center justify-center hover:bg-teal-100 transition">
-                    <img src="{{ asset('images/Icons/' . $cat['icon']) }}" alt="{{ $cat['name'] }}" class="w-8 h-8">
+        <!-- Carousel Container -->
+        <div class="relative group">
+            <!-- Categories Horizontal Scroll -->
+            <div class="categories-carousel overflow-hidden">
+                <div class="categories-grid flex gap-6 transition-transform duration-500" id="categoriesGrid">
+                    <!-- Category 1: Image-5 -->
+                    <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 flex-shrink-0 w-48 h-56 overflow-hidden">
+                        <div class="w-full h-40 overflow-hidden flex items-center justify-center bg-gray-100">
+                            <img src="{{ asset('images/Images/Image-5.png') }}" alt="فئة 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="p-4 text-center">
+                            <span class="text-gray-700 font-semibold text-sm">فئة 1</span>
+                        </div>
+                    </a>
+
+                    <!-- Category 2: Image-4 -->
+                    <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 flex-shrink-0 w-48 h-56 overflow-hidden">
+                        <div class="w-full h-40 overflow-hidden flex items-center justify-center bg-gray-100">
+                            <img src="{{ asset('images/Images/Image-4.png') }}" alt="فئة 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="p-4 text-center">
+                            <span class="text-gray-700 font-semibold text-sm">فئة 2</span>
+                        </div>
+                    </a>
+
+                    <!-- Category 3: Image-1 -->
+                    <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 flex-shrink-0 w-48 h-56 overflow-hidden">
+                        <div class="w-full h-40 overflow-hidden flex items-center justify-center bg-gray-100">
+                            <img src="{{ asset('images/Images/Image-1.png') }}" alt="فئة 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="p-4 text-center">
+                            <span class="text-gray-700 font-semibold text-sm">فئة 3</span>
+                        </div>
+                    </a>
+
+                    <!-- Category 4: Image-2 -->
+                    <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 flex-shrink-0 w-48 h-56 overflow-hidden">
+                        <div class="w-full h-40 overflow-hidden flex items-center justify-center bg-gray-100">
+                            <img src="{{ asset('images/Images/Image-2.png') }}" alt="فئة 4" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="p-4 text-center">
+                            <span class="text-gray-700 font-semibold text-sm">فئة 4</span>
+                        </div>
+                    </a>
+
+                    <!-- Category 5: Image -->
+                    <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 flex-shrink-0 w-48 h-56 overflow-hidden">
+                        <div class="w-full h-40 overflow-hidden flex items-center justify-center bg-gray-100">
+                            <img src="{{ asset('images/Images/Image.png') }}" alt="فئة 5" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="p-4 text-center">
+                            <span class="text-gray-700 font-semibold text-sm">فئة 5</span>
+                        </div>
+                    </a>
                 </div>
-                <p class="text-sm font-medium text-gray-700 text-center line-clamp-2">{{ $cat['name'] }}</p>
-            </a>
-            @endforeach
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-6 lg:-ml-16 bg-teal-600 hover:bg-teal-700 text-white rounded-full p-3 shadow-lg transition opacity-0 group-hover:opacity-100 duration-300 z-10 transform hover:scale-110">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-6 lg:-mr-16 bg-teal-600 hover:bg-teal-700 text-white rounded-full p-3 shadow-lg transition opacity-0 group-hover:opacity-100 duration-300 z-10 transform hover:scale-110">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Dots Indicators -->
+        <div class="flex justify-center gap-2 mt-8">
+            <div id="dot1" class="w-2 h-2 rounded-full bg-teal-600 transition-all duration-300 cursor-pointer"></div>
+            <div id="dot2" class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300 cursor-pointer"></div>
         </div>
     </div>
-</div>
+</section>
+
+<script>
+    // Categories Carousel Script
+    const grid = document.getElementById('categoriesGrid');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dot1 = document.getElementById('dot1');
+    const dot2 = document.getElementById('dot2');
+    let currentPosition = 0;
+    const cardWidth = 216; // w-48 = 192px + gap-6 = 24px
+    const totalCards = 5;
+    const maxPosition = Math.max(0, totalCards - 1);
+
+    function updateCarousel() {
+        const translateValue = -currentPosition * cardWidth;
+        grid.style.transform = `translateX(${translateValue}px)`;
+        
+        // Update dots
+        dot1.classList.toggle('bg-teal-600', currentPosition === 0);
+        dot1.classList.toggle('bg-gray-300', currentPosition !== 0);
+        dot2.classList.toggle('bg-teal-600', currentPosition === maxPosition);
+        dot2.classList.toggle('bg-gray-300', currentPosition !== maxPosition);
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPosition > 0) {
+            currentPosition--;
+            updateCarousel();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPosition < maxPosition) {
+            currentPosition++;
+            updateCarousel();
+        }
+    });
+
+    dot1.addEventListener('click', () => {
+        currentPosition = 0;
+        updateCarousel();
+    });
+
+    dot2.addEventListener('click', () => {
+        currentPosition = maxPosition;
+        updateCarousel();
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        currentPosition = Math.min(currentPosition, maxPosition);
+        updateCarousel();
+    });
+</script>
 
 <!-- Most Valued Products Section -->
 <section class="py-12 bg-gray-50">
