@@ -210,8 +210,8 @@
             <a href="#" class="text-teal-600 text-sm hover:text-teal-700">عرض الكل →</a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            @forelse(\App\Models\Product::where('is_active', true)->take(4)->get() as $product)
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            @forelse(\App\Models\Product::where('is_active', true)->take(6)->get() as $product)
             <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
                 <div class="bg-gray-100 h-48 flex items-center justify-center overflow-hidden relative">
                     @if($product->images->first())
@@ -235,7 +235,7 @@
                 </div>
             </div>
             @empty
-            <div class="col-span-4 text-center py-8 text-gray-500">لا توجد منتجات</div>
+            <div class="col-span-3 text-center py-8 text-gray-500">لا توجد منتجات</div>
             @endforelse
         </div>
     </div>
@@ -245,23 +245,39 @@
 <div class="py-8 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg h-40 flex items-center justify-center relative overflow-hidden">
-                <div class="absolute inset-0 opacity-10 bg-pattern"></div>
-                <div class="text-center text-white relative z-10">
-                    <h3 class="text-lg font-bold">لديك عرض خاص</h3>
-                    <p class="text-sm text-teal-100 mt-1">احصل على خصم 20%</p>
+            <!-- Banner 1 -->
+            <div class="rounded-lg h-40 overflow-hidden relative group">
+                <img src="{{ asset('images/Images/image 17.png') }}" alt="عروض يومية" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h3 class="text-lg font-bold">عروض يومية</h3>
+                        <p class="text-sm mt-1">تحديث يومي للمنتجات</p>
+                    </div>
                 </div>
             </div>
-            <div class="bg-gradient-to-r from-pink-500 to-pink-600 rounded-lg h-40 flex items-center justify-center relative overflow-hidden">
-                <div class="text-center text-white relative z-10">
-                    <h3 class="text-lg font-bold">عرض محدود</h3>
-                    <p class="text-sm text-pink-100 mt-1">انتهز الفرصة الآن</p>
+
+            <!-- Banner 2 -->
+            <div class="rounded-lg h-40 overflow-hidden relative group">
+                <img src="{{ asset('images/Images/image 18.png') }}" alt="عرض محدود" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h3 class="text-lg font-bold">عرض محدود</h3>
+                        <p class="text-sm mt-1">انتهز الفرصة الآن</p>
+                    </div>
                 </div>
             </div>
-            <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg h-40 flex items-center justify-center relative overflow-hidden">
-                <div class="text-center text-white relative z-10">
-                    <h3 class="text-lg font-bold">عروض يومية</h3>
-                    <p class="text-sm text-emerald-100 mt-1">تحديث يومي للمنتجات</p>
+
+            <!-- Banner 3 -->
+            <div class="rounded-lg h-40 overflow-hidden relative group">
+                <img src="{{ asset('images/Images/image 19.png') }}" alt="عرض خاص" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h3 class="text-lg font-bold">لديك عرض خاص</h3>
+                        <p class="text-sm mt-1">احصل على خصم 20%</p>
+                    </div>
                 </div>
             </div>
         </div>
