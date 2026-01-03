@@ -19,126 +19,176 @@
 <body class="bg-gray-50 text-gray-900">
     <header>
         <!-- Top Bar -->
-        <div class="bg-white border-b border-gray-300">
-            <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between text-xs text-gray-600 py-2">
-                    <!-- Right: Language -->
-                    <div class="flex items-center space-x-2 space-x-reverse">
-                        <button class="text-gray-700 hover:text-gray-900">العربية</button>
-                        <svg class="w-3 h-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
-                        </svg>
-                        <span class="text-gray-400">|</span>
-                        <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M5.5 13a3.5 3.5 0 01-.369-6.98"/>
-                        </svg>
-                        <span class="hidden sm:inline text-gray-700">بريدة - القصيم</span>
+        <div class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between py-2 text-sm">
+                    <!-- Right: Contact -->
+                    <div class="flex items-center space-x-1 space-x-reverse text-sm">
+                        <a href="mailto:Support@tjar.sa" class="text-teal-600 hover:text-teal-700">Support@tjar.sa</a>
+                        <span class="text-gray-400 px-2">|</span>
+                        <a href="tel:+966556734562" class="text-teal-600 hover:text-teal-700">+966556734562</a>
                     </div>
 
                     <!-- Center: Social Icons -->
-                    <div class="hidden md:flex items-center space-x-3 space-x-reverse text-gray-500">
-                        <a href="#" class="hover:text-gray-700 text-lg">𝕏</a>
-                        <a href="#" class="hover:text-gray-700">🔔</a>
-                        <a href="#" class="hover:text-gray-700">📷</a>
-                        <a href="#" class="hover:text-gray-700">🎵</a>
+                    <div class="hidden md:flex items-center space-x-4 space-x-reverse">
+                        <a href="#" class="text-gray-600 hover:text-gray-800">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-2.84v5.79a2.75 2.75 0 01-2.75 2.75 2.75 2.75 0 01-2.75-2.75V2H5.64v.44A4.83 4.83 0 011.87 6.69 4.83 4.83 0 016.12 11h.01a4.83 4.83 0 014.25-3.77V7.2h.01a4.83 4.83 0 014.25 3.77h.01a4.83 4.83 0 014.24-4.28zm-9.75 4.25a2.75 2.75 0 00-2.75-2.75 2.75 2.75 0 00-2.75 2.75v5.79h2.84v-5.79a2.75 2.75 0 012.75-2.75 2.75 2.75 0 012.75 2.75v5.79h2.84V11a2.75 2.75 0 00-2.75-2.75 2.75 2.75 0 00-2.88 2.69z"/>
+                            </svg>
+                        </a>
                     </div>
 
-                    <!-- Left: Contact -->
-                    <div class="flex items-center space-x-2 sm:space-x-4 space-x-reverse">
-                        <a href="mailto:Support@tjar.sa" class="text-teal-700 font-medium hover:text-teal-800 text-xs sm:text-sm">Support@tjar.sa</a>
-                        <a href="tel:+966556734562" class="text-teal-700 font-medium hover:text-teal-800 text-xs sm:text-sm">+966556734562</a>
+                    <!-- Left: Language and Location -->
+                    <div class="flex items-center space-x-6 space-x-reverse">
+                        <div class="flex items-center space-x-2 space-x-reverse text-gray-600">
+                            <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/>
+                            </svg>
+                            <span>القصيم - بريدة</span>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <button class="text-gray-700 hover:text-gray-900 flex items-center space-x-1 space-x-reverse">
+                                <svg class="w-3 h-3 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                                </svg>
+                                <span>العربية</span>
+                            </button>
+                            <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">ع</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Header Bar -->
+        <div class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between py-3">
+                    <!-- Right: Logo -->
+                    <div class="flex-shrink-0">
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR" class="h-12 w-auto">
+                        </a>
+                    </div>
+
+                    <!-- Center: Search -->
+                    <div class="flex-1 max-w-md mx-8">
+                        <div class="relative">
+                            <input type="search" 
+                                   placeholder="ابحث عن : أجهزة كهربائية" 
+                                   class="w-full py-2 px-4 pr-10 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500">
+                            <button class="absolute inset-y-0 right-3 flex items-center">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Left: Welcome and Login -->
+                    <div class="flex items-center space-x-6 space-x-reverse">
+                        @guest
+                            <a href="{{ route('login') }}" class="text-gray-700 hover:text-gray-900">تسجيل دخول</a>
+                        @else
+                            <form method="POST" action="{{ route('logout') }}" class="inline">
+                                @csrf
+                                <button type="submit" class="text-gray-700 hover:text-gray-900">تسجيل خروج</button>
+                            </form>
+                        @endguest
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <button class="text-gray-500">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                                </svg>
+                            </button>
+                            <span class="text-gray-700">مرحباً بك</span>
+                            <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Main Navigation -->
-        <nav class="bg-teal-700">
-            <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <!-- Left: Logo -->
-                    <a href="{{ route('home') }}" class="flex-shrink-0">
-                        <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR" class="h-10 w-auto">
-                    </a>
-
-                    <!-- Center: Search -->
-                    <div class="hidden md:block flex-1 px-8">
-                        <div class="relative">
-                            <input type="search" placeholder="ابحث عن : أجهزة كهربائية" class="w-full rounded-full py-2 px-4 text-sm bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400">
-                            <button class="absolute inset-y-0 left-3 text-gray-500">
-                                <img src="{{ asset('images/Icons/Rounded Magnifer.svg') }}" alt="search" class="w-5 h-5">
-                            </button>
+        <nav class="bg-teal-500">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-start h-12 space-x-8 space-x-reverse">
+                    <a href="{{ route('home') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">الرئيسية</a>
+                    <a href="#" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">من نحن</a>
+                    <div class="relative group">
+                        <button class="!text-white hover:!text-teal-100 font-medium text-sm flex items-center space-x-1 space-x-reverse transition duration-200" style="color: white !important;">
+                            <span>الأقسام</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                            </svg>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md right-0 mt-1 w-56 z-50 border border-gray-100">
+                            @foreach(\App\Models\Category::take(8)->get() as $cat)
+                                <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-teal-50 text-sm border-b border-gray-50 last:border-b-0 first:rounded-t-md last:rounded-b-md transition duration-200">{{ $cat->name }}</a>
+                            @endforeach
                         </div>
                     </div>
+                    <a href="#" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">أحدث المنتجات</a>
+                    <a href="#" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">تواصل معنا</a>
+                </div>
+            </div>
+        </nav>
 
-                    <!-- Right: Menu + Auth -->
-                    <div class="hidden lg:flex items-center space-x-6 space-x-reverse">
-                        <a href="{{ route('home') }}" class="text-white font-medium hover:text-emerald-200">الرئيسية</a>
-                        <a href="{{ route('about') }}" class="text-white font-medium hover:text-emerald-200">من نحن</a>
-                        <div class="relative group">
-                            <button class="text-white font-medium hover:text-emerald-200 flex items-center space-x-1 space-x-reverse">
-                                <span>الأقسام</span>
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
-                                </svg>
-                            </button>
-                            <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md right-0 mt-0 w-56 z-50">
-                                @foreach(\App\Models\Category::take(8)->get() as $cat)
-                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 text-sm first:rounded-t-md last:rounded-b-md">{{ $cat->name }}</a>
-                                @endforeach
-                            </div>
-                        </div>
-                        <a href="#" class="text-white font-medium hover:text-emerald-200">أحدث المنتجات</a>
-                        <a href="#" class="text-white font-medium hover:text-emerald-200">تواصل معنا</a>
-                        <span class="border-l border-emerald-600"></span>
-                        @auth
-                            <img src="{{ asset('images/Icons/User.svg') }}" alt="user" class="w-6 h-6">
-                        @else
-                            <a href="{{ route('login') }}" class="text-white font-medium">تسجيل دخول</a>
-                        @endauth
-                    </div>
-
-                    <!-- Mobile Menu Button -->
-                    <div class="lg:hidden flex items-center space-x-2">
-                        @auth
-                            <img src="{{ asset('images/Icons/User.svg') }}" alt="user" class="w-6 h-6">
-                        @endauth
-                        <button id="mobile-menu-btn" class="text-white">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-teal-600">
+            <div class="px-4 py-3 space-y-2">
+                <div class="border-b border-teal-500 pb-3 mb-3">
+                    <div class="relative">
+                        <input type="search" placeholder="ابحث..." class="w-full py-2 px-4 pr-10 text-sm border border-gray-300 rounded-lg">
+                        <button class="absolute inset-y-0 right-3 flex items-center">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
                 </div>
-
-                <!-- Mobile Search -->
-                <div class="md:hidden pb-3">
-                    <div class="relative">
-                        <input type="search" placeholder="ابحث..." class="w-full rounded-full py-2 px-4 text-sm bg-white placeholder-gray-500">
-                        <button class="absolute inset-y-0 left-3 text-gray-500">
-                            <img src="{{ asset('images/Icons/Rounded Magnifer.svg') }}" alt="search" class="w-5 h-5">
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Mobile Menu -->
-                <div id="mobile-menu" class="hidden lg:hidden bg-teal-600 pb-3">
-                    <a href="{{ route('home') }}" class="block px-4 py-2 text-white hover:bg-teal-800">الرئيسية</a>
-                    <a href="{{ route('about') }}" class="block px-4 py-2 text-white hover:bg-teal-800">من نحن</a>
-                    <a href="#" class="block px-4 py-2 text-white hover:bg-teal-800">الأقسام</a>
-                    <a href="#" class="block px-4 py-2 text-white hover:bg-teal-800">أحدث المنتجات</a>
-                    <a href="#" class="block px-4 py-2 text-white hover:bg-teal-800">تواصل معنا</a>
-                    @auth
-                        <form method="POST" action="{{ route('logout') }}" class="block">
-                            @csrf
-                            <button type="submit" class="w-full text-right px-4 py-2 text-white hover:bg-teal-800">تسجيل الخروج</button>
-                        </form>
-                    @else
-                        <a href="{{ route('login') }}" class="block px-4 py-2 text-white hover:bg-teal-800">تسجيل دخول</a>
-                    @endauth
-                </div>
+                <a href="{{ route('home') }}" class="block py-2 text-white hover:text-teal-100">الرئيسية</a>
+                <a href="#" class="block py-2 text-white hover:text-teal-100">من نحن</a>
+                <a href="#" class="block py-2 text-white hover:text-teal-100">الأقسام</a>
+                <a href="#" class="block py-2 text-white hover:text-teal-100">أحدث المنتجات</a>
+                <a href="#" class="block py-2 text-white hover:text-teal-100">تواصل معنا</a>
+                @guest
+                    <a href="{{ route('login') }}" class="block py-2 text-white hover:text-teal-100">تسجيل دخول</a>
+                @else
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="block w-full text-right py-2 text-white hover:text-teal-100">تسجيل خروج</button>
+                    </form>
+                @endguest
             </div>
-        </nav>
+        </div>
+
+        <!-- Mobile Menu Button (For smaller screens) -->
+        <button id="mobile-menu-btn" class="md:hidden fixed top-4 left-4 z-50 bg-teal-500 text-white p-2 rounded-lg shadow-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+    </header>
     </header>
 
     <script>
