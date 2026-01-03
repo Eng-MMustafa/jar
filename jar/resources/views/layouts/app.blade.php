@@ -133,7 +133,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-start h-12 space-x-8 space-x-reverse">
                     <a href="{{ route('home') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">الرئيسية</a>
-                    <a href="#" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">من نحن</a>
+                    <a href="{{ route('about') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">من نحن</a>
                     <div class="relative group">
                         <button class="!text-white hover:!text-teal-100 font-medium text-sm flex items-center space-x-1 space-x-reverse transition duration-200" style="color: white !important;">
                             <span>الأقسام</span>
@@ -167,7 +167,7 @@
                     </div>
                 </div>
                 <a href="{{ route('home') }}" class="block py-2 text-white hover:text-teal-100">الرئيسية</a>
-                <a href="#" class="block py-2 text-white hover:text-teal-100">من نحن</a>
+                <a href="{{ route('about') }}" class="block py-2 text-white hover:text-teal-100">من نحن</a>
                 <a href="#" class="block py-2 text-white hover:text-teal-100">الأقسام</a>
                 <a href="#" class="block py-2 text-white hover:text-teal-100">أحدث المنتجات</a>
                 <a href="#" class="block py-2 text-white hover:text-teal-100">تواصل معنا</a>
