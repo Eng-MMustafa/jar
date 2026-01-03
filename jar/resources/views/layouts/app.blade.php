@@ -18,69 +18,134 @@
 </head>
 <body class="bg-gray-50 text-gray-900">
     <header>
-        <!-- Top thin bar -->
-        <div class="bg-white border-b">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between text-sm text-gray-600 py-2">
-                    <div class="flex items-center space-x-4 space-x-reverse">
-                        <div class="flex items-center"> 
-                            <span class="mr-2">القصيم - بريدة</span>
-                            <button class="text-gray-500 hover:text-gray-700">العربية</button>
-                        </div>
-                        <div class="hidden sm:flex items-center space-x-3 text-gray-400">
-                            <button aria-label="snapchat" class="hover:text-gray-700">🔗</button>
-                            <button aria-label="instagram" class="hover:text-gray-700">🔗</button>
-                            <button aria-label="tiktok" class="hover:text-gray-700">🔗</button>
-                        </div>
+        <!-- Top Bar -->
+        <div class="bg-white border-b border-gray-300">
+            <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between text-xs text-gray-600 py-2">
+                    <!-- Right: Language -->
+                    <div class="flex items-center space-x-2 space-x-reverse">
+                        <button class="text-gray-700 hover:text-gray-900">العربية</button>
+                        <svg class="w-3 h-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                        </svg>
+                        <span class="text-gray-400">|</span>
+                        <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M5.5 13a3.5 3.5 0 01-.369-6.98"/>
+                        </svg>
+                        <span class="hidden sm:inline text-gray-700">بريدة - القصيم</span>
                     </div>
 
-                    <div class="flex items-center space-x-6 space-x-reverse text-teal-700">
-                        <a href="mailto:Support@tjar.sa" class="hover:underline">Support@tjar.sa</a>
-                        <a href="tel:+966556734562" class="hover:underline">+966556734562</a>
+                    <!-- Center: Social Icons -->
+                    <div class="hidden md:flex items-center space-x-3 space-x-reverse text-gray-500">
+                        <a href="#" class="hover:text-gray-700 text-lg">𝕏</a>
+                        <a href="#" class="hover:text-gray-700">🔔</a>
+                        <a href="#" class="hover:text-gray-700">📷</a>
+                        <a href="#" class="hover:text-gray-700">🎵</a>
+                    </div>
+
+                    <!-- Left: Contact -->
+                    <div class="flex items-center space-x-2 sm:space-x-4 space-x-reverse">
+                        <a href="mailto:Support@tjar.sa" class="text-teal-700 font-medium hover:text-teal-800 text-xs sm:text-sm">Support@tjar.sa</a>
+                        <a href="tel:+966556734562" class="text-teal-700 font-medium hover:text-teal-800 text-xs sm:text-sm">+966556734562</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Main nav -->
-        <div class="bg-emerald-600">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between py-4">
-                    <div class="flex items-center md:space-x-8 space-x-reverse">
-                        <a href="{{ route('home') }}" class="flex items-center">
-                            <img src="{{ asset('images/login/path8.png') }}" alt="Logo" class="w-24 h-auto ml-4">
-                        </a>
-                        <nav class="hidden lg:flex items-center space-x-6 text-white text-sm">
-                            <a href="{{ route('home') }}" class="hover:underline">الرئيسية</a>
-                            <a href="#" class="hover:underline">الأقسام</a>
-                            <a href="#" class="hover:underline">أحدث المنتجات</a>
-                            <a href="#" class="hover:underline">تواصل معنا</a>
-                        </nav>
+        <!-- Main Navigation -->
+        <nav class="bg-teal-700">
+            <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Left: Logo -->
+                    <a href="{{ route('home') }}" class="flex-shrink-0">
+                        <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR" class="h-10 w-auto">
+                    </a>
+
+                    <!-- Center: Search -->
+                    <div class="hidden md:block flex-1 px-8">
+                        <div class="relative">
+                            <input type="search" placeholder="ابحث عن : أجهزة كهربائية" class="w-full rounded-full py-2 px-4 text-sm bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                            <button class="absolute inset-y-0 left-3 text-gray-500">
+                                <img src="{{ asset('images/Icons/Rounded Magnifer.svg') }}" alt="search" class="w-5 h-5">
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="flex-1 px-6">
-                        <div class="max-w-lg mx-auto">
-                            <div class="relative">
-                                <input type="search" placeholder="ابحث عن : أجهزة كهربائية" class="w-full rounded-full py-3 px-4 text-sm bg-white placeholder-gray-400 focus:outline-none">
-                                <button class="absolute inset-y-0 left-3 flex items-center text-gray-400">🔍</button>
+                    <!-- Right: Menu + Auth -->
+                    <div class="hidden lg:flex items-center space-x-6 space-x-reverse">
+                        <a href="{{ route('home') }}" class="text-white font-medium hover:text-emerald-200">الرئيسية</a>
+                        <a href="{{ route('about') }}" class="text-white font-medium hover:text-emerald-200">من نحن</a>
+                        <div class="relative group">
+                            <button class="text-white font-medium hover:text-emerald-200 flex items-center space-x-1 space-x-reverse">
+                                <span>الأقسام</span>
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                                </svg>
+                            </button>
+                            <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md right-0 mt-0 w-56 z-50">
+                                @foreach(\App\Models\Category::take(8)->get() as $cat)
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 text-sm first:rounded-t-md last:rounded-b-md">{{ $cat->name }}</a>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
-
-                    <div class="flex items-center space-x-4 space-x-reverse">
-                        <a href="{{ route('cart.index') }}" class="text-white hover:opacity-90">السلة</a>
+                        <a href="#" class="text-white font-medium hover:text-emerald-200">أحدث المنتجات</a>
+                        <a href="#" class="text-white font-medium hover:text-emerald-200">تواصل معنا</a>
+                        <span class="border-l border-emerald-600"></span>
                         @auth
-                            <div class="text-white">مرحباً، {{ Auth::user()->name }}</div>
-                            <form method="POST" action="{{ route('logout') }}">@csrf<button type="submit" class="text-white">تسجيل الخروج</button></form>
+                            <img src="{{ asset('images/Icons/User.svg') }}" alt="user" class="w-6 h-6">
                         @else
-                            <a href="{{ route('login') }}" class="text-white">تسجيل دخول</a>
-                            <a href="{{ route('register') }}" class="bg-white text-emerald-600 px-4 py-2 rounded-lg">إنشاء حساب</a>
+                            <a href="{{ route('login') }}" class="text-white font-medium">تسجيل دخول</a>
                         @endauth
                     </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="lg:hidden flex items-center space-x-2">
+                        @auth
+                            <img src="{{ asset('images/Icons/User.svg') }}" alt="user" class="w-6 h-6">
+                        @endauth
+                        <button id="mobile-menu-btn" class="text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Search -->
+                <div class="md:hidden pb-3">
+                    <div class="relative">
+                        <input type="search" placeholder="ابحث..." class="w-full rounded-full py-2 px-4 text-sm bg-white placeholder-gray-500">
+                        <button class="absolute inset-y-0 left-3 text-gray-500">
+                            <img src="{{ asset('images/Icons/Rounded Magnifer.svg') }}" alt="search" class="w-5 h-5">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div id="mobile-menu" class="hidden lg:hidden bg-teal-600 pb-3">
+                    <a href="{{ route('home') }}" class="block px-4 py-2 text-white hover:bg-teal-800">الرئيسية</a>
+                    <a href="{{ route('about') }}" class="block px-4 py-2 text-white hover:bg-teal-800">من نحن</a>
+                    <a href="#" class="block px-4 py-2 text-white hover:bg-teal-800">الأقسام</a>
+                    <a href="#" class="block px-4 py-2 text-white hover:bg-teal-800">أحدث المنتجات</a>
+                    <a href="#" class="block px-4 py-2 text-white hover:bg-teal-800">تواصل معنا</a>
+                    @auth
+                        <form method="POST" action="{{ route('logout') }}" class="block">
+                            @csrf
+                            <button type="submit" class="w-full text-right px-4 py-2 text-white hover:bg-teal-800">تسجيل الخروج</button>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="block px-4 py-2 text-white hover:bg-teal-800">تسجيل دخول</a>
+                    @endauth
                 </div>
             </div>
-        </div>
+        </nav>
     </header>
+
+    <script>
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
 
     <main>
         @yield('content')
