@@ -32,6 +32,10 @@ Route::get('/bookings/completion', function () {
     return view('bookings.completion');
 })->name('bookings.completion');
 
+Route::get('/bookings/bank-details', function () {
+    return view('bookings.bank-details');
+})->name('bookings.bank-details');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
