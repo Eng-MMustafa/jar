@@ -211,32 +211,113 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            @forelse(\App\Models\Product::where('is_active', true)->take(6)->get() as $product)
+            <!-- Product 1 -->
             <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
                 <div class="bg-gray-100 h-48 flex items-center justify-center overflow-hidden relative">
-                    @if($product->images->first())
-                        <img src="{{ asset('storage/' . $product->images->first()->image_path) }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                    @else
-                        <svg class="w-16 h-16 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4.5-4.5 3 3 4-4 2.5 2.5V5a2 2 0 012 2v10z"/>
-                        </svg>
-                    @endif
+                    <img src="{{ asset('images/Images/Image-4.png') }}" alt="منتج 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                 </div>
                 <div class="p-4">
                     <div class="flex items-center mb-2">
                         <span class="text-yellow-400">★</span>
-                        <span class="text-sm text-gray-700 ml-1">{{ number_format($product->average_rating ?? 4.2, 1) }}</span>
+                        <span class="text-sm text-gray-700 ml-1">4.5</span>
                     </div>
-                    <h3 class="font-semibold text-gray-800 text-sm mb-2 line-clamp-2">{{ $product->name }}</h3>
+                    <h3 class="font-semibold text-gray-800 text-sm mb-2 line-clamp-2">حقيبة ذكية بالمواصفات</h3>
                     <div class="flex items-center justify-between">
-                        <div class="text-teal-700 font-bold">{{ $product->rental_price_daily }} ريال</div>
+                        <div class="text-teal-700 font-bold">30 ريال</div>
                         <button class="bg-teal-600 text-white px-3 py-1 rounded-lg font-semibold hover:bg-teal-700 transition text-sm">أضف</button>
                     </div>
                 </div>
             </div>
-            @empty
-            <div class="col-span-3 text-center py-8 text-gray-500">لا توجد منتجات</div>
-            @endforelse
+
+            <!-- Product 2 -->
+            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
+                <div class="bg-gray-100 h-48 flex items-center justify-center overflow-hidden relative">
+                    <img src="{{ asset('images/Images/image 6.png') }}" alt="منتج 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-sm text-gray-700 ml-1">4.3</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm mb-2 line-clamp-2">حقيبة للرحلات والمخيم</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="text-teal-700 font-bold">45 ريال</div>
+                        <button class="bg-teal-600 text-white px-3 py-1 rounded-lg font-semibold hover:bg-teal-700 transition text-sm">أضف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
+                <div class="bg-gray-100 h-48 flex items-center justify-center overflow-hidden relative">
+                    <img src="{{ asset('images/Images/Frame 29.png') }}" alt="منتج 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-sm text-gray-700 ml-1">4.2</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm mb-2 line-clamp-2">خيمة للمخيم البدوي</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="text-teal-700 font-bold">90 ريال</div>
+                        <button class="bg-teal-600 text-white px-3 py-1 rounded-lg font-semibold hover:bg-teal-700 transition text-sm">أضف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
+                <div class="bg-gray-100 h-48 flex items-center justify-center overflow-hidden relative">
+                    <img src="{{ asset('images/Images/Frame 29.png') }}" alt="منتج 4" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-sm text-gray-700 ml-1">4.2</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm mb-2 line-clamp-2">خيمة للمخيم البدوي</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="text-teal-700 font-bold">90 ريال</div>
+                        <button class="bg-teal-600 text-white px-3 py-1 rounded-lg font-semibold hover:bg-teal-700 transition text-sm">أضف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
+                <div class="bg-gray-100 h-48 flex items-center justify-center overflow-hidden relative">
+                    <img src="{{ asset('images/Images/Image-4.png') }}" alt="منتج 5" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-sm text-gray-700 ml-1">4.5</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm mb-2 line-clamp-2">حقيبة ذكية بالمواصفات</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="text-teal-700 font-bold">30 ريال</div>
+                        <button class="bg-teal-600 text-white px-3 py-1 rounded-lg font-semibold hover:bg-teal-700 transition text-sm">أضف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
+                <div class="bg-gray-100 h-48 flex items-center justify-center overflow-hidden relative">
+                    <img src="{{ asset('images/Images/Frame 29.png') }}" alt="منتج 6" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-sm text-gray-700 ml-1">4.2</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm mb-2 line-clamp-2">خيمة للمخيم البدوي</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="text-teal-700 font-bold">90 ريال</div>
+                        <button class="bg-teal-600 text-white px-3 py-1 rounded-lg font-semibold hover:bg-teal-700 transition text-sm">أضف</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -293,30 +374,65 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            @forelse(\App\Models\Product::where('is_active', true)->limit(3)->get() as $product)
+            <!-- Product 1 -->
             <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
                 <div class="bg-gray-100 h-48 flex items-center justify-center overflow-hidden relative">
-                    @if($product->images->first())
-                        <img src="{{ asset('storage/' . $product->images->first()->image_path) }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                    @endif
-                    <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-3 py-1 rounded-full font-semibold">{{ $product->city ?? 'القصيم' }}</span>
+                    <img src="{{ asset('images/Images/Frame 29.png') }}" alt="خيمة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-3 py-1 rounded-full font-semibold">بريدة</span>
                 </div>
                 <div class="p-4">
                     <div class="flex items-center mb-2">
                         <span class="text-yellow-400">★</span>
-                        <span class="text-sm text-gray-700 ml-1">{{ number_format($product->average_rating ?? 4.3, 1) }}</span>
+                        <span class="text-sm text-gray-700 ml-1">4.5</span>
                     </div>
-                    <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">{{ $product->name }}</h3>
-                    <p class="text-gray-500 text-xs mb-3">{{ $product->city ?? 'القصيم' }}</p>
+                    <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">خيمة للمخيم البدوي</h3>
+                    <p class="text-gray-500 text-xs mb-3">بريدة</p>
                     <div class="flex items-center justify-between">
-                        <div class="text-teal-700 font-bold">{{ $product->rental_price_daily }} ريال</div>
+                        <div class="text-teal-700 font-bold">90 ريال</div>
                         <button class="bg-teal-600 text-white px-3 py-1 rounded-lg font-semibold hover:bg-teal-700 transition text-sm">أضف</button>
                     </div>
                 </div>
             </div>
-            @empty
-            <div class="col-span-3 text-center py-8 text-gray-500">لا توجد منتجات</div>
-            @endforelse
+
+            <!-- Product 2 -->
+            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
+                <div class="bg-gray-100 h-48 flex items-center justify-center overflow-hidden relative">
+                    <img src="{{ asset('images/Images/Image.png') }}" alt="أغطية" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-3 py-1 rounded-full font-semibold">بريدة</span>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-sm text-gray-700 ml-1">4.3</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">أغطية بحري</h3>
+                    <p class="text-gray-500 text-xs mb-3">بريدة</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-teal-700 font-bold">80 ريال</div>
+                        <button class="bg-teal-600 text-white px-3 py-1 rounded-lg font-semibold hover:bg-teal-700 transition text-sm">أضف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
+                <div class="bg-gray-100 h-48 flex items-center justify-center overflow-hidden relative">
+                    <img src="{{ asset('images/Images/Image-4.png') }}" alt="حقيبة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-3 py-1 rounded-full font-semibold">بريدة</span>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-sm text-gray-700 ml-1">4.2</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">حقيبة للرحلات والمخيم</h3>
+                    <p class="text-gray-500 text-xs mb-3">بريدة</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-teal-700 font-bold">30 ريال</div>
+                        <button class="bg-teal-600 text-white px-3 py-1 rounded-lg font-semibold hover:bg-teal-700 transition text-sm">أضف</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
