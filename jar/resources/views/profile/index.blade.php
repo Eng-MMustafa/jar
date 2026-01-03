@@ -518,9 +518,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label required">البريد الإلكتروني</label>
+                                <label class="form-label">البريد الإلكتروني</label>
                                 <input type="email" name="email" class="form-input" 
-                                       value="{{ auth()->user()->email }}" required disabled>
+                                       value="{{ auth()->user()->email }}" disabled>
                             </div>
 
                             <div class="form-group">
