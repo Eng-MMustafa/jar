@@ -133,32 +133,37 @@
         <!-- Main Navigation -->
         <nav class="bg-teal-500">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-start h-12 space-x-8 space-x-reverse">
-                    <a href="{{ route('home') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">الرئيسية</a>
-                    <a href="{{ route('about') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">من نحن</a>
+                <div class="flex items-center justify-start h-14 space-x-1.25 space-x-reverse">
+                    <a href="{{ route('home') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200 px-1" style="color: white !important;">الرئيسية</a>
+                    <a href="{{ route('about') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200 px-1" style="color: white !important;">من نحن</a>
                     <div class="relative group">
-                        <button class="!text-white hover:!text-teal-100 font-medium text-sm flex items-center space-x-1 space-x-reverse transition duration-200" style="color: white !important;">
+                        <button class="!text-white hover:!text-teal-100 font-medium text-sm flex items-center space-x-2 space-x-reverse transition duration-200 py-2 px-3 rounded hover:bg-teal-600" style="color: white !important;">
                             <span>الأقسام</span>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
                             </svg>
                         </button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md right-0 mt-1 w-56 z-50 border border-gray-100">
+                        <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg right-0 mt-0 min-w-64 z-50 border border-gray-200 overflow-hidden">
                             @php
                                 $categories = \App\Models\Category::where('is_active', true)->take(8)->get();
                             @endphp
                             @if($categories->count() > 0)
                                 @foreach($categories as $cat)
-                                    <a href="{{ route('categories.show', $cat->slug) }}" class="block px-4 py-3 text-gray-700 hover:bg-teal-50 text-sm border-b border-gray-50 last:border-b-0 first:rounded-t-md last:rounded-b-md transition duration-200">{{ $cat->name_ar ?? $cat->name_en }}</a>
+                                    <a href="{{ route('categories.show', $cat->slug) }}" class="block px-5 py-3 text-gray-700 hover:bg-teal-50 text-sm border-b border-gray-100 transition duration-200 flex items-center space-x-2 space-x-reverse group/item">
+                                        <svg class="w-4 h-4 text-teal-500 opacity-0 group-hover/item:opacity-100" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5.951-1.488 5.951 1.488a1 1 0 001.169-1.409l-7-14z"/>
+                                        </svg>
+                                        <span>{{ $cat->name_ar ?? $cat->name_en }}</span>
+                                    </a>
                                 @endforeach
-                                <a href="{{ route('categories.index') }}" class="block px-4 py-3 text-teal-600 hover:bg-teal-50 text-sm font-medium border-t-2 border-teal-100 rounded-b-md transition duration-200">عرض جميع الأقسام</a>
+                                <a href="{{ route('categories.index') }}" class="block px-5 py-3 text-teal-600 hover:bg-teal-50 text-sm font-medium border-t-2 border-teal-100 transition duration-200">عرض جميع الأقسام →</a>
                             @else
-                                <span class="block px-4 py-3 text-gray-500 text-sm">لا توجد أقسام متاحة</span>
+                                <span class="block px-5 py-3 text-gray-500 text-sm">لا توجد أقسام متاحة</span>
                             @endif
                         </div>
                     </div>
-                    <a href="{{ route('products.index') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">جميع المنتجات</a>
-                    <a href="#" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200" style="color: white !important;">تواصل معنا</a>
+                    <a href="{{ route('products.index') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200 px-1" style="color: white !important;">جميع المنتجات</a>
+                    <a href="#" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200 px-1" style="color: white !important;">تواصل معنا</a>
                 </div>
             </div>
         </nav>
