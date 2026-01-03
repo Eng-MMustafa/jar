@@ -65,14 +65,22 @@
     /* Images Section - Right side */
     .product-images {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 1rem;
         grid-column: 1;
         width: 600px;
     }
 
+    .image-gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        order: 1;
+        width: 80px;
+    }
+
     .main-image {
-        width: 100%;
+        width: calc(100% - 90px);
         height: 400px;
         background: #f0f0f0;
         border-radius: 10px;
@@ -80,21 +88,13 @@
         align-items: center;
         justify-content: center;
         overflow: hidden;
-        order: 1;
+        order: 2;
     }
 
     .main-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
-
-    .image-gallery {
-        display: flex;
-        flex-direction: row;
-        gap: 0.5rem;
-        order: 2;
-        margin-top: 1rem;
     }
 
     .image-gallery img {
