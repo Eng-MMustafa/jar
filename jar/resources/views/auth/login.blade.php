@@ -31,7 +31,7 @@
 
                         <!-- Phone Number -->
                         <div>
-                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                            <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
                                 <span class="text-red-500">*</span> رقم الجوال
                             </label>
                             <div class="flex bg-white border border-gray-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-teal-500 focus-within:border-transparent">
@@ -39,16 +39,16 @@
                                     <span class="text-sm font-semibold text-gray-700">+966</span>
                                 </div>
                                 <input 
-                                    name="email" 
+                                    name="phone" 
                                     type="tel" 
                                     inputmode="numeric"
-                                    value="{{ old('email') }}" 
+                                    value="{{ old('phone') }}" 
                                     required 
                                     class="flex-1 px-4 py-3 outline-none text-gray-900 placeholder-gray-400"
                                     placeholder="05xxxxxxxx"
                                 >
                             </div>
-                            @error('email')
+                            @error('phone')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
