@@ -12,12 +12,11 @@
                 </div>
 
                 <div class="flex justify-center py-8">
-                    <img src="{{ asset('images/login/Frame 1597883802.png') }}" alt="Man with laptop" class="w-full max-w-md h-auto drop-shadow-lg">
+                    <img src="{{ asset('images/Images/Frame 1597883798.png') }}" alt="Man with laptop" class="w-full max-w-md h-auto drop-shadow-lg">
                 </div>
-
             </div>
 
-            <!-- Right: Reset Password form -->
+            <!-- Right: Forgot Password form -->
             <div class="flex flex-col justify-center p-8 lg:p-12">
                 <div class="max-w-sm mx-auto w-full">
                     <!-- Logo -->
