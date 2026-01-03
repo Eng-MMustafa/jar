@@ -2,56 +2,97 @@
 
 @section('content')
 <!-- Hero Section with Featured Products -->
-<div class="bg-gradient-to-b from-blue-50 to-white py-8 lg:py-16">
+<div class="bg-white py-12 lg:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Left: Teal Card - Headphones -->
-            <div class="bg-gradient-to-br from-teal-600 to-teal-700 rounded-3xl overflow-hidden flex flex-col justify-between min-h-96 relative group">
-                <div class="h-48 bg-teal-600 flex items-center justify-center overflow-hidden">
-                    <img src="{{ asset('images/Images/Image (2).png') }}" alt="سماعات" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                </div>
-                <div class="p-6 text-white flex flex-col justify-between flex-1 relative z-10">
-                    <div>
-                        <span class="inline-block bg-white text-teal-600 px-4 py-1 rounded-full text-sm font-bold mb-3">مميز</span>
-                        <h3 class="text-2xl font-bold mb-2">سماعات لاسلكية</h3>
-                        <p class="text-teal-100 text-sm">جودة صوت عالية وراحة قصوى</p>
+            <!-- Right: Big Card - PlayStation 5 -->
+            <div class="lg:col-span-2 bg-cyan-50 rounded-2xl overflow-hidden relative group lg:row-span-2">
+                <div class="absolute -top-8 -right-8 bg-teal-500 rounded-full w-32 h-32 flex items-center justify-center shadow-2xl z-20">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-white">120</div>
+                        <div class="text-sm text-white font-semibold">/ بالشهر</div>
                     </div>
-                    <button class="bg-white text-teal-600 px-8 py-3 rounded-xl font-bold hover:bg-gray-100 w-fit text-base mt-4">تسوق الآن</button>
+                </div>
+
+                <div class="flex flex-col lg:flex-row h-full min-h-96">
+                    <!-- Image Section -->
+                    <div class="lg:w-2/5 flex items-center justify-center p-8 bg-cyan-50">
+                        <img src="{{ asset('images/Images/image 4.png') }}" alt="بلايستيشن 5" class="h-72 object-contain group-hover:scale-110 transition duration-300">
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="lg:w-3/5 p-8 flex flex-col justify-between text-right bg-white">
+                        <div>
+                            <p class="text-teal-600 text-sm font-bold mb-3">— الالعاب</p>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-4">جهاز بلايستيشن 5</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-3">جهاز ألعاب منزلي متطور يقدم رسوميات مذهلة وتحرية، ألعاب سلسة وسريعة</p>
+                            <p class="text-gray-500 text-xs flex items-center justify-end gap-2 mb-6">
+                                <span>بريدة</span>
+                                <span>-</span>
+                                <span>القصيم</span>
+                            </p>
+                        </div>
+                        <button class="bg-teal-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-teal-600 transition w-fit text-sm">أجرتالآن</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Center: Black Card - Xbox -->
-            <div class="bg-gradient-to-br from-gray-900 to-black rounded-3xl overflow-hidden flex flex-col justify-between min-h-96 relative group">
-                <div class="absolute -top-10 -right-10 bg-teal-500 rounded-full w-28 h-28 flex items-center justify-center text-center shadow-2xl z-20">
-                    <div>
-                        <div class="text-3xl font-bold text-white">120</div>
-                        <div class="text-sm text-white">ريال</div>
+            <!-- Left: Two Small Cards -->
+            <div class="flex flex-col gap-8">
+                <!-- Card 1: Tent -->
+                <div class="bg-teal-900 rounded-2xl overflow-hidden relative group">
+                    <div class="absolute -top-6 -right-6 bg-teal-500 rounded-full w-24 h-24 flex items-center justify-center shadow-lg z-20">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white">90</div>
+                            <div class="text-xs text-white">/ بالشهر</div>
+                        </div>
                     </div>
-                </div>
-                <div class="h-48 bg-gray-900 flex items-center justify-center overflow-hidden">
-                    <img src="{{ asset('images/Images/image 4.png') }}" alt="Xbox" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                </div>
-                <div class="p-6 text-white flex flex-col justify-between flex-1 relative z-10">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-2">جهاز بلايستيشن 5</h3>
-                        <p class="text-gray-300 text-sm">أحدث أجهزة الألعاب بأفضل الأسعار</p>
-                    </div>
-                    <button class="bg-teal-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-teal-700 w-fit text-base mt-4">الشراء</button>
-                </div>
-            </div>
 
-            <!-- Right: Orange Card - Bag -->
-            <div class="bg-gradient-to-br from-orange-400 to-orange-500 rounded-3xl overflow-hidden flex flex-col justify-between min-h-96 relative group">
-                <div class="h-48 bg-orange-400 flex items-center justify-center overflow-hidden">
-                    <img src="{{ asset('images/Images/image 6.png') }}" alt="حقيبة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                </div>
-                <div class="p-6 text-white flex flex-col justify-between flex-1 relative z-10">
-                    <div>
-                        <span class="inline-block bg-teal-600 text-white px-4 py-1 rounded-full text-sm font-bold mb-3">جديد</span>
-                        <h3 class="text-2xl font-bold mb-2">حقيبة ذكية بالمواصفات</h3>
-                        <p class="text-orange-100 text-sm">أفضل سعر وجودة عالية</p>
+                    <div class="flex gap-4 p-5">
+                        <div class="w-28 h-28 flex-shrink-0 flex items-center justify-center">
+                            <img src="{{ asset('images/Images/Frame 29.png') }}" alt="خيمة" class="w-full h-full object-cover rounded-lg group-hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between text-white py-1">
+                            <div>
+                                <p class="text-xs text-teal-200 font-semibold mb-2">— المعدل</p>
+                                <h4 class="text-base font-bold mb-1 leading-tight">خيمة ملكية<br/>للرحلات</h4>
+                                <p class="text-xs text-teal-100 flex items-center gap-2">
+                                    <span>بريدة</span>
+                                    <span>-</span>
+                                    <span>القصيم</span>
+                                </p>
+                            </div>
+                            <button class="bg-white text-teal-900 px-4 py-2 rounded-lg font-bold hover:bg-gray-100 transition w-fit text-xs">أجرتالآن</button>
+                        </div>
                     </div>
-                    <button class="bg-teal-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-teal-700 w-fit text-base mt-4">تسوق الآن</button>
+                </div>
+
+                <!-- Card 2: Headphones -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden relative group">
+                    <div class="absolute -top-6 -right-6 bg-teal-500 rounded-full w-24 h-24 flex items-center justify-center shadow-lg z-20">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white">80</div>
+                            <div class="text-xs text-white">/ بالشهر</div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 p-5">
+                        <div class="w-28 h-28 flex-shrink-0 flex items-center justify-center">
+                            <img src="{{ asset('images/Images/Image (2).png') }}" alt="سماعات" class="w-full h-full object-cover rounded-lg group-hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between text-white py-1">
+                            <div>
+                                <p class="text-xs text-gray-400 font-semibold mb-2">— إلكترونيات</p>
+                                <h4 class="text-base font-bold mb-1 leading-tight">سماعات<br/>لا سلكية</h4>
+                                <p class="text-xs text-gray-400 flex items-center gap-2">
+                                    <span>بريدة</span>
+                                    <span>-</span>
+                                    <span>القصيم</span>
+                                </p>
+                            </div>
+                            <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition w-fit text-xs">أجرتالآن</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
