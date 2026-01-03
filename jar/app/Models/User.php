@@ -29,6 +29,13 @@ class User extends Authenticatable
         'reviews_count',
         'last_login_at',
         'last_login_ip',
+        'business_name',
+        'business_description',
+        'hand_photo',
+        'bank_account_name',
+        'bank_iban',
+        'bank_account_number',
+        'lender_status',
     ];
 
     protected $hidden = [

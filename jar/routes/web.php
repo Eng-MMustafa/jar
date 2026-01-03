@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProfileController;
 
 Auth::routes();
 
@@ -39,3 +40,20 @@ Route::get('/bookings/bank-details', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Profile routes (protected by auth middleware)
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
+    
+    // Renter activation
+    Route::get('/profile/activate-renter', [ProfileController::class, 'activateRenter'])->name('profile.activate-renter');
+    Route::post('/profile/activate-renter', [ProfileController::class, 'storeRenterActivation'])->name('profile.activate-renter.store');
+    Route::get('/profile/activation-success', [ProfileController::class, 'activationSuccess'])->name('profile.activation-success');
+    
+    // Bookings and Support
+    Route::get('/profile/bookings', [ProfileController::class, 'bookings'])->name('profile.bookings');
+    Route::get('/profile/support-tickets', [ProfileController::class, 'supportTickets'])->name('profile.support-tickets');
+});
