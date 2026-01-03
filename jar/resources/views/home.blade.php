@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between mb-8">
             <h2 class="text-2xl lg:text-3xl font-bold text-teal-600">أكثر تأجيراً</h2>
-            <a href="#" class="text-teal-600 text-sm hover:text-teal-700 font-medium">من نحن ←</a>
+            <a href="{{ route('about') }}" class="text-teal-600 text-sm hover:text-teal-700 font-medium">من نحن ←</a>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
