@@ -357,47 +357,139 @@
     }
 
     /* Reviews Section */
+    .reviews-wrapper {
+        display: flex;
+        gap: 2rem;
+        direction: rtl;
+        align-items: flex-start;
+        flex-direction: row-reverse;
+    }
+
+    .reviews-main-content {
+        flex: 2;
+        min-width: 0;
+    }
+
+    .reviews-sidebar {
+        flex: 0 0 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Rating Summary */
+    .rating-summary {
+        background: #f0f7fa;
+        padding: 1.2rem;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #e0f0f5;
+    }
+
+    .overall-rating {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .rating-number {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .rating-text {
+        font-size: 0.85rem;
+        color: #999;
+        font-weight: 400;
+    }
+
+    .rating-stars {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .rating-count {
+        color: #999;
+        font-size: 0.8rem;
+    }
+
+    /* Sort Options */
+    .reviews-sort {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        justify-content: flex-end;
+    }
+
+    .reviews-sort select {
+        padding: 0.5rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: 'Tajawal', sans-serif;
+        direction: rtl;
+    }
+
+    /* Reviews List */
     .reviews-list {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
     }
 
+    .reviews-list h3 {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 1rem;
+        text-align: right;
+    }
+
     .review-item {
-        padding: 1.5rem;
+        padding: 1.2rem;
         background: #f9f9f9;
         border-radius: 8px;
-        border-right: 4px solid #00bcd4;
         text-align: right;
         direction: rtl;
     }
 
     .review-header {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
-        margin-bottom: 1rem;
-        flex-direction: row-reverse;
+        margin-bottom: 0.8rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+        flex-direction: row;
     }
 
     .reviewer-info {
         display: flex;
         align-items: center;
-        gap: 1rem;
-        flex-direction: row-reverse;
+        gap: 0.8rem;
+        direction: rtl;
+        justify-content: flex-end;
     }
 
     .reviewer-avatar {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
         border-radius: 50%;
         object-fit: cover;
+    }
+
+    .reviewer-details {
+        text-align: right;
     }
 
     .reviewer-name {
         font-weight: 600;
         color: #333;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
     }
 
     .review-date {
@@ -407,13 +499,158 @@
 
     .review-rating {
         color: #ffc107;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        margin-top: 0.2rem;
     }
 
     .review-text {
         color: #666;
-        line-height: 1.6;
+        line-height: 1.5;
+        font-size: 0.9rem;
+        text-align: right;
+    }
+
+    /* Load More */
+    .load-more {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .btn-load-more {
+        background: #e0f7fa;
+        color: #00bcd4;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: 'Tajawal', sans-serif;
+        font-weight: 600;
+    }
+
+    /* Comment Form */
+    .comment-form {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 2rem;
+    }
+
+    .comment-form h3 {
+        color: #333;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        text-align: right;
+        font-weight: 600;
+    }
+
+    .comment-form h3 span {
+        color: #d32f2f;
+    }
+
+    .comment-form textarea {
+        width: 100%;
+        height: 150px;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        resize: vertical;
+        font-family: 'Tajawal', sans-serif;
+        margin-bottom: 1.5rem;
+        text-align: right;
+        direction: rtl;
+        box-sizing: border-box;
         font-size: 0.95rem;
+        color: #999;
+    }
+
+    .comment-form textarea::placeholder {
+        color: #bbb;
+    }
+
+    .btn-submit-comment {
+        width: 100%;
+        background: #4db8c4;
+        color: white;
+        border: none;
+        padding: 1.2rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-family: 'Tajawal', sans-serif;
+        font-weight: 600;
+        font-size: 1.05rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-submit-comment:hover {
+        background: #3da5b1;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(77, 184, 196, 0.3);
+    }
+
+    /* Owner Info */
+    .owner-info {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        direction: rtl;
+    }
+
+    .owner-avatar img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .owner-details h3 {
+        color: #333;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .owner-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    .stat {
+        text-align: center;
+    }
+
+    .stat-number {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #00bcd4;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    /* Description Content */
+    .description-content {
+        direction: rtl;
+        text-align: right;
+    }
+
+    .description-content h3 {
+        color: #333;
+        font-size: 1.3rem;
+        margin: 1.5rem 0 1rem 0;
+    }
+
+    .description-content ul {
+        list-style-type: disc;
+        padding-right: 2rem;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .description-content li {
+        margin-bottom: 0.5rem;
     }
 
     /* Related Products */
@@ -576,18 +813,30 @@
 
         .main-image {
             height: 300px;
+            width: 100%;
         }
 
         .image-gallery {
             flex-direction: row;
             overflow-x: auto;
             gap: 0.5rem;
+            width: 100%;
         }
 
         .image-gallery img {
             width: 60px;
             height: 60px;
             flex-shrink: 0;
+        }
+
+        .reviews-wrapper {
+            flex-direction: column;
+        }
+
+        .reviews-sidebar {
+            order: -1;
+            flex: none;
+            width: 100%;
         }
 
         .specs-grid {
@@ -730,84 +979,136 @@
     <!-- Tabs Section -->
     <div class="product-tabs">
         <div class="tabs-header">
-            <button class="tab-btn active" onclick="openTab(event, 'specs')">المواصفات</button>
-            <button class="tab-btn" onclick="openTab(event, 'reviews')">التقييمات والمراجعات</button>
-            <button class="tab-btn" onclick="openTab(event, 'info')">معلومات المنتج</button>
+            <button class="tab-btn" onclick="openTab(event, 'description')">الوصف وشروط الإيجار</button>
+            <button class="tab-btn" onclick="openTab(event, 'owner')">معلومات المالك</button>
+            <button class="tab-btn active" onclick="openTab(event, 'reviews')">التقييمات والمراجعات</button>
         </div>
 
-        <!-- Specs Tab -->
-        <div id="specs" class="tab-content active">
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <div class="spec-label">الفئة</div>
-                    <div class="spec-value">{{ $product->category->name_ar ?? $product->category->name_en }}</div>
+        <!-- Description Tab -->
+        <div id="description" class="tab-content">
+            <div class="description-content">
+                <h3>وصف المنتج</h3>
+                <p>{{ $product->description ?? 'مجموعة من المعدات المناسبة للأنشطة الخارجية والرياضة' }}</p>
+                <h3>شروط الإيجار</h3>
+                <ul>
+                    <li>يجب دفع مبلغ التأمين قبل الاستلام</li>
+                    <li>إرجاع المنتج في نفس الحالة المستلمة</li>
+                    <li>التأخير في الإرجاع يترتب عليه رسوم إضافية</li>
+                    <li>فحص المنتج قبل الاستلام مطلوب</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Owner Tab -->
+        <div id="owner" class="tab-content">
+            <div class="owner-info">
+                <div class="owner-avatar">
+                    <img src="{{ asset('images/avatar.png') }}" alt="صورة المالك" onerror="this.src='https://via.placeholder.com/80'">
                 </div>
-                <div class="spec-item">
-                    <div class="spec-label">الحالة</div>
-                    <div class="spec-value">{{ $product->condition ?? 'جديد' }}</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">المورد</div>
-                    <div class="spec-value">{{ $product->user->name ?? 'غير محدد' }}</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">التقييم</div>
-                    <div class="spec-value">⭐ {{ $product->rating }}/5</div>
+                <div class="owner-details">
+                    <h3>{{ $product->user->name ?? 'المالك' }}</h3>
+                    <p>عضو منذ {{ $product->user->created_at ? $product->user->created_at->format('Y') : '2025' }}</p>
+                    <div class="owner-stats">
+                        <div class="stat">
+                            <span class="stat-number">{{ rand(10, 50) }}</span>
+                            <span class="stat-label">منتج</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">{{ rand(100, 500) }}</span>
+                            <span class="stat-label">تأجير</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Reviews Tab -->
-        <div id="reviews" class="tab-content">
-            <div class="reviews-list">
-                <div class="review-item">
-                    <div class="review-header">
-                        <div class="review-date">13/10/2025</div>
-                        <div class="reviewer-info">
-                            <div>
-                                <div class="reviewer-name">محمد عبدالله</div>
-                                <div class="review-rating">⭐⭐⭐⭐⭐ 5.0</div>
+        <div id="reviews" class="tab-content active">
+            <div class="reviews-wrapper">
+                <!-- Reviews Main Content -->
+                <div class="reviews-main-content">
+                    <!-- Sort Options -->
+                    <div class="reviews-sort">
+                        <select>
+                            <option>الأحدث</option>
+                            <option>الأقدم</option>
+                            <option>الأعلى تقييماً</option>
+                        </select>
+                        <span>:ترتيب حسب</span>
+                    </div>
+
+                    <!-- Reviews List -->
+                    <div class="reviews-list">
+                        <h3>تعليقات المستخدمين</h3>
+                        
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-details">
+                                        <div class="reviewer-name">محمد خالد</div>
+                                        <div class="review-rating">★★★★</div>
+                                    </div>
+                                    <img src="https://via.placeholder.com/40" alt="محمد خالد" class="reviewer-avatar">
+                                </div>
+                                <div class="review-date">13/10/2025</div>
                             </div>
-                            <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="reviewer-avatar" onerror="this.src='https://via.placeholder.com/40'">
+                            <div class="review-text">خدمة رائعة وسهلة، والدعم الفني متعاون جداً. أنصح بالتجربة!</div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-details">
+                                        <div class="reviewer-name">رضا محمد</div>
+                                        <div class="review-rating">★★★★</div>
+                                    </div>
+                                    <img src="https://via.placeholder.com/40" alt="رضا محمد" class="reviewer-avatar">
+                                </div>
+                                <div class="review-date">13/10/2025</div>
+                            </div>
+                            <div class="review-text">تعامل محترف وسريع في الإيجار، ما توقعت تكون التجربة بالسهولة دي يعطيكم العافية!</div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-details">
+                                        <div class="reviewer-name">رضا محمد</div>
+                                        <div class="review-rating">★★★★</div>
+                                    </div>
+                                    <img src="https://via.placeholder.com/40" alt="رضا محمد" class="reviewer-avatar">
+                                </div>
+                                <div class="review-date">13/10/2025</div>
+                            </div>
+                            <div class="review-text">تعامل محترف وسريع في الإيجار، ما توقعت تكون التجربة بالسهولة دي يعطيكم العافية!</div>
                         </div>
                     </div>
-                    <div class="review-text">خدمة رائعة وسريعة جداً! المنتج كما هو موصوف تماماً وحالته ممتازة. سأتأكد من التعامل معهم مرة أخرى.</div>
-                </div>
-
-                <div class="review-item">
-                    <div class="review-header">
-                        <div class="review-date">10/10/2025</div>
-                        <div class="reviewer-info">
-                            <div>
-                                <div class="reviewer-name">فاطمة أحمد</div>
-                                <div class="review-rating">⭐⭐⭐⭐⭐ 5.0</div>
-                            </div>
-                            <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="reviewer-avatar" onerror="this.src='https://via.placeholder.com/40'">
-                        </div>
+                    
+                    <div class="load-more">
+                        <button class="btn-load-more">عرض المزيد</button>
                     </div>
-                    <div class="review-text">احترافية عالية في التعامل والمنتج أفضل من توقعاتي. أنصح به بقوة!</div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Info Tab -->
-        <div id="info" class="tab-content">
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <div class="spec-label">عدد المبيعات</div>
-                    <div class="spec-value">{{ rand(50, 500) }} عملية</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">المشاركات</div>
-                    <div class="spec-value">{{ rand(100, 1000) }} مشاركة</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">تاريخ الإضافة</div>
-                    <div class="spec-value">{{ $product->created_at->format('d/m/Y') }}</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">حالة المنتج</div>
-                    <div class="spec-value">{{ $product->is_active ? 'متوفر' : 'غير متوفر' }}</div>
+                <!-- Sidebar -->
+                <div class="reviews-sidebar">
+                    <!-- Rating Summary -->
+                    <div class="rating-summary">
+                        <div class="overall-rating">
+                            <span class="rating-number">4.5</span>
+                            <span class="rating-text">من 5</span>
+                        </div>
+                        <div class="rating-stars">
+                            <span style="color: #ffc107;">★★★★</span><span style="color: #ddd;">★</span>
+                        </div>
+                        <div class="rating-count">60 تقييم على المنتج</div>
+                    </div>
+
+                    <!-- Comment Form -->
+                    <div class="comment-form">
+                        <h3><span>*</span> أضف تعليقك</h3>
+                        <textarea placeholder="يرجى إضافة تعليقك .."></textarea>
+                        <button class="btn-submit-comment">نشر تعليقك</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -824,6 +1125,15 @@
                     ->with('images')
                     ->take(3)
                     ->get();
+                
+                // إذا لم توجد منتجات في نفس الفئة، جلب أي 3 منتجات
+                if($relatedProducts->count() < 3) {
+                    $relatedProducts = \App\Models\Product::where('id', '!=', $product->id)
+                        ->where('is_active', true)
+                        ->with('images')
+                        ->take(3)
+                        ->get();
+                }
             @endphp
 
             @forelse($relatedProducts as $relProduct)
@@ -836,7 +1146,7 @@
                     @endif
                     <div class="rating-badge">
                         <span class="rating-star">★</span>
-                        <span>{{ $relProduct->rating }}</span>
+                        <span>{{ $relProduct->rating ?? 4.5 }}</span>
                     </div>
                 </div>
 
@@ -845,7 +1155,7 @@
                     <p class="card-description">{{ Str::limit($relProduct->description, 50) }}</p>
                     <div class="card-footer">
                         <a href="{{ route('products.show', $relProduct->slug) }}" class="card-btn">تفاصيل</a>
-                        <span class="card-price">{{ $relProduct->rental_price_daily }} ر.س</span>
+                        <span class="card-price">{{ $relProduct->rental_price_daily ?? 0 }} ر.س</span>
                     </div>
                 </div>
             </div>
