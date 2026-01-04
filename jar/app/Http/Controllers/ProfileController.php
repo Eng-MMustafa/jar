@@ -135,4 +135,92 @@ class ProfileController extends Controller
         $tickets = auth()->user()->supportTickets()->latest()->paginate(10);
         return view('profile.support-tickets', compact('tickets'));
     }
+
+    /**
+     * Show products page
+     */
+    public function products()
+    {
+        return view('pages.products');
+    }
+
+    /**
+     * Show add product page
+     */
+    public function createProduct()
+    {
+        return view('pages.products-create');
+    }
+
+    /**
+     * Store new product
+     */
+    public function storeProduct(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|integer',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'original_price' => 'nullable|numeric|min:0',
+            'city' => 'required|string|max:255',
+            'status' => 'required|in:active,inactive',
+            'images' => 'nullable|array',
+            'images.*' => 'image|max:5000',
+        ]);
+
+        // Handle images
+        if ($request->hasFile('images')) {
+            $validated['images'] = [];
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('products', 'public');
+                $validated['images'][] = $path;
+            }
+        }
+
+        // Save product (implement with your Product model)
+        // Product::create(array_merge($validated, ['user_id' => auth()->id()]));
+
+        return redirect()->route('products.index')->with('success', 'تم إضافة المنتج بنجاح');
+    }
+
+    /**
+     * Show chat page
+     */
+    public function chat()
+    {
+        return view('pages.chat');
+    }
+
+    /**
+     * Show massage services page
+     */
+    public function massage()
+    {
+        return view('pages.massage');
+    }
+
+    /**
+     * Show my orders page
+     */
+    public function myOrders()
+    {
+        return view('pages.my-orders');
+    }
+
+    /**
+     * Show new rental orders page (for lenders)
+     */
+    public function newRentalOrders()
+    {
+        return view('pages.new-rental-orders');
+    }
+
+    /**
+     * Show notifications page
+     */
+    public function notifications()
+    {
+        return view('pages.notifications');
+    }
 }

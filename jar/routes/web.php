@@ -20,9 +20,6 @@ Route::get('/about', function () {
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{slug}', [CategoryController::class, 'show'])->name('categories.show');
 
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
-
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 Route::patch('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
@@ -36,6 +33,10 @@ Route::get('/bookings/completion', function () {
 Route::get('/bookings/bank-details', function () {
     return view('bookings.bank-details');
 })->name('bookings.bank-details');
+
+// Products routes
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
 
 Auth::routes();
 
@@ -56,4 +57,14 @@ Route::middleware('auth')->group(function () {
     // Bookings and Support
     Route::get('/profile/bookings', [ProfileController::class, 'bookings'])->name('profile.bookings');
     Route::get('/profile/support-tickets', [ProfileController::class, 'supportTickets'])->name('profile.support-tickets');
+
+    // New pages routes - Put /products/create BEFORE /products to avoid conflict with {slug}
+    Route::get('/products/create', [ProfileController::class, 'createProduct'])->name('products.create');
+    Route::post('/product', [ProfileController::class, 'storeProduct'])->name('products.store');
+    
+    Route::get('/chat', [ProfileController::class, 'chat'])->name('chat');
+    Route::get('/massage', [ProfileController::class, 'massage'])->name('massage');
+    Route::get('/my-orders', [ProfileController::class, 'myOrders'])->name('my-orders');
+    Route::get('/new-rental-orders', [ProfileController::class, 'newRentalOrders'])->name('new-rental-orders');
+    Route::get('/notifications', [ProfileController::class, 'notifications'])->name('notifications');
 });
