@@ -7,7 +7,7 @@
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold text-gray-900">المنتجات</h1>
             @if(auth()->user()->is_admin || auth()->user()->is_seller)
-            <a href="{{ route('products.create') }}" class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg">
+            <a href="{{ route('my-products.index') }}" class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg">
                 إضافة منتج جديد
             </a>
             @endif

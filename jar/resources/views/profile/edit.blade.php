@@ -6,15 +6,17 @@
 <style>
     :root {
         --primary: #00bcd4;
+        --primary-dark: #0097a7;
         --text-dark: #333;
         --text-light: #666;
         --bg-light: #f5f7fa;
+        --border-light: #ddd;
     }
 
     .edit-profile-container {
         font-family: 'Tajawal', sans-serif;
         direction: rtl;
-        max-width: 700px;
+        max-width: 1000px;
         margin: 0 auto;
         padding: 2rem;
     }
@@ -33,12 +35,150 @@
         font-weight: 600;
     }
 
-    .page-title {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: var(--text-dark);
+    /* Profile Layout */
+    .profile-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 2.5fr;
+        gap: 2rem;
+    }
+
+    /* Sidebar */
+    .profile-sidebar {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: fit-content;
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid var(--border-light);
         text-align: right;
-        margin-bottom: 2rem;
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary) 0%, #0097a7 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .avatar-badge {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        background: #27ae60;
+        border: 3px solid white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.7rem;
+    }
+
+    .profile-header-info h2 {
+        font-size: 1.3rem;
+        color: var(--text-dark);
+        margin-bottom: 0.3rem;
+    }
+
+    .profile-header-info p {
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 0.4rem 0.8rem;
+        background: #e8f5e9;
+        color: #27ae60;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+
+    /* Quick Links Menu */
+    .quick-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 1.5rem;
+    }
+
+    .quick-links a,
+    .quick-links form {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.75rem 0;
+        color: var(--text-dark);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border-light);
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+    }
+
+    .quick-links a:hover,
+    .quick-links form button:hover {
+        color: var(--primary);
+        padding-right: 0.5rem;
+    }
+
+    .quick-links a.active {
+        color: var(--primary);
+        border-bottom: 2px solid var(--primary);
+        padding-bottom: 0.75rem;
+    }
+
+    .quick-links form {
+        border: none;
+    }
+
+    .quick-links form button {
+        background: none;
+        border: none;
+        padding: 0.75rem 0;
+        color: var(--text-dark);
+        cursor: pointer;
+        font-family: 'Tajawal', sans-serif;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        width: 100%;
+        text-align: right;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .quick-links form button:hover {
+        color: #e74c3c;
+    }
+
+    .quick-links i {
+        font-size: 1rem;
+    }
+
+    .profile-main {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
     }
 
     .form-card {
@@ -46,6 +186,16 @@
         border-radius: 12px;
         padding: 2rem;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .page-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        text-align: right;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--border-light);
     }
 
     .form-group {
@@ -64,7 +214,7 @@
 
     .form-input {
         padding: 0.75rem;
-        border: 1px solid #ddd;
+        border: 1px solid var(--border-light);
         border-radius: 6px;
         font-family: 'Tajawal', sans-serif;
         font-size: 0.95rem;
@@ -77,6 +227,11 @@
         outline: none;
         border-color: var(--primary);
         box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+    }
+
+    .form-input:disabled {
+        background: var(--bg-light);
+        cursor: not-allowed;
     }
 
     .btn-group {
@@ -104,18 +259,71 @@
     }
 
     .btn-primary:hover {
-        background: #0097a7;
+        background: var(--primary-dark);
         transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
     }
 
     .btn-secondary {
         background: var(--bg-light);
         color: var(--text-dark);
-        border: 1px solid #ddd;
+        border: 1px solid var(--border-light);
     }
 
     .btn-secondary:hover {
         background: white;
+        border-color: var(--text-light);
+    }
+
+    /* Alert Messages */
+    .alert {
+        padding: 1rem;
+        border-radius: 6px;
+        margin-bottom: 1.5rem;
+        text-align: right;
+    }
+
+    .alert-success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .alert-danger {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
+    @media (max-width: 768px) {
+        .edit-profile-container {
+            padding: 1rem;
+        }
+
+        .profile-wrapper {
+            grid-template-columns: 1fr;
+        }
+
+        .profile-sidebar {
+            order: 2;
+        }
+
+        .profile-main {
+            order: 1;
+        }
+
+        .profile-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .btn-group {
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+        }
     }
 </style>
 
@@ -128,51 +336,137 @@
         <span>تعديل البيانات</span>
     </div>
 
-    <h1 class="page-title">تعديل البيانات الشخصية</h1>
-
-    <div class="form-card">
-        <form action="{{ route('profile.update') }}" method="POST">
-            @csrf
-            @method('PUT')
-
-            <div class="form-group">
-                <label class="form-label">الاسم الأول</label>
-                <input type="text" name="first_name" class="form-input" value="{{ auth()->user()->first_name }}" required>
+    <!-- Profile Wrapper -->
+    <div class="profile-wrapper">
+        <!-- Sidebar -->
+        <div class="profile-sidebar">
+            <div class="profile-header">
+                <div class="profile-header-info">
+                    <h2>{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h2>
+                    <p>{{ auth()->user()->email }}</p>
+                    @if(auth()->user()->type === 'renter')
+                        <span class="status-badge">
+                            <i class="fas fa-check-circle"></i> مستأجر
+                        </span>
+                    @elseif(auth()->user()->type === 'lender')
+                        <span class="status-badge">
+                            <i class="fas fa-check-circle"></i> مؤجر
+                        </span>
+                    @endif
+                </div>
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                    <div class="avatar-badge">
+                        <i class="fas fa-check" style="font-size: 0.6rem;"></i>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">الاسم الأخير</label>
-                <input type="text" name="last_name" class="form-input" value="{{ auth()->user()->last_name }}" required>
+            <!-- Quick Links Menu -->
+            <div class="quick-links">
+                <a href="{{ route('profile.index') }}" title="حسابي الشخصي">
+                    <i class="fas fa-user-circle"></i> حسابي الشخصي
+                </a>
+                <a href="{{ route('profile.edit') }}" class="active" title="إعدادات الحساب">
+                    <i class="fas fa-cog"></i> إعدادات الحساب
+                </a>
+                <a href="{{ route('profile.bookings') }}" title="طلبات">
+                    <i class="fas fa-shopping-bag"></i> طلبات
+                </a>
+                <a href="{{ route('notifications') }}" title="الإشعارات">
+                    <i class="fas fa-bell"></i> الإشعارات
+                </a>
+                <a href="{{ route('chat') }}" title="المراسلات">
+                    <i class="fas fa-comments"></i> المراسلات
+                </a>
+                <a href="{{ route('products.create') }}" title="إدارة المنتجات">
+                    <i class="fas fa-box"></i> إدارة المنتجات
+                </a>
+                <a href="{{ route('profile.support-tickets') }}" title="طلبات إرجاع المنتجة">
+                    <i class="fas fa-undo"></i> طلبات إرجاع المنتجة
+                </a>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">
+                        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                    </button>
+                </form>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label class="form-label">البريد الإلكتروني</label>
-                <input type="email" class="form-input" value="{{ auth()->user()->email }}" disabled>
-                <small style="color: var(--text-light); margin-top: 0.3rem;">لا يمكن تغيير البريد الإلكتروني</small>
-            </div>
+        <!-- Main Content -->
+        <div class="profile-main">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <strong>خطأ!</strong>
+                    @foreach($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+            @endif
 
-            <div class="form-group">
-                <label class="form-label">رقم الهاتف</label>
-                <input type="tel" name="phone" class="form-input" value="{{ auth()->user()->phone }}" placeholder="05xxxxxxxxx" required>
-            </div>
+            @if(session('success'))
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle"></i> {{ session('success') }}
+                </div>
+            @endif
 
-            <div class="form-group">
-                <label class="form-label">المدينة</label>
-                <select name="city" class="form-input" required>
-                    <option value="">اختر المدينة</option>
-                    <option value="الرياض" @selected(auth()->user()->city === 'الرياض')>الرياض</option>
-                    <option value="جدة" @selected(auth()->user()->city === 'جدة')>جدة</option>
-                    <option value="الدمام" @selected(auth()->user()->city === 'الدمام')>الدمام</option>
-                    <option value="مكة" @selected(auth()->user()->city === 'مكة')>مكة</option>
-                    <option value="المدينة" @selected(auth()->user()->city === 'المدينة')>المدينة</option>
-                </select>
-            </div>
+            <div class="form-card">
+                <h1 class="page-title">تعديل البيانات الشخصية</h1>
 
-            <div class="btn-group">
-                <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
-                <a href="{{ route('profile.index') }}" class="btn btn-secondary">إلغاء</a>
+                <form action="{{ route('profile.update') }}" method="POST">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="form-group">
+                        <label class="form-label">الاسم الأول</label>
+                        <input type="text" name="first_name" class="form-input" value="{{ auth()->user()->first_name }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">الاسم الأخير</label>
+                        <input type="text" name="last_name" class="form-input" value="{{ auth()->user()->last_name }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-input" value="{{ auth()->user()->email }}" disabled>
+                        <small style="color: var(--text-light); margin-top: 0.3rem;">لا يمكن تغيير البريد الإلكتروني</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">رقم الهاتف</label>
+                        <input type="tel" name="phone" class="form-input" value="{{ auth()->user()->phone }}" placeholder="05xxxxxxxxx" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">المدينة</label>
+                        <select name="city" class="form-input" required>
+                            <option value="">اختر المدينة</option>
+                            <option value="الرياض" @selected(auth()->user()->city === 'الرياض')>الرياض</option>
+                            <option value="جدة" @selected(auth()->user()->city === 'جدة')>جدة</option>
+                            <option value="الدمام" @selected(auth()->user()->city === 'الدمام')>الدمام</option>
+                            <option value="مكة" @selected(auth()->user()->city === 'مكة')>مكة</option>
+                            <option value="المدينة" @selected(auth()->user()->city === 'المدينة')>المدينة</option>
+                            <option value="القصيم" @selected(auth()->user()->city === 'القصيم')>القصيم</option>
+                            <option value="الشرقية" @selected(auth()->user()->city === 'الشرقية')>الشرقية</option>
+                            <option value="عسير" @selected(auth()->user()->city === 'عسير')>عسير</option>
+                            <option value="تبوك" @selected(auth()->user()->city === 'تبوك')>تبوك</option>
+                            <option value="حائل" @selected(auth()->user()->city === 'حائل')>حائل</option>
+                            <option value="الجوف" @selected(auth()->user()->city === 'الجوف')>الجوف</option>
+                            <option value="نجران" @selected(auth()->user()->city === 'نجران')>نجران</option>
+                            <option value="جازان" @selected(auth()->user()->city === 'جازان')>جازان</option>
+                            <option value="الباحة" @selected(auth()->user()->city === 'الباحة')>الباحة</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                        <a href="{{ route('profile.index') }}" class="btn btn-secondary">إلغاء</a>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 @endsection

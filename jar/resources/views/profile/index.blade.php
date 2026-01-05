@@ -59,6 +59,61 @@
         height: fit-content;
     }
 
+    /* Quick Links Menu */
+    .quick-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 1.5rem;
+    }
+
+    .quick-links a,
+    .quick-links form {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.75rem 0;
+        color: var(--text-dark);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border-light);
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+    }
+
+    .quick-links a:hover,
+    .quick-links form button:hover {
+        color: var(--primary);
+        padding-right: 0.5rem;
+    }
+
+    .quick-links form {
+        border: none;
+    }
+
+    .quick-links form button {
+        background: none;
+        border: none;
+        padding: 0.75rem 0;
+        color: var(--text-dark);
+        cursor: pointer;
+        font-family: 'Tajawal', sans-serif;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        width: 100%;
+        text-align: right;
+        transition: all 0.3s ease;
+    }
+
+    .quick-links form button:hover {
+        color: var(--danger);
+    }
+
+    .quick-links i {
+        font-size: 1rem;
+    }
+
     /* Main Content */
     .profile-main {
         display: flex;
@@ -462,6 +517,37 @@
             <div class="btn-group" style="margin-top: 2rem;">
                 <a href="{{ route('profile.edit') }}" class="btn btn-primary btn-small">تعديل البيانات</a>
                 <button type="button" class="btn btn-secondary btn-small" onclick="alert('حفظ البيانات')">حفظ البيانات</button>
+            </div>
+
+            <!-- Quick Links Menu -->
+            <div class="quick-links">
+                <a href="{{ route('profile.index') }}" title="حسابي الشخصي">
+                    <i class="fas fa-user-circle"></i> حسابي الشخصي
+                </a>
+                <a href="{{ route('profile.edit') }}" title="إعدادات الحساب">
+                    <i class="fas fa-cog"></i> إعدادات الحساب
+                </a>
+                <a href="{{ route('profile.bookings') }}" title="طلبات">
+                    <i class="fas fa-shopping-bag"></i> طلبات
+                </a>
+                <a href="{{ route('notifications') }}" title="الإشعارات">
+                    <i class="fas fa-bell"></i> الإشعارات
+                </a>
+                <a href="{{ route('chat') }}" title="المراسلات">
+                    <i class="fas fa-comments"></i> المراسلات
+                </a>
+                <a href="{{ route('products.create') }}" title="إدارة المنتجات">
+                    <i class="fas fa-box"></i> إدارة المنتجات
+                </a>
+                <a href="{{ route('profile.support-tickets') }}" title="طلبات إرجاع المنتجة">
+                    <i class="fas fa-undo"></i> طلبات إرجاع المنتجة
+                </a>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">
+                        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                    </button>
+                </form>
             </div>
         </div>
 

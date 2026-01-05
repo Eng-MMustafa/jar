@@ -58,9 +58,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/bookings', [ProfileController::class, 'bookings'])->name('profile.bookings');
     Route::get('/profile/support-tickets', [ProfileController::class, 'supportTickets'])->name('profile.support-tickets');
 
-    // New pages routes - Put /products/create BEFORE /products to avoid conflict with {slug}
-    Route::get('/products/create', [ProfileController::class, 'createProduct'])->name('products.create');
-    Route::post('/product', [ProfileController::class, 'storeProduct'])->name('products.store');
+    // My Products Management routes
+    Route::get('/products-me', [ProfileController::class, 'myProducts'])->name('my-products.index');
+    Route::get('/products-me/create', [ProfileController::class, 'createProduct'])->name('my-products.create');
+    Route::post('/products-me', [ProfileController::class, 'storeProduct'])->name('my-products.store');
+    Route::get('/products-me/{id}/edit', [ProfileController::class, 'editProduct'])->name('my-products.edit');
+    Route::put('/products-me/{id}', [ProfileController::class, 'updateProduct'])->name('my-products.update');
+    Route::delete('/products-me/{id}', [ProfileController::class, 'deleteProduct'])->name('my-products.delete');
     
     Route::get('/chat', [ProfileController::class, 'chat'])->name('chat');
     Route::get('/massage', [ProfileController::class, 'massage'])->name('massage');

@@ -157,6 +157,12 @@
         color: var(--danger);
     }
 
+    .quick-links a.active {
+        color: var(--primary);
+        border-bottom: 2px solid var(--primary);
+        padding-bottom: 0.75rem;
+    }
+
     .quick-links a i {
         font-size: 1rem;
         width: 20px;
@@ -227,6 +233,7 @@
         border-radius: 12px;
         overflow: hidden;
         transition: all 0.3s ease;
+        position: relative;
     }
 
     .product-card:hover {
@@ -274,6 +281,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 0.5rem;
     }
 
     .product-status {
@@ -287,17 +295,36 @@
     }
 
     .product-actions {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .btn-action {
         background: none;
         border: none;
         cursor: pointer;
-        font-size: 1.2rem;
-        color: var(--text-light);
-        padding: 0;
-        transition: color 0.3s ease;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        text-decoration: none;
     }
 
-    .product-actions:hover {
-        color: var(--primary);
+    .btn-action-edit {
+        color: #2196F3;
+    }
+
+    .btn-action-edit:hover {
+        background: rgba(33, 150, 243, 0.1);
+    }
+
+    .btn-action-delete {
+        color: var(--danger);
+    }
+
+    .btn-action-delete:hover {
+        background: rgba(231, 76, 60, 0.1);
     }
 
     @media (max-width: 768px) {
@@ -368,7 +395,7 @@
                 <a href="{{ route('chat') }}" title="المراسلات">
                     <i class="fas fa-comments"></i> المراسلات
                 </a>
-                <a href="{{ route('my-products.index') }}" title="إدارة المنتجات" style="color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 0.75rem;">
+                <a href="{{ route('my-products.index') }}" title="إدارة المنتجات" class="active">
                     <i class="fas fa-box"></i> إدارة المنتجات
                 </a>
                 <a href="{{ route('profile.support-tickets') }}" title="طلبات إرجاع المنتجة">
@@ -393,8 +420,8 @@
                         <h3 class="section-title">إدارة المنتجات</h3>
                         <div class="products-count">74 منتجات نشطة</div>
                     </div>
-                    <a href="#" class="btn-add-product">
-                        <i class="fas fa-plus"></i> إضافة منتج
+                    <a href="{{ route('my-products.create') }}" class="btn-add-product">
+                        <i class="fas fa-plus"></i> إضافة منتج جديد
                     </a>
                 </div>
 
@@ -411,9 +438,14 @@
                             <div class="product-price">120 ريال</div>
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
-                                <button class="product-actions" title="خيارات">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
+                                <div class="product-actions">
+                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button class="btn-action btn-action-delete" title="حذف">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -428,9 +460,14 @@
                             <div class="product-price">120 ريال</div>
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
-                                <button class="product-actions" title="خيارات">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
+                                <div class="product-actions">
+                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button class="btn-action btn-action-delete" title="حذف">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -445,9 +482,14 @@
                             <div class="product-price">120 ريال</div>
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
-                                <button class="product-actions" title="خيارات">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
+                                <div class="product-actions">
+                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button class="btn-action btn-action-delete" title="حذف">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -462,9 +504,14 @@
                             <div class="product-price">120 ريال</div>
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
-                                <button class="product-actions" title="خيارات">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
+                                <div class="product-actions">
+                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button class="btn-action btn-action-delete" title="حذف">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -479,9 +526,14 @@
                             <div class="product-price">120 ريال</div>
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
-                                <button class="product-actions" title="خيارات">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
+                                <div class="product-actions">
+                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button class="btn-action btn-action-delete" title="حذف">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -496,9 +548,14 @@
                             <div class="product-price">120 ريال</div>
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
-                                <button class="product-actions" title="خيارات">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
+                                <div class="product-actions">
+                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button class="btn-action btn-action-delete" title="حذف">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -519,6 +576,16 @@
                 card.style.display = '';
             } else {
                 card.style.display = 'none';
+            }
+        });
+    });
+
+    // Delete product
+    document.querySelectorAll('.btn-action-delete').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (confirm('هل تريد حذف هذا المنتج؟')) {
+                // Send delete request
+                alert('تم حذف المنتج');
             }
         });
     });

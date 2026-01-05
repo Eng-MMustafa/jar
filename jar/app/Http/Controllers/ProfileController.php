@@ -145,11 +145,19 @@ class ProfileController extends Controller
     }
 
     /**
+     * Show my products list
+     */
+    public function myProducts()
+    {
+        return view('pages.products-me-list');
+    }
+
+    /**
      * Show add product page
      */
     public function createProduct()
     {
-        return view('pages.products-create');
+        return view('pages.products-me-create');
     }
 
     /**
@@ -181,7 +189,34 @@ class ProfileController extends Controller
         // Save product (implement with your Product model)
         // Product::create(array_merge($validated, ['user_id' => auth()->id()]));
 
-        return redirect()->route('products.index')->with('success', 'تم إضافة المنتج بنجاح');
+        return redirect()->route('my-products.index')->with('success', 'تم إضافة المنتج بنجاح');
+    }
+
+    /**
+     * Show edit product page
+     */
+    public function editProduct($id)
+    {
+        // $product = auth()->user()->products()->findOrFail($id);
+        return view('pages.products-me-edit');
+    }
+
+    /**
+     * Update product
+     */
+    public function updateProduct(Request $request, $id)
+    {
+        // Update logic here
+        return redirect()->route('my-products.index')->with('success', 'تم تحديث المنتج بنجاح');
+    }
+
+    /**
+     * Delete product
+     */
+    public function deleteProduct($id)
+    {
+        // Delete logic here
+        return redirect()->route('my-products.index')->with('success', 'تم حذف المنتج بنجاح');
     }
 
     /**
@@ -223,4 +258,3 @@ class ProfileController extends Controller
     {
         return view('pages.notifications');
     }
-}
