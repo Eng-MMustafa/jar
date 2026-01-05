@@ -70,9 +70,9 @@
                                 </svg>
                                 <span>العربية</span>
                             </button>
-                            <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center">
-                                <span class="text-white text-xs font-bold">ع</span>
-                            </div>
+
+                            <!-- Saudi flag next to language -->
+                            <img src="{{ asset('images/Icons/flag-for-saudi-arabia-svgrepo-com 1.svg') }}" alt="علم السعودية" class="w-6 h-6 rounded-sm object-cover" style="border:1px solid rgba(0,0,0,0.06);">
                         </div>
                     </div>
                 </div>
