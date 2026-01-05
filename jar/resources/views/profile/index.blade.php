@@ -494,11 +494,6 @@
                 </div>
             </div>
 
-            <div class="btn-group" style="margin-top: 2rem;">
-                <a href="{{ route('profile.edit') }}" class="btn btn-primary btn-small">تعديل البيانات</a>
-                <button type="button" class="btn btn-secondary btn-small" onclick="alert('حفظ البيانات')">حفظ البيانات</button>
-            </div>
-
             <!-- Quick Links Menu -->
             <div class="quick-links">
                 <a href="{{ route('profile.index') }}" title="حسابي الشخصي">
