@@ -125,8 +125,8 @@
         <a href="{{ route('my-products.index') }}" title="إدارة المنتجات">
             <i class="fas fa-box"></i> إدارة المنتجات
         </a>
-        <a href="{{ route('profile.support-tickets') }}" title="طلبات إرجاع المنتجة">
-            <i class="fas fa-undo"></i> طلبات إرجاع المنتجة
+        <a href="{{ route('profile.support-tickets') }}" title="طلبات الإيجار الجديدة">
+            <i class="fas fa-calendar-plus"></i> طلبات الإيجار الجديدة
         </a>
         <form action="{{ route('logout') }}" method="POST">
             @csrf

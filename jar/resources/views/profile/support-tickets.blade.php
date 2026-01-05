@@ -308,18 +308,58 @@
 
         <!-- Main Content -->
         <div class="profile-main">
-            <h1 class="page-title">دعم العملاء</h1>
+            <h1 class="page-title">طلبات الإيجار الجديدة</h1>
 
-            <div class="support-card">
-                <div class="empty-state">
-                    <div class="empty-icon">
-                        <i class="fas fa-headset"></i>
+            <div class="support-card" style="text-align:right;">
+                <div class="rental-requests" style="display:flex;flex-direction:column;gap:1rem;">
+                    <!-- Request Card (dummy data) -->
+                    <div class="request-card" style="background:#fff;border-radius:10px;padding:1rem;border:1px solid var(--border-light);">
+                        <div style="display:grid;grid-template-columns:1fr 140px;gap:1rem;align-items:start;">
+                            <div>
+                                <h3 style="margin:0;font-size:1.05rem;color:var(--text-dark);">عربة للإيجار اليومي</h3>
+                                <p style="color:var(--text-light);margin:0.25rem 0;">المستأجر: <strong>خالد عبدالله</strong></p>
+                                <p style="color:var(--text-light);margin:0.25rem 0;">من: 28 - 12 - 2025 إلى: 28 - 12 - 2025</p>
+                                <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:0.5rem;">
+                                    <div style="font-weight:700;color:var(--text-dark);">إجمالي السعر: <span style="color:#1abc9c;">120 ر.س</span></div>
+                                    <div>
+                                        <span class="status-badge" style="background:#fff3cd;color:#856404;border:1px solid #ffeeba;padding:0.35rem 0.6rem;border-radius:12px;">قيد الإنتظار</span>
+                                    </div>
+                                </div>
+                                <div style="display:flex;gap:0.5rem;margin-top:0.75rem;">
+                                    <button class="btn btn-primary" style="background:#2ecc71;border-radius:8px;padding:0.5rem 1rem;border:none;color:white;">موافقة</button>
+                                    <button class="btn btn-secondary" style="background:#f8d7da;border-radius:8px;padding:0.5rem 1rem;border:none;color:#b71c1c;">رفض</button>
+                                </div>
+                            </div>
+
+                            <div style="width:140px;flex-shrink:0;text-align:center;height:140px;">
+                                <img src="{{ asset('images/Images/image 4.png') }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid #eee;">
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="empty-title">لا توجد طلبات دعم</h2>
-                    <p class="empty-message">لم تقم بفتح أي طلب دعم حتى الآن</p>
-                    <div class="btn-group">
-                        <button class="btn" onclick="alert('فتح طلب دعم جديد')">فتح طلب جديد</button>
-                        <a href="{{ route('profile.index') }}" class="btn btn-secondary">العودة</a>
+
+                    <!-- Second Request Card (dummy data) -->
+                    <div class="request-card" style="background:#fff;border-radius:10px;padding:1rem;border:1px solid var(--border-light);">
+                        <div style="display:grid;grid-template-columns:1fr 140px;gap:1rem;align-items:start;">
+                            <div>
+                                <h3 style="margin:0;font-size:1.05rem;color:var(--text-dark);">عدة للايجار البحري</h3>
+                                <p style="color:var(--text-light);margin:0.25rem 0;">المستأجر: <strong>محمد الأحمد</strong></p>
+                                <p style="color:var(--text-light);margin:0.25rem 0;">من: 30 - 12 - 2025 إلى: 02 - 01 - 2026</p>
+                                <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:0.5rem;">
+                                    <div style="font-weight:700;color:var(--text-dark);">إجمالي السعر: <span style="color:#3498db;">150 ر.س</span></div>
+                                    <div>
+                                        <span class="status-badge" style="background:#e8f8f5;color:#1abc9c;border:1px solid #d1f0e8;padding:0.35rem 0.6rem;border-radius:12px;">موافقة</span>
+                                    </div>
+                                </div>
+                                <div style="display:flex;gap:0.5rem;margin-top:0.75rem;">
+                                    <button class="btn btn-primary" style="background:#2ecc71;border-radius:8px;padding:0.5rem 1rem;border:none;color:white;">موافقة</button>
+                                    <button class="btn btn-secondary" style="background:#f8d7da;border-radius:8px;padding:0.5rem 1rem;border:none;color:#b71c1c;">رفض</button>
+                                </div>
+                            </div>
+
+                            <div style="width:140px;flex-shrink:0;text-align:center;height:140px;">
+                                <img src="{{ asset('images/Images/Image-4.png') }}" alt="thumb2" style="width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid #eee;">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
