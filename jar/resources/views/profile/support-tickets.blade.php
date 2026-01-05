@@ -344,7 +344,7 @@
                 <a href="{{ route('chat') }}" title="المراسلات">
                     <i class="fas fa-comments"></i> المراسلات
                 </a>
-                <a href="{{ route('products.create') }}" title="إدارة المنتجات">
+                <a href="{{ route('my-products.create') }}" title="إدارة المنتجات">
                     <i class="fas fa-box"></i> إدارة المنتجات
                 </a>
                 <a href="{{ route('profile.support-tickets') }}" class="active" title="طلبات إرجاع المنتجة">
