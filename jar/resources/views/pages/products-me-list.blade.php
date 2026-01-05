@@ -327,6 +327,14 @@
         background: rgba(231, 76, 60, 0.1);
     }
 
+    .btn-action-notify {
+        color: #ff9800; /* notification bell color */
+    }
+
+    .btn-action-notify:hover {
+        background: rgba(255, 152, 0, 0.08);
+    }
+
     @media (max-width: 768px) {
         .profile-container {
             padding: 1rem;
@@ -437,8 +445,9 @@
                             <div class="product-price">120 ريال</div>
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
-                                <div class="product-actions">
-                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
+                                <div class="product-actions">                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
+                                        <i class="fas fa-bell"></i>
+                                    </a>                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <button class="btn-action btn-action-delete" title="حذف">
@@ -460,6 +469,9 @@
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
                                 <div class="product-actions">
+                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
+                                        <i class="fas fa-bell"></i>
+                                    </a>
                                         <a href="{{ route('my-products.edit', 0) }}" class="btn-action btn-action-edit" title="تعديل">
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -482,6 +494,9 @@
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
                                 <div class="product-actions">
+                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
+                                        <i class="fas fa-bell"></i>
+                                    </a>
                                     <a href="#" class="btn-action btn-action-edit" title="تعديل">
                                         <i class="fas fa-edit"></i>
                                     </a>
@@ -504,6 +519,9 @@
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
                                 <div class="product-actions">
+                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
+                                        <i class="fas fa-bell"></i>
+                                    </a>
                                     <a href="#" class="btn-action btn-action-edit" title="تعديل">
                                         <i class="fas fa-edit"></i>
                                     </a>
@@ -526,6 +544,9 @@
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
                                 <div class="product-actions">
+                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
+                                        <i class="fas fa-bell"></i>
+                                    </a>
                                     <a href="#" class="btn-action btn-action-edit" title="تعديل">
                                         <i class="fas fa-edit"></i>
                                     </a>
@@ -548,6 +569,9 @@
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
                                 <div class="product-actions">
+                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
+                                        <i class="fas fa-bell"></i>
+                                    </a>
                                     <a href="#" class="btn-action btn-action-edit" title="تعديل">
                                         <i class="fas fa-edit"></i>
                                     </a>

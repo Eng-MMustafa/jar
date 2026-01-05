@@ -380,22 +380,4 @@
     </div>
 </div>
 @endsection
-    </div>
 
-    <h1 class="page-title">دعم العملاء</h1>
-
-    <div class="support-card">
-        <div class="empty-state">
-            <div class="empty-icon">
-                <i class="fas fa-headset"></i>
-            </div>
-            <h2 class="empty-title">لا توجد تذاكر دعم</h2>
-            <p class="empty-message">لم تقم بفتح أي تذكرة دعم حتى الآن</p>
-            <div class="btn-group">
-                <button class="btn" onclick="alert('سيتم قريباً')">فتح تذكرة جديدة</button>
-                <a href="{{ route('home') }}" class="btn btn-secondary">العودة</a>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
