@@ -131,30 +131,31 @@
         margin-top: 0.5rem;
     }
 
+    /* Unified sidebar quick-links (match profile layout) */
     .quick-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
         margin-top: 1.5rem;
-        padding-top: 1.5rem;
-        border-top: 2px solid var(--border-light);
     }
 
-    .quick-links a {
+    .quick-links a,
+    .quick-links form {
         display: flex;
         align-items: center;
         gap: 0.8rem;
         padding: 0.75rem 0;
-        color: var(--primary);
+        color: var(--text-dark);
         text-decoration: none;
-        font-weight: 600;
-        font-size: 0.95rem;
+        border-bottom: 1px solid var(--border-light);
         transition: all 0.3s ease;
+        font-size: 0.95rem;
     }
 
-    .quick-links a:hover {
-        color: var(--primary-dark);
-    }
-
-    .quick-links a.logout {
-        color: var(--danger);
+    .quick-links a:hover,
+    .quick-links form button:hover {
+        color: var(--primary);
+        padding-right: 0.5rem;
     }
 
     .quick-links a.active {
@@ -163,10 +164,33 @@
         padding-bottom: 0.75rem;
     }
 
-    .quick-links a i {
+    .quick-links form {
+        border: none;
+    }
+
+    .quick-links form button {
+        background: none;
+        border: none;
+        padding: 0.75rem 0;
+        color: var(--text-dark);
+        cursor: pointer;
+        font-family: 'Tajawal', sans-serif;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        width: 100%;
+        text-align: right;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .quick-links form button:hover {
+        color: #e74c3c;
+    }
+
+    .quick-links i {
         font-size: 1rem;
-        width: 20px;
-        text-align: center;
     }
 
     .section-title {
@@ -364,60 +388,7 @@
 
     <div class="profile-wrapper">
         <!-- Sidebar -->
-        <div class="profile-sidebar">
-            <div class="profile-header">
-                <div class="profile-header-info">
-                    <h2>{{ auth()->user()->full_name ?? auth()->user()->name }}</h2>
-                    <p>{{ auth()->user()->email }}</p>
-                    @if(auth()->user()->type === 'renter')
-                        <span class="status-badge">
-                            <i class="fas fa-check-circle"></i> مستأجر
-                        </span>
-                    @elseif(auth()->user()->type === 'lender')
-                        <span class="status-badge">
-                            <i class="fas fa-check-circle"></i> مؤجر
-                        </span>
-                    @endif
-                </div>
-                <div class="profile-avatar">
-                    <i class="fas fa-user"></i>
-                    <div class="avatar-badge">
-                        <i class="fas fa-check" style="font-size: 0.6rem;"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Links Menu -->
-            <div class="quick-links">
-                <a href="{{ route('profile.index') }}" title="حسابي الشخصي">
-                    <i class="fas fa-user-circle"></i> حسابي الشخصي
-                </a>
-                <a href="{{ route('profile.edit') }}" title="إعدادات الحساب">
-                    <i class="fas fa-cog"></i> إعدادات الحساب
-                </a>
-                <a href="{{ route('profile.bookings') }}" title="طلبات">
-                    <i class="fas fa-shopping-bag"></i> طلبات
-                </a>
-                <a href="{{ route('notifications') }}" title="الإشعارات">
-                    <i class="fas fa-bell"></i> الإشعارات
-                </a>
-                <a href="{{ route('chat') }}" title="المراسلات">
-                    <i class="fas fa-comments"></i> المراسلات
-                </a>
-                <a href="{{ route('my-products.index') }}" title="إدارة المنتجات">
-                    <i class="fas fa-box"></i> إدارة المنتجات
-                </a>
-                <a href="{{ route('profile.support-tickets') }}" title="طلبات إرجاع المنتجة">
-                    <i class="fas fa-undo"></i> طلبات إرجاع المنتجة
-                </a>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit">
-                        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-                    </button>
-                </form>
-            </div>
-        </div>
+        @include('partials.profile-sidebar')
 
         <!-- Main Content -->
         <div class="profile-main">

@@ -279,60 +279,7 @@
     <!-- Profile Wrapper -->
     <div class="profile-wrapper">
         <!-- Sidebar -->
-        <div class="profile-sidebar">
-            <div class="profile-header">
-                <div class="profile-header-info">
-                    <h2>{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h2>
-                    <p>{{ auth()->user()->email }}</p>
-                    @if(auth()->user()->type === 'renter')
-                        <span class="status-badge">
-                            <i class="fas fa-check-circle"></i> مستأجر
-                        </span>
-                    @elseif(auth()->user()->type === 'lender')
-                        <span class="status-badge">
-                            <i class="fas fa-check-circle"></i> مؤجر
-                        </span>
-                    @endif
-                </div>
-                <div class="profile-avatar">
-                    <i class="fas fa-user"></i>
-                    <div class="avatar-badge">
-                        <i class="fas fa-check" style="font-size: 0.6rem;"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Links Menu -->
-            <div class="quick-links">
-                <a href="{{ route('profile.index') }}" title="حسابي الشخصي">
-                    <i class="fas fa-user-circle"></i> حسابي الشخصي
-                </a>
-                <a href="{{ route('profile.edit') }}" title="إعدادات الحساب">
-                    <i class="fas fa-cog"></i> إعدادات الحساب
-                </a>
-                <a href="{{ route('profile.bookings') }}" class="active" title="طلبات">
-                    <i class="fas fa-shopping-bag"></i> طلبات
-                </a>
-                <a href="{{ route('notifications') }}" title="الإشعارات">
-                    <i class="fas fa-bell"></i> الإشعارات
-                </a>
-                <a href="{{ route('chat') }}" title="المراسلات">
-                    <i class="fas fa-comments"></i> المراسلات
-                </a>
-                <a href="{{ route('my-products.create') }}" title="إدارة المنتجات">
-                    <i class="fas fa-box"></i> إدارة المنتجات
-                </a>
-                <a href="{{ route('profile.support-tickets') }}" title="طلبات إرجاع المنتجة">
-                    <i class="fas fa-undo"></i> طلبات إرجاع المنتجة
-                </a>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit">
-                        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-                    </button>
-                </form>
-            </div>
-        </div>
+        @include('partials.profile-sidebar')
 
         <!-- Main Content -->
         <div class="profile-main">
