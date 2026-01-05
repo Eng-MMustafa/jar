@@ -104,6 +104,12 @@
         <a href="{{ route('profile.index') }}" title="حسابي الشخصي">
             <i class="fas fa-user-circle"></i> حسابي الشخصي
         </a>
+
+        @if(auth()->user()->type !== 'lender')
+            <a href="{{ route('profile.activate-renter') }}" title="تفعيل حساب المؤجر">
+                <i class="fas fa-user-tie"></i> تفعيل حساب المؤجر
+            </a>
+        @endif
         <a href="{{ route('profile.edit') }}" title="إعدادات الحساب">
             <i class="fas fa-cog"></i> إعدادات الحساب
         </a>
@@ -126,6 +132,17 @@
             @csrf
             <button type="submit">
                 <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+            </button>
+        </form>
+
+        <!-- Delete Account -->
+        <form action="{{ route('profile.destroy') }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف حسابك؟ هذا الإجراء لا يمكن التراجع عنه.');" class="block">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="w-full text-left px-4 py-3 text-red-600 hover:bg-red-50 hover:text-red-700 transition duration-200">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <i class="fas fa-trash-alt"></i> حذف الحساب
+                </div>
             </button>
         </form>
     </div>

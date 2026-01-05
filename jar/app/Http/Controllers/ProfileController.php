@@ -332,4 +332,24 @@ class ProfileController extends Controller
     public function notifications()
     {
         return view('pages.notifications');
+    }
+
+    /**
+     * Delete user account
+     */
+    public function destroy(Request $request)
+    {
+        $user = auth()->user();
+
+        // log the user out first
+        auth()->logout();
+
+        // delete the user
+        $user->delete();
+
+        // invalidate session
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('success', 'تم حذف الحساب بنجاح');
     }}

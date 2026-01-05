@@ -71,4 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-orders', [ProfileController::class, 'myOrders'])->name('my-orders');
     Route::get('/new-rental-orders', [ProfileController::class, 'newRentalOrders'])->name('new-rental-orders');
     Route::get('/notifications', [ProfileController::class, 'notifications'])->name('notifications');
+
+    // Delete account
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

@@ -606,33 +606,7 @@
                 </div>
             </div>
 
-            <!-- Additional Options -->
-            <div class="profile-card">
-                <h3 class="section-title">خيارات إضافية</h3>
 
-                <div class="btn-group" style="margin: 0;">
-                    @if(auth()->user()->type !== 'lender')
-                        <a href="{{ route('profile.activate-renter') }}" class="btn btn-primary">
-                            <i class="fas fa-user-tie"></i> تفعيل حساب المؤجر
-                        </a>
-                    @endif
-                    
-                    <a href="{{ route('profile.bookings') }}" class="btn btn-secondary">
-                        <i class="fas fa-calendar"></i> طلباتى
-                    </a>
-                    
-                    <a href="{{ route('profile.support-tickets') }}" class="btn btn-secondary">
-                        <i class="fas fa-headset"></i> دعم العملاء
-                    </a>
-                    
-                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                        @csrf
-                        <button type="submit" class="btn btn-danger">
-                            <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-                        </button>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>
