@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactController;
 
 Auth::routes();
 
@@ -16,6 +17,10 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+// Contact page
+Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{slug}', [CategoryController::class, 'show'])->name('categories.show');

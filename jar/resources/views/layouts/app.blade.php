@@ -226,7 +226,7 @@
                         </div>
                     </div>
                     <a href="{{ route('products.index') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200 px-1" style="color: white !important;">جميع المنتجات</a>
-                    <a href="#" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200 px-1" style="color: white !important;">تواصل معنا</a>
+                    <a href="{{ route('contact') }}" class="!text-white hover:!text-teal-100 font-medium text-sm transition duration-200 px-1" style="color: white !important;">تواصل معنا</a>
                 </div>
             </div>
         </nav>
@@ -248,7 +248,7 @@
                 <a href="{{ route('about') }}" class="block py-2 text-white hover:text-teal-100">من نحن</a>
                 <a href="#" class="block py-2 text-white hover:text-teal-100">الأقسام</a>
                 <a href="#" class="block py-2 text-white hover:text-teal-100">أحدث المنتجات</a>
-                <a href="#" class="block py-2 text-white hover:text-teal-100">تواصل معنا</a>
+                <a href="{{ route('contact') }}" class="block py-2 text-white hover:text-teal-100">تواصل معنا</a>
                 @guest
                     <a href="{{ route('login') }}" class="block py-2 text-white hover:text-teal-100">تسجيل دخول</a>
                 @else
@@ -309,10 +309,10 @@
                     <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">روابط سريعة</h3>
                     <ul class="space-y-3 text-sm">
                         <li><a href="{{ route('home') }}" class="text-teal-100 hover:text-white transition">الرئيسية</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">من نحن</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">الأقسام الرئيسية</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">أحدث المنتجات</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">تواصل معنا</a></li>
+                        <li><a href="{{ route('about') }}" class="text-teal-100 hover:text-white transition">من نحن</a></li>
+                        <li><a href="{{ route('categories.index') }}" class="text-teal-100 hover:text-white transition">الأقسام الرئيسية</a></li>
+                        <li><a href="{{ route('products.index') }}" class="text-teal-100 hover:text-white transition">أحدث المنتجات</a></li>
+                        <li><a href="{{ route('contact') }}" class="text-teal-100 hover:text-white transition">تواصل معنا</a></li>
                     </ul>
                 </div>
 
@@ -333,7 +333,7 @@
                     <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">الاتصال والدعم</h3>
                     <ul class="space-y-3 text-sm">
                         <li><a href="#" class="text-teal-100 hover:text-white transition">مركز العملاء</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">تواصل معنا</a></li>
+                        <li><a href="{{ route('contact') }}" class="text-teal-100 hover:text-white transition">تواصل معنا</a></li>
                         <li><a href="#" class="text-teal-100 hover:text-white transition">شارك معنا</a></li>
                         <li><a href="#" class="text-teal-100 hover:text-white transition">تقديم شكوى</a></li>
                         <li><a href="#" class="text-teal-100 hover:text-white transition">الإبلاغ عن مشكلة</a></li>
