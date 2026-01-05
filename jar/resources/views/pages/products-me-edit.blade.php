@@ -357,24 +357,25 @@
             <div class="profile-card">
                 <h3 class="section-title">تعديل المنتج</h3>
 
-                <form action="{{ route('my-products.update', 1) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('my-products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
                     <div class="form-group">
                         <label class="form-label">اسم المنتج <span class="required">*</span></label>
-                        <input type="text" name="name" class="form-input" placeholder="أدخل اسم المنتج" value="عربة الفيشار البيومي" required>
+                        <input type="text" name="name" class="form-input" placeholder="أدخل اسم المنتج" value="{{ old('name', $product->name) }}" required>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">الوصف <span class="required">*</span></label>
-                        <textarea name="description" class="form-textarea" placeholder="اكتب وصفاً مفصلاً للمنتج" required>منتج عالي الجودة وآمن للاستخدام</textarea>
+                        <textarea name="description" class="form-textarea" placeholder="اكتب وصفاً مفصلاً للمنتج" required>{{ old('description', $product->description) }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">الفئة <span class="required">*</span></label>
                         <select name="category_id" class="form-select" required>
-                            <option value="1" selected>إلكترونيات</option>
+                            <option value="{{ $product->category_id }}" selected>{{ $product->category?->name ?? 'الفئة الحالية' }}</option>
+                            <option value="1">إلكترونيات</option>
                             <option value="2">أدوات</option>
                             <option value="3">ملابس</option>
                             <option value="4">إكسسوارات</option>
@@ -384,19 +385,20 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div class="form-group">
                             <label class="form-label">السعر (ريال) <span class="required">*</span></label>
-                            <input type="number" name="price" class="form-input" placeholder="0.00" step="0.01" value="120" required>
+                            <input type="number" name="price" class="form-input" placeholder="0.00" step="0.01" value="{{ old('price', $product->price) }}" required>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">السعر الأصلي (اختياري)</label>
-                            <input type="number" name="original_price" class="form-input" placeholder="0.00" step="0.01" value="150">
+                            <input type="number" name="original_price" class="form-input" placeholder="0.00" step="0.01" value="{{ old('original_price', $product->original_price ?? '') }}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">المدينة <span class="required">*</span></label>
                         <select name="city" class="form-select" required>
-                            <option value="الرياض" selected>الرياض</option>
+                            <option value="{{ $product->city }}" selected>{{ $product->city }}</option>
+                            <option value="الرياض">الرياض</option>
                             <option value="جدة">جدة</option>
                             <option value="الدمام">الدمام</option>
                             <option value="المدينة">المدينة</option>
@@ -407,8 +409,8 @@
                     <div class="form-group">
                         <label class="form-label">الحالة <span class="required">*</span></label>
                         <select name="status" class="form-select" required>
-                            <option value="active" selected>نشط</option>
-                            <option value="inactive">غير نشط</option>
+                            <option value="active" {{ $product->is_active ? 'selected' : '' }}>نشط</option>
+                            <option value="inactive" {{ !$product->is_active ? 'selected' : '' }}>غير نشط</option>
                         </select>
                     </div>
 
@@ -423,7 +425,7 @@
                 </form>
 
                 <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border-light);">
-                    <form action="{{ route('my-products.delete', 1) }}" method="POST" onsubmit="return confirm('هل تريد حذف هذا المنتج؟');">
+                    <form action="{{ route('my-products.delete', $product->id) }}" method="POST" onsubmit="return confirm('هل تريد حذف هذا المنتج؟');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">

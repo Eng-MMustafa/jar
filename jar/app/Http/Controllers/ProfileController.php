@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use App\Models\Product;
 
 class ProfileController extends Controller
 {
@@ -149,7 +150,8 @@ class ProfileController extends Controller
      */
     public function myProducts()
     {
-        return view('pages.products-me-list');
+        $products = auth()->user()->products()->latest()->paginate(12);
+        return view('pages.products-me-list', compact('products'));
     }
 
     /**
@@ -197,8 +199,23 @@ class ProfileController extends Controller
      */
     public function editProduct($id)
     {
-        // $product = auth()->user()->products()->findOrFail($id);
-        return view('pages.products-me-edit');
+        // Allow a demo edit page for testing (id = 0)
+        if ((int)$id === 0) {
+            $product = new Product([
+                'name' => 'منتج تجريبي',
+                'description' => 'هذا وصف تجريبي لعرض النموذج واختبار زر التعديل.',
+                'category_id' => 1,
+                'price' => 120,
+                'original_price' => 150,
+                'city' => 'الرياض',
+                'is_active' => true,
+            ]);
+            $product->id = 0; // mark as demo
+            return view('pages.products-me-edit', compact('product'));
+        }
+
+        $product = auth()->user()->products()->findOrFail($id);
+        return view('pages.products-me-edit', compact('product'));
     }
 
     /**
@@ -206,7 +223,58 @@ class ProfileController extends Controller
      */
     public function updateProduct(Request $request, $id)
     {
-        // Update logic here
+        // If demo product (id = 0), validate input and simulate success so the form can be tested
+        if ((int)$id === 0) {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'category_id' => 'required|integer',
+                'description' => 'required|string',
+                'price' => 'required|numeric|min:0',
+                'original_price' => 'nullable|numeric|min:0',
+                'city' => 'required|string|max:255',
+                'status' => 'required|in:active,inactive',
+                'images' => 'nullable|array',
+                'images.*' => 'image|max:5000',
+            ]);
+            return redirect()->route('my-products.index')->with('success', 'تم (تجريبياً) تحديث المنتج بنجاح');
+        }
+
+        $product = auth()->user()->products()->findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|integer',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'original_price' => 'nullable|numeric|min:0',
+            'city' => 'required|string|max:255',
+            'status' => 'required|in:active,inactive',
+            'images' => 'nullable|array',
+            'images.*' => 'image|max:5000',
+        ]);
+
+        // Handle images (append new images)
+        if ($request->hasFile('images')) {
+            $paths = [];
+            foreach ($request->file('images') as $image) {
+                $paths[] = $image->store('products', 'public');
+            }
+            // You may want to save these to related ProductImage model
+            // For now, just keep a JSON column or ignore if not implemented
+            $validated['images'] = $paths;
+        }
+
+        $product->update([
+            'name' => $validated['name'],
+            'category_id' => $validated['category_id'],
+            'description' => $validated['description'],
+            'price' => $validated['price'],
+            'original_price' => $validated['original_price'] ?? null,
+            'city' => $validated['city'],
+            'is_active' => $validated['status'] === 'active',
+        
+        ]);
+
         return redirect()->route('my-products.index')->with('success', 'تم تحديث المنتج بنجاح');
     }
 
@@ -215,7 +283,14 @@ class ProfileController extends Controller
      */
     public function deleteProduct($id)
     {
-        // Delete logic here
+        // If demo product (id = 0) do not attempt delete; just redirect with message
+        if ((int)$id === 0) {
+            return redirect()->route('my-products.index')->with('success', 'هذا منتج تجريبي ولا يمكن حذفه');
+        }
+
+        $product = auth()->user()->products()->findOrFail($id);
+        $product->delete();
+
         return redirect()->route('my-products.index')->with('success', 'تم حذف المنتج بنجاح');
     }
 

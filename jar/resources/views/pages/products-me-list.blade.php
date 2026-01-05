@@ -461,9 +461,9 @@
                             <div class="product-footer">
                                 <span class="product-status">نشط</span>
                                 <div class="product-actions">
-                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
+                                        <a href="{{ route('my-products.edit', 0) }}" class="btn-action btn-action-edit" title="تعديل">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
                                     <button class="btn-action btn-action-delete" title="حذف">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
