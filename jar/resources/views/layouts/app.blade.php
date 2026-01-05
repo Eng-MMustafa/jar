@@ -80,7 +80,7 @@
                     </div>
 
                     <!-- Center: Search -->
-                    <div class="flex-1 max-w-md mx-8">
+                    <div class="flex-1 max-w-2xl mx-8">
                         <div class="relative">
                             <input type="search" 
                                    placeholder="ابحث عن : أجهزة كهربائية" 
