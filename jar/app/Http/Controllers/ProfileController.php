@@ -257,4 +257,4 @@ class ProfileController extends Controller
     public function notifications()
     {
         return view('pages.notifications');
-    }
+    }}
