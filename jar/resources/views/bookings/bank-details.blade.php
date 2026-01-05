@@ -10,11 +10,6 @@
         box-sizing: border-box;
     }
 
-    body {
-        font-family: 'Tajawal', sans-serif;
-        background: #f5f7fa;
-    }
-
     .bank-details-container {
         max-width: 1000px;
         margin: 0 auto;

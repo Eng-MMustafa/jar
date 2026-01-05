@@ -4,17 +4,6 @@
 
 @section('content')
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Tajawal', sans-serif;
-        background: #f5f7fa;
-    }
-
     .breadcrumb {
         background: #f0f7fb;
         padding: 1rem;

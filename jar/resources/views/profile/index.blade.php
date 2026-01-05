@@ -15,12 +15,6 @@
         --border-light: #ddd;
     }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
     .profile-container {
         font-family: 'Tajawal', sans-serif;
         direction: rtl;
