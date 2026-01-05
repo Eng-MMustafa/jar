@@ -330,6 +330,7 @@
                 </div>
             </div>
 
+            <!-- Quick Links Menu -->
             <div class="quick-links">
                 <a href="{{ route('profile.index') }}" title="حسابي الشخصي">
                     <i class="fas fa-user-circle"></i> حسابي الشخصي
@@ -346,18 +347,16 @@
                 <a href="{{ route('chat') }}" title="المراسلات">
                     <i class="fas fa-comments"></i> المراسلات
                 </a>
-                <a href="{{ route('my-products.index') }}" title="إدارة المنتجات" class="active">
+                <a href="{{ route('my-products.index') }}" title="إدارة المنتجات">
                     <i class="fas fa-box"></i> إدارة المنتجات
                 </a>
                 <a href="{{ route('profile.support-tickets') }}" title="طلبات إرجاع المنتجة">
                     <i class="fas fa-undo"></i> طلبات إرجاع المنتجة
                 </a>
-                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer; font-size: 0.95rem;">
-                        <a class="logout" style="cursor: pointer; padding: 0.75rem 0; display: flex; align-items: center; gap: 0.8rem;">
-                            <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-                        </a>
+                    <button type="submit">
+                        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
                     </button>
                 </form>
             </div>
