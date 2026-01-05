@@ -112,14 +112,17 @@
                             <!-- User Dropdown -->
                             <div class="relative" id="user-menu">
                                 <div class="inline-block">
-                                    <button class="flex items-center space-x-2 space-x-reverse text-gray-700 hover:text-gray-900">
-                                        <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/>
-                                        </svg>
-                                        <span>مرحباً {{ Auth::user()->name ?? 'المستخدم' }}</span>
+                                    <button class="flex items-center gap-3 text-gray-700 hover:text-gray-900">
+                                        <div class="text-right">
+                                            <div class="font-semibold text-base leading-none">{{ Auth::user()->name ?? 'المستخدم' }}</div>
+                                            <div class="text-sm text-gray-500 leading-none">{{ Auth::user()->city ?? 'القصيم - بريدة' }}</div>
+                                        </div>
+
                                         <svg class="w-4 h-4 text-gray-500 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
                                         </svg>
+
+                                        <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : asset('images/avatar.png') }}" alt="{{ Auth::user()->name }}" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
                                     </button>
                                     <div class="dropdown absolute hidden bg-white shadow-xl rounded-lg right-0 mt-2 min-w-56 z-50 border border-gray-200 overflow-hidden">
                                         <a href="{{ route('profile.index') }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-teal-600 transition duration-200">
@@ -156,22 +159,7 @@
                                                 <span>طلباتى</span>
                                             </div>
                                         </a>
-                                        <a href="{{ route('my-orders') }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-teal-600 transition duration-200">
-                                            <div class="flex items-center space-x-3 space-x-reverse">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                                </svg>
-                                                <span>طلباتى</span>
-                                            </div>
-                                        </a>
-                                        <a href="{{ route('profile.support-tickets') }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-teal-600 transition duration-200">
-                                            <div class="flex items-center space-x-3 space-x-reverse">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                </svg>
-                                                <span>دعم العملاء</span>
-                                            </div>
-                                        </a>
+
                                         <hr class="border-gray-200">
                                         <form method="POST" action="{{ route('logout') }}" class="block">
                                             @csrf
