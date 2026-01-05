@@ -107,8 +107,8 @@
         <a href="{{ route('profile.edit') }}" title="إعدادات الحساب">
             <i class="fas fa-cog"></i> إعدادات الحساب
         </a>
-        <a href="{{ route('profile.bookings') }}" title="طلبات">
-            <i class="fas fa-shopping-bag"></i> طلبات
+        <a href="{{ route('profile.bookings') }}" title="طلباتى">
+            <i class="fas fa-shopping-bag"></i> طلباتى
         </a>
         <a href="{{ route('notifications') }}" title="الإشعارات">
             <i class="fas fa-bell"></i> الإشعارات

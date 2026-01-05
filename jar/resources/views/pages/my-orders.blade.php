@@ -6,7 +6,7 @@
     <div class="bg-white border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-bold text-gray-900">طلباتي</h1>
+                <h1 class="text-2xl font-bold text-gray-900">طلباتى</h1>
                 <div class="flex gap-2">
                     <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors">الكل</button>
                     <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors">قيد المعالجة</button>

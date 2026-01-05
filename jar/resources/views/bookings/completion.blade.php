@@ -403,7 +403,7 @@
 <div class="breadcrumb">
     <a href="{{ route('home') }}">الرئيسية</a>
     <span>/</span>
-    <a href="#">حجوزاتي</a>
+    <a href="#">طلباتى</a>
     <span>/</span>
     <span>تأكيد الحجز</span>
 </div>

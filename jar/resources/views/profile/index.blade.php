@@ -618,7 +618,7 @@
                     @endif
                     
                     <a href="{{ route('profile.bookings') }}" class="btn btn-secondary">
-                        <i class="fas fa-calendar"></i> حجوزاتي
+                        <i class="fas fa-calendar"></i> طلباتى
                     </a>
                     
                     <a href="{{ route('profile.support-tickets') }}" class="btn btn-secondary">

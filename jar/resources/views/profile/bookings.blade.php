@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'حجوزاتي - تجار')
+@section('title', 'طلباتى - تجار')
 
 @section('content')
 <style>
@@ -192,55 +192,172 @@
     }
 
     .bookings-card {
-        background: white;
+        background: #fff;
         border-radius: 12px;
-        padding: 2rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        min-height: 300px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 1.2rem;
+        border: 1px solid #eef6f6;
+        box-shadow: none;
+        text-align: right;
+        min-height: auto;
     }
 
-    .empty-state {
+    .bookings-list {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding-top: 0.5rem;
+    }
+
+    .booking-item {
+        flex: 1 1 calc(50% - 1rem);
+        background: #fff;
+        border-radius: 10px;
+        border: 1px solid #f0f4f4;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        position: relative;
+        /* ensure thumbnail is on the right for RTL */
+        flex-direction: row-reverse;
+    }
+
+    .status-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: inline-block;
+        padding: 0.25rem 0.6rem;
+        background: #e8f8f7;
+        color: #1aa59a;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.8rem;
+    }
+
+    .booking-thumb {
+        width: 70px;
+        height: 70px;
+        border-radius: 8px;
+        background: #f5f7f7;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+
+    .booking-info {
+        flex: 1;
+        text-align: right;
+    }
+
+    .booking-title {
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 0.25rem;
+    }
+
+    .booking-meta {
+        font-size: 0.9rem;
+        color: var(--text-light);
+    }
+
+    .details-btn {
+        padding: 0.6rem 1rem;
+        background: #eaf7f6;
+        color: var(--primary-dark);
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 700;
+        font-size: 0.95rem;
+        width: 160px;
         text-align: center;
+        transition: background 0.12s ease;
+    }
+
+    .details-btn::before {
+        content: '←';
+        display:inline-block;
+        margin-left:8px;
+    }
+
+    .details-btn:hover {
+        background:#dff3f2;
+    }
+
+    @media (max-width: 600px) {
+        .booking-item{ flex:1 1 100%; }
+        .details-btn{ width:100%; }
+    }
+
+    /* Empty state - small card-like */
+    .empty-state {
+        max-width: 520px;
+        margin: 0 auto;
+        background: #f7fbfb;
+        border-radius: 10px;
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border: 1px solid #e6f3f3;
     }
 
     .empty-icon {
-        font-size: 4rem;
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        background: #e9faf9;
         color: var(--primary);
-        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        flex-shrink: 0;
+    }
+
+    .empty-text {
+        text-align: right;
+        flex: 1;
     }
 
     .empty-title {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         color: var(--text-dark);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem;
     }
 
     .empty-message {
         color: var(--text-light);
-        margin-bottom: 2rem;
+        margin: 0;
     }
 
     .btn {
-        padding: 0.75rem 2rem;
-        background: var(--primary);
-        color: white;
+        padding: 0.9rem 1.2rem;
+        background: #eaf7f6;
+        color: var(--primary-dark);
         border: none;
-        border-radius: 6px;
+        border-radius: 10px;
         cursor: pointer;
         font-family: 'Tajawal', sans-serif;
         text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.15s ease;
+        box-shadow: none;
+    }
+
+    .btn::before {
+        content: '←';
         display: inline-block;
-        transition: all 0.3s ease;
+        margin-left: 0.5rem;
     }
 
     .btn:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+        background: #dff3f2;
+        transform: none;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     }
 
     @media (max-width: 768px) {
@@ -264,6 +381,21 @@
             flex-direction: column;
             text-align: center;
         }
+
+        .empty-state {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .empty-icon {
+            margin-bottom: 0;
+        }
     }
 </style>
 
@@ -273,7 +405,7 @@
         <span>/</span>
         <a href="{{ route('profile.index') }}">حسابي</a>
         <span>/</span>
-        <span>حجوزاتي</span>
+        <span>طلباتى</span>
     </div>
 
     <!-- Profile Wrapper -->
@@ -283,17 +415,61 @@
 
         <!-- Main Content -->
         <div class="profile-main">
-            <h1 class="page-title">حجوزاتي</h1>
+            <h1 class="page-title">طلباتى</h1>
 
             <div class="bookings-card">
-                <div class="empty-state">
-                    <div class="empty-icon">
-                        <i class="fas fa-calendar-alt"></i>
+                @if($bookings->count())
+                    <div class="bookings-list">
+                        @foreach($bookings as $booking)
+                            <div class="booking-item">
+                                <span class="status-badge">نشط</span>
+                                <div class="booking-thumb">
+                                    <img src="{{ optional($booking->items->first())->product->image_url ?? 'https://via.placeholder.com/80' }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
+                                </div>
+                                <div class="booking-info">
+                                    <div class="booking-title">{{ optional($booking->items->first())->product->name ?? 'عربة للإيجار اليومي' }}</div>
+                                    <div class="booking-meta">من : 28 - 12 - 2025 &nbsp; إلى : 28 - 12 - 2025</div>
+                                    <div class="booking-meta" style="margin-top:6px;">إجمالي السعر: <strong style="color:var(--primary);">120 ر.س</strong></div>
+                                    <div style="margin-top:10px;display:flex;gap:8px;">
+                                        <a href="#" class="details-btn">عرض التفاصيل</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <h2 class="empty-title">لا توجد حجوزات</h2>
-                    <p class="empty-message">لم تقم بأي حجوزات حتى الآن</p>
-                    <a href="{{ route('products.index') }}" class="btn">تصفح المنتجات</a>
-                </div>
+                @else
+                    <div class="bookings-list">
+                        <div class="booking-item">
+                            <span class="status-badge">نشط</span>
+                            <div class="booking-thumb">
+                                <img src="https://via.placeholder.com/80" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
+                            </div>
+                            <div class="booking-info">
+                                <div class="booking-title">عربة للإيجار اليومي</div>
+                                <div class="booking-meta">من : 28 - 12 - 2025 &nbsp; إلى : 28 - 12 - 2025</div>
+                                <div class="booking-meta" style="margin-top:6px;">إجمالي السعر: <strong style="color:var(--primary);">120 ر.س</strong></div>
+                                <div style="margin-top:10px;display:flex;gap:8px;">
+                                    <a href="#" class="details-btn">عرض التفاصيل</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="booking-item">
+                            <span class="status-badge">نشط</span>
+                            <div class="booking-thumb">
+                                <img src="https://via.placeholder.com/80" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
+                            </div>
+                            <div class="booking-info">
+                                <div class="booking-title">عربة للإيجار اليومي</div>
+                                <div class="booking-meta">من : 28 - 12 - 2025 &nbsp; إلى : 28 - 12 - 2025</div>
+                                <div class="booking-meta" style="margin-top:6px;">إجمالي السعر: <strong style="color:var(--primary);">120 ر.س</strong></div>
+                                <div style="margin-top:10px;display:flex;gap:8px;">
+                                    <a href="#" class="details-btn">عرض التفاصيل</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
