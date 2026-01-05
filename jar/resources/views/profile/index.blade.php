@@ -494,26 +494,6 @@
                 </div>
             </div>
 
-            <div class="sidebar-item">
-                <div class="sidebar-label">رقم الهاتف</div>
-                <div class="sidebar-value">{{ auth()->user()->phone ?? 'لم يتم إدراج الهاتف' }}</div>
-            </div>
-
-            <div class="sidebar-item">
-                <div class="sidebar-label">رقم المحمول</div>
-                <div class="sidebar-value">{{ auth()->user()->phone ?? '05xxxxxxxxx' }}</div>
-            </div>
-
-            <div class="sidebar-item">
-                <div class="sidebar-label">المدينة</div>
-                <div class="sidebar-value">{{ auth()->user()->city ?? 'الرياض' }}</div>
-            </div>
-
-            <div class="sidebar-item">
-                <div class="sidebar-label">تاريخ التسجيل</div>
-                <div class="sidebar-value">{{ auth()->user()->created_at->format('Y-m-d') }}</div>
-            </div>
-
             <div class="btn-group" style="margin-top: 2rem;">
                 <a href="{{ route('profile.edit') }}" class="btn btn-primary btn-small">تعديل البيانات</a>
                 <button type="button" class="btn btn-secondary btn-small" onclick="alert('حفظ البيانات')">حفظ البيانات</button>
