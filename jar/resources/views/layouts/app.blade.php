@@ -265,18 +265,39 @@
                     <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">ملخص</h3>
                     <p class="text-teal-100 text-sm leading-relaxed mb-6">في جار لتأجير الممتلكات
 شركة سعودية متخصصة تعمل كوسيط موثوق لتأجير مختلف أنواع الممتلكات، حيث تربط بين الملاك والمستأجرين عبر منصة سهلة الاستخدام تضمن السرعة، الأمان، ووضوح الإجراءات.</p>
-                    <div class="flex gap-3">
-                        <a href="#" class="footer-social w-8 h-8 rounded border border-teal-400 flex items-center justify-center hover:bg-teal-500/20 transition">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7z"/></svg>
+                    <div class="flex gap-3" aria-label="social links">
+                        <a href="#" aria-label="فيسبوك" title="فيسبوك" class="social-btn w-11 h-11 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
+                            <!-- Facebook -->
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 12a10 10 0 10-11.5 9.9v-7h-2.3v-2.9h2.3V9.6c0-2.3 1.4-3.6 3.5-3.6 1 0 2 .1 2 .1v2.2h-1.1c-1.1 0-1.4.7-1.4 1.4v1.7h2.4l-.4 2.9h-2v7A10 10 0 0022 12z"/>
+                            </svg>
+                            <span class="sr-only">فيسبوك</span>
                         </a>
-                        <a href="#" class="footer-social w-8 h-8 rounded border border-teal-400 flex items-center justify-center hover:bg-teal-500/20 transition">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-5.293-5.93m0 0A1 1 0 0012 3c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12c0-.846-.092-1.667-.266-2.459m0 0h5m0 0"/></svg>
+
+                        <a href="#" aria-label="انستجرام" title="انستجرام" class="social-btn w-11 h-11 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
+                            <!-- Instagram -->
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37Z" fill="currentColor"></path>
+                                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"></circle>
+                            </svg>
+                            <span class="sr-only">انستجرام</span>
                         </a>
-                        <a href="#" class="footer-social w-8 h-8 rounded border border-teal-400 flex items-center justify-center hover:bg-teal-500/20 transition">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37Z"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+
+                        <a href="#" aria-label="لينكدإن" title="لينكدإن" class="social-btn w-11 h-11 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
+                            <!-- LinkedIn -->
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h4V24H0V8.98zM8.5 8.98h3.8v2.07h.05c.53-1 1.82-2.07 3.75-2.07 4.01 0 4.75 2.6 4.75 5.98V24H18V14.5c0-2.22-.04-5.07-3.09-5.07-3.09 0-3.56 2.42-3.56 4.92V24H8.5V8.98z"/>
+                            </svg>
+                            <span class="sr-only">لينكدإن</span>
                         </a>
-                        <a href="#" class="footer-social w-8 h-8 rounded border border-teal-400 flex items-center justify-center hover:bg-teal-500/20 transition">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm3.6 11.9h-2.4v8.4h-3.6v-8.4H8.4v-3h2.4v-1.8c0-2 .6-5.2 5.2-5.2h3.6v3h-2.6c-.4 0-.7.2-.7.9v1.3h3.4l-.8 3z"/></svg>
+
+                        <a href="#" aria-label="X" title="X" class="social-btn w-11 h-11 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
+                            <!-- X (Twitter) -->
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5v-.88A7.72 7.72 0 0023 3z"/>
+                            </svg>
+                            <span class="sr-only">X</span>
                         </a>
                     </div>
                 </div>
@@ -321,14 +342,9 @@
             <!-- Footer Bottom -->
             <div class="pt-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mb-6">
-                    <!-- Payment Methods & License -->
-                    <div class="flex flex-col md:flex-row items-center gap-6">
-                        <div class="flex items-center gap-3">
-                            <img src="{{ asset('images/login/Frame 1597883802.png') }}" alt="mada" class="h-6 opacity-90">
-                            <svg class="w-12 h-6" viewBox="0 0 80 28" fill="none"><rect width="80" height="28" fill="none"/><text x="40" y="18" text-anchor="middle" fill="white" font-size="12" font-weight="bold">PayPal</text></svg>
-                            <svg class="w-12 h-6" viewBox="0 0 80 28" fill="none"><rect width="80" height="28" fill="none"/><text x="40" y="18" text-anchor="middle" fill="white" font-size="12" font-weight="bold">MasterCard</text></svg>
-                            <svg class="w-12 h-6" viewBox="0 0 80 28" fill="none"><rect width="80" height="28" fill="none"/><text x="40" y="18" text-anchor="middle" fill="white" font-size="12" font-weight="bold">VISA</text></svg>
-                        </div>
+                    <!-- Logo (moved to right on RTL) -->
+                    <div class="flex justify-start md:justify-end">
+                        <img src="{{ asset('images/Logo/TJAR-LOGO-V1-01 1.svg') }}" alt="TJAR Logo" class="h-40 w-auto opacity-100">
                     </div>
 
                     <!-- License Number -->
@@ -336,9 +352,14 @@
                         <p class="text-teal-100 text-sm">الرقم الضريبي : <span class="font-bold text-white">5667776443</span></p>
                     </div>
 
-                    <!-- Logo -->
-                    <div class="flex justify-end">
-                        <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR Logo" class="h-12 opacity-90">
+                    <!-- Payment Methods & License -->
+                    <div class="flex flex-col md:flex-row items-center gap-6 md:justify-start">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ asset('images/login/Frame 1597883802.png') }}" alt="mada" class="h-6 opacity-90">
+                            <svg class="w-12 h-6" viewBox="0 0 80 28" fill="none"><rect width="80" height="28" fill="none"/><text x="40" y="18" text-anchor="middle" fill="white" font-size="12" font-weight="bold">PayPal</text></svg>
+                            <svg class="w-12 h-6" viewBox="0 0 80 28" fill="none"><rect width="80" height="28" fill="none"/><text x="40" y="18" text-anchor="middle" fill="white" font-size="12" font-weight="bold">MasterCard</text></svg>
+                            <svg class="w-12 h-6" viewBox="0 0 80 28" fill="none"><rect width="80" height="28" fill="none"/><text x="40" y="18" text-anchor="middle" fill="white" font-size="12" font-weight="bold">VISA</text></svg>
+                        </div>
                     </div>
                 </div>
 
