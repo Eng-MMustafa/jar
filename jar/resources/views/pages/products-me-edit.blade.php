@@ -359,9 +359,35 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">السعر الأصلي (اختياري)</label>
-                            <input type="number" name="original_price" class="form-input" placeholder="0.00" step="0.01" value="{{ old('original_price', $product->original_price ?? '') }}">
+                            <label class="form-label">مبلغ التأمين (اختياري)</label>
+                            <input type="number" name="security_deposit" class="form-input" placeholder="0.00" step="0.01" value="{{ old('security_deposit', $product->security_deposit ?? '') }}">
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">نوع الإيجار</label>
+                        <div style="display:flex;gap:1rem;align-items:center;">
+                            <label style="display:flex;gap:0.4rem;align-items:center;">
+                                <input type="radio" name="rental_type" value="daily" {{ old('rental_type', $product->rental_type) == 'daily' ? 'checked' : '' }}> يومي
+                            </label>
+                            <label style="display:flex;gap:0.4rem;align-items:center;">
+                                <input type="radio" name="rental_type" value="hourly" {{ old('rental_type', $product->rental_type) == 'hourly' ? 'checked' : '' }}> بالساعة
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">الصورة الرئيسية للمنتج</label>
+                        @if($product->primaryImage)
+                            <div style="margin-bottom:0.5rem;">
+                                <img src="{{ asset($product->primaryImage->image_path) }}" alt="الصورة الرئيسية" style="max-width:120px;border-radius:8px;">
+                            </div>
+                        @endif
+                        <div class="upload-area" onclick="document.getElementById('main_image').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p style="margin: 0.5rem 0 0 0; color: var(--text-dark);">اضغط لتغيير الصورة الرئيسية</p>
+                        </div>
+                        <input type="file" id="main_image" name="main_image" accept="image/*" style="display: none;">
                     </div>
 
                     <div class="form-group">

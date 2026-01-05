@@ -273,6 +273,8 @@
                     <div class="product-price">
                         @if($product->is_rentable && $product->rental_price_daily)
                             ج.م {{ number_format($product->rental_price_daily, 0) }}
+                        @elseif($product->is_rentable && $product->rental_price_hourly)
+                            ج.م {{ number_format($product->rental_price_hourly, 0) }}
                         @else
                             ج.م {{ number_format($product->price, 0) }}
                         @endif

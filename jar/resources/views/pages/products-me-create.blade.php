@@ -381,9 +381,36 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">السعر الأصلي (اختياري)</label>
-                            <input type="number" name="original_price" class="form-input" placeholder="0.00" step="0.01">
+                            <label class="form-label">مبلغ التأمين (اختياري)</label>
+                            <input type="number" name="security_deposit" class="form-input" placeholder="0.00" step="0.01">
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">نوع الإيجار</label>
+                        <div style="display:flex;gap:1rem;align-items:center;">
+                            <label style="display:flex;gap:0.4rem;align-items:center;">
+                                <input type="radio" name="rental_type" value="daily" checked> يومي
+                            </label>
+                            <label style="display:flex;gap:0.4rem;align-items:center;">
+                                <input type="radio" name="rental_type" value="hourly"> بالساعة
+                            </label>
+                        </div>
+                        @error('rental_type')
+                            <div style="color: var(--danger); font-size: 0.85rem; margin-top: 0.3rem;">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">الصورة الرئيسية للمنتج</label>
+                        <div class="upload-area" onclick="document.getElementById('main_image').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p style="margin: 0.5rem 0 0 0; color: var(--text-dark);">اضغط لتحميل الصورة الرئيسية</p>
+                        </div>
+                        <input type="file" id="main_image" name="main_image" accept="image/*" style="display: none;">
+                        @error('main_image')
+                            <div style="color: var(--danger); font-size: 0.85rem; margin-top: 0.3rem;">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -402,10 +429,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">صور المنتج</label>
+                        <label class="form-label">صور إضافية (اختياري)</label>
                         <div class="upload-area" onclick="document.getElementById('images').click()">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <p style="margin: 0.5rem 0 0 0; color: var(--text-dark);">اضغط لتحميل الصور</p>
+                            <p style="margin: 0.5rem 0 0 0; color: var(--text-dark);">اضغط لتحميل صور إضافية</p>
                             <p style="margin: 0.3rem 0 0 0; font-size: 0.85rem; color: var(--text-light);">أو اسحب الصور هنا</p>
                         </div>
                         <input type="file" id="images" name="images[]" multiple accept="image/*" style="display: none;">

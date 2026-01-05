@@ -934,6 +934,20 @@
                         <div class="price-value">{{ number_format($product->rental_price_daily, 2) }} ر.س</div>
                     </li>
                     @endif
+
+                    @if($product->rental_price_hourly)
+                    <li class="price-item">
+                        <div class="price-label">بالساعة</div>
+                        <div class="price-value">{{ number_format($product->rental_price_hourly, 2) }} ر.س</div>
+                    </li>
+                    @endif
+
+                    @if($product->security_deposit)
+                    <li class="price-item">
+                        <div class="price-label">سعر التأمين</div>
+                        <div class="price-value">{{ number_format($product->security_deposit, 2) }} ر.س</div>
+                    </li>
+                    @endif
                     @if($product->rental_price_weekly)
                     <li class="price-item">
                         <div class="price-label">الأسبوعي</div>

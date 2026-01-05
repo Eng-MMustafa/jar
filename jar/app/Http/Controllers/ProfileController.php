@@ -172,24 +172,58 @@ class ProfileController extends Controller
             'category_id' => 'required|integer',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
-            'original_price' => 'nullable|numeric|min:0',
+            'security_deposit' => 'nullable|numeric|min:0',
+            'rental_type' => 'nullable|in:daily,hourly',
             'city' => 'required|string|max:255',
             'status' => 'required|in:active,inactive',
+            'main_image' => 'nullable|image|max:5000',
             'images' => 'nullable|array',
             'images.*' => 'image|max:5000',
         ]);
 
-        // Handle images
-        if ($request->hasFile('images')) {
-            $validated['images'] = [];
-            foreach ($request->file('images') as $image) {
-                $path = $image->store('products', 'public');
-                $validated['images'][] = $path;
-            }
+        // Prepare product data
+        $productData = [
+            'user_id' => auth()->id(),
+            'name' => $validated['name'],
+            'category_id' => $validated['category_id'],
+            'description' => $validated['description'],
+            'price' => $validated['price'],
+            'city' => $validated['city'],
+            'is_active' => $validated['status'] === 'active',
+            'security_deposit' => $validated['security_deposit'] ?? null,
+            'rental_type' => $validated['rental_type'] ?? null,
+        ];
+
+        // Set rental price field according to rental_type (if any)
+        if (!empty($validated['rental_type']) && $validated['rental_type'] === 'daily') {
+            $productData['rental_price_daily'] = $validated['price'];
+            $productData['is_rentable'] = true;
+        } elseif (!empty($validated['rental_type']) && $validated['rental_type'] === 'hourly') {
+            $productData['rental_price_hourly'] = $validated['price'];
+            $productData['is_rentable'] = true;
         }
 
-        // Save product (implement with your Product model)
-        // Product::create(array_merge($validated, ['user_id' => auth()->id()]));
+        $product = Product::create($productData);
+
+        // Handle main image
+        if ($request->hasFile('main_image')) {
+            $path = $request->file('main_image')->store('products', 'public');
+            $product->images()->create([
+                'image_path' => 'storage/' . $path,
+                'is_primary' => true,
+            ]);
+        }
+
+        // Handle additional images
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('products', 'public');
+                $product->images()->create([
+                    'image_path' => 'storage/' . $path,
+                    'is_primary' => false,
+                ]);
+            }
+        }
 
         return redirect()->route('my-products.index')->with('success', 'تم إضافة المنتج بنجاح');
     }
@@ -206,7 +240,7 @@ class ProfileController extends Controller
                 'description' => 'هذا وصف تجريبي لعرض النموذج واختبار زر التعديل.',
                 'category_id' => 1,
                 'price' => 120,
-                'original_price' => 150,
+                'security_deposit' => 150,
                 'city' => 'الرياض',
                 'is_active' => true,
             ]);
@@ -230,7 +264,7 @@ class ProfileController extends Controller
                 'category_id' => 'required|integer',
                 'description' => 'required|string',
                 'price' => 'required|numeric|min:0',
-                'original_price' => 'nullable|numeric|min:0',
+                'security_deposit' => 'nullable|numeric|min:0',
                 'city' => 'required|string|max:255',
                 'status' => 'required|in:active,inactive',
                 'images' => 'nullable|array',
@@ -246,9 +280,11 @@ class ProfileController extends Controller
             'category_id' => 'required|integer',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
-            'original_price' => 'nullable|numeric|min:0',
+            'security_deposit' => 'nullable|numeric|min:0',
+            'rental_type' => 'nullable|in:daily,hourly',
             'city' => 'required|string|max:255',
             'status' => 'required|in:active,inactive',
+            'main_image' => 'nullable|image|max:5000',
             'images' => 'nullable|array',
             'images.*' => 'image|max:5000',
         ]);
@@ -269,7 +305,8 @@ class ProfileController extends Controller
             'category_id' => $validated['category_id'],
             'description' => $validated['description'],
             'price' => $validated['price'],
-            'original_price' => $validated['original_price'] ?? null,
+            'security_deposit' => $validated['security_deposit'] ?? null,
+            'rental_type' => $validated['rental_type'] ?? null,
             'city' => $validated['city'],
             'is_active' => $validated['status'] === 'active',
         
