@@ -306,8 +306,8 @@
 </div>
 
 <!-- Footer Pattern -->
-<div class="h-8 w-screen overflow-hidden -ml-[50vw] -mr-[50vw]">
-    <img src="http://localhost:8000/images/Images/TJAR-PATTERN_PATTERN 2 (1) 1.png" alt="pattern" class="w-full h-full object-cover">
+<div style="width:100vw; overflow:hidden; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); height:2rem;">
+    <img src="{{ asset('images/Images/TJAR-PATTERN_PATTERN 2 (1) 1.png') }}" alt="pattern" style="width:100%; height:100%; object-fit:cover; display:block;">
 </div>
 
 <!-- Copy Toast Notification -->
