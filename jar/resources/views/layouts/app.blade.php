@@ -341,42 +341,26 @@
 
             <!-- Footer Bottom -->
             <div class="pt-0">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mb-6">
-                    <!-- License Number -->
-                    <div class="text-center order-2 md:order-2">
-                        <p class="text-teal-100 text-sm">الرقم الضريبي : <span class="font-bold text-white">5667776443</span></p>
-                    </div>
+            </div> 
+        </div>
 
-                    <!-- Logo -->
-                    <div class="flex justify-start md:justify-end order-3 md:order-3">
-                        <img src="{{ asset('images/Logo/TJAR-LOGO-V1-01 1.svg') }}" alt="TJAR Logo" class="h-40 w-auto opacity-100">
-                    </div>
-                </div>
-
-                <!-- Copyright -->
-                <div class="text-center text-teal-200 text-sm py-6">
-                    <p>جميع الحقوق محفوظة في جار © {{ date('Y') }}</p>
-                </div>
-
-                <!-- Floating payment icons fixed at screen edge (bottom-left) -->
-                <div class="fixed left-4 bottom-6 z-50">
-                    <div class="flex items-center gap-2 bg-transparent">
-                        <a href="#" aria-label="VISA" title="VISA" class="w-10 h-10 rounded-md bg-white/6 border border-white/10 flex items-center justify-center shadow-sm hover:scale-105 transition transform focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
-                            <svg class="w-6 h-6 text-white" viewBox="0 0 72 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><text x="36" y="16" text-anchor="middle" fill="currentColor" font-weight="700" font-size="12">VISA</text></svg>
-                        </a>
-                        <a href="#" aria-label="MasterCard" title="MasterCard" class="w-10 h-10 rounded-md bg-white/6 border border-white/10 flex items-center justify-center shadow-sm hover:scale-105 transition transform focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
-                            <svg class="w-6 h-6" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="11" cy="10" r="6" fill="#ff5f00"/><circle cx="19" cy="10" r="6" fill="#eb001b"/></svg>
-                        </a>
-                        <a href="#" aria-label="PayPal" title="PayPal" class="w-10 h-10 rounded-md bg-white/6 border border-white/10 flex items-center justify-center shadow-sm hover:scale-105 transition transform focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
-                            <svg class="w-6 h-6 text-white" viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><text x="40" y="16" text-anchor="middle" fill="currentColor" font-weight="700" font-size="11">PayPal</text></svg>
-                        </a>
-                    </div>
-                </div>
+        <!-- Full-width extremes: tax number left and logo right (spanning page) -->
+        <div class="w-full flex items-center justify-between mb-6 px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-end">
+                <img src="{{ asset('images/Logo/TJAR-LOGO-V1-01 1.svg') }}" alt="TJAR Logo" class="h-40 w-auto opacity-100">
+            </div>
+            <div class="text-left text-teal-100 text-sm">
+                <p>الرقم الضريبي : <span class="font-bold text-white">5667776443</span></p>
             </div>
         </div>
 
-        <!-- Decorative Pattern Bottom - Fixed full-width, slightly lowered so it's visible beyond footer -->
-        <div class="fixed left-0 w-screen h-12 overflow-hidden pointer-events-none z-30" style="bottom:-8px;">
+        <!-- Copyright (moved under full-width extremes) -->
+        <div class="text-center text-teal-200 text-sm py-6">
+            <p>جميع الحقوق محفوظة في جار © {{ date('Y') }}</p>
+        </div>
+
+        <!-- Decorative Pattern Bottom -->
+        <div class="w-full h-10 overflow-hidden pointer-events-none">
             <img src="{{ asset('images/Images/TJAR-PATTERN_PATTERN 2 (1) 1.png') }}" alt="pattern" class="w-full h-full object-cover block">
         </div>
         </div>
