@@ -27,38 +27,14 @@ class CategoriesAndProductsSeeder extends Seeder
 
         // إنشاء الأقسام
         $categories = [
-            [
-                'name_en' => 'Camping Equipment',
-                'name_ar' => 'معدات التخييم',
-                'slug' => 'camping-equipment',
-                'description_ar' => 'جميع المعدات اللازمة لرحلات التخييم والاستكشاف',
-                'icon' => 'fas fa-campground',
-                'is_active' => true,
-                'sort_order' => 1,
-            ],
-            [
-                'name_en' => 'Electronics',
-                'name_ar' => 'الإلكترونيات',
-                'slug' => 'electronics',
-                'description_ar' => 'أحدث الأجهزة الإلكترونية والتقنية',
-                'icon' => 'fas fa-laptop',
-                'is_active' => true,
-                'sort_order' => 2,
-            ],
-            [
-                'name_en' => 'Outdoor Gear',
-                'name_ar' => 'معدات خارجية',
-                'slug' => 'outdoor-gear',
-                'description_ar' => 'معدات للأنشطة الخارجية والرياضة',
-                'icon' => 'fas fa-hiking',
-                'is_active' => true,
-                'sort_order' => 3,
-            ],
+            ['slug' => 'camping-equipment', 'name' => 'معدات التخييم', 'is_active' => true, 'sort_order' => 1],
+            ['slug' => 'electronics', 'name' => 'الإلكترونيات', 'is_active' => true, 'sort_order' => 2],
+            ['slug' => 'outdoor-gear', 'name' => 'معدات خارجية', 'is_active' => true, 'sort_order' => 3],
         ];
 
         foreach ($categories as $categoryData) {
             Category::updateOrCreate(
-                ['slug' => $categoryData['slug']], 
+                ['slug' => $categoryData['slug']],
                 $categoryData
             );
         }

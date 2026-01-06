@@ -50,11 +50,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
         Route::delete('/users/{user}/force-delete', [UserController::class, 'forceDelete'])->name('users.force-delete');
         
-        // Categories Management
+        // Categories Management (simple CRUD)
         Route::resource('categories', CategoryController::class);
-        Route::post('/categories/{category}/enable', [CategoryController::class, 'enable'])->name('categories.enable');
-        Route::post('/categories/{category}/disable', [CategoryController::class, 'disable'])->name('categories.disable');
-        Route::post('/categories/{category}/restore', [CategoryController::class, 'restore'])->name('categories.restore');
         
         // Products Management
         Route::resource('products', ProductController::class);

@@ -22,7 +22,8 @@ Route::get('/about', function () {
 Route::get('/contact', [ContactController::class, 'show'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+// Route removed: categories index page deleted as requested
+// Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{slug}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

@@ -235,7 +235,7 @@
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}" 
                         {{ request('category') == $category->id ? 'selected' : '' }}>
-                        {{ $category->name_ar ?? $category->name_en }}
+                        {{ $category->name }}
                     </option>
                 @endforeach
             </select>
@@ -264,7 +264,7 @@
             <div class="product-info">
                 <h3 class="product-title">{{ $product->name }}</h3>
                 <p class="product-description">{{ Str::limit($product->description, 80) }}</p>
-                <div class="product-category">{{ $product->category->name_ar ?? $product->category->name_en }}</div>
+                <div class="product-category">{{ $product->category->name }}</div>
                 
                 <div class="product-footer">
                     <a href="{{ route('products.show', $product->slug) }}" class="rent-button">

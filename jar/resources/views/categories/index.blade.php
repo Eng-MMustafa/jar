@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@php abort(404) @endphp
 @section('title', 'الأقسام - تجار')
 
 @section('content')
@@ -29,7 +30,7 @@
                     </div>
                     <div class="category-info">
                         <h3 class="category-title">
-                            {{ $category->name_ar ?? $category->name_en }}
+                            {{ $category->name }}
                         </h3>
                         <p class="category-description">
                             {{ Str::limit($category->description_ar ?? $category->description_en ?? 'لا يوجد وصف متاح', 100) }}

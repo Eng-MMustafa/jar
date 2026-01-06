@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $product->name_ar ?? $product->name_en . ' - تجار')
+@section('title', $product->name . ' - تجار')
 
 @section('content')
 <style>
@@ -861,9 +861,9 @@
 <div class="breadcrumb">
     <a href="{{ route('home') }}">الرئيسية</a>
     <span>/</span>
-    <a href="{{ route('categories.show', $product->category->slug) }}">{{ $product->category->name_ar ?? $product->category->name_en }}</a>
+    <a href="{{ route('categories.show', $product->category->slug) }}">{{ $product->category->name }}</a>
     <span>/</span>
-    <span>{{ $product->name_ar ?? $product->name_en }}</span>
+    <span>{{ $product->name }}</span>
 </div>
 
 <!-- Main Product Details -->
@@ -873,7 +873,7 @@
         <div class="product-images">
             <div class="main-image">
                 @if($product->images && $product->images->first())
-                    <img id="mainImage" src="{{ asset($product->images->first()->image_path) }}" alt="{{ $product->name_ar ?? $product->name_en }}">
+                    <img id="mainImage" src="{{ asset($product->images->first()->image_path) }}" alt="{{ $product->name }}">
                 @else
                     <img id="mainImage" src="{{ asset('images/placeholder.png') }}" alt="صورة المنتج">
                 @endif
@@ -883,7 +883,7 @@
             <div class="image-gallery">
                 @foreach($product->images as $image)
                     <img src="{{ asset($image->image_path) }}" 
-                         alt="{{ $product->name_ar ?? $product->name_en }}"
+                         alt="{{ $product->name }}"
                          onclick="changeMainImage(this)"
                          class="gallery-thumb {{ $loop->first ? 'active' : '' }}">
                 @endforeach
@@ -893,9 +893,9 @@
 
         <!-- Product Information -->
         <div class="product-info">
-            <div class="product-category">{{ $product->category->name_ar ?? $product->category->name_en }}</div>
+<div class="product-category">{{ $product->category->name }}</div>
 
-            <h1 class="product-title">{{ $product->name_ar ?? $product->name_en }}</h1>
+            <h1 class="product-title">{{ $product->name }}</h1>
 
             <p class="product-description">{{ $product->description ?? 'مجموعة من المعدات المناسبة للأنشطة الخارجية والرياضة' }}</p>
 
@@ -1149,7 +1149,7 @@
             <div class="product-card">
                 <div class="product-image">
                     @if($relProduct->images && $relProduct->images->first())
-                        <img src="{{ asset($relProduct->images->first()->image_path) }}" alt="{{ $relProduct->name_ar ?? $relProduct->name_en }}">
+                        <img src="{{ asset($relProduct->images->first()->image_path) }}" alt="{{ $relProduct->name }}">
                     @else
                         <img src="{{ asset('images/placeholder.png') }}" alt="placeholder">
                     @endif
@@ -1160,7 +1160,7 @@
                 </div>
 
                 <div class="card-info">
-                    <h3 class="card-title">{{ $relProduct->name_ar ?? $relProduct->name_en }}</h3>
+                    <h3 class="card-title">{{ $relProduct->name }}</h3>
                     <p class="card-description">{{ Str::limit($relProduct->description, 50) }}</p>
                     <div class="card-footer">
                         <a href="{{ route('products.show', $relProduct->slug) }}" class="card-btn">تفاصيل</a>

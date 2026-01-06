@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $category->name_ar ?? $category->name_en . ' - تجار')
+@section('title', $category->name . ' - تجار')
 
 @section('content')
 <style>
@@ -219,9 +219,9 @@
     <div class="breadcrumb">
         <a href="{{ route('home') }}">الرئيسية</a>
         <span>></span>
-        <a href="{{ route('categories.index') }}">الأقسام</a>
+        <span>الأقسام</span>
         <span>></span>
-        <span>{{ $category->name_ar ?? $category->name_en }}</span>
+        <span>{{ $category->name }}</span>
     </div>
 
     <div style="display: grid; grid-template-columns: 280px 1fr; gap: 2rem; margin-bottom: 2rem;">
@@ -318,7 +318,7 @@
 
     <!-- Category Header -->
     <div class="category-header">
-        <h1>{{ $category->name_ar ?? $category->name_en }}</h1>
+        <h1>{{ $category->name }}</h1>
         <p>{{ $category->description_ar ?? $category->description_en ?? 'اكتشف أفضل المنتجات في هذا القسم' }}</p>
     </div>
 
@@ -377,7 +377,7 @@
             <div class="product-info">
                 <h3 class="product-title">{{ $product->name }}</h3>
                 <p class="product-description">{{ Str::limit($product->description, 80) }}</p>
-                <div class="product-category">{{ $product->category->name_ar ?? $product->category->name_en }}</div>
+                <div class="product-category">{{ $product->category->name }}</div>
                 
                 <div class="product-footer">
                     <a href="{{ route('products.show', $product->slug) }}" class="rent-button">

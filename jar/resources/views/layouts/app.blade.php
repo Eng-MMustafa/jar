@@ -185,7 +185,7 @@
                         </button>
                         <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg right-0 mt-0 min-w-64 z-50 border border-gray-200 overflow-hidden">
                             @php
-                                $categories = \App\Models\Category::where('is_active', true)->take(8)->get();
+                                $categories = \App\Models\Category::where('is_active', true)->orderBy('sort_order')->take(8)->get();
                             @endphp
                             @if($categories->count() > 0)
                                 @foreach($categories as $cat)
@@ -193,10 +193,10 @@
                                         <svg class="w-4 h-4 text-teal-500 opacity-0 group-hover/item:opacity-100" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5.951-1.488 5.951 1.488a1 1 0 001.169-1.409l-7-14z"/>
                                         </svg>
-                                        <span>{{ $cat->name_ar ?? $cat->name_en }}</span>
+                                        <span>{{ $cat->name }}</span>
                                     </a>
                                 @endforeach
-                                <a href="{{ route('categories.index') }}" class="block px-5 py-3 text-teal-600 hover:bg-teal-50 text-sm font-medium border-t-2 border-teal-100 transition duration-200">عرض جميع الأقسام →</a>
+
                             @else
                                 <span class="block px-5 py-3 text-gray-500 text-sm">لا توجد أقسام متاحة</span>
                             @endif
@@ -308,7 +308,7 @@
                     <ul class="space-y-3 text-sm">
                         <li><a href="{{ route('home') }}" class="text-teal-100 hover:text-white transition">الرئيسية</a></li>
                         <li><a href="{{ route('about') }}" class="text-teal-100 hover:text-white transition">من نحن</a></li>
-                        <li><a href="{{ route('categories.index') }}" class="text-teal-100 hover:text-white transition">الأقسام الرئيسية</a></li>
+                        <li><span class="text-teal-100">الأقسام الرئيسية</span></li>
                         <li><a href="{{ route('products.index') }}" class="text-teal-100 hover:text-white transition">أحدث المنتجات</a></li>
                         <li><a href="{{ route('contact') }}" class="text-teal-100 hover:text-white transition">تواصل معنا</a></li>
                     </ul>
