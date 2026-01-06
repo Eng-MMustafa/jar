@@ -40,7 +40,16 @@ class ProductController extends Controller
                 ->exists();
         }
 
-        return view('products.show', compact('product', 'isFavorited', 'hasRated'));
+        // Owner / lender info (counts computed from DB)
+        $owner = $product->user;
+        $ownerProductsCount = $owner ? $owner->products()->count() : 0;
+        $ownerRentalsCount = \App\Models\OrderItem::whereHas('product', function($q) use ($owner) {
+            if (! $owner) return;
+            $q->where('user_id', $owner->id);
+        })->count();
+
+        return view('products.show', compact('product', 'isFavorited', 'hasRated', 'owner', 'ownerProductsCount', 'ownerRentalsCount'));
+
     }
 
     /**

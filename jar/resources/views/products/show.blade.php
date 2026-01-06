@@ -1060,20 +1060,38 @@
         <div id="owner" class="tab-content">
             <div class="owner-info">
                 <div class="owner-avatar">
-                    <img src="{{ asset('images/avatar.png') }}" alt="صورة المالك" onerror="this.src='https://via.placeholder.com/80'">
+                    @php
+                        $ownerAvatar = null;
+                        if (!empty($product->user->hand_photo)) { $ownerAvatar = asset($product->user->hand_photo); }
+                        elseif (!empty($product->user->avatar)) { $ownerAvatar = asset($product->user->avatar); }
+                        else { $ownerAvatar = asset('images/avatar.png'); }
+                    @endphp
+                    <img src="{{ $ownerAvatar }}" alt="صورة المالك" onerror="this.src='https://via.placeholder.com/80'">
                 </div>
                 <div class="owner-details">
-                    <h3>{{ $product->user->name ?? 'المالك' }}</h3>
-                    <p>عضو منذ {{ $product->user->created_at ? $product->user->created_at->format('Y') : '2025' }}</p>
+                    <h3>{{ $product->user->name ?? $product->user->full_name ?? 'المالك' }}</h3>
+                    <p>عضو منذ {{ $product->user && $product->user->created_at ? $product->user->created_at->format('Y') : '' }}</p>
                     <div class="owner-stats">
                         <div class="stat">
-                            <span class="stat-number">{{ rand(10, 50) }}</span>
+                            <span class="stat-number">{{ $ownerProductsCount ?? 0 }}</span>
                             <span class="stat-label">منتج</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">{{ rand(100, 500) }}</span>
+                            <span class="stat-number">{{ $ownerRentalsCount ?? 0 }}</span>
                             <span class="stat-label">تأجير</span>
                         </div>
+                    </div>
+
+                    @if(!empty($product->user->business_name) || !empty($product->user->business_description))
+                        <div class="mt-3 text-right">
+                            @if(!empty($product->user->business_name))
+                                <div class="font-semibold">{{ $product->user->business_name }}</div>
+                            @endif
+                            @if(!empty($product->user->business_description))
+                                <div class="text-sm text-gray-600 mt-1">{{ Str::limit($product->user->business_description, 180) }}</div>
+                            @endif
+                        </div>
+                    @endif
                     </div>
                 </div>
             </div>
