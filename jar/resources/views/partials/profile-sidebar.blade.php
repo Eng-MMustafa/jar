@@ -64,7 +64,8 @@
 .profile-header-info h2 { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.25rem; }
 .profile-header-info p { color: var(--text-light); font-size: 0.9rem; }
 
-.profile-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;position:relative; }
+.profile-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;position:relative; overflow:hidden; }
+.profile-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
 .avatar-badge { position:absolute; bottom:0; left:0; width:26px; height:26px; background:var(--success); border:3px solid white; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:0.65rem; }
 
 .status-badge { display:inline-block; padding:0.35rem 0.6rem; background:#e8f5e9; color:var(--success); border-radius:16px; font-size:0.82rem; font-weight:600; margin-top:0.4rem; }
@@ -92,7 +93,7 @@
             @endif
         </div>
         <div class="profile-avatar">
-            <i class="fas fa-user"></i>
+            <img src="{{ auth()->user()->avatar ? asset(auth()->user()->avatar) : asset('images/avatar.png') }}" alt="{{ auth()->user()->name }}">
             <div class="avatar-badge">
                 <i class="fas fa-check" style="font-size: 0.6rem;"></i>
             </div>
