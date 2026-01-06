@@ -52,6 +52,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         
         // Categories Management (simple CRUD)
         Route::resource('categories', CategoryController::class);
+        // Toggle active state for categories (AJAX-friendly)
+        Route::post('/categories/{category}/toggle', [CategoryController::class, 'toggle'])->name('categories.toggle');
         
         // Products Management
         Route::resource('products', ProductController::class);
