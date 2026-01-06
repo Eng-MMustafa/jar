@@ -164,4 +164,10 @@ class Product extends Model
         if ($this->stock_quantity == 0) return 'Out of Stock';
         return 'Available';
     }
+
+    // Comments relation
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->where('is_visible', true)->latest();
+    }
 }

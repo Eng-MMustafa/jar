@@ -254,6 +254,10 @@
         border-color: #ff6b6b;
     }
 
+    /* Rating stars */
+    .rating-star { cursor: pointer; font-size: 1.25rem; transition: transform .12s ease, color .12s ease; outline: none; }
+    .rating-star:hover { color: #f59e0b; transform: scale(1.08); }
+    .rating-star.text-yellow-400, .rating-star[aria-pressed="true"] { color: #f59e0b; transform: none; }
     .payment-methods {
         display: flex;
         gap: 1rem;
@@ -1093,48 +1097,17 @@
                     <!-- Reviews List -->
                     <div class="reviews-list">
                         <h3>تعليقات المستخدمين</h3>
-                        
-                        <div class="review-item">
-                            <div class="review-header">
-                                <div class="reviewer-info">
-                                    <div class="reviewer-details">
-                                        <div class="reviewer-name">محمد خالد</div>
-                                        <div class="review-rating">★★★★</div>
-                                    </div>
-                                    <img src="https://via.placeholder.com/40" alt="محمد خالد" class="reviewer-avatar">
-                                </div>
-                                <div class="review-date">13/10/2025</div>
-                            </div>
-                            <div class="review-text">خدمة رائعة وسهلة، والدعم الفني متعاون جداً. أنصح بالتجربة!</div>
+
+                        {{-- تعليق: التعليقات القادمة من قاعدة البيانات ستظهر هنا --}}
+
+                        <!-- Comments List (DB) -->
+                        <div id="commentsList" class="mt-6">
+                            @foreach($product->comments as $comment)
+                                @include('products._comment', ['comment' => $comment])
+                            @endforeach
                         </div>
 
-                        <div class="review-item">
-                            <div class="review-header">
-                                <div class="reviewer-info">
-                                    <div class="reviewer-details">
-                                        <div class="reviewer-name">رضا محمد</div>
-                                        <div class="review-rating">★★★★</div>
-                                    </div>
-                                    <img src="https://via.placeholder.com/40" alt="رضا محمد" class="reviewer-avatar">
-                                </div>
-                                <div class="review-date">13/10/2025</div>
-                            </div>
-                            <div class="review-text">تعامل محترف وسريع في الإيجار، ما توقعت تكون التجربة بالسهولة دي يعطيكم العافية!</div>
-                        </div>
 
-                        <div class="review-item">
-                            <div class="review-header">
-                                <div class="reviewer-info">
-                                    <div class="reviewer-details">
-                                        <div class="reviewer-name">رضا محمد</div>
-                                        <div class="review-rating">★★★★</div>
-                                    </div>
-                                    <img src="https://via.placeholder.com/40" alt="رضا محمد" class="reviewer-avatar">
-                                </div>
-                                <div class="review-date">13/10/2025</div>
-                            </div>
-                            <div class="review-text">تعامل محترف وسريع في الإيجار، ما توقعت تكون التجربة بالسهولة دي يعطيكم العافية!</div>
-                        </div>
                     </div>
                     
                     <div class="load-more">
@@ -1146,22 +1119,54 @@
                 <div class="reviews-sidebar">
                     <!-- Rating Summary -->
                     <div class="rating-summary">
-                        <div class="overall-rating">
-                            <span class="rating-number">4.5</span>
-                            <span class="rating-text">من 5</span>
-                        </div>
-                        <div class="rating-stars">
-                            <span style="color: #ffc107;">★★★★</span><span style="color: #ddd;">★</span>
-                        </div>
-                        <div class="rating-count">60 تقييم على المنتج</div>
+                        @php
+                            $ratingsCount = $product->comments()->whereNotNull('rating')->count();
+                            $avgRating = $ratingsCount ? round($product->comments()->whereNotNull('rating')->avg('rating'), 1) : null;
+                            $fullStars = $avgRating ? (int) floor($avgRating) : 0;
+                        @endphp
+
+                        @if($ratingsCount)
+                            <div class="overall-rating">
+                                <span class="rating-number">{{ $avgRating }}</span>
+                                <span class="rating-text">من 5</span>
+                            </div>
+                            <div class="rating-stars" aria-hidden="true">
+                                @for($i=1;$i<=5;$i++)
+                                    @if($i <= $fullStars)
+                                        <span style="color: #ffc107;">★</span>
+                                    @else
+                                        <span style="color: #ddd;">★</span>
+                                    @endif
+                                @endfor
+                            </div>
+                            <div class="rating-count">{{ $ratingsCount }} تقييم</div>
+                        @else
+                            <div class="text-sm text-gray-500">لا توجد تقييمات بعد</div>
+                        @endif
+
                     </div>
 
-                    <!-- Comment Form -->
-                    <div class="comment-form">
+                    <!-- Comment Form (sidebar) -->
+                    <div class="comment-form mt-6">
                         <h3><span>*</span> أضف تعليقك</h3>
-                        <textarea placeholder="يرجى إضافة تعليقك .."></textarea>
-                        <button class="btn-submit-comment">نشر تعليقك</button>
+                        <textarea id="commentBody" placeholder="يرجى إضافة تعليقك .." class="w-full border border-gray-300 rounded px-3 py-2 mt-2"></textarea>
+
+                        <div class="mt-3">
+                            <label class="block text-sm text-gray-700 mb-2">قيم المنتج</label>
+                            <div id="ratingStars" class="flex gap-1">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <button type="button" class="rating-star text-gray-300 cursor-pointer" data-value="{{ $i }}" aria-pressed="false" aria-label="تقييم {{ $i }} من 5">★</button>
+                                @endfor
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1">يمكنك إعطاء تقييم واحد فقط</div>
+                        </div>
+
+                        <div class="mt-3 flex items-center gap-3">
+                            <button id="submitComment" class="btn-submit-comment bg-teal-600 text-white px-4 py-2 rounded">نشر تعليقك</button>
+                            <div id="commentError" class="text-sm text-red-600 hidden"></div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -1241,6 +1246,96 @@
         document.getElementById(tabName).classList.add('active');
         evt.currentTarget.classList.add('active');
     }
+
+    // Comment submission (AJAX) with delegated rating-star clicks
+    (function(){
+        const isAuth = @json(auth()->check());
+        let hasRated = @json($hasRated ?? false);
+        const submitBtn = document.getElementById('submitComment');
+        const textarea = document.getElementById('commentBody');
+        const errorEl = document.getElementById('commentError');
+        const commentsList = document.getElementById('commentsList');
+        let selectedRating = null;
+
+        // Delegated click for rating-stars (works even if DOM changes)
+        document.addEventListener('click', function(e){
+            const star = e.target.closest('.rating-star');
+            if (!star) return;
+            // prevent any default behaviour (form submit or focus) and stop propagation
+            e.preventDefault();
+            e.stopPropagation();
+            star.blur();
+
+            if (hasRated) { alert('لقد قمت بتقييم هذا المنتج سابقاً'); return; }
+
+            const value = parseInt(star.getAttribute('data-value'));
+            selectedRating = value;
+
+            const container = document.getElementById('ratingStars');
+            if (!container) return;
+            const stars = Array.from(container.querySelectorAll('.rating-star'));
+            stars.forEach((s, idx) => {
+                const pressed = idx < value;
+                s.classList.toggle('text-yellow-400', pressed);
+                s.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+            });
+        });
+
+        if (!submitBtn) return;
+
+        submitBtn.addEventListener('click', function(e){
+            e.preventDefault();
+
+            if (!isAuth) { window.location = "{{ route('login') }}?redirect=" + encodeURIComponent(window.location.pathname); return; }
+
+            const body = (textarea.value || '').trim();
+            if (!body) { errorEl.textContent = 'الرجاء كتابة تعليق صالح.'; errorEl.classList.remove('hidden'); return; }
+
+            errorEl.classList.add('hidden'); submitBtn.disabled = true;
+
+            const tokenEl = document.querySelector('meta[name="csrf-token"]');
+            if (!tokenEl) { alert('Please reload the page (missing CSRF token)'); submitBtn.disabled=false; return; }
+            const token = tokenEl.getAttribute('content');
+
+            fetch("{{ route('products.comments.store', $product) }}", {
+                method: 'POST', headers: { 'Content-Type': 'application/json','Accept': 'application/json','X-CSRF-TOKEN': token },
+                body: JSON.stringify({ body, rating: selectedRating })
+            }).then(async r => {
+                if (r.status === 401) { window.location = "{{ route('login') }}?redirect=" + encodeURIComponent(window.location.pathname); return; }
+                if (r.status === 422) { const json = await r.json(); errorEl.textContent = (json.errors && (json.errors.body || json.errors.rating)) ? (json.errors.body ? json.errors.body[0] : json.errors.rating[0]) : 'خطأ في الإدخال.'; errorEl.classList.remove('hidden'); return; }
+                return r.json();
+            }).then(data => {
+                if (!data || !data.html) return;
+                // Insert the new review item into the DB-driven comments container so it appears instantly
+                const commentsListEl = document.getElementById('commentsList');
+                if (commentsListEl) {
+                    commentsListEl.insertAdjacentHTML('afterbegin', data.html);
+                } else {
+                    const reviewsList = document.querySelector('.reviews-list');
+                    const h3 = reviewsList ? reviewsList.querySelector('h3') : null;
+                    if (h3) { h3.insertAdjacentHTML('afterend', data.html); }
+                }
+
+                textarea.value = '';
+                selectedRating = null;
+
+                if (data.html && data.html.includes('review-rating')) {
+                    hasRated = true;
+                    const container = document.getElementById('ratingStars');
+                    if (container) {
+                        container.querySelectorAll('.rating-star').forEach(s => {
+                            s.classList.add('opacity-50','cursor-not-allowed');
+                            s.setAttribute('aria-disabled', 'true');
+                        });
+                        const note = document.createElement('div');
+                        note.className = 'text-xs text-gray-500 mt-1';
+                        note.textContent = 'لقد قمت بتقييم هذا المنتج مسبقًا.';
+                        container.after(note);
+                    }
+                }
+            }).catch(()=>{ errorEl.textContent = 'حدث خطأ، حاول مرة أخرى.'; errorEl.classList.remove('hidden'); }).finally(()=> submitBtn.disabled = false);
+        });
+    })();
 </script>
 
 

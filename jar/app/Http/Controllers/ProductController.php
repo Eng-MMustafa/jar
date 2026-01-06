@@ -31,11 +31,16 @@ class ProductController extends Controller
         $product = Product::with('category', 'user', 'images')->where('slug', $slug)->firstOrFail();
 
         $isFavorited = false;
+        $hasRated = false;
         if (auth()->check()) {
             $isFavorited = auth()->user()->favorites()->where('product_id', $product->id)->exists();
+            $hasRated = \App\Models\Comment::where('product_id', $product->id)
+                ->where('user_id', auth()->id())
+                ->whereNotNull('rating')
+                ->exists();
         }
 
-        return view('products.show', compact('product', 'isFavorited'));
+        return view('products.show', compact('product', 'isFavorited', 'hasRated'));
     }
 
     /**

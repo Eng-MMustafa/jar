@@ -75,6 +75,9 @@ Route::middleware('auth')->group(function () {
 
     // Favorites (requires auth)
     Route::post('/products/{product}/favorite', [ProductController::class, 'toggleFavorite'])->name('products.favorite');
+
+    // Product comments (requires auth)
+    Route::post('/products/{product}/comments', [App\Http\Controllers\ProductCommentController::class, 'store'])->name('products.comments.store');
     
     Route::get('/chat', [ProfileController::class, 'chat'])->name('chat');
     Route::get('/massage', [ProfileController::class, 'massage'])->name('massage');
