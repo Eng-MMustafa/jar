@@ -444,34 +444,13 @@
                         @endforeach
                     </div>
                 @else
-                    <div class="bookings-list">
-                        <div class="booking-item">
-                            <span class="status-badge">نشط</span>
-                            <div class="booking-thumb">
-                                    <img src="{{ asset('images/placeholder.svg') }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="booking-info">
-                                <div class="booking-title">عربة للإيجار اليومي</div>
-                                <div class="booking-meta">من : 28 - 12 - 2025 &nbsp; إلى : 28 - 12 - 2025</div>
-                                <div class="booking-meta" style="margin-top:6px;">إجمالي السعر: <strong style="color:var(--primary);">120 ر.س</strong></div>
-                                <div style="margin-top:10px;display:flex;gap:8px;">
-                                    <a href="#" class="details-btn">عرض التفاصيل</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="booking-item">
-                            <span class="status-badge">نشط</span>
-                            <div class="booking-thumb">
-                                <img src="{{ asset('images/placeholder.svg') }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="booking-info">
-                                <div class="booking-title">عربة للإيجار اليومي</div>
-                                <div class="booking-meta">من : 28 - 12 - 2025 &nbsp; إلى : 28 - 12 - 2025</div>
-                                <div class="booking-meta" style="margin-top:6px;">إجمالي السعر: <strong style="color:var(--primary);">120 ر.س</strong></div>
-                                <div style="margin-top:10px;display:flex;gap:8px;">
-                                    <a href="#" class="details-btn">عرض التفاصيل</a>
-                                </div>
+                    <div class="empty-state" style="margin-top:0;">
+                        <div class="empty-icon">📭</div>
+                        <div class="empty-text">
+                            <h3 class="empty-title">لا توجد حجوزات حتى الآن</h3>
+                            <p class="empty-message">لم تقم بإنشاء أية حجوزات حتى الآن. عند إتمام أي حجز سيظهر هنا ملخص الحجز وحالة الدفع.</p>
+                            <div style="margin-top:0.75rem;">
+                                <a href="{{ route('products.index') }}" class="btn">تصفح المنتجات</a>
                             </div>
                         </div>
                     </div>
