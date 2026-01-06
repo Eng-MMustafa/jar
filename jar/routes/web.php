@@ -36,6 +36,13 @@ Route::get('/bookings/completion', function () {
     return view('bookings.completion');
 })->name('bookings.completion');
 
+// Payment (bank transfer) pages for a booking
+Route::get('/bookings/{booking}/payment', [App\Http\Controllers\BookingController::class, 'payment'])->name('bookings.payment');
+Route::post('/bookings/{booking}/payment', [App\Http\Controllers\BookingController::class, 'submitPayment'])->name('bookings.payment.submit');
+Route::get('/bookings/{booking}/payment/success', function (\App\Models\Booking $booking) {
+    return view('bookings.payment-success', compact('booking'));
+})->name('bookings.payment.success');
+
 Route::get('/bookings/bank-details', function () {
     return view('bookings.bank-details');
 })->name('bookings.bank-details');

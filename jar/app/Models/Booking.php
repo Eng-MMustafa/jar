@@ -9,6 +9,15 @@ class Booking extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+        'price_per_night' => 'decimal:2',
+        'security_deposit' => 'decimal:2',
+        'total' => 'decimal:2',
+        'transfer_submitted_at' => 'datetime',
+    ];
+
     protected $fillable = [
         'user_id',
         'product_id',
@@ -21,14 +30,10 @@ class Booking extends Model
         'total',
         'status',
         'notes',
-    ];
-
-    protected $casts = [
-        'start_date' => 'date',
-        'end_date' => 'date',
-        'price_per_night' => 'decimal:2',
-        'security_deposit' => 'decimal:2',
-        'total' => 'decimal:2',
+        'transfer_proof_path',
+        'transfer_status',
+        'transfer_submitted_at',
+        'transfer_note',
     ];
 
     public function user()

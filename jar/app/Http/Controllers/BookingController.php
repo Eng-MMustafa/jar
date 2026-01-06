@@ -55,6 +55,48 @@ class BookingController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->route('bookings.completion')->with('success', 'تم إنشاء الحجز بنجاح')->with('booking_id', $booking->id);
+        return redirect()->route('bookings.payment', ['booking' => $booking->id]);
+    }
+
+    // Show payment (bank transfer) page for a booking
+    public function payment(\Illuminate\Http\Request $request, \App\Models\Booking $booking)
+    {
+        // ensure the current user owns the booking
+        if ($booking->user_id !== $request->user()->id) {
+            return redirect()->route('profile.bookings')->with('error', 'هذا الحجز غير متاح لك.');
+        }
+
+        $product = $booking->product()->with('images')->first();
+
+        return view('bookings.payment', compact('booking', 'product'));
+    }
+
+    // Handle transfer upload
+    public function submitPayment(Request $request, \App\Models\Booking $booking)
+    {
+        if ($booking->user_id !== $request->user()->id) {
+            return redirect()->route('profile.bookings')->with('error', 'هذا الحجز غير متاح لك.');
+        }
+
+        $validated = $request->validate([
+            'transfer_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:5120',
+            'transfer_note' => 'nullable|string|max:2000',
+        ]);
+
+        if ($request->hasFile('transfer_proof')) {
+            $file = $request->file('transfer_proof');
+            $path = $file->store('bookings/transfers', 'public');
+
+            $booking->update([
+                'transfer_proof_path' => $path,
+                'transfer_status' => 'submitted',
+                'transfer_submitted_at' => now(),
+                'transfer_note' => $validated['transfer_note'] ?? null,
+            ]);
+        }
+
+        // notify admin or lender here if needed
+
+        return redirect()->route('bookings.payment.success', ['booking' => $booking->id]);
     }
 }

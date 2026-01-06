@@ -422,16 +422,22 @@
                     <div class="bookings-list">
                         @foreach($bookings as $booking)
                             <div class="booking-item">
-                                <span class="status-badge">نشط</span>
+                                <span class="status-badge">{{ ucfirst($booking->status) }}</span>
                                 <div class="booking-thumb">
-                                    <img src="{{ optional($booking->items->first())->product->image_url ?? asset('images/placeholder.svg') }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
+                                    <img src="{{ $booking->product && $booking->product->images->first() ? asset($booking->product->images->first()->image_path) : asset('images/placeholder.svg') }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
                                 </div>
                                 <div class="booking-info">
-                                    <div class="booking-title">{{ optional($booking->items->first())->product->name ?? 'عربة للإيجار اليومي' }}</div>
-                                    <div class="booking-meta">من : 28 - 12 - 2025 &nbsp; إلى : 28 - 12 - 2025</div>
-                                    <div class="booking-meta" style="margin-top:6px;">إجمالي السعر: <strong style="color:var(--primary);">120 ر.س</strong></div>
+                                    <div class="booking-title">{{ $booking->product?->name ?? 'منتج محجوز' }}</div>
+                                    <div class="booking-meta">من : {{ $booking->start_date->format('d - m - Y') }} &nbsp; إلى : {{ $booking->end_date->format('d - m - Y') }}</div>
+                                    <div class="booking-meta" style="margin-top:6px;">إجمالي السعر: <strong style="color:var(--primary);">{{ number_format($booking->total, 2) }} ر.س</strong></div>
                                     <div style="margin-top:10px;display:flex;gap:8px;">
-                                        <a href="#" class="details-btn">عرض التفاصيل</a>
+                                        @if($booking->transfer_status === 'not_sent')
+                                            <a href="{{ route('bookings.payment', ['booking' => $booking->id]) }}" class="details-btn">إرسال الإيصال</a>
+                                        @elseif($booking->transfer_status === 'submitted')
+                                            <a href="{{ route('bookings.payment', ['booking' => $booking->id]) }}" class="details-btn">عرض الإيصال</a>
+                                        @else
+                                            <a href="{{ route('bookings.payment', ['booking' => $booking->id]) }}" class="details-btn">عرض التفاصيل</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

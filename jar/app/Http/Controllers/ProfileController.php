@@ -146,7 +146,8 @@ class ProfileController extends Controller
      */
     public function bookings()
     {
-        $bookings = auth()->user()->orders()->latest()->paginate(10);
+        // show actual bookings made by the user
+        $bookings = auth()->user()->bookings()->with(['product.images'])->latest()->paginate(10);
         return view('profile.bookings', compact('bookings'));
     }
 

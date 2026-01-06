@@ -437,7 +437,19 @@
 
             <div class="summary-note">* الأسعار شاملة للرسوم</div>
 
-            <button class="btn-complete">إتمام الطلب</button>
+            @php
+                $bookingId = session('booking_id') ?? request()->query('booking');
+                if (!$bookingId && auth()->check()) {
+                    $latest = auth()->user()->bookings()->latest()->first();
+                    $bookingId = $latest?->id;
+                }
+            @endphp
+
+            @if($bookingId)
+                <a href="{{ route('bookings.payment', ['booking' => $bookingId]) }}" class="btn-complete inline-block text-center">إتمام الطلب</a>
+            @else
+                <a href="{{ route('profile.bookings') }}" class="btn-complete inline-block text-center">إتمام الطلب</a>
+            @endif
         </div>
 
         <!-- Right Side - Booking Details -->
