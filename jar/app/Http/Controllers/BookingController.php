@@ -99,4 +99,27 @@ class BookingController extends Controller
 
         return redirect()->route('bookings.payment.success', ['booking' => $booking->id]);
     }
+
+    // Owner approves booking
+    public function approve(Request $request, \App\Models\Booking $booking)
+    {
+        if ($booking->product->user_id !== $request->user()->id) {
+            return redirect()->back()->with('error', 'غير مسموح');
+        }
+
+        $booking->update(['status' => 'approved']);
+
+        return redirect()->back()->with('success', 'تمت الموافقة على الطلب');
+    }
+
+    public function reject(Request $request, \App\Models\Booking $booking)
+    {
+        if ($booking->product->user_id !== $request->user()->id) {
+            return redirect()->back()->with('error', 'غير مسموح');
+        }
+
+        $booking->update(['status' => 'rejected']);
+
+        return redirect()->back()->with('success', 'تم رفض الطلب');
+    }
 }

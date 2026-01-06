@@ -76,6 +76,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/bookings/create', [App\Http\Controllers\BookingController::class, 'create'])->name('bookings.create');
     Route::post('/bookings', [App\Http\Controllers\BookingController::class, 'store'])->name('bookings.store');
 
+    // Owner approve/reject
+    Route::post('/bookings/{booking}/approve', [App\Http\Controllers\BookingController::class, 'approve'])->name('bookings.approve');
+    Route::post('/bookings/{booking}/reject', [App\Http\Controllers\BookingController::class, 'reject'])->name('bookings.reject');
+
     // My Products Management routes
     Route::get('/products-me', [ProfileController::class, 'myProducts'])->name('my-products.index');
     Route::get('/products-me/create', [ProfileController::class, 'createProduct'])->name('my-products.create');

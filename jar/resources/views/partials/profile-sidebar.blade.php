@@ -126,7 +126,7 @@
         <a href="{{ route('my-products.index') }}" title="إدارة المنتجات">
             <i class="fas fa-box"></i> إدارة المنتجات
         </a>
-        <a href="{{ route('profile.support-tickets') }}" title="طلبات الإيجار الجديدة">
+        <a href="{{ route('new-rental-orders') }}" title="طلبات الإيجار الجديدة">
             <i class="fas fa-calendar-plus"></i> طلبات الإيجار الجديدة
         </a>
         <form action="{{ route('logout') }}" method="POST">
