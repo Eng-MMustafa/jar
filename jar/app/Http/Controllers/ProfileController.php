@@ -43,7 +43,29 @@ class ProfileController extends Controller
             'last_name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
             'city' => 'required|string|max:255',
+            'avatar' => 'nullable|image|max:2048',
         ]);
+
+        // Handle avatar upload
+        if ($request->hasFile('avatar')) {
+            $file = $request->file('avatar');
+            $path = $file->store('avatars', 'public'); // e.g. avatars/xxx.jpg
+            $publicPath = 'storage/' . $path; // we'll store with storage/ prefix so asset() works
+
+            // remove old avatar file (if previously uploaded and stored under storage/)
+            $old = auth()->user()->avatar;
+            if ($old && str_starts_with($old, 'storage/')) {
+                // delete the file from public disk
+                try {
+                    $oldRelative = substr($old, strlen('storage/'));
+                    \Illuminate\Support\Facades\Storage::disk('public')->delete($oldRelative);
+                } catch (\Throwable $e) {
+                    // ignore deletion errors
+                }
+            }
+
+            $validated['avatar'] = $publicPath;
+        }
 
         auth()->user()->update($validated);
 

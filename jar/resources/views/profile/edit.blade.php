@@ -361,7 +361,7 @@
             <div class="form-card">
                 <h1 class="page-title">تعديل البيانات الشخصية</h1>
 
-                <form action="{{ route('profile.update') }}" method="POST">
+                <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -405,6 +405,17 @@
                             <option value="جازان" @selected(auth()->user()->city === 'جازان')>جازان</option>
                             <option value="الباحة" @selected(auth()->user()->city === 'الباحة')>الباحة</option>
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">الصورة الشخصية</label>
+                        <div style="display:flex;gap:1rem;align-items:center;">
+                            <div style="width:72px;height:72px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+                                <img src="{{ auth()->user()->avatar ? asset(auth()->user()->avatar) : asset('images/avatar.png') }}" alt="avatar" style="width:100%;height:100%;object-fit:cover;">
+                            </div>
+                            <input type="file" name="avatar" accept="image/*">
+                        </div>
+                        <small class="text-gray-500">أقصى حجم للصورة 2MB. (jpg, png, gif)</small>
                     </div>
 
                     <div class="btn-group">

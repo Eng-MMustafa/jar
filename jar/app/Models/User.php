@@ -32,6 +32,7 @@ class User extends Authenticatable
         'business_name',
         'business_description',
         'hand_photo',
+        'avatar',
         'bank_account_name',
         'bank_iban',
         'bank_account_number',
