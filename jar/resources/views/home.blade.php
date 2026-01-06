@@ -288,92 +288,46 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Product 1: عدة للايجار البحري -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100">
-                <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
-                    <img src="{{ asset('images/Images/Image-4.png') }}" alt="عدة للايجار البحري" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                    <!-- Rating -->
-                    <div class="absolute top-3 right-3 flex items-center bg-white rounded-full px-2 py-1 shadow-sm">
-                        <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                        <span class="text-sm font-medium">4.2</span>
+            @if(isset($mostRented) && $mostRented->count())
+                @foreach($mostRented as $product)
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100 product-card" role="link" tabindex="0" aria-label="عرض المنتج {{ $product->name }}" onclick="window.location='{{ route('products.show', $product->slug) }}'" onkeydown="if(event.key==='Enter'){window.location='{{ route('products.show', $product->slug) }}'}" style="cursor:pointer;">
+                        <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
+                            <img src="{{ $product->images->first() ? asset($product->images->first()->image_path) : asset('images/placeholder-product.svg') }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                            @if($product->rating > 0)
+                                <div class="absolute top-3 right-3 flex items-center bg-white rounded-full px-2 py-1 shadow-sm">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <span class="text-sm font-medium">{{ number_format($product->rating,1) }}</span>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-gray-800 text-sm mb-2">{{ $product->name }}</h3>
+                            <p class="text-gray-600 text-xs mb-2">{{ Str::limit($product->description, 80) }}</p>
+                            <p class="text-gray-500 text-xs mb-3 flex items-center justify-end gap-2">
+                                <span>{{ $product->city }}</span>
+                                <span>-</span>
+                                <span>{{ $product->category?->name }}</span>
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="text-teal-600 font-bold text-lg">
+                                    @if($product->is_rentable && $product->rental_price_daily)
+                                        {{ number_format($product->rental_price_daily, 0) }} ريال <span class="text-xs text-gray-500">/ يوم</span>
+                                    @else
+                                        {{ number_format($product->price, 0) }} ريال
+                                    @endif
+                                </div>
+                                <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm" onclick="event.stopPropagation()">
+                                    اجرها الآن
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-800 text-sm mb-2">عدة للايجار البحري</h3>
-                    <p class="text-gray-600 text-xs mb-2">سلة مليئة ومفيدة مناسبة للاستخدام البحري والنقل بكل سهولة</p>
-                    <p class="text-gray-500 text-xs mb-3 flex items-center justify-end gap-2">
-                        <span>بريدة</span>
-                        <span>-</span>
-                        <span>القصيم</span>
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <div class="text-teal-600 font-bold text-lg">30 ريال <span class="text-xs text-gray-500">/ يوم</span></div>
-                        <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm">
-                            اجرها الآن
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 2: خيمة ملكية للرحلات -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100">
-                <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
-                    <img src="{{ asset('images/Images/Frame 29.png') }}" alt="خيمة ملكية للرحلات" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                    <!-- Rating -->
-                    <div class="absolute top-3 right-3 flex items-center bg-white rounded-full px-2 py-1 shadow-sm">
-                        <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                        <span class="text-sm font-medium">4.3</span>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-800 text-sm mb-2">خيمة ملكية للرحلات</h3>
-                    <p class="text-gray-600 text-xs mb-2">خيمة ملكية للرحلات. خيمة كبيرة وواسعة تقام الآلة وأحجامها ملائمة للرحلات والحج و العمرة للأسرة الكريمة</p>
-                    <p class="text-gray-500 text-xs mb-3 flex items-center justify-end gap-2">
-                        <span>بريدة</span>
-                        <span>-</span>
-                        <span>القصيم</span>
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <div class="text-teal-600 font-bold text-lg">80 ريال <span class="text-xs text-gray-500">/ يوم</span></div>
-                        <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm">
-                            اجرها الآن
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3: جهاز بلايستيشن 5 -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100">
-                <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
-                    <img src="{{ asset('images/Images/image 4.png') }}" alt="جهاز بلايستيشن 5" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                    <!-- Rating -->
-                    <div class="absolute top-3 right-3 flex items-center bg-white rounded-full px-2 py-1 shadow-sm">
-                        <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                        <span class="text-sm font-medium">4.5</span>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-800 text-sm mb-2">جهاز بلايستيشن 5</h3>
-                    <p class="text-gray-600 text-xs mb-2">جهاز ألعاب منزلي متطور يقدم رسوميات مذهلة وتجربة ألعاب سلسة وسريعة</p>
-                    <p class="text-gray-500 text-xs mb-3 flex items-center justify-end gap-2">
-                        <span>بريدة</span>
-                        <span>-</span>
-                        <span>القصيم</span>
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <div class="text-teal-600 font-bold text-lg">120 ريال <span class="text-xs text-gray-500">/ يوم</span></div>
-                        <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm">
-                            اجرها الآن
-                        </button>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @else
+                <div class="col-span-3 text-center text-gray-500">لا توجد منتجات متاحة</div>
+            @endif
         </div>
     </div>
 </section>

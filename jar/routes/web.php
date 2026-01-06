@@ -10,9 +10,7 @@ use App\Http\Controllers\ContactController;
 Auth::routes();
 
 // Main website routes (for regular users)
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/about', function () {
     return view('about');
@@ -54,7 +52,8 @@ Route::get('/products/{slug}', [ProductController::class, 'show'])->name('produc
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route '/home' kept for backward compatibility (not named) to avoid duplicating the 'home' route name
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 // Profile routes (protected by auth middleware)
 Route::middleware('auth')->group(function () {

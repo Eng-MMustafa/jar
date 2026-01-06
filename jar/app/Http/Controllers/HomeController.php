@@ -3,18 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -23,6 +15,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Latest 3 active products by default. Pass ?random=1 to show 3 random products.
+        $query = Product::with('images','category')->active();
+
+        if (request()->boolean('random')) {
+            $mostRented = $query->inRandomOrder()->take(3)->get();
+        } else {
+            $mostRented = $query->orderByDesc('created_at')->take(3)->get();
+        }
+
+        return view('home', compact('mostRented'));
     }
 }
