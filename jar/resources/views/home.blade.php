@@ -135,107 +135,42 @@
 
             <!-- Categories Slider -->
             <div id="categorySlider" class="overflow-x-hidden">
+                @php $cats = $categories ?? collect(); @endphp
                 <div class="flex transition-transform duration-300 ease-in-out gap-6 md:gap-8" style="width: 200%;">
-                    <!-- Category 1: Image-5 -->
-                    <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
-                        <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
-                            <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
-                                <img src="{{ asset('images/Images/Image-5.png') }}" alt="إلكترونيات" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
-                            </div>
-                            <span class="text-gray-700 font-bold text-sm md:text-base">إلكترونيات</span>
-                        </a>
-                    </div>
+                    @foreach($cats as $category)
+                        <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
+                            <a href="{{ route('categories.show', $category->slug) }}" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
+                                <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
+                                    @if($category->image_url)
+                                        <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
+                                    @elseif($category->icon)
+                                        <i class="{{ $category->icon }} text-teal-600 text-2xl"></i>
+                                    @else
+                                        <img src="{{ asset('images/placeholder-category.png') }}" alt="{{ $category->name }}" class="w-full h-full object-contain">
+                                    @endif
+                                </div>
+                                <span class="text-gray-700 font-bold text-sm md:text-base">{{ $category->name }}</span>
+                            </a>
+                        </div>
+                    @endforeach
 
-                    <!-- Category 2: Image-4 -->
-                    <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
-                        <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
-                            <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
-                                <img src="{{ asset('images/Images/Image-4.png') }}" alt="حقائب" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
-                            </div>
-                            <span class="text-gray-700 font-bold text-sm md:text-base">حقائب</span>
-                        </a>
-                    </div>
-
-                    <!-- Category 3: Image-1 -->
-                    <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
-                        <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
-                            <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
-                                <img src="{{ asset('images/Images/Image-1.png') }}" alt="أدوات رياضية" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
-                            </div>
-                            <span class="text-gray-700 font-bold text-sm md:text-base">أدوات رياضية</span>
-                        </a>
-                    </div>
-
-                    <!-- Category 4: Image-2 -->
-                    <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
-                        <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
-                            <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
-                                <img src="{{ asset('images/Images/Image-2.png') }}" alt="ألعاب" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
-                            </div>
-                            <span class="text-gray-700 font-bold text-sm md:text-base">ألعاب</span>
-                        </a>
-                    </div>
-
-                    <!-- Category 5: Image -->
-                    <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
-                        <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
-                            <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
-                                <img src="{{ asset('images/Images/Image.png') }}" alt="معدات تخييم" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
-                            </div>
-                            <span class="text-gray-700 font-bold text-sm md:text-base">معدات تخييم</span>
-                        </a>
-                    </div>
-
-                    <!-- Duplicated Categories -->
-                    <!-- Category 6: Image-5 (Duplicate) -->
-                    <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
-                        <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
-                            <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
-                                <img src="{{ asset('images/Images/Image-5.png') }}" alt="إلكترونيات" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
-                            </div>
-                            <span class="text-gray-700 font-bold text-sm md:text-base">إلكترونيات</span>
-                        </a>
-                    </div>
-
-                    <!-- Category 7: Image-4 (Duplicate) -->
-                    <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
-                        <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
-                            <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
-                                <img src="{{ asset('images/Images/Image-4.png') }}" alt="حقائب" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
-                            </div>
-                            <span class="text-gray-700 font-bold text-sm md:text-base">حقائب</span>
-                        </a>
-                    </div>
-
-                    <!-- Category 8: Image-1 (Duplicate) -->
-                    <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
-                        <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
-                            <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
-                                <img src="{{ asset('images/Images/Image-1.png') }}" alt="أدوات رياضية" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
-                            </div>
-                            <span class="text-gray-700 font-bold text-sm md:text-base">أدوات رياضية</span>
-                        </a>
-                    </div>
-
-                    <!-- Category 9: Image-2 (Duplicate) -->
-                    <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
-                        <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
-                            <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
-                                <img src="{{ asset('images/Images/Image-2.png') }}" alt="ألعاب" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
-                            </div>
-                            <span class="text-gray-700 font-bold text-sm md:text-base">ألعاب</span>
-                        </a>
-                    </div>
-
-                    <!-- Category 10: Image (Duplicate) -->
-                    <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
-                        <a href="#" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
-                            <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
-                                <img src="{{ asset('images/Images/Image.png') }}" alt="معدات تخييم" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
-                            </div>
-                            <span class="text-gray-700 font-bold text-sm md:text-base">معدات تخييم</span>
-                        </a>
-                    </div>
+                    {{-- Duplicate for seamless scrolling --}}
+                    @foreach($cats as $category)
+                        <div class="min-w-0 flex-shrink-0 w-1/5 sm:w-1/6 md:w-1/10">
+                            <a href="{{ route('categories.show', $category->slug) }}" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
+                                <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
+                                    @if($category->image_url)
+                                        <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
+                                    @elseif($category->icon)
+                                        <i class="{{ $category->icon }} text-teal-600 text-2xl"></i>
+                                    @else
+                                        <img src="{{ asset('images/placeholder-category.png') }}" alt="{{ $category->name }}" class="w-full h-full object-contain">
+                                    @endif
+                                </div>
+                                <span class="text-gray-700 font-bold text-sm md:text-base">{{ $category->name }}</span>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -250,23 +185,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const sliderContent = categorySlider.querySelector('.flex');
     
     let currentPosition = 0;
-    const itemWidth = 20; // Each item is 1/5 width (20%)
-    const maxPosition = 50; // 50% (since we have 200% total width, we can scroll 50%)
-    
+    const visiblePerView = 5; // how many categories are visible at once
+    const itemWidth = 100 / visiblePerView; // percent per item
+    const totalItems = sliderContent.children.length; // doubled list
+    // uniqueCount is half since we duplicated list for smooth scroll
+    const uniqueCount = Math.floor(totalItems / 2) || totalItems;
+    const maxPosition = (uniqueCount * itemWidth) - (visiblePerView * itemWidth);
+
     categoryNext.addEventListener('click', function() {
         if (currentPosition < maxPosition) {
             currentPosition += itemWidth;
             sliderContent.style.transform = `translateX(-${currentPosition}%)`;
         }
     });
-    
+
     categoryPrev.addEventListener('click', function() {
         if (currentPosition > 0) {
             currentPosition -= itemWidth;
             sliderContent.style.transform = `translateX(-${currentPosition}%)`;
         }
     });
-    
+
     // Auto-play functionality (optional)
     setInterval(function() {
         if (currentPosition >= maxPosition) {

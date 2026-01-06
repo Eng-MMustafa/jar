@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,11 @@ class CategoryController extends Controller
     {
         $categories = Category::query()
             ->when($request->search, function ($q) use ($request) {
-                $q->where('name', 'like', '%'.$request->search.'%');
+                $term = '%'.$request->search.'%';
+                $q->where(function($qq) use ($term) {
+                    $qq->where('name_en', 'like', $term)
+                       ->orWhere('name_ar', 'like', $term);
+                });
             })
             ->orderBy('sort_order')
             ->paginate(15);
@@ -33,6 +38,7 @@ class CategoryController extends Controller
             'slug' => 'nullable|string|max:255|unique:categories,slug',
             'is_active' => 'boolean',
             'sort_order' => 'nullable|integer',
+            'image' => 'nullable|image|max:2048',
         ]);
 
         // Generate slug from name if not provided
@@ -42,6 +48,12 @@ class CategoryController extends Controller
 
         $data['is_active'] = $request->boolean('is_active', true);
         $data['sort_order'] = $request->input('sort_order', 0);
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('categories', 'public');
+            $data['image'] = $path;
+        }
 
         Category::create($data);
 
@@ -61,6 +73,7 @@ class CategoryController extends Controller
             'slug' => 'nullable|string|max:255|unique:categories,slug,'.$category->id,
             'is_active' => 'boolean',
             'sort_order' => 'nullable|integer',
+            'image' => 'nullable|image|max:2048',
         ]);
 
         if (empty($data['slug'])) {
@@ -70,6 +83,15 @@ class CategoryController extends Controller
         $data['is_active'] = $request->boolean('is_active', true);
         $data['sort_order'] = $request->input('sort_order', 0);
 
+        // Handle image upload and delete old image if replacing
+        if ($request->hasFile('image')) {
+            if ($category->image) {
+                try { Storage::disk('public')->delete($category->image); } catch (\Exception $e) {}
+            }
+            $path = $request->file('image')->store('categories', 'public');
+            $data['image'] = $path;
+        }
+
         $category->update($data);
 
         return redirect()->route('admin.categories.index')
@@ -78,15 +100,13 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        $category->delete();
+        // delete image file if exists
+        if ($category->image) {
+            try { Storage::disk('public')->delete($category->image); } catch (\Exception $e) {}
+        }
 
-        return redirect()->route('admin.categories.index')
-            ->with('success', 'Category deleted successfully.');
     }
 
-    /**
-     * Toggle active/inactive (AJAX friendly)
-     */
     public function toggle(Request $request, Category $category)
     {
         $category->is_active = !$category->is_active;

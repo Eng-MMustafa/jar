@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -28,7 +29,16 @@ class AuthenticatedSessionController extends Controller
             'last_login_ip' => $request->ip(),
         ]);
 
-        return redirect()->intended(route('admin.dashboard'));
+        // Log auth status for debugging
+        Log::info('Admin login: success', [
+            'admin_id' => $admin->id ?? null,
+            'email' => $admin->email ?? null,
+            'guard_check_before_redirect' => Auth::guard('admin')->check(),
+            'session_id' => session()->getId(),
+        ]);
+
+        // Always redirect admins to the admin dashboard after login
+        return redirect()->route('admin.dashboard');
     }
 
     public function destroy(Request $request)

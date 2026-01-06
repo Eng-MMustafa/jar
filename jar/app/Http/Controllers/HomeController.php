@@ -27,6 +27,9 @@ class HomeController extends Controller
         // Featured / "أكثر قيمة": 4 random active products
         $featuredProducts = Product::with('images','category')->active()->inRandomOrder()->take(4)->get();
 
-        return view('home', compact('mostRented', 'featuredProducts'));
+        // Active categories for slider
+        $categories = \App\Models\Category::where('is_active', true)->orderBy('sort_order')->get();
+
+        return view('home', compact('mostRented', 'featuredProducts', 'categories'));
     }
-}
+} 

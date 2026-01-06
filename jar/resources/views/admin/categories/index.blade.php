@@ -48,8 +48,12 @@
                 @forelse($categories as $category)
                     <tr class="hover:bg-gray-50">
                         <td class="px-4 py-4 flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-md bg-gray-100 flex items-center justify-center text-xl text-teal-600">
-                                <i class="fas fa-folder"></i>
+                            <div class="w-12 h-12 rounded-md bg-gray-100 flex items-center justify-center overflow-hidden">
+                                @if($category->image_url)
+                                    <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="w-full h-full object-cover">
+                                @else
+                                    <div class="w-full h-full flex items-center justify-center text-xl text-teal-600"><i class="fas fa-folder"></i></div>
+                                @endif
                             </div>
                             <div class="text-right">
                                 <div class="font-semibold text-gray-800">{{ $category->name }}</div>
@@ -57,7 +61,7 @@
                                     <div class="text-xs text-gray-400">{{ $category->slug }}</div>
                                 @endif
                             </div>
-                        </td>
+                        </td> 
 
                         <td class="px-4 py-4 text-sm text-gray-700">{{ $category->products()->count() }}</td>
                         <td class="px-4 py-4 text-sm text-gray-700">{{ $category->sort_order }}</td>
