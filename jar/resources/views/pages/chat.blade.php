@@ -21,7 +21,7 @@
                     @for ($i = 0; $i < 8; $i++)
                     <div class="p-4 border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors @if($i === 0) bg-teal-50 @endif">
                         <div class="flex gap-3 items-start">
-                            <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full flex-shrink-0">
+                            <img src="{{ asset('images/placeholder.svg') }}" alt="User" class="w-10 h-10 rounded-full flex-shrink-0">
                             <div class="flex-1 min-w-0">
                                 <div class="flex justify-between items-center">
                                     <h3 class="font-semibold text-gray-900">خالد عبدالله</h3>
@@ -40,7 +40,7 @@
                 <!-- Chat Header -->
                 <div class="p-4 border-b border-gray-200 flex items-center justify-between">
                     <div class="flex gap-3 items-center">
-                        <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full">
+                        <img src="{{ asset('images/placeholder.svg') }}" alt="User" class="w-10 h-10 rounded-full">
                         <div>
                             <h2 class="font-semibold text-gray-900">خالد عبدالله</h2>
                             <p class="text-xs text-gray-500">نشط الآن</p>
@@ -57,7 +57,7 @@
                 <div class="overflow-y-auto flex-1 p-4 space-y-4">
                     <!-- Other User Message -->
                     <div class="flex gap-3">
-                        <img src="https://via.placeholder.com/32" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
+                        <img src="{{ asset('images/placeholder.svg') }}" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
                         <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
                             <p class="text-gray-900 text-sm">السلام عليكم، هل المنتج متوفر الآن؟</p>
                             <span class="text-xs text-gray-500 mt-1 block">10:25 ص</span>
@@ -70,12 +70,12 @@
                             <p class="text-sm">وعليكم السلام ورحمة الله، نعم متوفر</p>
                             <span class="text-xs text-teal-100 mt-1 block">10:27 ص</span>
                         </div>
-                        <img src="https://via.placeholder.com/32" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
+                        <img src="{{ asset('images/placeholder.svg') }}" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
                     </div>
 
                     <!-- Other User Message -->
                     <div class="flex gap-3">
-                        <img src="https://via.placeholder.com/32" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
+                        <img src="{{ asset('images/placeholder.svg') }}" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
                         <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
                             <p class="text-gray-900 text-sm">كم السعر والتسليم؟</p>
                             <span class="text-xs text-gray-500 mt-1 block">10:28 ص</span>

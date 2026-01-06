@@ -54,7 +54,7 @@
                 <!-- Order Items -->
                 <div class="bg-gray-50 rounded-lg p-4 mb-4">
                     <div class="flex gap-4 items-start">
-                        <img src="https://via.placeholder.com/80x80" alt="Product" class="w-20 h-20 object-cover rounded-lg flex-shrink-0">
+                        <img src="{{ asset('images/placeholder.svg') }}" alt="Product" class="w-20 h-20 object-cover rounded-lg flex-shrink-0">
                         <div class="flex-1 min-w-0">
                             <h3 class="font-semibold text-gray-900">عرارة للإيجار اليومي</h3>
                             <p class="text-sm text-gray-600 mt-1">من 28 - 12 - 2025 إلى 28 - 12 - 2025</p>

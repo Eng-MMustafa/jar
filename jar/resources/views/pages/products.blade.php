@@ -29,7 +29,7 @@
             <div class="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                 <!-- Product Image -->
                 <div class="bg-gray-200 h-40 overflow-hidden">
-                    <img src="https://via.placeholder.com/300x200?text=Product+{{ $i + 1 }}" alt="Product" class="w-full h-full object-cover">
+                    <img src="{{ asset('images/placeholder.svg') }}" alt="Product" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Product Info -->

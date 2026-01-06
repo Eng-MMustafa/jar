@@ -16,7 +16,7 @@
             <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow overflow-hidden">
                 <!-- Service Image -->
                 <div class="relative bg-gray-200 h-48">
-                    <img src="https://via.placeholder.com/300x200?text=Massage+Service" alt="Service" class="w-full h-full object-cover">
+                    <img src="{{ asset('images/placeholder.svg') }}" alt="Service" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                     <span class="absolute bottom-3 right-3 text-white font-semibold text-lg">ر.س 150</span>
                 </div>
@@ -49,7 +49,7 @@
 
                     <!-- Professional Info -->
                     <div class="flex items-center gap-2 mb-4 pb-4 border-b border-gray-200">
-                        <img src="https://via.placeholder.com/32" alt="Pro" class="w-8 h-8 rounded-full">
+                        <img src="{{ asset('images/placeholder.svg') }}" alt="Pro" class="w-8 h-8 rounded-full">
                         <div>
                             <p class="text-sm font-medium text-gray-900">محمد علي</p>
                             <p class="text-xs text-gray-500">معالج متخصص</p>

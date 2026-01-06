@@ -447,7 +447,7 @@
                 <div class="section-title">معلومات المنتج</div>
                 <div class="product-info-header">
                     <div class="product-image">
-                        <img src="https://via.placeholder.com/50x50?text=Prod" alt="Product">
+                        <img src="{{ asset('images/placeholder.svg') }}" alt="Product">
                     </div>
                     <div class="product-info-content">
                         <div class="product-name">عربية للبجار اليومي</div>
@@ -462,7 +462,7 @@
                 <div class="section-title">معلومات الموجر</div>
                 <div class="lender-info-header">
                     <div class="lender-avatar">
-                        <img src="https://via.placeholder.com/50x50?text=User" alt="Lender">
+                        <img src="{{ asset('images/placeholder.svg') }}" alt="Lender">
                     </div>
                     <div class="lender-info-content">
                         <div class="lender-name">عبدالرحمن الفقحطاني</div>

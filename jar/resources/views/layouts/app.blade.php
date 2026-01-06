@@ -111,7 +111,7 @@
                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
                                         </svg>
 
-                                        <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : asset('images/avatar.png') }}" alt="{{ Auth::user()->name }}" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                                        <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : asset('images/avatar.svg') }}" alt="{{ Auth::user()->name }}" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
                                     </button>
                                     <div class="dropdown absolute hidden bg-white shadow-xl rounded-lg right-0 mt-2 min-w-56 z-50 border border-gray-200 overflow-hidden">
                                         <a href="{{ route('profile.index') }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-teal-600 transition duration-200">

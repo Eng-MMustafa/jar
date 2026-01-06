@@ -411,7 +411,7 @@
                         <label class="form-label">الصورة الشخصية</label>
                         <div style="display:flex;gap:1rem;align-items:center;">
                             <div style="width:72px;height:72px;border-radius:50%;overflow:hidden;flex-shrink:0;">
-                                <img src="{{ auth()->user()->avatar ? asset(auth()->user()->avatar) : asset('images/avatar.png') }}" alt="avatar" style="width:100%;height:100%;object-fit:cover;">
+                                <img src="{{ auth()->user()->avatar ? asset(auth()->user()->avatar) : asset('images/avatar.svg') }}" alt="avatar" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
                             </div>
                             <input type="file" name="avatar" accept="image/*">
                         </div>

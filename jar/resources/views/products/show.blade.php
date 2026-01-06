@@ -661,16 +661,18 @@
     /* Related Products */
     .related-products {
         margin-top: 3rem;
+        padding: 1.5rem 2rem 2.5rem; /* keep same horizontal padding */
+        background: transparent;
     }
 
     .related-products h2 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 700;
         color: #333;
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         position: relative;
-        padding-bottom: 1rem;
+        padding-bottom: 0.6rem;
     }
 
     .related-products h2::after {
@@ -679,7 +681,7 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
+        width: 50px;
         height: 3px;
         background: #00bcd4;
         border-radius: 2px;
@@ -687,9 +689,12 @@
 
     .products-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* larger cards to sit side-by-side */
+        gap: 1.75rem;
+        align-items: start;
     }
+
+    .product-card { max-width: 320px; width: 100%; } /* allow larger cards */
 
     .product-card {
         background: white;
@@ -708,7 +713,7 @@
 
     .product-image {
         width: 100%;
-        height: 140px;
+        height: 160px; /* slightly taller for larger cards */
         overflow: hidden;
         position: relative;
         background: #f0f0f0;
@@ -1064,9 +1069,9 @@
                         $ownerAvatar = null;
                         if (!empty($product->user->hand_photo)) { $ownerAvatar = asset($product->user->hand_photo); }
                         elseif (!empty($product->user->avatar)) { $ownerAvatar = asset($product->user->avatar); }
-                        else { $ownerAvatar = asset('images/avatar.png'); }
+                        else { $ownerAvatar = asset('images/avatar.svg'); }
                     @endphp
-                    <img src="{{ $ownerAvatar }}" alt="صورة المالك" onerror="this.src='https://via.placeholder.com/80'">
+                    <img src="{{ $ownerAvatar }}" alt="صورة المالك" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
                 </div>
                 <div class="owner-details">
                     <h3>{{ $product->user->name ?? $product->user->full_name ?? 'المالك' }}</h3>
@@ -1190,58 +1195,68 @@
         </div>
     </div>
 
-    <!-- Related Products -->
-    <div class="related-products">
-        <h2>منتجات موصى بها</h2>
-        <div class="products-grid">
-            @php
-                $relatedProducts = \App\Models\Product::where('category_id', $product->category_id)
-                    ->where('id', '!=', $product->id)
-                    ->where('is_active', true)
-                    ->with('images')
-                    ->take(3)
-                    ->get();
-                
-                // إذا لم توجد منتجات في نفس الفئة، جلب أي 3 منتجات
-                if($relatedProducts->count() < 3) {
-                    $relatedProducts = \App\Models\Product::where('id', '!=', $product->id)
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-1">منتجات موصى بها</h2>
+                <p class="text-gray-600 text-sm">استعرض منتجات مشابهة أو موصى بها</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                @php
+                    $relatedProducts = \App\Models\Product::where('category_id', $product->category_id)
+                        ->where('id', '!=', $product->id)
                         ->where('is_active', true)
                         ->with('images')
-                        ->take(3)
-                        ->get();
-                }
-            @endphp
+                            ->take(3)
+                            ->get();
 
-            @forelse($relatedProducts as $relProduct)
-            <div class="product-card">
-                <div class="product-image">
-                    @if($relProduct->images && $relProduct->images->first())
-                        <img src="{{ asset($relProduct->images->first()->image_path) }}" alt="{{ $relProduct->name }}">
-                    @else
-                        <img src="{{ asset('images/placeholder.png') }}" alt="placeholder">
-                    @endif
-                    <div class="rating-badge">
-                        <span class="rating-star">★</span>
-                        <span>{{ $relProduct->rating ?? 4.5 }}</span>
-                    </div>
-                </div>
+                    if($relatedProducts->count() < 3) {
+                        $relatedProducts = \App\Models\Product::where('id', '!=', $product->id)
+                            ->where('is_active', true)
+                            ->with('images')
+                            ->take(3)
+                            ->get();
+                    }
+                @endphp
 
-                <div class="card-info">
-                    <h3 class="card-title">{{ $relProduct->name }}</h3>
-                    <p class="card-description">{{ Str::limit($relProduct->description, 50) }}</p>
-                    <div class="card-footer">
-                        <a href="{{ route('products.show', $relProduct->slug) }}" class="card-btn">تفاصيل</a>
-                        <span class="card-price">{{ $relProduct->rental_price_daily ?? 0 }} ر.س</span>
+                @forelse($relatedProducts as $relProduct)
+                    <div class="bg-white rounded-lg shadow hover:shadow-xl transition overflow-hidden">
+                        <div class="bg-gray-200 h-48 flex items-center justify-center overflow-hidden relative group">
+                            @if($relProduct->images && $relProduct->images->first())
+                                <img src="{{ asset($relProduct->images->first()->image_path) }}" alt="{{ $relProduct->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                            @else
+                                <img src="{{ asset('images/placeholder.svg') }}" alt="placeholder" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                            @endif
+                            @if(!empty($relProduct->city))
+                                <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-3 py-1 rounded-full">{{ $relProduct->city }}</span>
+                            @endif
+                        </div>
+
+                        <div class="p-4">
+                            <div class="flex items-center gap-1 mb-2">
+                                <span class="text-yellow-400">★</span>
+                                <span class="text-sm text-gray-700">{{ number_format($relProduct->rating ?? 0, 1) }}</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">{{ $relProduct->name }}</h3>
+                            <p class="text-gray-500 text-xs mb-3">{{ $relProduct->city ?? '' }}</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-teal-700 font-bold">{{ $relProduct->rental_price_daily ?? $relProduct->price ?? 0 }} ر.س</span>
+                                <a href="{{ route('products.show', $relProduct->slug) }}" class="bg-teal-600 text-white px-3 py-2 rounded-lg font-semibold hover:bg-teal-700 transition text-sm flex items-center gap-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10.5 1.5H2a.5.5 0 00-.5.5v16a.5.5 0 00.5.5h16a.5.5 0 00.5-.5v-10"></path></svg>
+                                    تفاصيل
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @empty
+                    <div class="col-span-1 text-center text-gray-500">لا توجد منتجات موصى بها</div>
+                @endforelse
             </div>
-            @empty
-            <div style="text-align: center; padding: 2rem; color: #999; grid-column: 1/-1;">
-                لا توجد منتجات موصى بها
-            </div>
-            @endforelse
+
+
         </div>
-    </div>
+    </section>
 </div>
 
 <script>

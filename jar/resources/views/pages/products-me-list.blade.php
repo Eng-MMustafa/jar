@@ -409,7 +409,7 @@
                     <!-- Product Card 1 -->
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/400x200?text=Product+1" alt="منتج">
+                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
                         </div>
                         <div class="product-body">
                             <div class="product-name">عربة الفيشار البيومي</div>
@@ -432,7 +432,7 @@
                     <!-- Product Card 2 -->
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/400x200?text=Product+2" alt="منتج">
+                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
                         </div>
                         <div class="product-body">
                             <div class="product-name">عربة الفيشار البيومي</div>
@@ -457,7 +457,7 @@
                     <!-- Product Card 3 -->
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/400x200?text=Product+3" alt="منتج">
+                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
                         </div>
                         <div class="product-body">
                             <div class="product-name">عربة الفيشار البيومي</div>
@@ -482,7 +482,7 @@
                     <!-- Product Card 4 -->
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/400x200?text=Product+4" alt="منتج">
+                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
                         </div>
                         <div class="product-body">
                             <div class="product-name">عربة الفيشار البيومي</div>
@@ -507,7 +507,7 @@
                     <!-- Product Card 5 -->
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/400x200?text=Product+5" alt="منتج">
+                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
                         </div>
                         <div class="product-body">
                             <div class="product-name">عربة الفيشار البيومي</div>
@@ -532,7 +532,7 @@
                     <!-- Product Card 6 -->
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/400x200?text=Product+6" alt="منتج">
+                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
                         </div>
                         <div class="product-body">
                             <div class="product-name">عربة الفيشار البيومي</div>

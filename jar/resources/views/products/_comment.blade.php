@@ -7,7 +7,7 @@
                     <div class="review-rating text-sm text-yellow-500">{!! str_repeat('★', $comment->rating) !!}{!! str_repeat('☆', 5 - $comment->rating) !!}</div>
                 @endif
             </div>
-            <img src="{{ asset($comment->user->avatar ?? 'images/avatar.png') }}" alt="{{ $comment->user->name ?? 'avatar' }}" class="reviewer-avatar w-10 h-10 rounded-full object-cover">
+            <img src="{{ asset($comment->user->avatar ?? 'images/avatar.svg') }}" alt="{{ $comment->user->name ?? 'avatar' }}" class="reviewer-avatar w-10 h-10 rounded-full object-cover" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
         </div>
         <div class="review-date text-xs text-gray-400 ml-auto">{{ $comment->created_at->format('d/m/Y') }}</div>
     </div>

@@ -11,7 +11,7 @@
                     @foreach($cartItems as $item)
                     <div class="bg-gray-50 rounded-lg p-6 mb-4">
                         <div class="flex items-center space-x-4">
-                            <img src="{{ $item['product']->images->first()->image_path ?? 'https://via.placeholder.com/100x100' }}" alt="{{ $item['product']->name }}" class="w-20 h-20 object-cover rounded-md">
+                            <img src="{{ $item['product']->images->first()->image_path ?? asset('images/placeholder.svg') }}" alt="{{ $item['product']->name }}" class="w-20 h-20 object-cover rounded-md">
                             <div class="flex-1">
                                 <h3 class="text-lg font-semibold text-gray-900">{{ $item['product']->name }}</h3>
                                 <p class="text-gray-600">{{ Str::limit($item['product']->description, 100) }}</p>

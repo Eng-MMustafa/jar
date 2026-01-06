@@ -93,7 +93,7 @@
             @endif
         </div>
         <div class="profile-avatar">
-            <img src="{{ auth()->user()->avatar ? asset(auth()->user()->avatar) : asset('images/avatar.png') }}" alt="{{ auth()->user()->name }}">
+            <img src="{{ auth()->user()->avatar ? asset(auth()->user()->avatar) : asset('images/avatar.svg') }}" alt="{{ auth()->user()->name }}" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
             <div class="avatar-badge">
                 <i class="fas fa-check" style="font-size: 0.6rem;"></i>
             </div>

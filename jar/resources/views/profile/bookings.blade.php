@@ -424,7 +424,7 @@
                             <div class="booking-item">
                                 <span class="status-badge">نشط</span>
                                 <div class="booking-thumb">
-                                    <img src="{{ optional($booking->items->first())->product->image_url ?? 'https://via.placeholder.com/80' }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
+                                    <img src="{{ optional($booking->items->first())->product->image_url ?? asset('images/placeholder.svg') }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
                                 </div>
                                 <div class="booking-info">
                                     <div class="booking-title">{{ optional($booking->items->first())->product->name ?? 'عربة للإيجار اليومي' }}</div>
@@ -442,7 +442,7 @@
                         <div class="booking-item">
                             <span class="status-badge">نشط</span>
                             <div class="booking-thumb">
-                                <img src="https://via.placeholder.com/80" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
+                                    <img src="{{ asset('images/placeholder.svg') }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
                             </div>
                             <div class="booking-info">
                                 <div class="booking-title">عربة للإيجار اليومي</div>
@@ -457,7 +457,7 @@
                         <div class="booking-item">
                             <span class="status-badge">نشط</span>
                             <div class="booking-thumb">
-                                <img src="https://via.placeholder.com/80" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
+                                <img src="{{ asset('images/placeholder.svg') }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
                             </div>
                             <div class="booking-info">
                                 <div class="booking-title">عربة للإيجار اليومي</div>

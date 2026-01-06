@@ -55,7 +55,7 @@
                         <div>
                             <p class="text-xs text-gray-500 mb-1">المستأجر</p>
                             <div class="flex items-center gap-2">
-                                <img src="https://via.placeholder.com/32" alt="User" class="w-8 h-8 rounded-full">
+                                <img src="{{ asset('images/placeholder.svg') }}" alt="User" class="w-8 h-8 rounded-full">
                                 <div>
                                     <p class="text-sm font-medium text-gray-900">خالد عبدالله</p>
                                     <p class="text-xs text-gray-500">مستخدم جديد</p>
