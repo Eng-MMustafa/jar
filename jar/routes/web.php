@@ -44,6 +44,7 @@ Route::get('/bookings/bank-details', function () {
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
 
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -71,6 +72,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/products-me/{id}/edit', [ProfileController::class, 'editProduct'])->name('my-products.edit');
     Route::put('/products-me/{id}', [ProfileController::class, 'updateProduct'])->name('my-products.update');
     Route::delete('/products-me/{id}', [ProfileController::class, 'deleteProduct'])->name('my-products.delete');
+
+    // Favorites (requires auth)
+    Route::post('/products/{product}/favorite', [ProductController::class, 'toggleFavorite'])->name('products.favorite');
     
     Route::get('/chat', [ProfileController::class, 'chat'])->name('chat');
     Route::get('/massage', [ProfileController::class, 'massage'])->name('massage');

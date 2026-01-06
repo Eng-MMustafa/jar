@@ -30,6 +30,33 @@ class ProductController extends Controller
     {
         $product = Product::with('category', 'user', 'images')->where('slug', $slug)->firstOrFail();
 
-        return view('products.show', compact('product'));
+        $isFavorited = false;
+        if (auth()->check()) {
+            $isFavorited = auth()->user()->favorites()->where('product_id', $product->id)->exists();
+        }
+
+        return view('products.show', compact('product', 'isFavorited'));
+    }
+
+    /**
+     * Toggle favorite (auth required)
+     */
+    public function toggleFavorite(Request $request, Product $product)
+    {
+        if (! auth()->check()) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        $user = auth()->user();
+
+        if ($user->favorites()->where('product_id', $product->id)->exists()) {
+            $user->favorites()->detach($product->id);
+            $favorited = false;
+        } else {
+            $user->favorites()->attach($product->id);
+            $favorited = true;
+        }
+
+        return response()->json(['favorited' => $favorited]);
     }
 }

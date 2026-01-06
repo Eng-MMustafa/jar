@@ -248,6 +248,12 @@
         color: #00bcd4;
     }
 
+    .btn-favorite.active {
+        background: #ff6b6b;
+        color: white;
+        border-color: #ff6b6b;
+    }
+
     .payment-methods {
         display: flex;
         gap: 1rem;
@@ -966,11 +972,49 @@
             <!-- Action Buttons -->
             <div class="action-section">
                 <button class="btn-rent">اجر الآن</button>
-                <button class="btn-favorite">
+                <button class="btn-favorite {{ isset($isFavorited) && $isFavorited ? 'active' : '' }}" id="favoriteBtn" onclick="toggleProductFavorite(event, {{ $product->id }})">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                     </svg>
                 </button>
+
+                <script>
+                    const isAuth = @json(auth()->check());
+
+                    function toggleProductFavorite(e, productId){
+                        e.preventDefault();
+
+                        if (!isAuth) {
+                            // redirect to login with redirect back
+                            window.location = "{{ route('login') }}?redirect=" + encodeURIComponent(window.location.pathname);
+                            return;
+                        }
+
+                        const btn = document.getElementById('favoriteBtn');
+                        const tokenEl = document.querySelector('meta[name="csrf-token"]');
+                        if (!tokenEl) return alert('Please reload the page (missing CSRF token)');
+                        const token = tokenEl.getAttribute('content');
+
+                        btn.disabled = true;
+
+                        fetch("{{ url('/products') }}/"+productId+"/favorite", {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': token,
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify({})
+                        }).then(r => r.json()).then(data => {
+                            if (!data) return;
+                            if (data.favorited) {
+                                btn.classList.add('active');
+                            } else {
+                                btn.classList.remove('active');
+                            }
+                        }).catch(()=> alert('خطأ, حاول مرة أخرى')).finally(()=> btn.disabled = false);
+                    }
+                </script>
             </div>
 
             <!-- Payment Methods -->
