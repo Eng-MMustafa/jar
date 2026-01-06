@@ -94,8 +94,28 @@ Route::prefix('admin')->name('admin.')->group(function () {
         })->name('reports.index');
         
         // Audit Logs
-        Route::get('/audit-logs', function () {
-            return view('admin.audit-logs.index');
+        Route::get('/audit-logs', function (\Illuminate\Http\Request $request) {
+            $logs = \App\Models\AuditLog::query()->with('admin')->latest();
+
+            if ($request->filled('admin_id')) {
+                $logs->where('admin_id', $request->admin_id);
+            }
+
+            if ($request->filled('action')) {
+                $logs->where('action', $request->action);
+            }
+
+            if ($request->filled('model_type')) {
+                $logs->where('model_type', 'like', '%'.$request->model_type.'%');
+            }
+
+            if ($request->filled('since')) {
+                $logs->where('created_at', '>=', $request->since);
+            }
+
+            $logs = $logs->paginate(20);
+
+            return view('admin.audit-logs.index', compact('logs'));
         })->name('audit-logs.index');
         
         // Settings
