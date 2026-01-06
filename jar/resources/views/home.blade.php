@@ -318,9 +318,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                         {{ number_format($product->price, 0) }} ريال
                                     @endif
                                 </div>
-                                <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm" onclick="event.stopPropagation()">
+                                <a href="{{ route('products.show', $product->slug) }}" class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm" onclick="event.stopPropagation()">
                                     اجرها الآن
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -366,73 +366,33 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Product 1 -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100">
-                <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
-                    <img src="{{ asset('images/Images/Image-4.png') }}" alt="حقيبة ذكية" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-800 text-sm mb-2">حقيبة ذكية بالمواصفات</h3>
-                    <p class="text-gray-500 text-xs mb-3">بريدة - القصيم</p>
-                    <div class="flex items-center justify-between">
-                        <div class="text-teal-600 font-bold text-lg">30 ريال</div>
-                        <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm">
-                            احجز الآن
-                        </button>
+            @if(isset($featuredProducts) && $featuredProducts->count())
+                @foreach($featuredProducts as $product)
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100 product-card" role="link" tabindex="0" aria-label="عرض المنتج {{ $product->name }}" onclick="window.location='{{ route('products.show', $product->slug) }}'" onkeydown="if(event.key==='Enter'){window.location='{{ route('products.show', $product->slug) }}'}" style="cursor:pointer;">
+                        <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
+                            <img src="{{ $product->images->first() ? asset($product->images->first()->image_path) : asset('images/placeholder-product.svg') }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-gray-800 text-sm mb-2">{{ $product->name }}</h3>
+                            <p class="text-gray-500 text-xs mb-3">{{ $product->city }} - {{ $product->category?->name }}</p>
+                            <div class="flex items-center justify-between">
+                                <div class="text-teal-600 font-bold text-lg">
+                                    @if($product->is_rentable && $product->rental_price_daily)
+                                        {{ number_format($product->rental_price_daily, 0) }} ريال
+                                    @else
+                                        {{ number_format($product->price, 0) }} ريال
+                                    @endif
+                                </div>
+                                <a href="{{ route('products.show', $product->slug) }}" class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm" onclick="event.stopPropagation()">
+                                    احجز الآن
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100">
-                <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
-                    <img src="{{ asset('images/Images/Frame 29.png') }}" alt="خيمة ملكية" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-800 text-sm mb-2">خيمة ملكية للرحلات</h3>
-                    <p class="text-gray-500 text-xs mb-3">بريدة - القصيم</p>
-                    <div class="flex items-center justify-between">
-                        <div class="text-teal-600 font-bold text-lg">90 ريال</div>
-                        <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm">
-                            احجز الآن
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100">
-                <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
-                    <img src="{{ asset('images/Images/Image (2).png') }}" alt="سماعات لا سلكية" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-800 text-sm mb-2">سماعات لا سلكية</h3>
-                    <p class="text-gray-500 text-xs mb-3">بريدة - القصيم</p>
-                    <div class="flex items-center justify-between">
-                        <div class="text-teal-600 font-bold text-lg">80 ريال</div>
-                        <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm">
-                            احجز الآن
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100">
-                <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
-                    <img src="{{ asset('images/Images/Image.png') }}" alt="أغطية بحري" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-800 text-sm mb-2">أغطية بحري للرحلات</h3>
-                    <p class="text-gray-500 text-xs mb-3">بريدة - القصيم</p>
-                    <div class="flex items-center justify-between">
-                        <div class="text-teal-600 font-bold text-lg">65 ريال</div>
-                        <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm">
-                            احجز الآن
-                        </button>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @else
+                <div class="col-span-4 text-center text-gray-500">لا توجد منتجات لعرضها</div>
+            @endif
         </div>
     </div>
 </section>

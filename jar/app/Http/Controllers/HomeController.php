@@ -24,6 +24,9 @@ class HomeController extends Controller
             $mostRented = $query->orderByDesc('created_at')->take(3)->get();
         }
 
-        return view('home', compact('mostRented'));
+        // Featured / "أكثر قيمة": 4 random active products
+        $featuredProducts = Product::with('images','category')->active()->inRandomOrder()->take(4)->get();
+
+        return view('home', compact('mostRented', 'featuredProducts'));
     }
 }
