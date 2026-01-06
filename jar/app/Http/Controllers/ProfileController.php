@@ -156,8 +156,15 @@ class ProfileController extends Controller
      */
     public function supportTickets()
     {
-        $tickets = auth()->user()->supportTickets()->latest()->paginate(10);
-        return view('profile.support-tickets', compact('tickets'));
+        // Show rental requests for products owned by the user (reuse bookings)
+        $bookings = \App\Models\Booking::with(['product', 'user'])
+            ->whereHas('product', function ($q) {
+                $q->where('user_id', auth()->id());
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return view('profile.support-tickets', compact('bookings'));
     }
 
     /**

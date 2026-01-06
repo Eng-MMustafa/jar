@@ -72,12 +72,35 @@
 
 .quick-links { display:flex; flex-direction:column; gap:0; margin-top:1rem; }
 .quick-links a, .quick-links form { display:flex; align-items:center; gap:0.6rem; padding:0.75rem 0; color:var(--text-dark); text-decoration:none; border-bottom:1px solid var(--border-light); font-size:0.95rem; transition:all .2s ease; }
+
+/* Sidebar badge for new orders */
+.sidebar-badge {
+    display:inline-block;
+    min-width:24px;
+    padding:0.15rem 0.5rem;
+    background:#1aa59a;
+    color:white;
+    border-radius:12px;
+    font-size:0.75rem;
+    font-weight:700;
+    margin-left:0.5rem;
+}
+
+.quick-links a.active {
+    background: #e8f8f7;
+    color: var(--primary);
+    border-radius: 8px;
+    padding-left: 0.6rem;
+}
 .quick-links a:hover, .quick-links form button:hover { color:var(--primary); padding-right:0.5rem; }
 .quick-links form button { background:none; border:none; padding:0.75rem 0; width:100%; text-align:right; cursor:pointer; display:flex; align-items:center; gap:0.6rem; }
 .quick-links i { font-size:1rem; }
 </style>
 
 <div class="profile-sidebar">
+    @php
+        $pendingCount = \App\Models\Booking::whereHas('product', function($q){ $q->where('user_id', auth()->id()); })->whereIn('status', ['pending','submitted'])->count();
+    @endphp
     <div class="profile-header">
         <div class="profile-header-info">
             <h2>{{ auth()->user()->full_name ?? auth()->user()->name }}</h2>
@@ -126,8 +149,11 @@
         <a href="{{ route('my-products.index') }}" title="إدارة المنتجات">
             <i class="fas fa-box"></i> إدارة المنتجات
         </a>
-        <a href="{{ route('new-rental-orders') }}" title="طلبات الإيجار الجديدة">
+        <a href="{{ route('new-rental-orders') }}" title="طلبات الإيجار الجديدة" class="{{ request()->routeIs('new-rental-orders') ? 'active' : '' }}">
             <i class="fas fa-calendar-plus"></i> طلبات الإيجار الجديدة
+            @if($pendingCount > 0)
+                <span class="sidebar-badge">{{ $pendingCount }}</span>
+            @endif
         </a>
         <form action="{{ route('logout') }}" method="POST">
             @csrf
