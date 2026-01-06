@@ -400,15 +400,8 @@ class ProfileController extends Controller
      */
     public function newRentalOrders()
     {
-        // Bookings for products owned by the current user
-        $bookings = \App\Models\Booking::with(['product', 'user'])
-            ->whereHas('product', function ($q) {
-                $q->where('user_id', auth()->id());
-            })
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-
-        return view('pages.new-rental-orders', compact('bookings'));
+        // Reuse the supportTickets logic and blade so the same UI is shown in /new-rental-orders
+        return $this->supportTickets();
     }
 
     /**
