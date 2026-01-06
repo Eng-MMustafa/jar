@@ -65,6 +65,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/bookings', [ProfileController::class, 'bookings'])->name('profile.bookings');
     Route::get('/profile/support-tickets', [ProfileController::class, 'supportTickets'])->name('profile.support-tickets');
 
+    // Booking creation (simple flow)
+    Route::get('/bookings/create', [App\Http\Controllers\BookingController::class, 'create'])->name('bookings.create');
+    Route::post('/bookings', [App\Http\Controllers\BookingController::class, 'store'])->name('bookings.store');
+
     // My Products Management routes
     Route::get('/products-me', [ProfileController::class, 'myProducts'])->name('my-products.index');
     Route::get('/products-me/create', [ProfileController::class, 'createProduct'])->name('my-products.create');

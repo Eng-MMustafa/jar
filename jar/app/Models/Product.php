@@ -170,4 +170,10 @@ class Product extends Model
     {
         return $this->hasMany(Comment::class)->where('is_visible', true)->latest();
     }
+
+    // Bookings relation
+    public function bookings()
+    {
+        return $this->hasMany(\App\Models\Booking::class);
+    }
 }
