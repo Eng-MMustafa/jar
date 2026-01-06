@@ -393,12 +393,12 @@
                     <div class="form-group">
                         <label class="form-label">المدينة <span class="required">*</span></label>
                         <select name="city" class="form-select" required>
-                            <option value="{{ $product->city }}" selected>{{ $product->city }}</option>
-                            <option value="الرياض">الرياض</option>
-                            <option value="جدة">جدة</option>
-                            <option value="الدمام">الدمام</option>
-                            <option value="المدينة">المدينة</option>
-                            <option value="مكة">مكة</option>
+                            <option value="">اختر المدينة</option>
+                            <option value="الرياض" @selected(old('city', $product->city) == 'الرياض')>الرياض</option>
+                            <option value="جدة" @selected(old('city', $product->city) == 'جدة')>جدة</option>
+                            <option value="الدمام" @selected(old('city', $product->city) == 'الدمام')>الدمام</option>
+                            <option value="المدينة" @selected(old('city', $product->city) == 'المدينة')>المدينة</option>
+                            <option value="مكة" @selected(old('city', $product->city) == 'مكة')>مكة</option>
                         </select>
                     </div>
 

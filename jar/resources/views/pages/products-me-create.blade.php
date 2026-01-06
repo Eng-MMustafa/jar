@@ -417,11 +417,11 @@
                         <label class="form-label">المدينة <span class="required">*</span></label>
                         <select name="city" class="form-select" required>
                             <option value="">اختر المدينة</option>
-                            <option value="الرياض">الرياض</option>
-                            <option value="جدة">جدة</option>
-                            <option value="الدمام">الدمام</option>
-                            <option value="المدينة">المدينة</option>
-                            <option value="مكة">مكة</option>
+                            <option value="الرياض" @selected(old('city') == 'الرياض')>الرياض</option>
+                            <option value="جدة" @selected(old('city') == 'جدة')>جدة</option>
+                            <option value="الدمام" @selected(old('city') == 'الدمام')>الدمام</option>
+                            <option value="المدينة" @selected(old('city') == 'المدينة')>المدينة</option>
+                            <option value="مكة" @selected(old('city') == 'مكة')>مكة</option>
                         </select>
                         @error('city')
                             <div style="color: var(--danger); font-size: 0.85rem; margin-top: 0.3rem;">{{ $message }}</div>

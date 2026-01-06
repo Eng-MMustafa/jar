@@ -23,6 +23,7 @@ class Product extends Model
         'rental_price_hourly',
         'rental_type',
         'security_deposit',
+        'city',
         'sku',
         'stock_quantity',
         'min_stock_level',
@@ -94,7 +95,16 @@ class Product extends Model
 
     public function getPrimaryImageAttribute()
     {
-        return $this->primaryImage?->image_path;
+        // Return the related ProductImage model (so views can access ->image_path)
+        return $this->primaryImage()->first();
+    }
+
+    /**
+     * Convenience attribute for getting the primary image path directly.
+     */
+    public function getPrimaryImagePathAttribute()
+    {
+        return $this->primaryImage()?->image_path ?? $this->primaryImage()->first()?->image_path;
     }
 
     public function getFormattedPriceAttribute(): string

@@ -217,6 +217,16 @@ class ProfileController extends Controller
             'rental_type' => $validated['rental_type'] ?? null,
         ];
 
+        // Generate slug and SKU to satisfy DB constraints
+        $slugBase = \Illuminate\Support\Str::slug($validated['name']);
+        $slug = $slugBase;
+        $i = 1;
+        while (\App\Models\Product::where('slug', $slug)->exists()) {
+            $slug = $slugBase . '-' . $i++;
+        }
+        $productData['slug'] = $slug;
+        $productData['sku'] = 'SKU' . strtoupper(\Illuminate\Support\Str::random(8));
+
         // Set rental price field according to rental_type (if any)
         if (!empty($validated['rental_type']) && $validated['rental_type'] === 'daily') {
             $productData['rental_price_daily'] = $validated['price'];

@@ -396,7 +396,7 @@
                 <div class="products-header">
                     <div>
                         <h3 class="section-title">إدارة المنتجات</h3>
-                        <div class="products-count">74 منتجات نشطة</div>
+                        <div class="products-count">{{ $products->total() }} منتجات نشطة</div>
                     </div>
                     <a href="{{ route('my-products.create') }}" class="btn-add-product">
                         <i class="fas fa-plus"></i> إضافة منتج جديد
@@ -406,153 +406,45 @@
                 <input type="text" class="search-box" placeholder="ابحث عن منتج..." id="productSearch">
 
                 <div class="products-grid">
-                    <!-- Product Card 1 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
-                        </div>
-                        <div class="product-body">
-                            <div class="product-name">عربة الفيشار البيومي</div>
-                            <div class="product-price">120 ريال</div>
-                            <div class="product-footer">
-                                <span class="product-status">نشط</span>
-                                <div class="product-actions">                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
-                                        <i class="fas fa-bell"></i>
-                                    </a>                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <button class="btn-action btn-action-delete" title="حذف">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
+                    @forelse($products as $product)
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="{{ $product->images->first() ? asset($product->images->first()->image_path) : asset('images/placeholder.svg') }}" alt="{{ $product->name }}">
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 2 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
-                        </div>
-                        <div class="product-body">
-                            <div class="product-name">عربة الفيشار البيومي</div>
-                            <div class="product-price">120 ريال</div>
-                            <div class="product-footer">
-                                <span class="product-status">نشط</span>
-                                <div class="product-actions">
-                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
-                                        <i class="fas fa-bell"></i>
-                                    </a>
-                                        <a href="{{ route('my-products.edit', 0) }}" class="btn-action btn-action-edit" title="تعديل">
+                            <div class="product-body">
+                                <div class="product-name">{{ $product->name }}</div>
+                                <div class="product-price">{{ number_format($product->price, 2) }} ر.س</div>
+                                <div class="product-footer">
+                                    <span class="product-status">{{ $product->is_active ? 'نشط' : 'غير نشط' }}</span>
+                                    <div class="product-actions">
+                                        <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
+                                            <i class="fas fa-bell"></i>
+                                        </a>
+                                        <a href="{{ route('my-products.edit', $product->id) }}" class="btn-action btn-action-edit" title="تعديل">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                    <button class="btn-action btn-action-delete" title="حذف">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                        <form action="{{ route('my-products.delete', $product->id) }}" method="POST" onsubmit="return confirm('هل تريد حذف هذا المنتج؟');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn-action btn-action-delete" title="حذف"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @empty
+                        <div class="empty-state" style="margin-top:0;">
+                            <div class="empty-icon">📦</div>
+                            <div class="empty-text">
+                                <h3 class="empty-title">لا توجد منتجات حتى الآن</h3>
+                                <p class="empty-message">لم تقم بإضافة منتجات حتى الآن. اضغط على "إضافة منتج جديد" لبدء البيع أو التأجير.</p>
+                            </div>
+                        </div>
+                    @endforelse
+                </div>
 
-                    <!-- Product Card 3 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
-                        </div>
-                        <div class="product-body">
-                            <div class="product-name">عربة الفيشار البيومي</div>
-                            <div class="product-price">120 ريال</div>
-                            <div class="product-footer">
-                                <span class="product-status">نشط</span>
-                                <div class="product-actions">
-                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
-                                        <i class="fas fa-bell"></i>
-                                    </a>
-                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <button class="btn-action btn-action-delete" title="حذف">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 4 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
-                        </div>
-                        <div class="product-body">
-                            <div class="product-name">عربة الفيشار البيومي</div>
-                            <div class="product-price">120 ريال</div>
-                            <div class="product-footer">
-                                <span class="product-status">نشط</span>
-                                <div class="product-actions">
-                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
-                                        <i class="fas fa-bell"></i>
-                                    </a>
-                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <button class="btn-action btn-action-delete" title="حذف">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 5 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
-                        </div>
-                        <div class="product-body">
-                            <div class="product-name">عربة الفيشار البيومي</div>
-                            <div class="product-price">120 ريال</div>
-                            <div class="product-footer">
-                                <span class="product-status">نشط</span>
-                                <div class="product-actions">
-                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
-                                        <i class="fas fa-bell"></i>
-                                    </a>
-                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <button class="btn-action btn-action-delete" title="حذف">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 6 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="{{ asset('images/placeholder.svg') }}" alt="منتج">
-                        </div>
-                        <div class="product-body">
-                            <div class="product-name">عربة الفيشار البيومي</div>
-                            <div class="product-price">120 ريال</div>
-                            <div class="product-footer">
-                                <span class="product-status">نشط</span>
-                                <div class="product-actions">
-                                    <a href="{{ route('notifications') }}" class="btn-action btn-action-notify" title="الإشعارات">
-                                        <i class="fas fa-bell"></i>
-                                    </a>
-                                    <a href="#" class="btn-action btn-action-edit" title="تعديل">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <button class="btn-action btn-action-delete" title="حذف">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mt-6">
+                    {{ $products->links() }}
                 </div>
             </div>
         </div>
