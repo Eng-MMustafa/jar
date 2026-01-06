@@ -74,7 +74,7 @@
                    class="sidebar-menu-item flex items-center px-4 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg transition-colors duration-200">
                     <i class="fas fa-shopping-cart w-5 mr-3 text-center"></i>
                     <span>Orders</span>
-                    <span class="ml-auto bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">12</span>
+                    <span class="ml-auto bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">{{ \App\Models\Order::where('status','pending')->count() }}</span>
                 </a>
             </li>
 
@@ -84,7 +84,7 @@
                    class="sidebar-menu-item flex items-center px-4 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg transition-colors duration-200">
                     <i class="fas fa-ticket-alt w-5 mr-3 text-center"></i>
                     <span>Support Tickets</span>
-                    <span class="ml-auto bg-orange-500 text-white text-xs px-2 py-1 rounded-full">5</span>
+                    <span class="ml-auto bg-orange-500 text-white text-xs px-2 py-1 rounded-full">{{ \App\Models\SupportTicket::where('status','open')->count() }}</span>
                 </a>
             </li>
 

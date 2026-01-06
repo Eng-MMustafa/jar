@@ -22,7 +22,9 @@ class DashboardController extends Controller
             'total_users' => User::count(),
             'active_lenders' => User::where('type', 'lender')->where('is_active', true)->count(),
             'active_products' => Product::where('is_active', true)->count(),
+            'total_orders' => Order::count(),
             'pending_orders' => Order::where('status', 'pending')->count(),
+            'revenue' => Order::sum('total_amount'),
             'new_tickets' => SupportTicket::where('status', 'open')->count(),
             'average_rating' => Product::avg('rating') ?: 0,
         ];
