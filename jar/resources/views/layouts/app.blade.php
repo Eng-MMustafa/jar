@@ -349,8 +349,19 @@
             <div class="flex justify-end">
                 <img src="{{ asset('images/Logo/TJAR-LOGO-V1-01 1.svg') }}" alt="TJAR Logo" class="h-40 w-auto opacity-100">
             </div>
-            <div class="text-left text-teal-100 text-sm">
-                <p>الرقم الضريبي : <span class="font-bold text-white">5667776443</span></p>
+            <div class="text-left text-teal-100 text-sm flex items-center gap-4">
+                <p class="mb-0">الرقم الضريبي : <span class="font-bold text-white">5667776443</span></p>
+                <div class="flex items-center gap-2" dir="ltr" aria-label="طرق الدفع">
+                    <a href="#" aria-label="mada" title="mada" class="payment-btn w-8 h-8 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
+                        <img src="{{ asset('images/payments/mada-white.svg') }}" alt="MADA" class="w-6 h-6 object-contain">
+                    </a>
+                    <a href="#" aria-label="VISA" title="VISA" class="payment-btn w-8 h-8 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
+                        <img src="{{ asset('images/payments/visa-white.svg') }}" alt="VISA" class="w-6 h-6 object-contain">
+                    </a>
+                    <a href="#" aria-label="PayPal" title="PayPal" class="payment-btn w-8 h-8 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
+                        <img src="{{ asset('images/payments/paypal-white.svg') }}" alt="PayPal" class="w-6 h-6 object-contain">
+                    </a>
+                </div>
             </div>
         </div>
 
