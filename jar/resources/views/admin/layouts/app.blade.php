@@ -6,13 +6,17 @@
     <title>@yield('title', 'Admin Dashboard') - Rental Platform</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom Tailwind Config -->
+    <!-- Google Fonts: IBM Plex Sans Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Vite Assets -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
     <style>
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -23,29 +27,9 @@
         }
     </style>
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
     @stack('styles')
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50" id="app">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <div class="sticky top-0 h-screen">

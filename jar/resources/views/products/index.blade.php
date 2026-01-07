@@ -13,7 +13,7 @@
     }
 
     .breadcrumb a {
-        color: #00bcd4;
+        color: #0d9488;
         text-decoration: none;
         font-weight: 600;
     }
@@ -41,6 +41,7 @@
         border: 1px solid #ddd;
         border-radius: 5px;
         font-size: 0.95rem;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .products-container {
@@ -128,7 +129,7 @@
 
     .product-category {
         font-size: 0.75rem;
-        color: #00bcd4;
+        color: #0d9488;
         font-weight: 600;
         margin-bottom: 0.8rem;
     }
@@ -145,11 +146,11 @@
     .product-price {
         font-size: 1.2rem;
         font-weight: 700;
-        color: #00bcd4;
+        color: #0d9488;
     }
 
     .rent-button {
-        background: #00bcd4;
+        background: #0d9488;
         color: white;
         border: none;
         padding: 0.6rem 1.2rem;
@@ -160,10 +161,11 @@
         transition: all 0.3s ease;
         text-decoration: none;
         display: inline-block;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .rent-button:hover {
-        background: #00a8b8;
+        background: #0f766e;
         transform: translateY(-2px);
         color: white;
         text-decoration: none;
@@ -182,7 +184,8 @@
         border: 1px solid #ddd;
         border-radius: 5px;
         text-decoration: none;
-        color: #00bcd4;
+        color: #0d9488;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .pagination-container a:hover {
@@ -190,7 +193,7 @@
     }
 
     .pagination-container .active {
-        background: #00bcd4;
+        background: #0d9488;
         color: white;
     }
 
@@ -211,6 +214,7 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 1rem;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 </style>
 
@@ -225,15 +229,15 @@
     <!-- Filter Header -->
     <div class="filter-header">
         <form method="GET" action="{{ route('products.index') }}" style="display: flex; gap: 1rem; width: 100%; justify-content: flex-end; align-items: center;">
-            <button type="submit" style="background: #00bcd4; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600;">بحث</button>
-            
-            <input type="text" name="search" placeholder="البحث عن منتج..." 
+            <button type="submit" style="background: #0d9488; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600; font-family: 'IBM Plex Sans Arabic', sans-serif;">بحث</button>
+
+            <input type="text" name="search" placeholder="البحث عن منتج..."
                    value="{{ request('search') }}" style="width: 200px;">
-            
+
             <select name="category" style="width: 150px;">
                 <option value="">جميع الأقسام</option>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}" 
+                    <option value="{{ $category->id }}"
                         {{ request('category') == $category->id ? 'selected' : '' }}>
                         {{ $category->name }}
                     </option>
@@ -252,7 +256,7 @@
                 @else
                     <img src="{{ asset('images/placeholder-product.svg') }}" alt="{{ $product->name }}">
                 @endif
-                
+
                 @if($product->rating > 0)
                 <div class="rating-badge">
                     <span class="rating-star">★</span>
@@ -260,12 +264,12 @@
                 </div>
                 @endif
             </div>
-            
+
             <div class="product-info">
                 <h3 class="product-title">{{ $product->name }}</h3>
                 <p class="product-description">{{ Str::limit($product->description, 80) }}</p>
                 <div class="product-category">{{ $product->category->name }}</div>
-                
+
                 <div class="product-footer">
                     <a href="{{ route('products.show', $product->slug) }}" class="rent-button">
                         استأجر
@@ -300,7 +304,7 @@
                 <i class="fas fa-chevron-left"></i>
             </span>
         @else
-            <a href="{{ $products->previousPageUrl() }}" style="padding: 0.6rem 0.8rem; color: #00bcd4; cursor: pointer; border: 1px solid #00bcd4; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+            <a href="{{ $products->previousPageUrl() }}" style="padding: 0.6rem 0.8rem; color: #0d9488; cursor: pointer; border: 1px solid #0d9488; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
                 <i class="fas fa-chevron-left"></i>
             </a>
         @endif
@@ -319,7 +323,7 @@
 
         @for($page = max(1, $current - $delta); $page <= min($last, $current + $delta); $page++)
             @if($page == $current)
-                <span style="padding: 0.6rem 0.9rem; background: #00bcd4; color: white; border-radius: 5px; border: 1px solid #00bcd4; min-width: 40px; text-align: center; font-weight: 600;">{{ $page }}</span>
+                <span style="padding: 0.6rem 0.9rem; background: #0d9488; color: white; border-radius: 5px; border: 1px solid #0d9488; min-width: 40px; text-align: center; font-weight: 600;">{{ $page }}</span>
             @else
                 <a href="{{ $products->url($page) }}" style="padding: 0.6rem 0.9rem; border: 1px solid #ddd; border-radius: 5px; text-decoration: none; color: #333; min-width: 40px; text-align: center; transition: all 0.3s ease;">{{ $page }}</a>
             @endif
@@ -332,7 +336,7 @@
 
         <!-- Next Button -->
         @if($products->hasMorePages())
-            <a href="{{ $products->nextPageUrl() }}" style="padding: 0.6rem 0.8rem; color: #00bcd4; cursor: pointer; border: 1px solid #00bcd4; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+            <a href="{{ $products->nextPageUrl() }}" style="padding: 0.6rem 0.8rem; color: #0d9488; cursor: pointer; border: 1px solid #0d9488; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
                 <i class="fas fa-chevron-right"></i>
             </a>
         @else

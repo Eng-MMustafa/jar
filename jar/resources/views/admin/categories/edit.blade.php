@@ -46,13 +46,17 @@
                 @error('sort_order')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
             </div>
 
-            <div class="flex items-center gap-3">
-                <input type="checkbox" name="is_active" id="is_active" {{ old('is_active', $category->is_active) ? 'checked' : '' }} class="h-4 w-4">
-                <label for="is_active" class="ml-2 text-sm text-gray-700">الحالة</label>
+            <div class="flex flex-col">
+                <div class="flex items-center gap-3">
+                    <input type="hidden" name="is_active" value="0">
+                    <input type="checkbox" name="is_active" id="is_active" value="1" {{ old('is_active', $category->is_active) ? 'checked' : '' }} class="h-4 w-4">
+                    <label for="is_active" class="ml-2 text-sm text-gray-700">الحالة</label>
 
-                <button type="button" id="toggleBtn" onclick="toggleCategoryEdit(event, this)" class="inline-flex items-center px-3 py-1 rounded text-sm {{ $category->is_active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }}">
-                    <span>{{ $category->is_active ? 'مفعل' : 'معطل' }}</span>
-                </button>
+                    <button type="button" id="toggleBtn" onclick="toggleCategoryEdit(event, this)" class="inline-flex items-center px-3 py-1 rounded text-sm {{ $category->is_active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }}">
+                        <span>{{ $category->is_active ? 'مفعل' : 'معطل' }}</span>
+                    </button>
+                </div>
+                @error('is_active')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
             </div>
         </div> 
 

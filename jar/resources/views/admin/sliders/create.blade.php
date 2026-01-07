@@ -20,14 +20,24 @@
                 <label class="block text-sm text-gray-700">Image URL</label>
                 <input name="image" class="w-full border border-gray-300 rounded-md px-3 py-2" required>
             </div>
-            <div>
-                <label class="block text-sm text-gray-700">Link</label>
-                <input name="link" class="w-full border border-gray-300 rounded-md px-3 py-2">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm text-gray-700">Link</label>
+                    <input name="link" class="w-full border border-gray-300 rounded-md px-3 py-2">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-700">Link Target</label>
+                    <select name="link_target" class="w-full border border-gray-300 rounded-md px-3 py-2">
+                        <option value="_self">Same Tab</option>
+                        <option value="_blank">New Tab</option>
+                    </select>
+                </div>
             </div>
             <div class="flex items-center gap-4">
                 <div>
                     <label class="block text-sm text-gray-700">Active</label>
-                    <input type="checkbox" name="is_active" checked>
+                    <input type="hidden" name="is_active" value="0">
+                    <input type="checkbox" name="is_active" value="1" checked>
                 </div>
                 <div>
                     <label class="block text-sm text-gray-700">Sort Order</label>

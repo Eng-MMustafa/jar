@@ -5,8 +5,8 @@
 @section('content')
 <style>
     :root {
-        --primary: #00bcd4;
-        --primary-dark: #0097a7;
+        --primary: #0d9488;
+        --primary-dark: #0f766e;
         --text-dark: #333;
         --text-light: #666;
         --bg-light: #f5f7fa;
@@ -14,7 +14,7 @@
     }
 
     .edit-profile-container {
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         direction: rtl;
         max-width: 1000px;
         margin: 0 auto;
@@ -65,7 +65,7 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary) 0%, #0097a7 100%);
+        background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -156,7 +156,7 @@
         padding: 0.75rem 0;
         color: var(--text-dark);
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         display: flex;
         align-items: center;
@@ -216,7 +216,7 @@
         padding: 0.75rem;
         border: 1px solid var(--border-light);
         border-radius: 6px;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         direction: rtl;
         text-align: right;
@@ -226,7 +226,7 @@
     .form-input:focus {
         outline: none;
         border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+        box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
     }
 
     .form-input:disabled {
@@ -245,7 +245,7 @@
         padding: 0.75rem 2rem;
         border: none;
         border-radius: 6px;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         font-weight: 600;
         cursor: pointer;

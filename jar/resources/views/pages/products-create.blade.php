@@ -5,8 +5,8 @@
 @section('content')
 <style>
     :root {
-        --primary: #00bcd4;
-        --primary-dark: #0097a7;
+        --primary: #0d9488;
+        --primary-dark: #0f766e;
         --danger: #e74c3c;
         --success: #27ae60;
         --text-dark: #333;
@@ -16,7 +16,7 @@
     }
 
     .profile-container {
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         direction: rtl;
         max-width: 1200px;
         margin: 0 auto;
@@ -83,7 +83,7 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary) 0%, #0097a7 100%);
+        background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -211,7 +211,7 @@
         border: 1px solid var(--border-light);
         border-radius: 8px;
         margin-bottom: 2rem;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .products-grid {
@@ -458,7 +458,7 @@
     document.getElementById('productSearch').addEventListener('keyup', function(e) {
         const searchTerm = e.target.value.toLowerCase();
         const productCards = document.querySelectorAll('.product-card');
-        
+
         productCards.forEach(card => {
             const productName = card.querySelector('.product-name').textContent.toLowerCase();
             if (productName.includes(searchTerm)) {

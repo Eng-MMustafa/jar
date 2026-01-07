@@ -5,8 +5,8 @@
 @section('content')
 <style>
     :root {
-        --primary: #00bcd4;
-        --primary-dark: #0097a7;
+        --primary: #0d9488;
+        --primary-dark: #0f766e;
         --text-dark: #333;
         --text-light: #666;
         --bg-light: #f5f7fa;
@@ -14,7 +14,7 @@
     }
 
     .support-container {
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         direction: rtl;
         max-width: 1000px;
         margin: 0 auto;
@@ -65,7 +65,7 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary) 0%, #0097a7 100%);
+        background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -156,7 +156,7 @@
         padding: 0.75rem 0;
         color: var(--text-dark);
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         display: flex;
         align-items: center;
@@ -238,7 +238,7 @@
         border: none;
         border-radius: 6px;
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         text-decoration: none;
         display: inline-block;
         transition: all 0.3s ease;
@@ -247,7 +247,7 @@
     .btn:hover {
         background: var(--primary-dark);
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+        box-shadow: 0 5px 15px rgba(13, 148, 136, 0.3);
     }
 
     .btn-secondary {
@@ -320,13 +320,13 @@
                                     <p style="color:var(--text-light);margin:0.25rem 0;">المستأجر: <strong>{{ $booking->user?->getFullNameAttribute() ?? 'مستخدم' }}</strong></p>
                                     <p style="color:var(--text-light);margin:0.25rem 0;">من: {{ $booking->start_date->format('d - m - Y') }} إلى: {{ $booking->end_date->format('d - m - Y') }}</p>
                                     <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:0.5rem;">
-                                        <div style="font-weight:700;color:var(--text-dark);">إجمالي السعر: <span style="color:#1abc9c;">{{ number_format($booking->total,2) }} ر.س</span></div>
+                                        <div style="font-weight:700;color:var(--text-dark);">إجمالي السعر: <span style="color:#0d9488;">{{ number_format($booking->total,2) }} ر.س</span></div>
                                         <div>
                                             @php $st = $booking->status; @endphp
                                             @if(in_array($st, ['pending','submitted']))
                                                 <span class="status-badge" style="background:#fff3cd;color:#856404;border:1px solid #ffeeba;padding:0.35rem 0.6rem;border-radius:12px;">قيد الإنتظار</span>
                                             @elseif(in_array($st, ['approved','confirmed']))
-                                                <span class="status-badge" style="background:#e8f8f5;color:#1abc9c;border:1px solid #d1f0e8;padding:0.35rem 0.6rem;border-radius:12px;">موافقة</span>
+                                                <span class="status-badge" style="background:#e8f8f5;color:#0d9488;border:1px solid #d1f0e8;padding:0.35rem 0.6rem;border-radius:12px;">موافقة</span>
                                             @else
                                                 <span class="status-badge" style="background:#f8d7da;color:#b71c1c;border:1px solid #f5c6cb;padding:0.35rem 0.6rem;border-radius:12px;">مرفوض</span>
                                             @endif

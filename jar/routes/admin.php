@@ -121,5 +121,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/settings', function () {
             return view('admin.settings.index');
         })->name('settings.index');
+        // Design System
+        Route::get('/design-system', function () {
+            return view('admin.design-system');
+        })->name('design-system');
+
     });
 });

@@ -5,8 +5,8 @@
 @section('content')
 <style>
     :root {
-        --primary: #00bcd4;
-        --primary-dark: #0097a7;
+        --primary: #0d9488;
+        --primary-dark: #0f766e;
         --text-dark: #333;
         --text-light: #666;
         --bg-light: #f5f7fa;
@@ -14,7 +14,7 @@
     }
 
     .bookings-container {
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         direction: rtl;
         max-width: 1000px;
         margin: 0 auto;
@@ -65,7 +65,7 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary) 0%, #0097a7 100%);
+        background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -81,7 +81,7 @@
         left: 0;
         width: 30px;
         height: 30px;
-        background: #27ae60;
+        background: #00ce67;
         border: 3px solid white;
         border-radius: 50%;
         display: flex;
@@ -106,7 +106,7 @@
         display: inline-block;
         padding: 0.4rem 0.8rem;
         background: #e8f5e9;
-        color: #27ae60;
+        color: #00ce67;
         border-radius: 20px;
         font-size: 0.85rem;
         font-weight: 600;
@@ -156,7 +156,7 @@
         padding: 0.75rem 0;
         color: var(--text-dark);
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         display: flex;
         align-items: center;
@@ -339,7 +339,7 @@
         border: none;
         border-radius: 10px;
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         text-decoration: none;
         display: inline-flex;
         align-items: center;

@@ -1,9 +1,9 @@
 <style>
 :root {
-    --primary: #00bcd4;
-    --primary-dark: #0097a7;
+    --primary: #0d9488;
+    --primary-dark: #0f766e;
     --danger: #e74c3c;
-    --success: #27ae60;
+    --success: #00ce67;
     --text-dark: #333;
     --text-light: #666;
     --bg-light: #f5f7fa;
@@ -12,7 +12,7 @@
 
 /* Layout helpers used across profile pages */
 .profile-container {
-    font-family: 'Tajawal', sans-serif;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
     direction: rtl;
     max-width: 1200px;
     margin: 0 auto;

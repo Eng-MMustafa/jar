@@ -1,12 +1,12 @@
 /* Categories and Products Pages Styles */
 .page-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-neutral-border) 100%);
     font-family: 'Arial', sans-serif;
 }
 
 .main-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: white;
     padding: 4rem 0;
     text-align: center;
@@ -80,7 +80,7 @@
 }
 
 .rating-stars {
-    color: #ffc107;
+    color: var(--color-warning);
     margin-right: 5px;
 }
 
@@ -92,12 +92,12 @@
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: var(--color-neutral-text-dark);
     line-height: 1.3;
 }
 
 .product-description {
-    color: #666;
+    color: var(--color-neutral-text);
     font-size: 0.95rem;
     line-height: 1.5;
     margin-bottom: 1rem;
@@ -302,16 +302,16 @@
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
     }
-    
+
     .main-header h1 {
         font-size: 2rem;
     }
-    
+
     .filter-form {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .filter-form select,
     .filter-form input,
     .filter-btn {

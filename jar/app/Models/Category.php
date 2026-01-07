@@ -12,7 +12,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
-        'image',
+        'image_url',
         'is_active',
         'sort_order',
     ];
@@ -25,9 +25,9 @@ class Category extends Model
     
 
     // Helper to get public image URL
-    public function getImageUrlAttribute()
+    public function getImageUrlAttribute($value)
     {
-        return $this->image ? asset('storage/' . $this->image) : null;
+        return $value ? asset('storage/' . $value) : null;
     }
 
     public function scopeActive($query)

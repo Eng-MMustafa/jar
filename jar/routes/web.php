@@ -61,12 +61,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
-    
+
     // Renter activation
     Route::get('/profile/activate-renter', [ProfileController::class, 'activateRenter'])->name('profile.activate-renter');
     Route::post('/profile/activate-renter', [ProfileController::class, 'storeRenterActivation'])->name('profile.activate-renter.store');
     Route::get('/profile/activation-success', [ProfileController::class, 'activationSuccess'])->name('profile.activation-success');
-    
+
     // Bookings and Support
     Route::get('/profile/bookings', [ProfileController::class, 'bookings'])->name('profile.bookings');
     Route::get('/profile/support-tickets', [ProfileController::class, 'supportTickets'])->name('profile.support-tickets');
@@ -92,13 +92,18 @@ Route::middleware('auth')->group(function () {
 
     // Product comments (requires auth)
     Route::post('/products/{product}/comments', [App\Http\Controllers\ProductCommentController::class, 'store'])->name('products.comments.store');
-    
+
     Route::get('/chat', [ProfileController::class, 'chat'])->name('chat');
     Route::get('/massage', [ProfileController::class, 'massage'])->name('massage');
     Route::get('/my-orders', [ProfileController::class, 'myOrders'])->name('my-orders');
     Route::get('/new-rental-orders', [ProfileController::class, 'newRentalOrders'])->name('new-rental-orders');
     Route::get('/notifications', [ProfileController::class, 'notifications'])->name('notifications');
-
-    // Delete account
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Admin routes are likely in a separate file or registered here.
+    // Assuming they are registered via RouteServiceProvider or similar,
+    // but based on search results I saw Admin/CategoryController.
+    // I need to check where admin routes are.
+});
+

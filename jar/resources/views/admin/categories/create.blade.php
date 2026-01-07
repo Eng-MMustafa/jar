@@ -27,7 +27,7 @@
             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
             <input id="name" type="text" name="name" value="{{ old('name') }}" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-200">
             @error('name')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
-        </div> 
+        </div>
 
         <div class="mt-3">
             <label for="slug" class="block text-sm font-medium text-gray-700 mb-1">Slug</label>
@@ -47,7 +47,7 @@
                 <input type="checkbox" name="is_active" id="is_active" {{ old('is_active', true) ? 'checked' : '' }} class="h-4 w-4">
                 <label for="is_active" class="ml-2 text-sm text-gray-700">Active</label>
             </div>
-        </div> 
+        </div>
 
         <div class="flex justify-end">
             <a href="{{ route('admin.categories.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md mr-2">Cancel</a>

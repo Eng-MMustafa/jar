@@ -5,23 +5,22 @@
 @section('content')
 <style>
     .success-container {
-        font-family: 'Tajawal', sans-serif;
-        direction: rtl;
+        min-height: 80vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #e8f4f8 100%);
         padding: 2rem;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .success-card {
         background: white;
+        padding: 2rem;
         border-radius: 12px;
-        padding: 3rem 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border-right: 4px solid #0d9488;
         text-align: center;
         max-width: 500px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     }
 
     .success-icon {
@@ -53,7 +52,7 @@
 
     .success-details {
         background: #f5f7fa;
-        border-right: 4px solid #00bcd4;
+        border-right: 4px solid #0d9488;
         padding: 1.5rem;
         border-radius: 6px;
         margin-bottom: 2rem;
@@ -82,7 +81,7 @@
         padding: 0.75rem 1.5rem;
         border: none;
         border-radius: 6px;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         font-weight: 600;
         cursor: pointer;
@@ -91,20 +90,20 @@
     }
 
     .btn-primary {
-        background: #00bcd4;
+        background: #0d9488;
         color: white;
     }
 
     .btn-primary:hover {
-        background: #0097a7;
+        background: #0f766e;
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+        box-shadow: 0 5px 15px rgba(13, 148, 136, 0.3);
     }
 
     .btn-secondary {
         background: white;
-        color: #00bcd4;
-        border: 2px solid #00bcd4;
+        color: #0d9488;
+        border: 2px solid #0d9488;
     }
 
     .btn-secondary:hover {

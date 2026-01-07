@@ -6,17 +6,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=tajawal:400,500,700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom Auth Styles -->
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
-        body { font-family: 'Tajawal', sans-serif; }
-    </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
     <header>
@@ -82,8 +80,8 @@
                     <!-- Center: Search -->
                     <div class="flex-1 max-w-2xl mx-8">
                         <div class="relative">
-                            <input type="search" 
-                                   placeholder="ابحث عن : أجهزة كهربائية" 
+                            <input type="search"
+                                   placeholder="ابحث عن : أجهزة كهربائية"
                                    class="w-full py-2 px-4 pr-10 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500">
                             <button class="absolute inset-y-0 right-3 flex items-center">
                                 <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -256,124 +254,159 @@
         @yield('content')
     </main>
 
-    <footer class="site-footer text-white py-12 relative z-10" style="background-color: #1a3a3a; background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.03) 10px, rgba(255,255,255,.03) 20px);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <style>
+        .footer-bg-container {
+            position: relative;
+            background-color: #003838;
+            overflow: hidden;
+        }
+        .footer-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            background-repeat: repeat; /* Changed to repeat for better coverage */
+            background-position: center top;
+            background-size: 500px auto; /* Set a reasonable fixed size for the pattern */
+            opacity: 0.5; /* High opacity to ensure visibility */
+            pointer-events: none;
+            /* Default (Mobile) */
+            background-image: url('{{ asset('images/Images/TJAR-PATTERN_WHITE (2) 1.png') }}');
+        }
+        @media (min-width: 768px) {
+            .footer-pattern {
+                /* Desktop */
+                background-image: url('{{ asset('images/Images/TJAR-PATTERN_WHITE (2) 1.png') }}');
+                background-size: 600px auto; /* Slightly larger on desktop */
+                background-repeat: repeat;
+                opacity: 0.5;
+            }
+        }
+    </style>
+    <footer class="site-footer text-white pt-16 pb-0 relative z-10 font-ibm footer-bg-container">
+        <div class="footer-pattern"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <!-- Main Footer Content -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                <!-- Column 1: About -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-right" dir="rtl">
+                <!-- Column 1: Summary (Rightmost) -->
                 <div class="footer-col">
-                    <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">ملخص</h3>
-                    <p class="text-teal-100 text-sm leading-relaxed mb-6">في جار لتأجير الممتلكات
-شركة سعودية متخصصة تعمل كوسيط موثوق لتأجير مختلف أنواع الممتلكات، حيث تربط بين الملاك والمستأجرين عبر منصة سهلة الاستخدام تضمن السرعة، الأمان، ووضوح الإجراءات.</p>
-                    <div class="flex gap-3" aria-label="social links">
-                        <a href="#" aria-label="فيسبوك" title="فيسبوك" class="social-btn w-11 h-11 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
-                            <!-- Facebook -->
-                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22 12a10 10 0 10-11.5 9.9v-7h-2.3v-2.9h2.3V9.6c0-2.3 1.4-3.6 3.5-3.6 1 0 2 .1 2 .1v2.2h-1.1c-1.1 0-1.4.7-1.4 1.4v1.7h2.4l-.4 2.9h-2v7A10 10 0 0022 12z"/>
-                            </svg>
-                            <span class="sr-only">فيسبوك</span>
+                    <h3 class="text-lg font-medium mb-6 pb-2 text-white border-b border-teal-600/30 inline-block">ملخص</h3>
+                    <h4 class="text-base font-medium text-white mb-2">تي جار لتأجير الممتلكات</h4>
+                    <p class="text-white text-sm leading-relaxed mb-6">
+                        شركة سعودية متخصصة تعمل كوسيط موثوق لتأجير مختلف أنواع الممتلكات، حيث تربط بين الملاك والمستأجرين عبر منصة سهلة الاستخدام تضمن السرعة، الأمان، ووضوح الإجراءات.
+                    </p>
+                    <div class="flex gap-3 justify-start" aria-label="social links">
+                        <!-- TikTok -->
+                        <a href="#" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                            <i class="fab fa-tiktok"></i>
                         </a>
-
-                        <a href="#" aria-label="انستجرام" title="انستجرام" class="social-btn w-11 h-11 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
-                            <!-- Instagram -->
-                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37Z" fill="currentColor"></path>
-                                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"></circle>
-                            </svg>
-                            <span class="sr-only">انستجرام</span>
+                        <!-- Instagram -->
+                        <a href="#" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                            <i class="fab fa-instagram"></i>
                         </a>
-
-                        <a href="#" aria-label="لينكدإن" title="لينكدإن" class="social-btn w-11 h-11 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
-                            <!-- LinkedIn -->
-                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h4V24H0V8.98zM8.5 8.98h3.8v2.07h.05c.53-1 1.82-2.07 3.75-2.07 4.01 0 4.75 2.6 4.75 5.98V24H18V14.5c0-2.22-.04-5.07-3.09-5.07-3.09 0-3.56 2.42-3.56 4.92V24H8.5V8.98z"/>
-                            </svg>
-                            <span class="sr-only">لينكدإن</span>
+                        <!-- Snapchat -->
+                        <a href="#" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                            <i class="fab fa-snapchat-ghost"></i>
                         </a>
-
-                        <a href="#" aria-label="X" title="X" class="social-btn w-11 h-11 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
-                            <!-- X (Twitter) -->
-                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5v-.88A7.72 7.72 0 0023 3z"/>
-                            </svg>
-                            <span class="sr-only">X</span>
+                        <!-- X (Twitter) -->
+                        <a href="#" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                            <i class="fab fa-twitter"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Column 2: Quick Links -->
+                <!-- Column 2: Important Links -->
                 <div class="footer-col">
-                    <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">روابط سريعة</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="{{ route('home') }}" class="text-teal-100 hover:text-white transition">الرئيسية</a></li>
-                        <li><a href="{{ route('about') }}" class="text-teal-100 hover:text-white transition">من نحن</a></li>
-                        <li><span class="text-teal-100">الأقسام الرئيسية</span></li>
-                        <li><a href="{{ route('products.index') }}" class="text-teal-100 hover:text-white transition">أحدث المنتجات</a></li>
-                        <li><a href="{{ route('contact') }}" class="text-teal-100 hover:text-white transition">تواصل معنا</a></li>
+                    <h3 class="text-lg font-medium mb-3 pb-2 text-white border-b border-teal-600/30 inline-block">روابط مهمة</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="{{ route('home') }}" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">الرئيسية</a></li>
+                        <li><a href="{{ route('about') }}" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">من نحن</a></li>
+                        <li><span class="text-white block py-0.5 cursor-default font-ibm font-normal text-sm leading-5 tracking-wide">الأقسام الرئيسية</span></li>
+                        <li><a href="{{ route('products.index') }}" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">أحدث المنتجات</a></li>
+                        <li><a href="{{ route('contact') }}" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">تواصل معنا</a></li>
                     </ul>
                 </div>
 
-                <!-- Column 3: Popular Categories -->
+                <!-- Column 3: Common Categories -->
                 <div class="footer-col">
-                    <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">الفئات الشائعة</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">الالكترونيات</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">الألعاب</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">المنزل</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">أغراض الخيم</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">أغراض البحر والبر</a></li>
+                    <h3 class="text-lg font-medium mb-3 pb-2 text-white border-b border-teal-600/30 inline-block">الفئات الشائعة</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">إلكترونيات</a></li>
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">العاب</a></li>
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">المنزل</a></li>
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">أغراض التخيم</a></li>
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">أغراض البحر والبر</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 4: Contact & Support -->
                 <div class="footer-col">
-                    <h3 class="text-base font-bold mb-6 pb-2 border-b border-teal-600/50">الاتصال والدعم</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">مركز العملاء</a></li>
-                        <li><a href="{{ route('contact') }}" class="text-teal-100 hover:text-white transition">تواصل معنا</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">شارك معنا</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">تقديم شكوى</a></li>
-                        <li><a href="#" class="text-teal-100 hover:text-white transition">الإبلاغ عن مشكلة</a></li>
+                    <h3 class="text-lg font-medium mb-3 pb-2 text-white border-b border-teal-600/30 inline-block">الاتصال والدعم</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">مركز العملاء</a></li>
+                        <li><a href="{{ route('contact') }}" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">تواصل معنا</a></li>
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">شارك معنا</a></li>
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">تقديم شكوى</a></li>
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">الإبلاغ عن مشكلة</a></li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Footer Bottom -->
-            <div class="pt-0">
-            </div> 
-        </div>
+            <!-- Bottom Section: Logo, Payments, Copyright -->
+            <div class="border-t border-teal-800/50 pt-8 pb-8" dir="rtl">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
 
-        <!-- Full-width extremes: tax number left and logo right (spanning page) -->
-        <div class="w-full flex items-center justify-between mb-6 px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-end">
-                <img src="{{ asset('images/Logo/TJAR-LOGO-V1-01 1.svg') }}" alt="TJAR Logo" class="h-40 w-auto opacity-100">
-            </div>
-            <div class="text-left text-teal-100 text-sm flex items-center gap-4">
-                <p class="mb-0">الرقم الضريبي : <span class="font-bold text-white">5667776443</span></p>
-                <div class="flex items-center gap-2" dir="ltr" aria-label="طرق الدفع">
-                    <a href="#" aria-label="mada" title="mada" class="payment-btn w-8 h-8 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
-                        <img src="{{ asset('images/payments/mada-white.svg') }}" alt="MADA" class="w-6 h-6 object-contain">
-                    </a>
-                    <a href="#" aria-label="VISA" title="VISA" class="payment-btn w-8 h-8 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
-                        <img src="{{ asset('images/payments/visa-white.svg') }}" alt="VISA" class="w-6 h-6 object-contain">
-                    </a>
-                    <a href="#" aria-label="PayPal" title="PayPal" class="payment-btn w-8 h-8 rounded-md border border-white/20 bg-transparent flex items-center justify-center hover:bg-white/6 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30" target="_blank" rel="noopener">
-                        <img src="{{ asset('images/payments/paypal-white.svg') }}" alt="PayPal" class="w-6 h-6 object-contain">
-                    </a>
+                    <!-- Right Side: Logo -->
+                    <div class="flex-shrink-0">
+                        <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR Logo" class="h-24 w-auto brightness-0 invert">
+                    </div>
+
+
+
+                    <!-- Left Side: Payments & Tax -->
+                    <div class="flex flex-col items-end gap-4">
+                        <!-- Payment Icons -->
+
+                        <div class="flex items-center gap-2">
+                               <div class="flex items-center gap-2 text-xs text-white">
+                            <img src="{{ asset('images/images/photo_2021-11-21_10-54-47 1.svg') }}" alt="Mada" >
+                            <span>الرقم الضريبي : <span class="font-bold">546233552</span></span>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                        </div>
+
+                            <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                                <img src="{{ asset('images/images/image (4).png') }}" alt="Visa" >
+                            </div>
+                            <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                               <img src="{{ asset('images/images/image (3).png') }}" alt="Visa" >
+                            </div>
+                            <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                                <img src="{{ asset('images/images/image.svg') }}" alt="PayPal" >
+                            </div>
+                            <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                                <img src="{{ asset('images/images/image2.svg') }}" alt="Mada" >
+                            </div>
+                        </div>
+
+                        <!-- Tax -->
+  <!-- Center: Copyright -->
+
+                    </div>
+
                 </div>
+                  <div class="text-white text-sm font-medium text-center order-last md:order-none">
+                        جميع الحقوق محفوظة لمنصة تي جار © 2026
+                    </div>
             </div>
         </div>
 
-        <!-- Copyright (moved under full-width extremes) -->
-        <div class="text-center text-teal-200 text-sm py-6">
-            <p>جميع الحقوق محفوظة في جار © {{ date('Y') }}</p>
-        </div>
-
-        <!-- Decorative Pattern Bottom -->
-        <div class="w-full h-10 overflow-hidden pointer-events-none">
-            <img src="{{ asset('images/Images/TJAR-PATTERN_PATTERN 2 (1) 1.png') }}" alt="pattern" class="w-full h-full object-cover block">
-        </div>
+        <!-- Decorative Pattern Strip -->
+        <div class="w-full h-4 overflow-hidden relative z-10">
+            <img src="{{ asset('images/Images/TJAR-PATTERN_PATTERN 2 (1) 1.png') }}" alt="pattern" class="w-full h-full object-cover opacity-100">
         </div>
     </footer>
     <script>

@@ -5,8 +5,8 @@
 @section('content')
 <style>
     :root {
-        --primary: #00bcd4;
-        --primary-dark: #0097a7;
+        --primary: #0d9488;
+        --primary-dark: #0f766e;
         --danger: #e74c3c;
         --success: #27ae60;
         --text-dark: #333;
@@ -16,7 +16,7 @@
     }
 
     .profile-container {
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         direction: rtl;
         max-width: 1200px;
         margin: 0 auto;
@@ -83,7 +83,7 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary) 0%, #0097a7 100%);
+        background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -174,7 +174,7 @@
         padding: 0.75rem 0;
         color: var(--text-dark);
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         display: flex;
         align-items: center;
@@ -225,7 +225,7 @@
         padding: 0.75rem 1rem;
         border: 1px solid var(--border-light);
         border-radius: 8px;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         transition: border-color 0.3s ease;
     }
@@ -254,7 +254,7 @@
 
     .upload-area:hover {
         border-color: var(--primary);
-        background: rgba(0, 188, 212, 0.05);
+        background: rgba(13, 148, 136, 0.05);
     }
 
     .upload-area i {
@@ -277,7 +277,7 @@
         cursor: pointer;
         transition: all 0.3s ease;
         text-decoration: none;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
     }
 

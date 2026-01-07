@@ -5,10 +5,6 @@
 @section('page-description', 'Manage homepage sliders')
 
 @section('page-actions')
-    <a href="{{ route('admin.sliders.create') }}" class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors duration-200">
-        <i class="fas fa-plus mr-2"></i>
-        New Slider
-    </a>
 @endsection
 
 @section('content')
@@ -33,11 +29,6 @@
                         <td class="py-3 text-sm">{{ $slider->end_date?->format('Y-m-d') ?? '—' }}</td>
                         <td class="py-3 text-sm text-right">
                             <a href="{{ route('admin.sliders.edit', $slider) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
-                            <form action="{{ route('admin.sliders.destroy', $slider) }}" method="POST" class="inline" onsubmit="return confirm('Delete slider?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
-                            </form>
                         </td>
                     </tr>
                 @empty

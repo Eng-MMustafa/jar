@@ -33,6 +33,12 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        \Illuminate\Support\Facades\Log::info('Category Store Start', [
+            'method' => $request->method(),
+            'all' => $request->all(),
+            'files' => $request->allFiles(),
+        ]);
+
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:categories,slug',
@@ -52,8 +58,9 @@ class CategoryController extends Controller
         // Handle image upload
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('categories', 'public');
-            $data['image'] = $path;
+            $data['image_url'] = $path;
         }
+        unset($data['image']);
 
         Category::create($data);
 
@@ -68,6 +75,13 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
+        \Illuminate\Support\Facades\Log::info('Category Update Start', [
+            'id' => $category->id,
+            'method' => $request->method(),
+            'all' => $request->all(),
+            'files' => $request->allFiles(),
+        ]);
+
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:categories,slug,'.$category->id,
@@ -85,12 +99,13 @@ class CategoryController extends Controller
 
         // Handle image upload and delete old image if replacing
         if ($request->hasFile('image')) {
-            if ($category->image) {
-                try { Storage::disk('public')->delete($category->image); } catch (\Exception $e) {}
+            if ($category->getRawOriginal('image_url')) {
+                try { Storage::disk('public')->delete($category->getRawOriginal('image_url')); } catch (\Exception $e) {}
             }
             $path = $request->file('image')->store('categories', 'public');
-            $data['image'] = $path;
+            $data['image_url'] = $path;
         }
+        unset($data['image']);
 
         $category->update($data);
 
@@ -101,10 +116,14 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         // delete image file if exists
-        if ($category->image) {
-            try { Storage::disk('public')->delete($category->image); } catch (\Exception $e) {}
+        if ($category->getRawOriginal('image_url')) {
+            try { Storage::disk('public')->delete($category->getRawOriginal('image_url')); } catch (\Exception $e) {}
         }
 
+        $category->delete();
+
+        return redirect()->route('admin.categories.index')
+            ->with('success', 'Category deleted successfully.');
     }
 
     public function toggle(Request $request, Category $category)
@@ -116,7 +135,7 @@ class CategoryController extends Controller
             return response()->json(['is_active' => $category->is_active]);
         }
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category status updated.');
+        return redirect()->route('admin.categories.index')->with('success', 'تم بنجاح');
     }
-} 
+}
 

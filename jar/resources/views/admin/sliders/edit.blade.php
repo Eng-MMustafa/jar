@@ -21,14 +21,24 @@
                 <label class="block text-sm text-gray-700">Image URL</label>
                 <input name="image" value="{{ $slider->image }}" class="w-full border border-gray-300 rounded-md px-3 py-2" required>
             </div>
-            <div>
-                <label class="block text-sm text-gray-700">Link</label>
-                <input name="link" value="{{ $slider->link }}" class="w-full border border-gray-300 rounded-md px-3 py-2">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm text-gray-700">Link</label>
+                    <input name="link" value="{{ $slider->link }}" class="w-full border border-gray-300 rounded-md px-3 py-2">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-700">Link Target</label>
+                    <select name="link_target" class="w-full border border-gray-300 rounded-md px-3 py-2">
+                        <option value="_self" {{ $slider->link_target == '_self' ? 'selected' : '' }}>Same Tab</option>
+                        <option value="_blank" {{ $slider->link_target == '_blank' ? 'selected' : '' }}>New Tab</option>
+                    </select>
+                </div>
             </div>
             <div class="flex items-center gap-4">
                 <div>
                     <label class="block text-sm text-gray-700">Active</label>
-                    <input type="checkbox" name="is_active" {{ $slider->is_active ? 'checked' : '' }}>
+                    <input type="hidden" name="is_active" value="0">
+                    <input type="checkbox" name="is_active" value="1" {{ $slider->is_active ? 'checked' : '' }}>
                 </div>
                 <div>
                     <label class="block text-sm text-gray-700">Sort Order</label>

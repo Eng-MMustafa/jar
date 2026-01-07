@@ -118,7 +118,7 @@
     }
 
     .copy-link {
-        color: #00bcd4;
+        color: #0d9488;
         text-decoration: none;
         font-weight: 600;
         cursor: pointer;
@@ -127,7 +127,7 @@
     }
 
     .copy-link:hover {
-        color: #0097a7;
+        color: #0f766e;
         text-decoration: underline;
     }
 
@@ -140,7 +140,7 @@
 
     .btn-submit {
         padding: 0.9rem 2.5rem;
-        background: #00bcd4;
+        background: #0d9488;
         color: white;
         border: none;
         border-radius: 6px;
@@ -148,26 +148,26 @@
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .btn-submit:hover {
-        background: #0097a7;
+        background: #0f766e;
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+        box-shadow: 0 5px 15px rgba(13, 148, 136, 0.3);
     }
 
     .btn-back {
         padding: 0.9rem 2.5rem;
         background: #e0f2f7;
-        color: #00bcd4;
+        color: #0d9488;
         border: none;
         border-radius: 6px;
         font-size: 0.95rem;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .btn-back:hover {

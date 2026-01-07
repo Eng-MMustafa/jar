@@ -19,9 +19,10 @@
     }
 
     .breadcrumb a {
-        color: #00bcd4;
+        color: #0d9488;
         text-decoration: none;
         font-weight: 600;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .breadcrumb span {
@@ -109,7 +110,8 @@
     .summary-total-value {
         font-size: 1.8rem;
         font-weight: 700;
-        color: #00bcd4;
+        color: #0d9488;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .summary-note {
@@ -122,7 +124,7 @@
     .btn-complete {
         width: 100%;
         padding: 1rem;
-        background: #00bcd4;
+        background: #0d9488;
         color: white;
         border: none;
         border-radius: 8px;
@@ -130,14 +132,14 @@
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         margin-top: 1rem;
     }
 
     .btn-complete:hover {
-        background: #0097a7;
+        background: #0f766e;
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+        box-shadow: 0 5px 15px rgba(13, 148, 136, 0.3);
     }
 
     /* Center - Product Image */
@@ -253,8 +255,8 @@
 
     .product-badge {
         display: inline-block;
-        background: #e0f7fa;
-        color: #00bcd4;
+        background: #e0f2f1;
+        color: #0d9488;
         padding: 0.3rem 0.6rem;
         border-radius: 12px;
         font-size: 0.75rem;
@@ -301,6 +303,7 @@
         font-weight: 600;
         color: #333;
         margin-bottom: 0.2rem;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .lender-location {

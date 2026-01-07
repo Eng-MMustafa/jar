@@ -19,7 +19,7 @@
     }
 
     .breadcrumb a {
-        color: #00bcd4;
+        color: #0d9488;
         text-decoration: none;
         font-weight: 600;
     }
@@ -104,14 +104,14 @@
 
     .image-gallery img:hover,
     .image-gallery img.active {
-        border-color: #00bcd4;
+        border-color: #0d9488;
         transform: scale(1.02);
     }
 
     .product-category {
         display: inline-block;
         background: #e0f7fa;
-        color: #00bcd4;
+        color: #0d9488;
         padding: 0.5rem 1rem;
         border-radius: 20px;
         font-size: 0.85rem;
@@ -201,7 +201,7 @@
     .price-value {
         font-size: 1.5rem;
         font-weight: 700;
-        color: #00bcd4;
+        color: #0d9488;
     }
 
     .action-section {
@@ -213,7 +213,7 @@
     .btn-rent {
         flex: 1;
         padding: 1rem;
-        background: #00bcd4;
+        background: #0d9488;
         color: white;
         border: none;
         border-radius: 8px;
@@ -221,13 +221,13 @@
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .btn-rent:hover {
-        background: #0097a7;
+        background: #0f766e;
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+        box-shadow: 0 5px 15px rgba(13, 148, 136, 0.3);
     }
 
     .btn-favorite {
@@ -244,8 +244,8 @@
     }
 
     .btn-favorite:hover {
-        border-color: #00bcd4;
-        color: #00bcd4;
+        border-color: #0d9488;
+        color: #0d9488;
     }
 
     .btn-favorite.active {
@@ -316,14 +316,14 @@
         font-size: 1rem;
         font-weight: 600;
         color: #666;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         transition: all 0.3s ease;
         text-align: center;
     }
 
     .tab-btn.active {
-        color: #00bcd4;
-        border-bottom: 3px solid #00bcd4;
+        color: #0d9488;
+        border-bottom: 3px solid #0d9488;
         margin-bottom: -2px;
     }
 
@@ -435,7 +435,7 @@
         padding: 0.5rem 1rem;
         border: 1px solid #ddd;
         border-radius: 4px;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         direction: rtl;
     }
 
@@ -523,12 +523,12 @@
 
     .btn-load-more {
         background: #e0f7fa;
-        color: #00bcd4;
+        color: #0d9488;
         border: none;
         padding: 0.8rem 2rem;
         border-radius: 6px;
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-weight: 600;
     }
 
@@ -559,7 +559,7 @@
         border: 1px solid #ddd;
         border-radius: 6px;
         resize: vertical;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         margin-bottom: 1.5rem;
         text-align: right;
         direction: rtl;
@@ -574,22 +574,22 @@
 
     .btn-submit-comment {
         width: 100%;
-        background: #4db8c4;
+        background: #0d9488;
         color: white;
         border: none;
         padding: 1.2rem;
         border-radius: 8px;
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-weight: 600;
         font-size: 1.05rem;
         transition: all 0.3s ease;
     }
 
     .btn-submit-comment:hover {
-        background: #3da5b1;
+        background: #0f766e;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(77, 184, 196, 0.3);
+        box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
     }
 
     /* Owner Info */
@@ -627,7 +627,7 @@
         display: block;
         font-size: 1.5rem;
         font-weight: 700;
-        color: #00bcd4;
+        color: #0d9488;
     }
 
     .stat-label {
@@ -683,7 +683,7 @@
         transform: translateX(-50%);
         width: 50px;
         height: 3px;
-        background: #00bcd4;
+        background: #0d9488;
         border-radius: 2px;
     }
 
@@ -782,12 +782,12 @@
 
     .card-price {
         font-weight: 700;
-        color: #00bcd4;
+        color: #0d9488;
         font-size: 1rem;
     }
 
     .card-btn {
-        background: #00bcd4;
+        background: #0d9488;
         color: white;
         padding: 0.6rem 1.2rem;
         border: none;
@@ -795,14 +795,14 @@
         cursor: pointer;
         font-size: 0.85rem;
         font-weight: 600;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         transition: all 0.3s ease;
         text-decoration: none;
         display: inline-block;
     }
 
     .card-btn:hover {
-        background: #0097a7;
+        background: #0f766e;
     }
 
     @media (max-width: 768px) {
@@ -897,7 +897,7 @@
             @if($product->images && $product->images->count() > 1)
             <div class="image-gallery">
                 @foreach($product->images as $image)
-                    <img src="{{ asset($image->image_path) }}" 
+                    <img src="{{ asset($image->image_path) }}"
                          alt="{{ $product->name }}"
                          onclick="changeMainImage(this)"
                          class="gallery-thumb {{ $loop->first ? 'active' : '' }}">
@@ -1132,7 +1132,7 @@
 
 
                     </div>
-                    
+
                     <div class="load-more">
                         <button class="btn-load-more">عرض المزيد</button>
                     </div>
@@ -1242,9 +1242,9 @@
                             <p class="text-gray-500 text-xs mb-3">{{ $relProduct->city ?? '' }}</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-teal-700 font-bold">{{ $relProduct->rental_price_daily ?? $relProduct->price ?? 0 }} ر.س</span>
-                                <a href="{{ route('products.show', $relProduct->slug) }}" class="bg-teal-600 text-white px-3 py-2 rounded-lg font-semibold hover:bg-teal-700 transition text-sm flex items-center gap-1">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10.5 1.5H2a.5.5 0 00-.5.5v16a.5.5 0 00.5.5h16a.5.5 0 00.5-.5v-10"></path></svg>
-                                    تفاصيل
+                                <a href="{{ route('products.show', $relProduct->slug) }}"
+                                   style="display: inline-block; width: 100%; padding: 0.5rem; background: #0d9488; color: white; text-align: center; border-radius: 5px; text-decoration: none; transition: background 0.3s ease; font-family: 'IBM Plex Sans Arabic', sans-serif;">
+                                    عرض التفاصيل
                                 </a>
                             </div>
                         </div>

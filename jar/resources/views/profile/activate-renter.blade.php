@@ -5,8 +5,8 @@
 @section('content')
 <style>
     :root {
-        --primary: #00bcd4;
-        --primary-dark: #0097a7;
+        --primary: #0d9488;
+        --primary-dark: #0f766e;
         --danger: #e74c3c;
         --success: #27ae60;
         --text-dark: #333;
@@ -22,7 +22,7 @@
     }
 
     .activate-renter-container {
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         direction: rtl;
         max-width: 1000px;
         margin: 0 auto;
@@ -79,7 +79,7 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary) 0%, #0097a7 100%);
+        background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -170,7 +170,7 @@
         padding: 0.75rem 0;
         color: var(--text-dark);
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         display: flex;
         align-items: center;
@@ -265,7 +265,7 @@
         padding: 0.75rem;
         border: 1px solid var(--border-light);
         border-radius: 6px;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         direction: rtl;
         text-align: right;
@@ -277,7 +277,7 @@
     .form-textarea:focus {
         outline: none;
         border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+        box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
     }
 
     .form-textarea {
@@ -297,14 +297,14 @@
         border-radius: 8px;
         padding: 2rem;
         text-align: center;
-        background: rgba(0, 188, 212, 0.05);
+        background: rgba(13, 148, 136, 0.05);
         cursor: pointer;
         transition: all 0.3s ease;
     }
 
     .upload-field:hover {
         border-color: var(--primary-dark);
-        background: rgba(0, 188, 212, 0.1);
+        background: rgba(13, 148, 136, 0.1);
     }
 
     .upload-icon {
@@ -384,7 +384,7 @@
         padding: 0.75rem 2rem;
         border: none;
         border-radius: 6px;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         font-weight: 600;
         cursor: pointer;
@@ -399,7 +399,7 @@
     .btn-primary:hover {
         background: var(--primary-dark);
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+        box-shadow: 0 5px 15px rgba(13, 148, 136, 0.3);
     }
 
     .btn-secondary {
@@ -449,7 +449,7 @@
         width: 80px;
         height: 80px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary) 0%, #0097a7 100%);
+        background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -564,7 +564,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label required">اسم الشهرة / اسم المؤجر</label>
-                        <input type="text" name="business_name" class="form-input @error('business_name') is-invalid @enderror" 
+                        <input type="text" name="business_name" class="form-input @error('business_name') is-invalid @enderror"
                                value="{{ old('business_name', auth()->user()->business_name ?? '') }}" required>
                         @error('business_name')<span class="error-text">{{ $message }}</span>@enderror
                     </div>
@@ -597,7 +597,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label required">وصف محل التأجير</label>
-                        <textarea name="business_description" class="form-textarea @error('business_description') is-invalid @enderror" 
+                        <textarea name="business_description" class="form-textarea @error('business_description') is-invalid @enderror"
                                   placeholder="اكتب وصفاً عن محل التأجير الخاص بك...">{{ old('business_description') }}</textarea>
                         @error('business_description')<span class="error-text">{{ $message }}</span>@enderror
                     </div>
@@ -622,14 +622,14 @@
             <div class="form-section">
                 <h2 class="section-title">البيانات البنكية</h2>
                 <div class="bank-note">
-                    <strong>ملاحظة:</strong> تأكد من أن البيانات البنكية صحيحة لتسهيل عملية التحويلات. 
+                    <strong>ملاحظة:</strong> تأكد من أن البيانات البنكية صحيحة لتسهيل عملية التحويلات.
                     <a href="#">اطلع على سياسة الخصوصية</a>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label required">اسم صاحب البنك</label>
-                        <input type="text" name="bank_account_name" class="form-input @error('bank_account_name') is-invalid @enderror" 
+                        <input type="text" name="bank_account_name" class="form-input @error('bank_account_name') is-invalid @enderror"
                                value="{{ old('bank_account_name') }}" placeholder="أدخل اسم صاحب الحساب البنكي" required>
                         @error('bank_account_name')<span class="error-text">{{ $message }}</span>@enderror
                     </div>
@@ -638,7 +638,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label required">رقم الآيبان (IBAN)</label>
-                        <input type="text" name="bank_iban" class="form-input @error('bank_iban') is-invalid @enderror" 
+                        <input type="text" name="bank_iban" class="form-input @error('bank_iban') is-invalid @enderror"
                                value="{{ old('bank_iban') }}" placeholder="SA #### ###### ###### ###### ####" required>
                         @error('bank_iban')<span class="error-text">{{ $message }}</span>@enderror
                     </div>
@@ -647,7 +647,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label required">رقم الحساب البنكي</label>
-                        <input type="text" name="bank_account_number" class="form-input @error('bank_account_number') is-invalid @enderror" 
+                        <input type="text" name="bank_account_number" class="form-input @error('bank_account_number') is-invalid @enderror"
                                value="{{ old('bank_account_number') }}" placeholder="أدخل رقم الحساب" required>
                         @error('bank_account_number')<span class="error-text">{{ $message }}</span>@enderror
                     </div>

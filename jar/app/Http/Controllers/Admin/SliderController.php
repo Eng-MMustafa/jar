@@ -26,6 +26,8 @@ class SliderController extends Controller
 
     public function store(Request $request)
     {
+        \Illuminate\Support\Facades\Log::info('Slider Store', ['all' => $request->all()]);
+
         $request->validate([
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string',
@@ -64,6 +66,8 @@ class SliderController extends Controller
 
     public function update(Request $request, Slider $slider)
     {
+        \Illuminate\Support\Facades\Log::info('Slider Update', ['id' => $slider->id, 'all' => $request->all()]);
+
         $request->validate([
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string',
@@ -98,7 +102,7 @@ class SliderController extends Controller
     public function activate(Slider $slider)
     {
         $slider->update(['is_active' => true]);
-        
+
         return redirect()->route('admin.sliders.index')
             ->with('success', 'Slider activated successfully.');
     }
@@ -106,7 +110,7 @@ class SliderController extends Controller
     public function deactivate(Slider $slider)
     {
         $slider->update(['is_active' => false]);
-        
+
         return redirect()->route('admin.sliders.index')
             ->with('success', 'Slider deactivated successfully.');
     }
@@ -114,7 +118,7 @@ class SliderController extends Controller
     public function destroy(Slider $slider)
     {
         $slider->delete();
-        
+
         return redirect()->route('admin.sliders.index')
             ->with('success', 'Slider deleted successfully.');
     }
@@ -123,7 +127,7 @@ class SliderController extends Controller
     {
         $slider = Slider::withTrashed()->findOrFail($id);
         $slider->restore();
-        
+
         return redirect()->route('admin.sliders.index')
             ->with('success', 'Slider restored successfully.');
     }

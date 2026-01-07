@@ -5,10 +5,10 @@
 @section('content')
 <style>
     :root {
-        --primary: #00bcd4;
-        --primary-dark: #0097a7;
+        --primary: #0d9488;
+        --primary-dark: #0f766e;
         --danger: #e74c3c;
-        --success: #27ae60;
+        --success: #00ce67;
         --text-dark: #333;
         --text-light: #666;
         --bg-light: #f5f7fa;
@@ -16,7 +16,7 @@
     }
 
     .profile-container {
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         direction: rtl;
         max-width: 1000px;
         margin: 0 auto;
@@ -96,7 +96,7 @@
         padding: 0.75rem 0;
         color: var(--text-dark);
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         display: flex;
         align-items: center;
@@ -130,20 +130,20 @@
     }
 
     .profile-header {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        margin-bottom: 1.5rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 2px solid var(--border-light);
-        text-align: right;
+        background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
     }
 
     .profile-avatar {
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary) 0%, #0097a7 100%);
+        background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -252,7 +252,7 @@
         padding: 0.75rem;
         border: 1px solid var(--border-light);
         border-radius: 6px;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         direction: rtl;
         text-align: right;
@@ -262,7 +262,7 @@
     .form-input:focus {
         outline: none;
         border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+        box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
     }
 
     .form-input:disabled {
@@ -313,7 +313,7 @@
         padding: 0.75rem 2rem;
         border: none;
         border-radius: 6px;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         font-weight: 600;
         cursor: pointer;
@@ -328,7 +328,7 @@
     .btn-primary:hover {
         background: var(--primary-dark);
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+        box-shadow: 0 5px 15px rgba(13, 148, 136, 0.3);
     }
 
     .btn-secondary {
@@ -401,7 +401,7 @@
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         white-space: nowrap;
     }
 
@@ -509,25 +509,25 @@
                         <div class="form-section">
                             <div class="form-group">
                                 <label class="form-label required">الاسم الأول</label>
-                                <input type="text" name="first_name" class="form-input" 
+                                <input type="text" name="first_name" class="form-input"
                                        value="{{ auth()->user()->first_name }}" required>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label required">الاسم الأخير</label>
-                                <input type="text" name="last_name" class="form-input" 
+                                <input type="text" name="last_name" class="form-input"
                                        value="{{ auth()->user()->last_name }}" required>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">البريد الإلكتروني</label>
-                                <input type="email" name="email" class="form-input" 
+                                <input type="email" name="email" class="form-input"
                                        value="{{ auth()->user()->email }}" disabled>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label required">رقم الهاتف</label>
-                                <input type="tel" name="phone" class="form-input" 
+                                <input type="tel" name="phone" class="form-input"
                                        value="{{ auth()->user()->phone }}" placeholder="05xxxxxxxxx" required>
                             </div>
 
@@ -638,7 +638,7 @@
             icon.classList.add('fa-eye-slash');
         } else {
             input.type = 'password';
-            icon.classList.remove('fa-eye-slash');
+            icon.classList.remove('fa-eye');
             icon.classList.add('fa-eye');
         }
     }

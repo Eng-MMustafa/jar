@@ -4,14 +4,15 @@
 
 @section('content')
 <style>
-    .contact-container{ max-width:1000px; margin:2rem auto; padding:1.5rem; font-family:'Tajawal',sans-serif; direction:rtl; }
+    .contact-container{ max-width:1000px; margin:2rem auto; padding:1.5rem; font-family:'IBM Plex Sans Arabic',sans-serif; direction:rtl; }
     .contact-grid{ display:grid; grid-template-columns:1fr 320px; gap:1.5rem; }
     .contact-card{ background:#fff; border-radius:10px; padding:1.25rem; border:1px solid #eef6f6; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
     .page-title{ font-size:1.3rem; font-weight:700; color:#333; margin-bottom:1rem; text-align:right; }
     .form-row{ display:flex; gap:0.75rem; }
     .form-input, .form-textarea{ width:100%; padding:0.75rem; border:1px solid #e6eef0; border-radius:8px; font-size:0.95rem; }
     .form-textarea{ min-height:140px; resize:vertical; }
-    .btn-submit{ padding:0.75rem 1rem; background:#00bcd4; color:white; border-radius:8px; text-decoration:none; display:inline-block; border:none; cursor:pointer; font-weight:700; }
+    .btn-submit{ padding:0.75rem 1rem; background:#0d9488; color:white; border-radius:8px; text-decoration:none; display:inline-block; border:none; cursor:pointer; font-weight:700; font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    .btn-submit:hover{ background:#0f766e; }
     .contact-info h4{ margin:0 0 0.5rem 0; font-weight:700; }
     .contact-info p{ margin:0.25rem 0; color:#666; }
     @media (max-width: 900px){ .contact-grid{ grid-template-columns:1fr; } }

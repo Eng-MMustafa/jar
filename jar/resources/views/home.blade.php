@@ -32,7 +32,7 @@
                             احجز الآن
                         </button>
                     </div>
-                    
+
                     <!-- Image Section -->
                     <div class="lg:w-2/5 flex items-center justify-center p-6 lg:p-8">
                         <img src="{{ asset('images/Images/image 4.png') }}" alt="بلايستيشن 5" class="max-h-64 lg:max-h-72 object-contain group-hover:scale-110 transition duration-300">
@@ -125,7 +125,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
             </button>
-            
+
             <!-- Next Arrow -->
             <button id="categoryNext" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition duration-300 group">
                 <svg class="w-6 h-6 text-teal-600 group-hover:text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,7 +142,7 @@
                             <a href="{{ route('categories.show', $category->slug) }}" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
                                 <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
                                     @if($category->image_url)
-                                        <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
+                                        <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="w-full h-full object-contain group-hover:scale-110 transition duration-300" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder-category.png') }}';">
                                     @elseif($category->icon)
                                         <i class="{{ $category->icon }} text-teal-600 text-2xl"></i>
                                     @else
@@ -160,7 +160,7 @@
                             <a href="{{ route('categories.show', $category->slug) }}" class="group flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 h-40 md:h-44 p-6">
                                 <div class="w-20 h-20 md:w-24 md:h-24 mb-3 overflow-hidden flex items-center justify-center">
                                     @if($category->image_url)
-                                        <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="w-full h-full object-contain group-hover:scale-110 transition duration-300">
+                                        <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="w-full h-full object-contain group-hover:scale-110 transition duration-300" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder-category.png') }}';">
                                     @elseif($category->icon)
                                         <i class="{{ $category->icon }} text-teal-600 text-2xl"></i>
                                     @else
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryPrev = document.getElementById('categoryPrev');
     const categoryNext = document.getElementById('categoryNext');
     const sliderContent = categorySlider.querySelector('.flex');
-    
+
     let currentPosition = 0;
     const visiblePerView = 5; // how many categories are visible at once
     const itemWidth = 100 / visiblePerView; // percent per item

@@ -5,10 +5,10 @@
 @section('content')
 <style>
     :root {
-        --primary: #00bcd4;
-        --primary-dark: #0097a7;
+        --primary: #0d9488;
+        --primary-dark: #0f766e;
         --danger: #e74c3c;
-        --success: #27ae60;
+        --success: #00ce67;
         --text-dark: #333;
         --text-light: #666;
         --bg-light: #f5f7fa;
@@ -16,7 +16,7 @@
     }
 
     .profile-container {
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         direction: rtl;
         max-width: 1200px;
         margin: 0 auto;
@@ -83,7 +83,7 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary) 0%, #0097a7 100%);
+        background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -174,7 +174,7 @@
         padding: 0.75rem 0;
         color: var(--text-dark);
         cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-size: 0.95rem;
         display: flex;
         align-items: center;
@@ -241,7 +241,7 @@
         border: 1px solid var(--border-light);
         border-radius: 8px;
         margin-bottom: 2rem;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .products-grid {
@@ -455,7 +455,7 @@
     document.getElementById('productSearch').addEventListener('keyup', function(e) {
         const searchTerm = e.target.value.toLowerCase();
         const productCards = document.querySelectorAll('.product-card');
-        
+
         productCards.forEach(card => {
             const productName = card.querySelector('.product-name').textContent.toLowerCase();
             if (productName.includes(searchTerm)) {

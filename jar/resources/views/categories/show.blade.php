@@ -13,9 +13,10 @@
     }
 
     .breadcrumb a {
-        color: #00bcd4;
+        color: #0d9488;
         text-decoration: none;
         font-weight: 600;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .breadcrumb span {
@@ -24,13 +25,14 @@
     }
 
     .category-header {
-        background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+        background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
         color: white;
         padding: 2rem;
         margin-bottom: 2rem;
         border-radius: 10px;
         text-align: right;
         direction: rtl;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .category-header h1 {
@@ -128,9 +130,10 @@
 
     .product-category {
         font-size: 0.75rem;
-        color: #00bcd4;
+        color: #0d9488;
         font-weight: 600;
         margin-bottom: 0.8rem;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .product-footer {
@@ -145,11 +148,12 @@
     .product-price {
         font-size: 1.2rem;
         font-weight: 700;
-        color: #00bcd4;
+        color: #0d9488;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .rent-button {
-        background: #00bcd4;
+        background: #0d9488;
         color: white;
         border: none;
         padding: 0.6rem 1.2rem;
@@ -160,10 +164,11 @@
         transition: all 0.3s ease;
         text-decoration: none;
         display: inline-block;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .rent-button:hover {
-        background: #00a8b8;
+        background: #0f766e;
         transform: translateY(-2px);
         color: white;
         text-decoration: none;
@@ -182,7 +187,8 @@
         border: 1px solid #ddd;
         border-radius: 5px;
         text-decoration: none;
-        color: #00bcd4;
+        color: #0d9488;
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
     }
 
     .pagination-container a:hover {
@@ -190,7 +196,7 @@
     }
 
     .pagination-container .active {
-        background: #00bcd4;
+        background: #0d9488;
         color: white;
     }
 
@@ -227,8 +233,8 @@
     <div style="display: grid; grid-template-columns: 280px 1fr; gap: 2rem; margin-bottom: 2rem;">
         <!-- Sidebar Filter -->
         <div style="background: white; padding: 1.5rem; border-radius: 10px; height: fit-content; position: sticky; top: 20px;">
-            <h3 style="text-align: right; direction: rtl; margin-bottom: 1.5rem; font-size: 1.1rem; color: #333; border-bottom: 2px solid #00bcd4; padding-bottom: 1rem;">
-                <i class="fas fa-sliders-h" style="color: #00bcd4; margin-left: 0.5rem;"></i>
+            <h3 style="text-align: right; direction: rtl; margin-bottom: 1.5rem; font-size: 1.1rem; color: #333; border-bottom: 2px solid #0d9488; padding-bottom: 1rem;">
+                <i class="fas fa-sliders-h" style="color: #0d9488; margin-left: 0.5rem;"></i>
                 خيارات التصفية
             </h3>
 
@@ -300,7 +306,7 @@
                 </div>
 
                 <!-- Apply Button -->
-                <button type="submit" style="width: 100%; background: #e0f7fa; color: #00bcd4; border: none; padding: 1rem; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 1rem; transition: all 0.3s ease;">
+                <button type="submit" style="width: 100%; background: #e0f2f1; color: #0d9488; border: none; padding: 1rem; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 1rem; transition: all 0.3s ease; font-family: 'IBM Plex Sans Arabic', sans-serif;">
                     تطبيق التصفية
                 </button>
 
@@ -326,13 +332,13 @@
     <div style="background: white; padding: 1.5rem; margin-bottom: 2rem; border-radius: 10px; display: flex; gap: 1rem; align-items: center; direction: rtl; justify-content: space-between; flex-wrap: wrap;">
         <div style="display: flex; gap: 1rem; align-items: center; flex: 1; min-width: 300px;">
             <form method="GET" action="{{ route('categories.show', $category->slug) }}" style="display: flex; gap: 0.5rem; flex: 1;">
-                <input type="text" name="search" placeholder="ابحث عن منتج محدد..." 
-                       value="{{ request('search') }}" 
-                       style="flex: 1; padding: 0.7rem 1rem; border: 1px solid #ddd; border-radius: 5px; font-size: 0.95rem;">
-                <button type="submit" style="background: #00bcd4; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600;">بحث</button>
+                <input type="text" name="search" placeholder="ابحث عن منتج محدد..."
+                       value="{{ request('search') }}"
+                       style="flex: 1; padding: 0.7rem 1rem; border: 1px solid #ddd; border-radius: 5px; font-size: 0.95rem; font-family: 'IBM Plex Sans Arabic', sans-serif;">
+                <button type="submit" style="background: #0d9488; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600; font-family: 'IBM Plex Sans Arabic', sans-serif;">بحث</button>
             </form>
         </div>
-        
+
         @if(request('search'))
         <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span style="background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 5px; font-size: 0.9rem;">{{ request('search') }}</span>
@@ -348,9 +354,9 @@
         </div>
         @if(request('search'))
         <div>
-            <span style="color: #00bcd4; font-size: 0.9rem;">البحث عن: <strong>{{ request('search') }}</strong></span>
+            <span style="color: #0d9488; font-size: 0.9rem;">البحث عن: <strong>{{ request('search') }}</strong></span>
             <span style="color: #999; margin: 0 0.5rem;">×</span>
-            <button onclick="window.location='{{ route('categories.show', $category->slug) }}'" style="background: none; border: none; color: #00bcd4; cursor: pointer; font-weight: 600; text-decoration: underline;">إزالة البحث</button>
+            <button onclick="window.location='{{ route('categories.show', $category->slug) }}'" style="background: none; border: none; color: #0d9488; cursor: pointer; font-weight: 600; text-decoration: underline; font-family: 'IBM Plex Sans Arabic', sans-serif;">إزالة البحث</button>
         </div>
         @endif
     </div>
@@ -365,7 +371,7 @@
                 @else
                     <img src="{{ asset('images/placeholder-product.svg') }}" alt="{{ $product->name }}">
                 @endif
-                
+
                 @if($product->rating > 0)
                 <div class="rating-badge">
                     <span class="rating-star">★</span>
@@ -373,12 +379,12 @@
                 </div>
                 @endif
             </div>
-            
+
             <div class="product-info">
                 <h3 class="product-title">{{ $product->name }}</h3>
                 <p class="product-description">{{ Str::limit($product->description, 80) }}</p>
                 <div class="product-category">{{ $product->category->name }}</div>
-                
+
                 <div class="product-footer">
                     <a href="{{ route('products.show', $product->slug) }}" class="rent-button">
                         استأجر
@@ -411,7 +417,7 @@
                 <i class="fas fa-chevron-left"></i>
             </span>
         @else
-            <a href="{{ $products->previousPageUrl() }}" style="padding: 0.6rem 0.8rem; color: #00bcd4; cursor: pointer; border: 1px solid #00bcd4; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+            <a href="{{ $products->previousPageUrl() }}" style="padding: 0.6rem 0.8rem; color: #0d9488; cursor: pointer; border: 1px solid #0d9488; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
                 <i class="fas fa-chevron-left"></i>
             </a>
         @endif
@@ -430,9 +436,9 @@
 
         @for($page = max(1, $current - $delta); $page <= min($last, $current + $delta); $page++)
             @if($page == $current)
-                <span style="padding: 0.6rem 0.9rem; background: #00bcd4; color: white; border-radius: 5px; border: 1px solid #00bcd4; min-width: 40px; text-align: center; font-weight: 600;">{{ $page }}</span>
+                <span style="padding: 0.6rem 0.9rem; background: #0d9488; color: white; border-radius: 5px; border: 1px solid #0d9488; min-width: 40px; text-align: center; font-weight: 600; font-family: 'IBM Plex Sans Arabic', sans-serif;">{{ $page }}</span>
             @else
-                <a href="{{ $products->url($page) }}" style="padding: 0.6rem 0.9rem; border: 1px solid #ddd; border-radius: 5px; text-decoration: none; color: #333; min-width: 40px; text-align: center; transition: all 0.3s ease;">{{ $page }}</a>
+                <a href="{{ $products->url($page) }}" style="padding: 0.6rem 0.9rem; border: 1px solid #ddd; border-radius: 5px; text-decoration: none; color: #333; min-width: 40px; text-align: center; transition: all 0.3s ease; font-family: 'IBM Plex Sans Arabic', sans-serif;">{{ $page }}</a>
             @endif
         @endfor
 
@@ -443,7 +449,7 @@
 
         <!-- Next Button -->
         @if($products->hasMorePages())
-            <a href="{{ $products->nextPageUrl() }}" style="padding: 0.6rem 0.8rem; color: #00bcd4; cursor: pointer; border: 1px solid #00bcd4; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+            <a href="{{ $products->nextPageUrl() }}" style="padding: 0.6rem 0.8rem; color: #0d9488; cursor: pointer; border: 1px solid #0d9488; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
                 <i class="fas fa-chevron-right"></i>
             </a>
         @else

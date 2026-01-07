@@ -78,24 +78,7 @@
                 </a>
             </li>
 
-            <!-- Support Tickets -->
-            <li>
-                <a href="{{ route('admin.tickets.index') }}" 
-                   class="sidebar-menu-item flex items-center px-4 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg transition-colors duration-200">
-                    <i class="fas fa-ticket-alt w-5 mr-3 text-center"></i>
-                    <span>Support Tickets</span>
-                    <span class="ml-auto bg-orange-500 text-white text-xs px-2 py-1 rounded-full">{{ \App\Models\SupportTicket::where('status','open')->count() }}</span>
-                </a>
-            </li>
 
-            <!-- Static Pages -->
-            <li>
-                <a href="{{ route('admin.content.index') }}" 
-                   class="sidebar-menu-item flex items-center px-4 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg transition-colors duration-200">
-                    <i class="fas fa-file-alt w-5 mr-3 text-center"></i>
-                    <span>Static Pages</span>
-                </a>
-            </li>
 
             <!-- Sliders -->
             <li>
