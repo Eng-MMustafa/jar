@@ -231,7 +231,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="py-12 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between mb-8">
-            <h2 class="text-2xl lg:text-3xl font-bold text-teal-600">أكثر تأجيراً</h2>
+            <div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-teal-600 mb-1">الأكثر تأجيرًا</h2>
+                <p class="text-gray-600 text-base">استعرض الأكثر تأجيرًا المضافة مع أفضل المميزات والتحديثات أولًا بأول.</p>
+            </div>
             <a href="{{ route('about') }}" class="text-teal-600 text-sm hover:text-teal-700 font-medium">من نحن ←</a>
         </div>
 
