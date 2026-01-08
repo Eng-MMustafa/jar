@@ -364,41 +364,7 @@
     <!-- Products Grid -->
     <div class="products-container">
         @forelse($products as $product)
-        <div class="product-card">
-            <div class="product-image">
-                @if($product->images && $product->images->first())
-                    <img src="{{ asset($product->images->first()->image_path) }}" alt="{{ $product->name }}">
-                @else
-                    <img src="{{ asset('images/placeholder-product.svg') }}" alt="{{ $product->name }}">
-                @endif
-
-                @if($product->rating > 0)
-                <div class="rating-badge">
-                    <span class="rating-star">★</span>
-                    <span>{{ number_format($product->rating, 1) }}</span>
-                </div>
-                @endif
-            </div>
-
-            <div class="product-info">
-                <h3 class="product-title">{{ $product->name }}</h3>
-                <p class="product-description">{{ Str::limit($product->description, 80) }}</p>
-                <div class="product-category">{{ $product->category->name }}</div>
-
-                <div class="product-footer">
-                    <a href="{{ route('products.show', $product->slug) }}" class="rent-button">
-                        استأجر
-                    </a>
-                    <div class="product-price">
-                        @if($product->is_rentable && $product->rental_price_daily)
-                            ج.م {{ number_format($product->rental_price_daily, 0) }}
-                        @else
-                            ج.م {{ number_format($product->price, 0) }}
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
+            <x-product-card :product="$product" />
         @empty
         <div class="no-products" style="grid-column: 1/-1;">
             <i class="fas fa-box-open"></i>

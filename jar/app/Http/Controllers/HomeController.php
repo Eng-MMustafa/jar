@@ -24,8 +24,23 @@ class HomeController extends Controller
             $mostRented = $query->orderByDesc('created_at')->take(3)->get();
         }
 
-        // Featured / "أكثر قيمة": 4 random active products
-        $featuredProducts = Product::with('images','category')->active()->inRandomOrder()->take(4)->get();
+        // Featured / "أكثر قيمة" -> "هكون قريب منك" (Products in Al-Qassim)
+        $featuredProducts = Product::with('images','category')
+            ->active()
+            ->where(function($q) {
+                $q->where('city', 'LIKE', '%القصيم%')
+                  ->orWhere('city', 'LIKE', '%Qassim%')
+                  ->orWhere('city', 'LIKE', '%Buraydah%')
+                  ->orWhere('city', 'LIKE', '%بريدة%');
+            })
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        // Fallback if no specific Qassim products found
+        if ($featuredProducts->isEmpty()) {
+             $featuredProducts = Product::with('images','category')->active()->inRandomOrder()->take(3)->get();
+        }
 
         // Active categories for slider
         $categories = \App\Models\Category::where('is_active', true)->orderBy('sort_order')->get();

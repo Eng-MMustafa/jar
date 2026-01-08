@@ -10,7 +10,10 @@
                 <!-- Price Badge -->
                 <div class="absolute -top-4 -left-4 bg-teal-500 rounded-full w-24 h-24 lg:w-28 lg:h-28 flex items-center justify-center shadow-2xl z-20">
                     <div class="text-center">
-                        <div class="text-2xl lg:text-3xl font-bold text-white">120</div>
+                        <div class="flex items-center justify-center gap-1 text-white">
+                            <span class="text-2xl lg:text-3xl font-bold">120</span>
+                            <img src="{{ asset('images/Saudi_Riyal_Symbol 1.svg') }}" class="w-6 h-6 brightness-0 invert">
+                        </div>
                         <div class="text-xs text-white font-medium">/ بالشهر</div>
                     </div>
                 </div>
@@ -28,9 +31,9 @@
                                 <span>القصيم</span>
                             </p>
                         </div>
-                        <button class="bg-teal-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-teal-600 transition duration-300 w-fit text-sm">
-                            احجز الآن
-                        </button>
+                        <a href="#" class="transform hover:scale-105 transition-transform duration-200 block w-fit">
+                            <img src="{{ asset('images/buttons (1).svg') }}" alt="احجز الآن" class="h-12 w-auto object-contain">
+                        </a>
                     </div>
 
                     <!-- Image Section -->
@@ -47,7 +50,10 @@
                     <!-- Price Badge -->
                     <div class="absolute -top-3 -left-3 bg-teal-500 rounded-full w-20 h-20 flex items-center justify-center shadow-lg z-20">
                         <div class="text-center">
-                            <div class="text-2xl font-bold text-white">90</div>
+                            <div class="flex items-center justify-center gap-1 text-white">
+                                <span class="text-2xl font-bold">90</span>
+                                <img src="{{ asset('images/Saudi_Riyal_Symbol 1.svg') }}" class="w-4 h-4 brightness-0 invert">
+                            </div>
                             <div class="text-xs text-white">/ بالشهر</div>
                         </div>
                     </div>
@@ -63,9 +69,9 @@
                                     <span>القصيم</span>
                                 </p>
                             </div>
-                            <button class="bg-white text-teal-900 px-4 py-2 rounded-lg font-bold hover:bg-gray-100 transition w-fit text-xs">
-                                احجز الآن
-                            </button>
+                            <a href="#" class="transform hover:scale-105 transition-transform duration-200 block w-fit">
+                                <img src="{{ asset('images/buttons (1).svg') }}" alt="احجز الآن" class="h-10 w-auto object-contain">
+                            </a>
                         </div>
                         <div class="w-24 h-24 flex-shrink-0 flex items-center justify-center">
                             <img src="{{ asset('images/Images/Frame 29.png') }}" alt="خيمة" class="w-full h-full object-cover rounded-lg group-hover:scale-110 transition duration-300">
@@ -78,7 +84,10 @@
                     <!-- Price Badge -->
                     <div class="absolute -top-3 -left-3 bg-teal-500 rounded-full w-20 h-20 flex items-center justify-center shadow-lg z-20">
                         <div class="text-center">
-                            <div class="text-2xl font-bold text-white">80</div>
+                            <div class="flex items-center justify-center gap-1 text-white">
+                                <span class="text-2xl font-bold">80</span>
+                                <img src="{{ asset('images/Saudi_Riyal_Symbol 1.svg') }}" class="w-4 h-4 brightness-0 invert">
+                            </div>
                             <div class="text-xs text-white">/ بالشهر</div>
                         </div>
                     </div>
@@ -94,9 +103,9 @@
                                     <span>القصيم</span>
                                 </p>
                             </div>
-                            <button class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition w-fit text-xs">
-                                احجز الآن
-                            </button>
+                            <a href="#" class="transform hover:scale-105 transition-transform duration-200 block w-fit">
+                                <img src="{{ asset('images/buttons (1).svg') }}" alt="احجز الآن" class="h-10 w-auto object-contain">
+                            </a>
                         </div>
                         <div class="w-24 h-24 flex-shrink-0 flex items-center justify-center">
                             <img src="{{ asset('images/Images/Image (2).png') }}" alt="سماعات" class="w-full h-full object-cover rounded-lg group-hover:scale-110 transition duration-300">
@@ -229,40 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @if(isset($mostRented) && $mostRented->count())
                 @foreach($mostRented as $product)
-                    <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100 product-card" role="link" tabindex="0" aria-label="عرض المنتج {{ $product->name }}" onclick="window.location='{{ route('products.show', $product->slug) }}'" onkeydown="if(event.key==='Enter'){window.location='{{ route('products.show', $product->slug) }}'}" style="cursor:pointer;">
-                        <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
-                            <img src="{{ $product->images->first() ? asset($product->images->first()->image_path) : asset('images/placeholder-product.svg') }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                            @if($product->rating > 0)
-                                <div class="absolute top-3 right-3 flex items-center bg-white rounded-full px-2 py-1 shadow-sm">
-                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                    </svg>
-                                    <span class="text-sm font-medium">{{ number_format($product->rating,1) }}</span>
-                                </div>
-                            @endif
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-gray-800 text-sm mb-2">{{ $product->name }}</h3>
-                            <p class="text-gray-600 text-xs mb-2">{{ Str::limit($product->description, 80) }}</p>
-                            <p class="text-gray-500 text-xs mb-3 flex items-center justify-end gap-2">
-                                <span>{{ $product->city }}</span>
-                                <span>-</span>
-                                <span>{{ $product->category?->name }}</span>
-                            </p>
-                            <div class="flex items-center justify-between">
-                                <div class="text-teal-600 font-bold text-lg">
-                                    @if($product->is_rentable && $product->rental_price_daily)
-                                        {{ number_format($product->rental_price_daily, 0) }} ريال <span class="text-xs text-gray-500">/ يوم</span>
-                                    @else
-                                        {{ number_format($product->price, 0) }} ريال
-                                    @endif
-                                </div>
-                                <a href="{{ route('products.show', $product->slug) }}" class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm" onclick="event.stopPropagation()">
-                                    اجرها الآن
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <x-product-card :product="$product" />
                 @endforeach
             @else
                 <div class="col-span-3 text-center text-gray-500">لا توجد منتجات متاحة</div>
@@ -300,37 +276,22 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between mb-8">
-            <h2 class="text-2xl lg:text-3xl font-bold text-teal-600">أكثر قيمة</h2>
+            <div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-1">هكون قريب منك</h2>
+                <p class="text-gray-600 text-base">
+                    استعرض منتجات متاحة في منطقتك <span class="text-teal-600 font-bold">القصيم</span>
+                </p>
+            </div>
             <a href="#" class="text-teal-600 text-sm hover:text-teal-700 font-medium">عرض الكل ←</a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @if(isset($featuredProducts) && $featuredProducts->count())
                 @foreach($featuredProducts as $product)
-                    <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden group border border-gray-100 product-card" role="link" tabindex="0" aria-label="عرض المنتج {{ $product->name }}" onclick="window.location='{{ route('products.show', $product->slug) }}'" onkeydown="if(event.key==='Enter'){window.location='{{ route('products.show', $product->slug) }}'}" style="cursor:pointer;">
-                        <div class="bg-gray-50 h-48 flex items-center justify-center overflow-hidden relative">
-                            <img src="{{ $product->images->first() ? asset($product->images->first()->image_path) : asset('images/placeholder-product.svg') }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-gray-800 text-sm mb-2">{{ $product->name }}</h3>
-                            <p class="text-gray-500 text-xs mb-3">{{ $product->city }} - {{ $product->category?->name }}</p>
-                            <div class="flex items-center justify-between">
-                                <div class="text-teal-600 font-bold text-lg">
-                                    @if($product->is_rentable && $product->rental_price_daily)
-                                        {{ number_format($product->rental_price_daily, 0) }} ريال
-                                    @else
-                                        {{ number_format($product->price, 0) }} ريال
-                                    @endif
-                                </div>
-                                <a href="{{ route('products.show', $product->slug) }}" class="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-600 transition text-sm" onclick="event.stopPropagation()">
-                                    احجز الآن
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <x-product-card :product="$product" />
                 @endforeach
             @else
-                <div class="col-span-4 text-center text-gray-500">لا توجد منتجات لعرضها</div>
+                <div class="col-span-3 text-center text-gray-500">لا توجد منتجات لعرضها</div>
             @endif
         </div>
     </div>
