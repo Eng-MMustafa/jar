@@ -29,7 +29,7 @@
     
     @stack('styles')
 </head>
-<body class="bg-gray-50" id="app">
+<body class="bg-gray-50">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <div class="sticky top-0 h-screen">

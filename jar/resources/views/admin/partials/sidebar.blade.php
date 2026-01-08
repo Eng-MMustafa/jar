@@ -80,14 +80,7 @@
 
 
 
-            <!-- Sliders -->
-            <li>
-                <a href="{{ route('admin.sliders.index') }}" 
-                   class="sidebar-menu-item flex items-center px-4 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg transition-colors duration-200">
-                    <i class="fas fa-image w-5 mr-3 text-center"></i>
-                    <span>Sliders</span>
-                </a>
-            </li>
+
 
             <!-- Reports & Analytics -->
             <li>
