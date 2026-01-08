@@ -806,18 +806,23 @@
     }
 
     @media (max-width: 768px) {
-        .product-detail-wrapper {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
+        .product-detail-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
+        .product-images { position: relative; }
+        .mobile-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+        .mobile-carousel .slide { flex: 0 0 100%; height: 280px; scroll-snap-align: start; position: relative; }
+        .mobile-carousel .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .carousel-dots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; gap: 6px; padding: 6px 10px; background: rgba(0,0,0,0.25); border-radius: 999px; }
+        .carousel-dots .dot { width: 6px; height: 6px; border-radius: 50%; background: #cbd5e1; border: none; cursor: pointer; }
+        .carousel-dots .dot.active { background: #0d9488; }
+        .main-image, .image-gallery { display: none; }
 
         .product-info {
-            order: 1;
+            order: 2;
             max-width: 100%;
         }
 
         .product-images {
-            order: 2;
+            order: 1;
             width: 100%;
         }
 
@@ -870,6 +875,24 @@
             width: 100%;
         }
     }
+    @media (max-width: 768px) {
+        .product-meta { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+        .product-detail-container { padding: 0; }
+        .product-detail-wrapper { padding: 0; gap: 0; }
+        .product-images { gap: 0; }
+        .main-image { height: 280px; width: 100%; border-radius: 0; }
+        .image-gallery { padding: 0.5rem 0.75rem; }
+        .image-gallery img { width: 56px; height: 56px; }
+        .product-info { padding: 1rem; }
+        .product-title { font-size: 1.5rem; }
+        .price-list { gap: 0.5rem; }
+        .owner-info { flex-direction: column; gap: 1rem; }
+        .btn-favorite { width: 44px; height: 44px; }
+        .comment-form { padding: 1rem; }
+        .tab-content { padding: 1rem; }
+    }
 </style>
 
 <!-- Breadcrumb -->
@@ -893,6 +916,23 @@
                     <img id="mainImage" src="{{ asset('images/placeholder.png') }}" alt="صورة المنتج">
                 @endif
             </div>
+
+            @if($product->images && $product->images->count() > 0)
+            <div class="mobile-carousel">
+                @foreach($product->images as $image)
+                    <div class="slide">
+                        <img src="{{ asset($image->image_path) }}" alt="{{ $product->name }}">
+                    </div>
+                @endforeach
+            </div>
+            @if($product->images->count() > 1)
+            <div class="carousel-dots">
+                @foreach($product->images as $image)
+                    <button class="dot {{ $loop->first ? 'active' : '' }}" data-index="{{ $loop->index }}"></button>
+                @endforeach
+            </div>
+            @endif
+            @endif
 
             @if($product->images && $product->images->count() > 1)
             <div class="image-gallery">
@@ -1268,6 +1308,24 @@
             image.classList.add('active');
         }
     }
+
+    (function(){
+        const carousel = document.querySelector('.mobile-carousel');
+        const dots = document.querySelectorAll('.carousel-dots .dot');
+        if (!carousel || dots.length === 0) return;
+        dots.forEach(dot => {
+            dot.addEventListener('click', function(){
+                const idx = parseInt(this.getAttribute('data-index'));
+                const slide = carousel.querySelectorAll('.slide')[idx];
+                if (slide) slide.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+            });
+        });
+        carousel.addEventListener('scroll', function(){
+            const width = carousel.clientWidth;
+            const idx = Math.round(carousel.scrollLeft / width);
+            dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
+        });
+    })();
 
     function openTab(evt, tabName) {
         const tabContents = document.querySelectorAll('.tab-content');

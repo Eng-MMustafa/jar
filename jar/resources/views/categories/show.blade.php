@@ -230,9 +230,9 @@
         <span>{{ $category->name }}</span>
     </div>
 
-    <div style="display: grid; grid-template-columns: 280px 1fr; gap: 2rem; margin-bottom: 2rem;">
+    <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 mb-8">
         <!-- Sidebar Filter -->
-        <div style="background: white; padding: 1.5rem; border-radius: 10px; height: fit-content; position: sticky; top: 20px;">
+        <div class="bg-white p-6 rounded-[10px] lg:sticky lg:top-5">
             <h3 style="text-align: right; direction: rtl; margin-bottom: 1.5rem; font-size: 1.1rem; color: #333; border-bottom: 2px solid #0d9488; padding-bottom: 1rem;">
                 <i class="fas fa-sliders-h" style="color: #0d9488; margin-left: 0.5rem;"></i>
                 خيارات التصفية
@@ -330,11 +330,11 @@
 
     <!-- Filter Header -->
     <div style="background: white; padding: 1.5rem; margin-bottom: 2rem; border-radius: 10px; display: flex; gap: 1rem; align-items: center; direction: rtl; justify-content: space-between; flex-wrap: wrap;">
-        <div style="display: flex; gap: 1rem; align-items: center; flex: 1; min-width: 300px;">
-            <form method="GET" action="{{ route('categories.show', $category->slug) }}" style="display: flex; gap: 0.5rem; flex: 1;">
+        <div style="display: flex; gap: 1rem; align-items: center; justify-content: flex-end; width: 100%; min-width: 300px;">
+            <form method="GET" action="{{ route('categories.show', $category->slug) }}" style="display: flex; gap: 0.5rem; margin-right: 64px;">
                 <input type="text" name="search" placeholder="ابحث عن منتج محدد..."
                        value="{{ request('search') }}"
-                       style="flex: 1; padding: 0.7rem 1rem; border: 1px solid #ddd; border-radius: 5px; font-size: 0.95rem; font-family: 'IBM Plex Sans Arabic', sans-serif;">
+                       style="flex: 0 1 360px; max-width: 100%; border: 1px solid #ddd; border-radius: 5px; font-size: 0.95rem; font-family: 'IBM Plex Sans Arabic', sans-serif; text-align: right;">
                 <button type="submit" style="background: #0d9488; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600; font-family: 'IBM Plex Sans Arabic', sans-serif;">بحث</button>
             </form>
         </div>
@@ -362,7 +362,7 @@
     </div>
 
     <!-- Products Grid -->
-    <div class="products-container">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse($products as $product)
             <x-product-card :product="$product" />
         @empty

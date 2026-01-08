@@ -86,7 +86,7 @@
                         </a>
                         <div class="flex flex-col leading-tight">
                             <span class="text-sm text-white">مرحبا بك</span>
-                            <a href="{{ route('login') }}" class="text-sm font-bold text-white">تسجيل دخول</a>
+                            <a href="{{ route('login') }}" class="text-sm font-bold text-white hover:text-white focus:text-white active:text-white visited:text-white">تسجيل دخول</a>
                         </div>
                     </div>
                     <!-- Right group: menu then white logo -->
@@ -230,10 +230,22 @@
             <div class="px-4 py-4 space-y-4">
                 <a href="{{ route('home') }}" class="block py-2 text-teal-600 font-medium">الرئيسية</a>
                 <a href="{{ route('about') }}" class="block py-2">من نحن</a>
-                <a href="#" class="block py-2 flex items-center justify-between">
+                <a id="mobile-categories-toggle" href="#" class="block py-2 flex items-center justify-between">
                     <span>الأقسام</span>
                     <i class="fa-solid fa-chevron-down text-xs"></i>
                 </a>
+                <div id="mobile-categories" class="hidden pl-3">
+                    @php
+                        $categories = \App\Models\Category::where('is_active', true)->orderBy('sort_order')->take(8)->get();
+                    @endphp
+                    @if($categories->count() > 0)
+                        @foreach($categories as $cat)
+                            <a href="{{ route('categories.show', $cat->slug) }}" class="block py-1 text-sm text-gray-700 hover:text-teal-600">{{ $cat->name }}</a>
+                        @endforeach
+                    @else
+                        <span class="block py-1 text-sm text-gray-500">لا توجد أقسام متاحة</span>
+                    @endif
+                </div>
                 <a href="{{ route('products.index') }}" class="block py-2">أحدث المنتجات</a>
                 <a href="{{ route('contact') }}" class="block py-2">تواصل معنا</a>
                 <div class="flex items-center justify-between gap-4">
@@ -301,6 +313,12 @@
         menuBtn?.addEventListener('click', openMenu);
         closeBtn?.addEventListener('click', closeMenu);
         overlay?.addEventListener('click', closeMenu);
+        const catToggle = document.getElementById('mobile-categories-toggle');
+        const catList = document.getElementById('mobile-categories');
+        catToggle?.addEventListener('click', function(e) {
+            e.preventDefault();
+            catList?.classList.toggle('hidden');
+        });
     </script>
 
     <main>
