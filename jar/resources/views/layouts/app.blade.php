@@ -79,15 +79,37 @@
         <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                 <div class="flex items-center justify-between w-full md:hidden">
-                    <!-- Left group: user icon with greeting and login -->
-                    <div class="flex items-center gap-2 text-white order-2">
-                        <a href="{{ route('login') }}" class="w-9 h-9 rounded-full flex items-center justify-center border border-white/60 bg-white/10">
-                            <img src="{{ asset('images/Icons/User.svg') }}" class="w-5 h-5 brightness-0 invert" alt="user">
-                        </a>
-                        <div class="flex flex-col leading-tight">
-                            <span class="text-sm text-white">مرحبا بك</span>
-                            <a href="{{ route('login') }}" class="text-sm font-bold text-white hover:text-white focus:text-white active:text-white visited:text-white">تسجيل دخول</a>
-                        </div>
+                    <!-- Left group: user/auth -->
+                    <div class="flex items-center gap-2 text-white order-2 relative">
+                        @guest
+                            <a href="{{ route('login') }}" class="w-9 h-9 rounded-full flex items-center justify-center border border-white/60 bg-white/10">
+                                <img src="{{ asset('images/Icons/User.svg') }}" class="w-5 h-5 brightness-0 invert" alt="user">
+                            </a>
+                            <div class="flex flex-col leading-tight">
+                                <span class="text-sm text-white">مرحبا بك</span>
+                                <a href="{{ route('login') }}" class="text-sm font-bold text-white">تسجيل دخول</a>
+                            </div>
+                        @else
+                            <button id="mobile-user-trigger" class="flex items-center gap-2">
+                                <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : asset('images/avatar.svg') }}" class="w-9 h-9 rounded-full object-cover border border-white/60 bg-white/10" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
+                                <div class="flex flex-col leading-tight text-right">
+                                    <span class="text-xs text-white/90">مرحبا بك</span>
+                                    <span class="text-sm font-bold flex items-center gap-1">
+                                        <span class="truncate max-w-[120px]">{{ Auth::user()->name }}</span>
+                                        <i class="fa-solid fa-chevron-down text-[10px] opacity-90"></i>
+                                    </span>
+                                </div>
+                            </button>
+                            <!-- Mobile user dropdown -->
+                            <div id="mobile-user-dropdown" class="hidden absolute top-full left-0 mt-2 w-48 rounded-md shadow-lg bg-white text-gray-800 z-50">
+                                <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">الملف الشخصي</a>
+                                <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">الإعدادات</a>
+                                <form method="POST" action="{{ route('logout') }}" class="border-t border-gray-200">
+                                    @csrf
+                                    <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">تسجيل الخروج</button>
+                                </form>
+                            </div>
+                        @endguest
                     </div>
                     <!-- Right group: menu then white logo -->
                     <div class="flex items-center gap-3 order-1">
@@ -132,11 +154,14 @@
                     @else
                         <div class="relative group" id="user-menu">
                             <button class="flex items-center gap-3 text-gray-700 hover:text-gray-900">
+                                <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : asset('images/avatar.svg') }}" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
                                 <div class="text-left">
                                     <div class="text-xs text-gray-500 mb-0.5">مرحبا بك</div>
-                                    <div class="font-bold text-sm leading-none">{{ Auth::user()->name }}</div>
+                                    <div class="font-bold text-sm leading-none flex items-center gap-1">
+                                        <span>{{ Auth::user()->name }}</span>
+                                        <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+                                    </div>
                                 </div>
-                                <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : asset('images/avatar.svg') }}" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
                             </button>
                             <div class="absolute dropdown hidden bg-white shadow-xl rounded-lg left-0 mt-2 min-w-56 z-50 border border-gray-200 overflow-hidden">
                                 <a href="{{ route('profile.index') }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-teal-600 transition duration-200">
@@ -319,6 +344,17 @@
             e.preventDefault();
             catList?.classList.toggle('hidden');
         });
+        // Mobile user dropdown toggle
+        const mobileUserTrigger = document.getElementById('mobile-user-trigger');
+        const mobileUserDropdown = document.getElementById('mobile-user-dropdown');
+        if (mobileUserTrigger && mobileUserDropdown) {
+            mobileUserTrigger.addEventListener('click', function(e){
+                e.stopPropagation();
+                mobileUserDropdown.classList.toggle('hidden');
+            });
+            mobileUserDropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+            document.addEventListener('click', function(){ mobileUserDropdown.classList.add('hidden'); });
+        }
     </script>
 
     <main>
