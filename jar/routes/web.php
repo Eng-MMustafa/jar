@@ -56,9 +56,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 // Profile routes (protected by auth middleware)
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
 
@@ -94,27 +95,85 @@ Route::middleware('auth')->group(function () {
     Route::post('/products/{product}/comments', [App\Http\Controllers\ProductCommentController::class, 'store'])->name('products.comments.store');
 
     Route::get('/chat', [ProfileController::class, 'chat'])->name('chat');
-Route::get('/massage', [ProfileController::class, 'massage'])->name('massage');
-Route::get('/my-orders', [ProfileController::class, 'myOrders'])->name('my-orders');
-Route::get('/new-rental-orders', [ProfileController::class, 'newRentalOrders'])->name('new-rental-orders');
-Route::get('/notifications', [ProfileController::class, 'notifications'])->name('notifications');
-
-    // Profile pages
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/profile/bookings', [ProfileController::class, 'bookings'])->name('profile.bookings');
-    Route::get('/profile/support-tickets', [ProfileController::class, 'supportTickets'])->name('profile.support-tickets');
-    Route::get('/profile/activate-renter', [ProfileController::class, 'activateRenter'])->name('profile.activate-renter');
-    Route::post('/profile/activate-renter', [ProfileController::class, 'storeRenterActivation'])->name('profile.activate-renter.store');
-    Route::get('/profile/activation-success', [ProfileController::class, 'activationSuccess'])->name('profile.activation-success');
-    Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
+    Route::get('/massage', [ProfileController::class, 'massage'])->name('massage');
+    Route::get('/my-orders', [ProfileController::class, 'myOrders'])->name('my-orders');
+    Route::get('/new-rental-orders', [ProfileController::class, 'newRentalOrders'])->name('new-rental-orders');
+    Route::get('/notifications', [ProfileController::class, 'notifications'])->name('notifications');
 });
 
+// Admin Routes (with layout)
 Route::prefix('admin')->name('admin.')->group(function () {
-    // Admin routes are likely in a separate file or registered here.
-    // Assuming they are registered via RouteServiceProvider or similar,
-    // but based on search results I saw Admin/CategoryController.
-    // I need to check where admin routes are.
+    // Admin Authentication Routes
+    Route::get('login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'login']);
+    Route::post('logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('logout');
+
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+
+        // Categories Management
+        Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
+        Route::post('categories/{category}/toggle', [App\Http\Controllers\Admin\CategoryController::class, 'toggleStatus'])->name('categories.toggle');
+
+        // Products Management
+        Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
+        Route::post('products/{product}/toggle', [App\Http\Controllers\Admin\ProductController::class, 'toggleStatus'])->name('products.toggle');
+
+        // Orders Management
+        Route::resource('orders', App\Http\Controllers\Admin\OrderController::class);
+        Route::post('orders/{order}/status', [App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('orders.update-status');
+
+        // Users Management
+        Route::resource('users', App\Http\Controllers\Admin\UserController::class);
+        Route::post('users/{user}/toggle', [App\Http\Controllers\Admin\UserController::class, 'toggleStatus'])->name('users.toggle');
+
+        // Admins Management
+        Route::resource('admins', App\Http\Controllers\Admin\AdminUserController::class);
+
+        // Roles & Permissions
+        Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
+
+        // Sliders Management
+        Route::resource('sliders', App\Http\Controllers\Admin\SliderController::class);
+        Route::post('sliders/{slider}/toggle', [App\Http\Controllers\Admin\SliderController::class, 'toggleStatus'])->name('sliders.toggle');
+
+        // Support Tickets
+        Route::resource('tickets', App\Http\Controllers\Admin\SupportTicketController::class);
+        Route::post('tickets/{ticket}/reply', [App\Http\Controllers\Admin\SupportTicketController::class, 'reply'])->name('tickets.reply');
+        Route::post('tickets/{ticket}/close', [App\Http\Controllers\Admin\SupportTicketController::class, 'close'])->name('tickets.close');
+
+        // Content Pages
+        Route::resource('content', App\Http\Controllers\Admin\StaticContentController::class);
+
+        // Reports & Audit Logs
+        Route::get('reports', function() { return view('admin.reports.index'); })->name('reports.index');
+        Route::get('audit-logs', function() { return view('admin.audit-logs.index'); })->name('audit-logs.index');
+        Route::get('settings', function() { return view('admin.settings.index'); })->name('settings.index');
+    });
+});
+
+// Fix Storage Link Route
+Route::get('/fix-storage', function () {
+    try {
+        $target = storage_path('app/public');
+        $link = public_path('storage');
+
+        if (file_exists($link)) {
+            // Check if it's a directory (and not a link)
+            if (is_dir($link) && !is_link($link)) {
+                // Recursively delete the directory
+                \Illuminate\Support\Facades\File::deleteDirectory($link);
+            } else {
+                // It's a file or a link
+                unlink($link);
+            }
+        }
+
+        // Try to create the symlink
+        symlink($target, $link);
+
+        return 'Storage link fixed successfully! <br> Target: ' . $target . '<br> Link: ' . $link;
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
 });

@@ -19,6 +19,13 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
         ]);
+
+        $middleware->redirectUsersTo(function () {
+            if (auth()->guard('admin')->check()) {
+                return route('admin.dashboard');
+            }
+            return '/home';
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

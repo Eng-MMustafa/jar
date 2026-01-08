@@ -611,7 +611,7 @@
                             <div class="upload-text">اختر الصورة</div>
                             <div class="upload-hint">اضغط أو اسحب صورة هنا (JPG, PNG)</div>
                         </div>
-                        <input type="file" id="hand-photo" name="hand_photo" class="upload-input" accept="image/*">
+                        <input type="file" id="hand-photo" name="hand_photo" class="upload-input" accept="image/*" required>
                         <div class="uploaded-files" id="hand-photo-preview"></div>
                         @error('hand_photo')<span class="error-text">{{ $message }}</span>@enderror
                     </div>
@@ -668,11 +668,47 @@
     document.getElementById('hand-photo').addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (file) {
+            // Validation Constants
+            const MAX_SIZE = 20 * 1024 * 1024; // 20MB
+            const MIN_SIZE = 5 * 1024; // 5KB
+
+            // Validate File Type
+            if (!file.type.startsWith('image/')) {
+                showError('عذراً، تنسيق الملف غير مدعوم. يرجى رفع صورة بصيغة JPG أو PNG أو JPEG.');
+                this.value = '';
+                clearPreview('hand-photo');
+                return;
+            }
+
+            // Validate File Size (Max)
+            if (file.size > MAX_SIZE) {
+                showError('عذراً، حجم الصورة يتجاوز الحد المسموح به (20 ميجابايت). يرجى اختيار صورة بحجم أصغر.');
+                this.value = '';
+                clearPreview('hand-photo');
+                return;
+            }
+
+            // Validate File Size (Min)
+            if (file.size < MIN_SIZE) {
+                showError('عذراً، حجم الصورة صغير جداً وقد تكون غير واضحة. يرجى رفع صورة بجودة أعلى.');
+                this.value = '';
+                clearPreview('hand-photo');
+                return;
+            }
+
+            // Clear previous errors
+            clearError();
+
+            // Create Preview using createObjectURL
+            const objectUrl = URL.createObjectURL(file);
             const preview = document.getElementById('hand-photo-preview');
             preview.innerHTML = `
-                <div class="file-item">
-                    <span>${file.name}</span>
-                    <span class="file-remove" onclick="removeFile('hand-photo')">حذف</span>
+                <div class="file-item" style="flex-direction: column; align-items: flex-start; gap: 10px; width: 100%;">
+                    <img src="${objectUrl}" alt="Preview" style="max-width: 100%; max-height: 300px; border-radius: 8px; border: 1px solid #ddd; object-fit: contain;">
+                    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                        <span style="font-size: 0.9rem; color: #666;">${file.name}</span>
+                        <span class="file-remove" onclick="removeFile('hand-photo')" style="color: #e74c3c; cursor: pointer;">حذف</span>
+                    </div>
                 </div>
             `;
         }
@@ -680,8 +716,43 @@
 
     function removeFile(inputId) {
         document.getElementById(inputId).value = '';
+        clearPreview(inputId);
+    }
+
+    function clearPreview(inputId) {
         document.getElementById(inputId + '-preview').innerHTML = '';
     }
+
+    function showError(message) {
+        // You can implement a toast or a modal here. For now, alert is simple.
+        // Better: insert error text near the input.
+        alert(message);
+    }
+
+    function clearError() {
+        // Clear error messages if any
+    }
+
+    // Form Validation on Submit
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const requiredInputs = this.querySelectorAll('[required]');
+        let isValid = true;
+
+        requiredInputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add('is-invalid');
+                // Optional: Scroll to first error
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        });
+
+        if (!isValid) {
+            e.preventDefault();
+            showError('يرجى تعبئة جميع الحقول المطلوبة بشكل صحيح.');
+        }
+    });
 </script>
         </div>
     </div>

@@ -361,10 +361,9 @@
                         <label class="form-label">الفئة <span class="required">*</span></label>
                         <select name="category_id" class="form-select" required>
                             <option value="">اختر الفئة</option>
-                            <option value="1">إلكترونيات</option>
-                            <option value="2">أدوات</option>
-                            <option value="3">ملابس</option>
-                            <option value="4">إكسسوارات</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
+                            @endforeach
                         </select>
                         @error('category_id')
                             <div style="color: var(--danger); font-size: 0.85rem; margin-top: 0.3rem;">{{ $message }}</div>
@@ -408,6 +407,7 @@
                             <p style="margin: 0.5rem 0 0 0; color: var(--text-dark);">اضغط لتحميل الصورة الرئيسية</p>
                         </div>
                         <input type="file" id="main_image" name="main_image" accept="image/*" style="display: none;">
+                        <div id="main_image_preview" style="margin-top: 10px;"></div>
                         @error('main_image')
                             <div style="color: var(--danger); font-size: 0.85rem; margin-top: 0.3rem;">{{ $message }}</div>
                         @enderror
@@ -436,6 +436,7 @@
                             <p style="margin: 0.3rem 0 0 0; font-size: 0.85rem; color: var(--text-light);">أو اسحب الصور هنا</p>
                         </div>
                         <input type="file" id="images" name="images[]" multiple accept="image/*" style="display: none;">
+                        <div id="images_preview" style="margin-top: 10px; display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px;"></div>
                     </div>
 
                     <div class="form-group">
@@ -459,5 +460,100 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Constants
+    const MAX_SIZE = 20 * 1024 * 1024; // 20MB
+    const MIN_SIZE = 5 * 1024; // 5KB
+
+    function showError(message) {
+        alert(message);
+    }
+
+    // Main Image Handler
+    document.getElementById('main_image').addEventListener('change', function(e) {
+        handleFileSelect(e.target, 'main_image_preview', false);
+    });
+
+    // Additional Images Handler
+    document.getElementById('images').addEventListener('change', function(e) {
+        handleFileSelect(e.target, 'images_preview', true);
+    });
+
+    function handleFileSelect(input, previewId, isMultiple) {
+        const previewContainer = document.getElementById(previewId);
+        if (!isMultiple) {
+            previewContainer.innerHTML = ''; // Clear for single file
+        } else {
+             previewContainer.innerHTML = ''; // Reset for multiple to avoid duplicates on re-select (simple behavior)
+        }
+
+        const files = Array.from(input.files);
+
+        files.forEach(file => {
+            // Validation
+            if (!file.type.startsWith('image/')) {
+                showError(`عذراً، الملف "${file.name}" ليس صورة. يرجى رفع ملفات صور فقط.`);
+                input.value = ''; // Reset
+                previewContainer.innerHTML = '';
+                return;
+            }
+
+            if (file.size > MAX_SIZE) {
+                showError(`عذراً، الملف "${file.name}" حجمه كبير جداً (أكثر من 20 ميجابايت). يرجى اختيار ملف أصغر.`);
+                input.value = '';
+                previewContainer.innerHTML = '';
+                return;
+            }
+
+            if (file.size < MIN_SIZE) {
+                showError(`عذراً، الملف "${file.name}" صغير جداً.`);
+                input.value = '';
+                previewContainer.innerHTML = '';
+                return;
+            }
+
+            // Preview
+            const objectUrl = URL.createObjectURL(file);
+            const div = document.createElement('div');
+            div.style.position = 'relative';
+
+            if (isMultiple) {
+                 div.innerHTML = `
+                    <img src="${objectUrl}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd;">
+                    <span style="display:block; font-size: 0.8rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px; margin-top: 5px;">${file.name}</span>
+                `;
+            } else {
+                 div.innerHTML = `
+                    <img src="${objectUrl}" style="max-width: 100%; max-height: 300px; border-radius: 8px; border: 1px solid #ddd;">
+                    <div style="margin-top: 5px; color: #666;">${file.name}</div>
+                `;
+            }
+
+            previewContainer.appendChild(div);
+        });
+    }
+
+    // Form Validation
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const requiredInputs = this.querySelectorAll('[required]');
+        let isValid = true;
+
+        requiredInputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.style.borderColor = 'var(--danger)';
+                // input.classList.add('error-shake'); // If we had animation
+            } else {
+                input.style.borderColor = 'var(--border-light)';
+            }
+        });
+
+        if (!isValid) {
+            e.preventDefault();
+            showError('يرجى تعبئة جميع الحقول المطلوبة.');
+        }
+    });
+</script>
 
 @endsection

@@ -66,6 +66,10 @@
         width: 600px;
     }
 
+    .mobile-carousel, .carousel-dots {
+        display: none;
+    }
+
     .image-gallery {
         display: flex;
         flex-direction: column;
@@ -899,7 +903,11 @@
 <div class="breadcrumb">
     <a href="{{ route('home') }}">الرئيسية</a>
     <span>/</span>
-    <a href="{{ route('categories.show', $product->category->slug) }}">{{ $product->category->name }}</a>
+    @if($product->category)
+        <a href="{{ route('categories.show', $product->category->slug) }}">{{ $product->category->name }}</a>
+    @else
+        <span>غير مصنف</span>
+    @endif
     <span>/</span>
     <span>{{ $product->name }}</span>
 </div>
@@ -948,7 +956,11 @@
 
         <!-- Product Information -->
         <div class="product-info">
-<div class="product-category">{{ $product->category->name }}</div>
+            @if($product->category)
+                <div class="product-category">{{ $product->category->name }}</div>
+            @else
+                <div class="product-category">غير مصنف</div>
+            @endif
 
             <h1 class="product-title">{{ $product->name }}</h1>
 

@@ -17,11 +17,11 @@
     <form method="GET" action="{{ route('admin.products.index') }}" class="flex flex-wrap gap-4 items-end">
         <div class="flex-1 min-w-[200px]">
             <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
-            <input type="text" name="search" value="{{ request('search') }}" 
+            <input type="text" name="search" value="{{ request('search') }}"
                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                    placeholder="Search products...">
         </div>
-        
+
         <div class="min-w-[150px]">
             <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
             <select name="category_id" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500">
@@ -33,7 +33,7 @@
                 @endforeach
             </select>
         </div>
-        
+
         <div class="min-w-[150px]">
             <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
             <select name="status" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500">
@@ -44,7 +44,7 @@
                 <option value="low-stock" {{ request('status') == 'low-stock' ? 'selected' : '' }}>Low Stock</option>
             </select>
         </div>
-        
+
         <div class="flex gap-2">
             <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors duration-200">
                 <i class="fas fa-search mr-2"></i>
@@ -139,7 +139,7 @@
                                         Inactive
                                     </span>
                                 @endif
-                                
+
                                 @if($product->is_featured)
                                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
                                         Featured
@@ -149,19 +149,35 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex space-x-2">
-                                <a href="{{ route('admin.products.show', $product) }}" class="text-primary-600 hover:text-primary-900">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="{{ route('admin.products.edit', $product) }}" class="text-indigo-600 hover:text-indigo-900">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <form method="POST" action="{{ route('admin.products.destroy', $product) }}" class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure?')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
+                                @if($product->trashed())
+                                    <form method="POST" action="{{ route('admin.products.restore', $product->id) }}" class="inline">
+                                        @csrf
+                                        <button type="submit" class="text-green-600 hover:text-green-900" title="Restore">
+                                            <i class="fas fa-trash-restore"></i>
+                                        </button>
+                                    </form>
+                                    <form method="POST" action="{{ route('admin.products.force-delete', $product->id) }}" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure you want to permanently delete this product? This action cannot be undone.')" title="Force Delete">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </form>
+                                @else
+                                    <a href="{{ route('admin.products.show', $product) }}" class="text-primary-600 hover:text-primary-900" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('admin.products.edit', $product) }}" class="text-indigo-600 hover:text-indigo-900" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form method="POST" action="{{ route('admin.products.destroy', $product) }}" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure you want to delete this product?')" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                @endif
                             </div>
                         </td>
                     </tr>
@@ -175,7 +191,7 @@
             </tbody>
         </table>
     </div>
-    
+
     <!-- Pagination -->
     @if($products->hasPages())
         <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">

@@ -42,16 +42,16 @@
                 <div class="flex items-center gap-6">
                     <!-- Social Icons -->
                     <div class="flex items-center gap-2">
-                         <a href="#" class="w-7 h-7 flex items-center justify-center border border-black rounded text-black hover:text-black hover:border-black transition-all">
+                         <a href="#" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
                             <i class="fa-brands fa-tiktok"></i>
                         </a>
-                        <a href="#" class="w-7 h-7 flex items-center justify-center border border-black rounded text-black hover:text-black hover:border-black transition-all">
+                        <a href="#" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="#" class="w-7 h-7 flex items-center justify-center border border-black rounded text-black hover:text-black hover:border-black transition-all">
+                        <a href="#" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
                             <i class="fa-brands fa-snapchat"></i>
                         </a>
-                        <a href="#" class="w-7 h-7 flex items-center justify-center border border-black rounded text-black hover:text-black hover:border-black transition-all">
+                        <a href="#" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
                             <i class="fa-brands fa-twitter"></i>
                         </a>
                     </div>
@@ -143,7 +143,7 @@
                 <div class="hidden md:flex flex-shrink-0 text-white md:text-inherit">
                     @guest
                         <a href="{{ route('login') }}" class="flex items-center gap-3 group">
-                            <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center border border-gray-100 group-hover:border-teal-100 group-hover:bg-teal-50 transition-all">
+                            <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center group-hover:bg-teal-50 transition-all">
                                 <img src="{{ asset('images/Icons/User.svg') }}" class="w-5 h-5" alt="user">
                             </div>
                             <div class="text-right">

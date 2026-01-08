@@ -36,14 +36,14 @@
                             <div id="drop-content" class="text-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto mb-3 h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 12v9M8 12l4-4 4 4"/></svg>
                                 <div class="text-lg font-medium">اختر صورة إيصال الدفع</div>
-                                <div class="text-sm text-gray-500 mt-1">(jpg, png, pdf) حتى 5MB</div>
+                                <div class="text-sm text-gray-500 mt-1">(jpg, png) حتى 20MB</div>
                                 <div class="mt-4">
-                                    <label id="choose-file" class="inline-block bg-white border border-gray-200 rounded px-4 py-2 text-teal-600 font-semibold cursor-pointer">اختر ملف</label>
+                                    <label for="transfer_proof" id="choose-file" class="inline-block bg-white border border-gray-200 rounded px-4 py-2 text-teal-600 font-semibold cursor-pointer">اختر ملف</label>
                                 </div>
                                 <div id="selected-file" class="mt-3 text-sm text-gray-600 hidden"></div>
                             </div>
 
-                            <input type="file" id="transfer_proof" name="transfer_proof" class="hidden" accept="image/*,.pdf" required>
+                            <input type="file" id="transfer_proof" name="transfer_proof" class="hidden" accept="image/*" required>
                         </div>
 
                         @error('transfer_proof')
@@ -57,7 +57,7 @@
 
                         <div class="mt-6 flex justify-between">
                             <a href="{{ url()->previous() }}" class="inline-block px-5 py-2 rounded-lg bg-gray-100 text-teal-600 font-semibold">رجوع</a>
-                            <button type="submit" id="submit-transfer" class="inline-block px-6 py-2 rounded-lg bg-teal-500 hover:bg-teal-600 text-white font-semibold disabled:opacity-60" disabled>إرسال الطلب</button>
+                            <button type="submit" id="submit-transfer" class="inline-block px-6 py-2 rounded-lg bg-teal-500 hover:bg-teal-600 text-white font-semibold">إرسال الطلب</button>
                         </div>
 
                         <div id="preview-area" class="mt-4 hidden">
@@ -87,42 +87,62 @@
 document.addEventListener('DOMContentLoaded', function(){
     const dz = document.getElementById('dropzone');
     const fileInput = document.getElementById('transfer_proof');
-    const chooseBtn = document.getElementById('choose-file');
-    const submitBtn = document.getElementById('submit-transfer');
     const selectedFileEl = document.getElementById('selected-file');
     const previewArea = document.getElementById('preview-area');
     const previewThumb = document.getElementById('preview-thumb');
     const previewName = document.getElementById('preview-name');
     const previewType = document.getElementById('preview-type');
 
-    function setSelected(file){
-        if (!file) return;
-        selectedFileEl.textContent = file.name;
-        selectedFileEl.classList.remove('hidden');
-        submitBtn.disabled = false;
-        previewArea.classList.remove('hidden');
-        previewName.textContent = file.name;
-        previewType.textContent = file.type || 'ملف';
+    const MAX_SIZE = 20 * 1024 * 1024; // 20MB
+    const MIN_SIZE = 5 * 1024; // 5KB
 
-        // preview image if image file
-        if (file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.onload = function(e){
-                previewThumb.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;" />';
-            };
-            reader.readAsDataURL(file);
-        } else {
-            previewThumb.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" viewBox="0 0 24 24" fill="none"><path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg>';
-        }
+    function showError(msg) {
+        alert(msg);
     }
 
-    chooseBtn.addEventListener('click', function(){
-        fileInput.click();
-    });
+    function validateFile(file) {
+        if (!file.type.startsWith('image/')) {
+            showError('عذراً، الملف يجب أن يكون صورة فقط (JPG, PNG, ...).');
+            return false;
+        }
+        if (file.size > MAX_SIZE) {
+            showError('عذراً، حجم الملف كبير جداً (أكثر من 20 ميجابايت).');
+            return false;
+        }
+        if (file.size < MIN_SIZE) {
+            showError('عذراً، حجم الملف صغير جداً.');
+            return false;
+        }
+        return true;
+    }
+
+    function showPreview(file) {
+        selectedFileEl.textContent = file.name;
+        selectedFileEl.classList.remove('hidden');
+        previewArea.classList.remove('hidden');
+        previewName.textContent = file.name;
+        previewType.textContent = file.type;
+
+        const objectUrl = URL.createObjectURL(file);
+        previewThumb.innerHTML = '<img src="' + objectUrl + '" style="width:100%;height:100%;object-fit:cover;" />';
+    }
+
+    function clearPreview() {
+        selectedFileEl.classList.add('hidden');
+        previewArea.classList.add('hidden');
+        previewThumb.innerHTML = '';
+        fileInput.value = '';
+    }
 
     fileInput.addEventListener('change', function(e){
         const f = e.target.files[0];
-        setSelected(f);
+        if (f) {
+            if (validateFile(f)) {
+                showPreview(f);
+            } else {
+                clearPreview();
+            }
+        }
     });
 
     // drag & drop
@@ -140,13 +160,31 @@ document.addEventListener('DOMContentLoaded', function(){
         e.preventDefault();
         dz.classList.remove('bg-white');
         dz.classList.remove('border-teal-200');
+
         const f = e.dataTransfer.files[0];
         if (f) {
-            // set file input programmatically
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(f);
-            fileInput.files = dataTransfer.files;
-            setSelected(f);
+            if (validateFile(f)) {
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(f);
+                fileInput.files = dataTransfer.files;
+                showPreview(f);
+            }
+        }
+    });
+
+    // Form Validation
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const requiredInputs = this.querySelectorAll('[required]');
+        let isValid = true;
+        requiredInputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+            }
+        });
+
+        if (!isValid) {
+            e.preventDefault();
+            showError('يرجى اختيار صورة الإيصال للمتابعة.');
         }
     });
 });

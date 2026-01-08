@@ -98,7 +98,7 @@ class ProfileController extends Controller
         // Handle file upload
         if ($request->hasFile('hand_photo')) {
             $path = $request->file('hand_photo')->store('renter-photos', 'public');
-            $validated['hand_photo'] = $path;
+            $validated['hand_photo'] = 'storage/' . $path;
         }
 
         // Save to database (you might create a new table or use JSON column)
@@ -189,7 +189,8 @@ class ProfileController extends Controller
      */
     public function createProduct()
     {
-        return view('pages.products-me-create');
+        $categories = \App\Models\Category::active()->bySortOrder()->get();
+        return view('pages.products-me-create', compact('categories'));
     }
 
     /**
@@ -273,6 +274,8 @@ class ProfileController extends Controller
      */
     public function editProduct($id)
     {
+        $categories = \App\Models\Category::active()->bySortOrder()->get();
+
         // Allow a demo edit page for testing (id = 0)
         if ((int)$id === 0) {
             $product = new Product([
@@ -285,11 +288,11 @@ class ProfileController extends Controller
                 'is_active' => true,
             ]);
             $product->id = 0; // mark as demo
-            return view('pages.products-me-edit', compact('product'));
+            return view('pages.products-me-edit', compact('product', 'categories'));
         }
 
         $product = auth()->user()->products()->findOrFail($id);
-        return view('pages.products-me-edit', compact('product'));
+        return view('pages.products-me-edit', compact('product', 'categories'));
     }
 
     /**
@@ -349,7 +352,7 @@ class ProfileController extends Controller
             'rental_type' => $validated['rental_type'] ?? null,
             'city' => $validated['city'],
             'is_active' => $validated['status'] === 'active',
-        
+
         ]);
 
         return redirect()->route('my-products.index')->with('success', 'تم تحديث المنتج بنجاح');

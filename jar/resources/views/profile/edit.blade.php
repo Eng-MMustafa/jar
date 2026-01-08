@@ -410,12 +410,12 @@
                     <div class="form-group">
                         <label class="form-label">الصورة الشخصية</label>
                         <div style="display:flex;gap:1rem;align-items:center;">
-                            <div style="width:72px;height:72px;border-radius:50%;overflow:hidden;flex-shrink:0;">
-                                <img src="{{ auth()->user()->avatar ? asset(auth()->user()->avatar) : asset('images/avatar.svg') }}" alt="avatar" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
+                            <div style="width:72px;height:72px;border-radius:50%;overflow:hidden;flex-shrink:0; border: 1px solid #ddd;">
+                                <img id="avatar-preview" src="{{ auth()->user()->avatar ? asset(auth()->user()->avatar) : asset('images/avatar.svg') }}" alt="avatar" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
                             </div>
-                            <input type="file" name="avatar" accept="image/*">
+                            <input type="file" id="avatar-input" name="avatar" accept="image/*">
                         </div>
-                        <small class="text-gray-500">أقصى حجم للصورة 2MB. (jpg, png, gif)</small>
+                        <small class="text-gray-500" id="avatar-hint">أقصى حجم للصورة 20MB. (jpg, png, gif)</small>
                     </div>
 
                     <div class="btn-group">
@@ -427,4 +427,68 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Constants
+    const MAX_SIZE = 20 * 1024 * 1024; // 20MB
+    const MIN_SIZE = 5 * 1024; // 5KB
+
+    function showError(message) {
+        alert(message);
+    }
+
+    // Avatar Handler
+    const avatarInput = document.getElementById('avatar-input');
+    if (avatarInput) {
+        avatarInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                 // Validation
+                if (!file.type.startsWith('image/')) {
+                    showError(`عذراً، الملف "${file.name}" ليس صورة. يرجى رفع ملفات صور فقط.`);
+                    this.value = '';
+                    return;
+                }
+
+                if (file.size > MAX_SIZE) {
+                    showError(`عذراً، الملف "${file.name}" حجمه كبير جداً (أكثر من 20 ميجابايت).`);
+                    this.value = '';
+                    return;
+                }
+
+                if (file.size < MIN_SIZE) {
+                    showError(`عذراً، الملف "${file.name}" صغير جداً.`);
+                    this.value = '';
+                    return;
+                }
+
+                // Preview
+                const objectUrl = URL.createObjectURL(file);
+                const preview = document.getElementById('avatar-preview');
+                preview.src = objectUrl;
+            }
+        });
+    }
+
+    // Form Validation
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const requiredInputs = this.querySelectorAll('[required]');
+        let isValid = true;
+
+        requiredInputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.style.borderColor = 'var(--danger)';
+            } else {
+                input.style.borderColor = 'var(--border-light)';
+            }
+        });
+
+        if (!isValid) {
+            e.preventDefault();
+            showError('يرجى تعبئة جميع الحقول المطلوبة.');
+        }
+    });
+</script>
+
 @endsection

@@ -344,11 +344,12 @@
                     <div class="form-group">
                         <label class="form-label">الفئة <span class="required">*</span></label>
                         <select name="category_id" class="form-select" required>
-                            <option value="{{ $product->category_id }}" selected>{{ $product->category?->name ?? 'الفئة الحالية' }}</option>
-                            <option value="1">إلكترونيات</option>
-                            <option value="2">أدوات</option>
-                            <option value="3">ملابس</option>
-                            <option value="4">إكسسوارات</option>
+                            <option value="">اختر الفئة</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -388,6 +389,7 @@
                             <p style="margin: 0.5rem 0 0 0; color: var(--text-dark);">اضغط لتغيير الصورة الرئيسية</p>
                         </div>
                         <input type="file" id="main_image" name="main_image" accept="image/*" style="display: none;">
+                        <div id="main_image_preview" style="margin-top: 10px;"></div>
                     </div>
 
                     <div class="form-group">
@@ -433,5 +435,91 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Constants
+    const MAX_SIZE = 20 * 1024 * 1024; // 20MB
+    const MIN_SIZE = 5 * 1024; // 5KB
+
+    function showError(message) {
+        alert(message);
+    }
+
+    // Main Image Handler
+    const mainImageInput = document.getElementById('main_image');
+    if (mainImageInput) {
+        mainImageInput.addEventListener('change', function(e) {
+            handleFileSelect(e.target, 'main_image_preview', false);
+        });
+    }
+
+    function handleFileSelect(input, previewId, isMultiple) {
+        const previewContainer = document.getElementById(previewId);
+        if (!previewContainer) return;
+
+        previewContainer.innerHTML = ''; // Clear
+
+        const files = Array.from(input.files);
+
+        files.forEach(file => {
+            // Validation
+            if (!file.type.startsWith('image/')) {
+                showError(`عذراً، الملف "${file.name}" ليس صورة. يرجى رفع ملفات صور فقط.`);
+                input.value = ''; // Reset
+                previewContainer.innerHTML = '';
+                return;
+            }
+
+            if (file.size > MAX_SIZE) {
+                showError(`عذراً، الملف "${file.name}" حجمه كبير جداً (أكثر من 20 ميجابايت).`);
+                input.value = '';
+                previewContainer.innerHTML = '';
+                return;
+            }
+
+            if (file.size < MIN_SIZE) {
+                showError(`عذراً، الملف "${file.name}" صغير جداً.`);
+                input.value = '';
+                previewContainer.innerHTML = '';
+                return;
+            }
+
+            // Preview
+            const objectUrl = URL.createObjectURL(file);
+            const div = document.createElement('div');
+            div.style.position = 'relative';
+
+            div.innerHTML = `
+                <img src="${objectUrl}" style="max-width: 100%; max-height: 300px; border-radius: 8px; border: 1px solid #ddd;">
+                <div style="margin-top: 5px; color: #666;">${file.name}</div>
+            `;
+
+            previewContainer.appendChild(div);
+        });
+    }
+
+    // Form Validation (Main Form)
+    const updateForm = document.querySelector('form[action*="update"]');
+    if (updateForm) {
+        updateForm.addEventListener('submit', function(e) {
+            const requiredInputs = this.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = 'var(--danger)';
+                } else {
+                    input.style.borderColor = 'var(--border-light)';
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                showError('يرجى تعبئة جميع الحقول المطلوبة.');
+            }
+        });
+    }
+</script>
 
 @endsection

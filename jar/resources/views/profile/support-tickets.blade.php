@@ -334,13 +334,13 @@
                                     </div>
                                     <div style="display:flex;gap:0.5rem;margin-top:0.75rem;">
                                         @if($booking->status === 'pending' || $booking->status === 'submitted')
-                                            <form action="{{ route('bookings.approve', ['booking' => $booking->id]) }}" method="POST">
+                                            <form action="{{ route('bookings.approve', ['booking' => $booking->id]) }}" method="POST" style="display:inline;">
                                                 @csrf
-                                                <button class="btn btn-primary" style="background:#2ecc71;border-radius:8px;padding:0.5rem 1rem;border:none;color:white;">موافقة</button>
+                                                <button type="submit" class="btn btn-primary" style="background:#2ecc71;border-radius:8px;padding:0.5rem 1rem;border:none;color:white;cursor:pointer;">موافقة</button>
                                             </form>
-                                            <form action="{{ route('bookings.reject', ['booking' => $booking->id]) }}" method="POST">
+                                            <form action="{{ route('bookings.reject', ['booking' => $booking->id]) }}" method="POST" style="display:inline;" onsubmit="return confirm('هل أنت متأكد من رفض هذا الطلب؟');">
                                                 @csrf
-                                                <button class="btn btn-secondary" style="background:#f8d7da;border-radius:8px;padding:0.5rem 1rem;border:none;color:#b71c1c;">رفض</button>
+                                                <button type="submit" class="btn btn-secondary" style="background:#f8d7da;border-radius:8px;padding:0.5rem 1rem;border:none;color:#b71c1c;cursor:pointer;">رفض</button>
                                             </form>
                                         @else
                                             <a href="{{ route('bookings.payment', ['booking' => $booking->id]) }}" class="btn btn-secondary">عرض التفاصيل</a>
