@@ -22,7 +22,7 @@
 <body class="bg-gray-50 text-gray-900">
     <header>
     <!-- Top Bar -->
-    <div class="bg-white border-b border-gray-100">
+    <div class="bg-white border-b border-gray-100 hidden md:block">
         <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between py-2 text-xs lg:text-sm">
                 <!-- Right: Contact -->
@@ -75,20 +75,42 @@
     </div>
 
     <!-- Middle Bar -->
-    <div class="bg-white py-0 border-b border-gray-100">
+    <div class="bg-teal-600 md:bg-white py-2 border-b border-gray-100">
         <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between gap-0">
-                <!-- Right: Logo -->
-                <a href="{{ route('home') }}" class="flex-shrink-0 -ml-4 md:-ml-6">
-                    <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR" class="h-28 w-auto">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                <div class="flex items-center justify-between w-full md:hidden">
+                    <!-- Left group: user icon with greeting and login -->
+                    <div class="flex items-center gap-2 text-white order-2">
+                        <a href="{{ route('login') }}" class="w-9 h-9 rounded-full flex items-center justify-center border border-white/60 bg-white/10">
+                            <img src="{{ asset('images/Icons/User.svg') }}" class="w-5 h-5 brightness-0 invert" alt="user">
+                        </a>
+                        <div class="flex flex-col leading-tight">
+                            <span class="text-sm text-white">مرحبا بك</span>
+                            <a href="{{ route('login') }}" class="text-sm font-bold text-white">تسجيل دخول</a>
+                        </div>
+                    </div>
+                    <!-- Right group: menu then white logo -->
+                    <div class="flex items-center gap-3 order-1">
+                        <button id="mobile-menu-btn" class="text-white p-2 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                        <a href="{{ route('home') }}" class="flex-shrink-0">
+                            <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR" class="h-8 w-auto brightness-0 invert">
+                        </a>
+                    </div>
+                </div>
+                <a href="{{ route('home') }}" class="hidden md:block flex-shrink-0 -ml-4 md:-ml-6">
+                    <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR" class="h-10 md:h-28 w-auto">
                 </a>
 
                 <!-- Center: Search -->
-                <div class="flex-1 max-w-3xl">
+                <div class="order-2 w-full md:order-none md:flex-1 md:max-w-3xl">
                     <div class="relative group">
                         <input type="text"
                                placeholder="إبحث عن : أجهزة كهربائية"
-                               class="w-full py-3 px-12 text-right bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teال-500 transition-all placeholder-gray-400 text-gray-600">
+                               class="w-full py-3 px-12 text-right bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all placeholder-gray-400 text-gray-600">
                         <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                             <img src="{{ asset('images/Icons/Rounded Magnifer.svg') }}" class="w-5 h-5 text-gray-400" alt="search">
                         </div>
@@ -96,15 +118,15 @@
                 </div>
 
                 <!-- Left: User/Login -->
-                <div class="flex-shrink-0">
+                <div class="hidden md:flex flex-shrink-0 text-white md:text-inherit">
                     @guest
                         <a href="{{ route('login') }}" class="flex items-center gap-3 group">
                             <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center border border-gray-100 group-hover:border-teal-100 group-hover:bg-teal-50 transition-all">
                                 <img src="{{ asset('images/Icons/User.svg') }}" class="w-5 h-5" alt="user">
                             </div>
                             <div class="text-right">
-                                <p class="text-xs text-gray-500 mb-0.5">مرحبا بك</p>
-                                <p class="text-sm font-bold text-gray-800 group-hover:text-teal-600 transition-colors">تسجيل دخول</p>
+                                <p class="text-xs md:text-gray-500 mb-0.5">مرحبا بك</p>
+                                <p class="text-sm font-bold md:text-gray-800 group-hover:text-teal-600 transition-colors">تسجيل دخول</p>
                             </div>
                         </a>
                     @else
@@ -161,7 +183,7 @@
     </div>
 
     <!-- Bottom Bar (Navigation) -->
-    <nav class="bg-[#009595] text-white main-nav">
+    <nav class="bg-[#009595] text-white main-nav hidden md:block">
         <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="nav-links flex items-center justify-start h-12 gap-8 text-[15px]">
                 <a href="{{ route('home') }}" class="text-white hover:text-white focus:text-white active:text-white visited:text-white opacity-100 font-medium pb-0.5 border-b-2 border-white">الرئيسية</a>
@@ -193,37 +215,67 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu (Hidden by default) -->
-    <div id="mobile-menu" class="hidden md:hidden bg-teal-600">
-        <div class="px-4 py-3 space-y-2">
-            <div class="border-b border-teal-500 pb-3 mb-3">
-                <div class="relative">
-                    <input type="search" placeholder="ابحث..." class="w-full py-2 px-4 pr-10 text-sm border border-gray-300 rounded-lg">
-                    <button class="absolute inset-y-0 right-3 flex items-center">
-                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </button>
+    <!-- Mobile Menu (Drawer) -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 hidden md:hidden">
+        <div id="mobile-menu-overlay" class="absolute inset-0 bg-black/30"></div>
+        <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-72 bg-white shadow-xl transform translate-x-full transition-all">
+            <div class="flex items-center justify-between px-4 py-4 border-b">
+                <h3 class="text-lg font-bold">لوحة التنقل</h3>
+                <button id="mobile-menu-close" class="text-red-500 p-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="px-4 py-4 space-y-4">
+                <a href="{{ route('home') }}" class="block py-2 text-teal-600 font-medium">الرئيسية</a>
+                <a href="{{ route('about') }}" class="block py-2">من نحن</a>
+                <a href="#" class="block py-2 flex items-center justify-between">
+                    <span>الأقسام</span>
+                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                </a>
+                <a href="{{ route('products.index') }}" class="block py-2">أحدث المنتجات</a>
+                <a href="{{ route('contact') }}" class="block py-2">تواصل معنا</a>
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-2">
+                        <img src="{{ asset('images/Icons/flag-for-saudi-arabia-svgrepo-com 1.svg') }}" class="w-5 h-3.5 object-cover rounded-[2px]" alt="KSA">
+                        <span>العربية</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <img src="{{ asset('images/Icons/Map Point.svg') }}" class="w-4 h-4" alt="location">
+                        <span>القصيم - بريدة</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 pt-2 justify-center">
+                    <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
+                        <i class="fa-brands fa-snapchat"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
                 </div>
             </div>
-            <a href="{{ route('home') }}" class="block py-2 text-white hover:text-teal-100">الرئيسية</a>
-            <a href="{{ route('about') }}" class="block py-2 text-white hover:text-teal-100">من نحن</a>
-            <a href="#" class="block py-2 text-white hover:text-teal-100">الأقسام</a>
-            <a href="{{ route('products.index') }}" class="block py-2 text-white hover:text-teal-100">أحدث المنتجات</a>
-            <a href="{{ route('contact') }}" class="block py-2 text-white hover:text-teal-100">تواصل معنا</a>
-            @guest
-                <a href="{{ route('login') }}" class="block py-2 text-white hover:text-teal-100">تسجيل دخول</a>
-            @else
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="block w-full text-right py-2 text-white hover:text-teal-100">تسجيل خروج</button>
-                </form>
-            @endguest
+            <div class="mt-auto px-4 py-4 border-t">
+                @auth
+                    <form method="POST" action="{{ route('logout') }}" class="mt-1">
+                        @csrf
+                        <button type="submit" class="block w-full text-right py-2 text-red-600">تسجيل خروج</button>
+                    </form>
+                @endauth
+            </div>
         </div>
     </div>
 
     <!-- Mobile Menu Button (For smaller screens) -->
-    <button id="mobile-menu-btn" class="md:hidden fixed top-4 left-4 z-50 bg-teal-500 text-white p-2 rounded-lg shadow-lg">
+    <button id="mobile-menu-btn" class="hidden md:hidden fixed top-4 left-4 z-50 bg-teal-500 text-white p-2 rounded-lg shadow-lg">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -231,9 +283,24 @@
 </header>
 
     <script>
-        document.getElementById('mobile-menu-btn')?.addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const panel = document.getElementById('mobile-menu-panel');
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const closeBtn = document.getElementById('mobile-menu-close');
+        function openMenu() {
+            menu.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                panel.classList.remove('translate-x-full');
+            });
+        }
+        function closeMenu() {
+            panel.classList.add('translate-x-full');
+            setTimeout(() => menu.classList.add('hidden'), 200);
+        }
+        menuBtn?.addEventListener('click', openMenu);
+        closeBtn?.addEventListener('click', closeMenu);
+        overlay?.addEventListener('click', closeMenu);
     </script>
 
     <main>
@@ -292,7 +359,7 @@
             <!-- Main Footer Content -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-right" dir="rtl">
                 <!-- Column 1: Summary (Rightmost) -->
-                <div class="footer-col">
+                <div class="footer-col border-b border-teal-800/30 pb-6 mb-6 md:border-none md:pb-0 md:mb-0">
                     <h3 class="text-lg font-medium mb-6 pb-2 text-white border-b border-teal-600/30 inline-block">ملخص</h3>
                     <h4 class="text-base font-medium text-white mb-2">تي جار لتأجير الممتلكات</h4>
                     <p class="text-white text-sm leading-relaxed mb-6">
@@ -319,7 +386,7 @@
                 </div>
 
                 <!-- Column 2: Important Links -->
-                <div class="footer-col">
+                <div class="footer-col border-b border-teal-800/30 pb-6 mb-6 md:border-none md:pb-0 md:mb-0">
                     <h3 class="text-lg font-medium mb-3 pb-2 text-white border-b border-teal-600/30 inline-block">روابط مهمة</h3>
                     <ul class="space-y-1 text-sm">
                         <li><a href="{{ route('home') }}" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">الرئيسية</a></li>
@@ -331,7 +398,7 @@
                 </div>
 
                 <!-- Column 3: Common Categories -->
-                <div class="footer-col">
+                <div class="footer-col border-b border-teal-800/30 pb-6 mb-6 md:border-none md:pb-0 md:mb-0">
                     <h3 class="text-lg font-medium mb-3 pb-2 text-white border-b border-teal-600/30 inline-block">الفئات الشائعة</h3>
                     <ul class="space-y-1 text-sm">
                         <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">إلكترونيات</a></li>
