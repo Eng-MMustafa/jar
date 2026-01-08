@@ -76,6 +76,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/bookings/create', [App\Http\Controllers\BookingController::class, 'create'])->name('bookings.create');
     Route::post('/bookings', [App\Http\Controllers\BookingController::class, 'store'])->name('bookings.store');
 
+    // Booking payment flow
+    Route::get('/bookings/{booking}/payment', [App\Http\Controllers\BookingController::class, 'payment'])->name('bookings.payment');
+    Route::post('/bookings/{booking}/payment', [App\Http\Controllers\BookingController::class, 'submitPayment'])->name('bookings.payment.submit');
+    Route::get('/bookings/{booking}/payment/success', function () { return view('bookings.payment-success'); })->name('bookings.payment.success');
+
     // Owner approve/reject
     Route::post('/bookings/{booking}/approve', [App\Http\Controllers\BookingController::class, 'approve'])->name('bookings.approve');
     Route::post('/bookings/{booking}/reject', [App\Http\Controllers\BookingController::class, 'reject'])->name('bookings.reject');

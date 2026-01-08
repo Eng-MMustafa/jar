@@ -61,8 +61,8 @@ class BookingController extends Controller
     // Show payment (bank transfer) page for a booking
     public function payment(\Illuminate\Http\Request $request, \App\Models\Booking $booking)
     {
-        // ensure the current user owns the booking
-        if ($booking->user_id !== $request->user()->id) {
+        // Allow if user is the renter OR the owner of the product
+        if ($booking->user_id !== $request->user()->id && $booking->product->user_id !== $request->user()->id) {
             return redirect()->route('profile.bookings')->with('error', 'هذا الحجز غير متاح لك.');
         }
 

@@ -395,7 +395,8 @@ class ProfileController extends Controller
      */
     public function myOrders()
     {
-        return view('pages.my-orders');
+        $bookings = auth()->user()->bookings()->with(['product.images'])->latest()->get();
+        return view('pages.my-orders', compact('bookings'));
     }
 
     /**
@@ -403,8 +404,16 @@ class ProfileController extends Controller
      */
     public function newRentalOrders()
     {
-        // Reuse the supportTickets logic and blade so the same UI is shown in /new-rental-orders
-        return $this->supportTickets();
+        $bookings = \App\Models\Booking::whereHas('product', function($q) {
+            $q->where('user_id', auth()->id());
+        })->with(['product.images', 'user'])
+          ->latest()
+          ->get();
+
+        // Calculate pending count for sidebar badge if needed, though usually handled by view composer or shared data
+        // For now, we just pass the bookings to the view
+        
+        return view('pages.new-rental-orders', compact('bookings'));
     }
 
     /**
