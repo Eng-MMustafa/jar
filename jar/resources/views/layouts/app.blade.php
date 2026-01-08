@@ -357,9 +357,9 @@
         <div class="footer-pattern"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <!-- Main Footer Content -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-right" dir="rtl">
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-right" dir="rtl">
                 <!-- Column 1: Summary (Rightmost) -->
-                <div class="footer-col border-b border-teal-800/30 pb-6 mb-6 md:border-none md:pb-0 md:mb-0">
+                <div class="footer-col border-b border-teal-800/30 pb-6 mb-6 md:border-none md:pb-0 md:mb-0 hidden md:block">
                     <h3 class="text-lg font-medium mb-6 pb-2 text-white border-b border-teal-600/30 inline-block">ملخص</h3>
                     <h4 class="text-base font-medium text-white mb-2">تي جار لتأجير الممتلكات</h4>
                     <p class="text-white text-sm leading-relaxed mb-6">
@@ -410,6 +410,18 @@
                 </div>
 
                 <!-- Column 4: Contact & Support -->
+                <div class="footer-col hidden md:block">
+                    <h3 class="text-lg font-medium mb-3 pb-2 text-white border-b border-teal-600/30 inline-block">الاتصال والدعم</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">مركز العملاء</a></li>
+                        <li><a href="{{ route('contact') }}" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">تواصل معنا</a></li>
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">شارك معنا</a></li>
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">تقديم شكوى</a></li>
+                        <li><a href="#" class="text-white hover:text-teal-200 transition block py-0.5 font-ibm font-normal text-sm leading-5 tracking-wide">الإبلاغ عن مشكلة</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block md:hidden border-t border-teal-800/30 pt-6 mt-6">
                 <div class="footer-col">
                     <h3 class="text-lg font-medium mb-3 pb-2 text-white border-b border-teal-600/30 inline-block">الاتصال والدعم</h3>
                     <ul class="space-y-1 text-sm">
@@ -424,51 +436,63 @@
 
             <!-- Bottom Section: Logo, Payments, Copyright -->
             <div class="border-t border-teal-800/50 pt-8 pb-8" dir="rtl">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-
-                    <!-- Right Side: Logo -->
-                    <div class="flex-shrink-0">
-                        <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR Logo" class="h-24 w-auto brightness-0 invert">
+                <div class="md:hidden flex flex-col gap-6">
+                    <div class="flex items-center gap-2 justify-center">
+                        <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                            <img src="{{ asset('images/images/image (4).png') }}" alt="Visa">
+                        </div>
+                        <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                            <img src="{{ asset('images/images/image (3).png') }}" alt="Visa">
+                        </div>
+                        <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                            <img src="{{ asset('images/images/image.svg') }}" alt="PayPal">
+                        </div>
+                        <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                            <img src="{{ asset('images/images/image2.svg') }}" alt="Mada">
+                        </div>
                     </div>
-
-
-
-                    <!-- Left Side: Payments & Tax -->
-                    <div class="flex flex-col items-end gap-4">
-                        <!-- Payment Icons -->
-
-                        <div class="flex items-center gap-2">
-                               <div class="flex items-center gap-2 text-xs text-white">
-                            <img src="{{ asset('images/images/photo_2021-11-21_10-54-47 1.svg') }}" alt="Mada" >
-                            <span>الرقم الضريبي : <span class="font-bold">546233552</span></span>
-                        </div>
-
-                        <div class="flex items-center gap-2">
-                        </div>
-
-                            <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
-                                <img src="{{ asset('images/images/image (4).png') }}" alt="Visa" >
-                            </div>
-                            <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
-                               <img src="{{ asset('images/images/image (3).png') }}" alt="Visa" >
-                            </div>
-                            <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
-                                <img src="{{ asset('images/images/image.svg') }}" alt="PayPal" >
-                            </div>
-                            <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
-                                <img src="{{ asset('images/images/image2.svg') }}" alt="Mada" >
-                            </div>
-                        </div>
-
-                        <!-- Tax -->
-  <!-- Center: Copyright -->
-
+                    <div class="text-white text-sm font-medium text-right">
+                        الرقم الضريبي : <span class="font-bold">546233552</span>
                     </div>
-
+                    <div class="flex justify-between items-center">
+                        <div class="flex-shrink-0">
+                            <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR Logo" class="h-24 w-auto brightness-0 invert">
+                        </div>
+                        <div class="text-white text-sm font-medium">
+                            جميع الحقوق محفوظة لمنصة تي جار © 2026
+                        </div>
+                    </div>
                 </div>
-                  <div class="text-white text-sm font-medium text-center order-last md:order-none">
+                <div class="hidden md:block">
+                    <div class="flex flex-row justify-between items-center gap-6">
+                        <div class="flex-shrink-0">
+                            <img src="{{ asset('images/Logo/TJAR-LOGO-V31-01 1.svg') }}" alt="TJAR Logo" class="h-24 w-auto brightness-0 invert">
+                        </div>
+                        <div class="flex flex-col items-end gap-4">
+                            <div class="flex items-center gap-2">
+                                <div class="flex items-center gap-2 text-xs text-white">
+                                    <img src="{{ asset('images/images/photo_2021-11-21_10-54-47 1.svg') }}" alt="Mada">
+                                    <span>الرقم الضريبي : <span class="font-bold">546233552</span></span>
+                                </div>
+                                <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                                    <img src="{{ asset('images/images/image (4).png') }}" alt="Visa">
+                                </div>
+                                <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                                    <img src="{{ asset('images/images/image (3).png') }}" alt="Visa">
+                                </div>
+                                <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                                    <img src="{{ asset('images/images/image.svg') }}" alt="PayPal">
+                                </div>
+                                <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
+                                    <img src="{{ asset('images/images/image2.svg') }}" alt="Mada">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-white text-sm font-medium text-center mt-6">
                         جميع الحقوق محفوظة لمنصة تي جار © 2026
                     </div>
+                </div>
             </div>
         </div>
 
