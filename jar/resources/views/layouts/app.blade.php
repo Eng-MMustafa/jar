@@ -138,7 +138,7 @@
                                 </div>
                                 <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : asset('images/avatar.svg') }}" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
                             </button>
-                            <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg left-0 mt-2 min-w-56 z-50 border border-gray-200 overflow-hidden">
+                            <div class="absolute dropdown hidden bg-white shadow-xl rounded-lg left-0 mt-2 min-w-56 z-50 border border-gray-200 overflow-hidden">
                                 <a href="{{ route('profile.index') }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-teal-600 transition duration-200">
                                     <div class="flex items-center space-x-3 space-x-reverse">
                                         <i class="fa-regular fa-user w-4 h-4"></i>
@@ -522,21 +522,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const userMenu = document.getElementById('user-menu');
-            if (userMenu) {
-                const dropdown = userMenu.querySelector('.dropdown');
-                let timeout;
-
-                userMenu.addEventListener('mouseenter', function() {
-                    clearTimeout(timeout);
-                    dropdown.classList.remove('hidden');
-                });
-
-                userMenu.addEventListener('mouseleave', function() {
-                    timeout = setTimeout(() => {
-                        dropdown.classList.add('hidden');
-                    }, 200);
-                });
-            }
+            if (!userMenu) return;
+            const dropdown = userMenu.querySelector('.dropdown');
+            const trigger = userMenu.querySelector('button');
+            function open() { dropdown.classList.remove('hidden'); }
+            function close() { dropdown.classList.add('hidden'); }
+            trigger.addEventListener('click', function(e) { e.stopPropagation(); dropdown.classList.toggle('hidden'); });
+            dropdown.addEventListener('click', function(e) { e.stopPropagation(); });
+            document.addEventListener('click', close);
         });
     </script>
 </body>
