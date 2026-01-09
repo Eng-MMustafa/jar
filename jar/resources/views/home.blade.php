@@ -8,7 +8,7 @@
             <!-- Left: Big Card - PlayStation 5 -->
             <div class="lg:col-span-2 bg-[#E6F6F680] rounded-2xl overflow-hidden relative group order-2 lg:order-1">
                 <!-- Price Badge -->
-                <div class="absolute -top-4 -left-4 bg-[#00A5A5] rounded-full w-24 h-24 lg:w-28 lg:h-28 flex items-center justify-center shadow-2xl z-20">
+                <div class="absolute top-4 left-4 bg-[#00A5A5] border border-[#b0e4e4] rounded-full w-24 h-24 lg:w-28 lg:h-28 flex items-center justify-center shadow-2xl z-20">
                     <div class="text-center">
                         <div class="flex items-center justify-center gap-1 text-white">
                             <span class="text-2xl lg:text-3xl font-bold">90</span>
@@ -55,7 +55,7 @@
                 <!-- Card 1: Tent -->
                 <div class="bg-[#003A3A] rounded-2xl overflow-hidden relative group flex-1">
                     <!-- Price Badge -->
-                    <div class="absolute -top-3 -left-3 bg-[#00A5A5] rounded-full w-20 h-20 flex items-center justify-center shadow-lg z-20">
+                    <div class="absolute top-4 left-4 bg-[#00A5A5] border border-[#b0e4e4] rounded-full w-20 h-20 flex items-center justify-center shadow-lg z-20">
                         <div class="text-center">
                             <div class="flex items-center justify-center gap-1 text-white">
                                 <span class="text-2xl font-bold">80</span>
@@ -93,7 +93,7 @@
                 <!-- Card 2: Headphones -->
                 <div class="bg-[#E6F6F680] rounded-2xl overflow-hidden relative group flex-1">
                     <!-- Price Badge -->
-                    <div class="absolute -top-3 -left-3 bg-[#00A5A5] rounded-full w-20 h-20 flex items-center justify-center shadow-lg z-20">
+                    <div class="absolute top-4 left-4 bg-[#00A5A5] border border-[#b0e4e4] rounded-full w-20 h-20 flex items-center justify-center shadow-lg z-20">
                         <div class="text-center">
                             <div class="flex items-center justify-center gap-1 text-white">
                                 <span class="text-2xl font-bold">80</span>
@@ -176,7 +176,7 @@
                 <div class="flex gap-6 min-w-full w-max px-4">
                     @foreach($cats as $category)
                         <div class="w-32 sm:w-40 md:w-48 lg:w-56 flex-shrink-0">
-                            <a href="{{ route('categories.show', $category->slug) }}" class="group flex flex-col items-center justify-center bg-white border border-gray-100 rounded-2xl p-6 h-48 hover:border-teal-500 hover:shadow-md transition-all duration-300">
+                            <a href="{{ route('categories.show', $category->slug) }}" class="group flex flex-col items-center justify-center no-underline hover:bg-[#e6f6f6] bg-white border border-gray-100 rounded-2xl p-6 h-48 hover:shadow-md transition-all duration-300">
                                 <div class="w-24 h-24 mb-4 flex items-center justify-center">
                                     @if($category->image_url)
                                         <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="w-full h-full object-contain group-hover:scale-110 transition duration-300" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder-category.png') }}';">
@@ -221,12 +221,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="py-12 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between mb-8">
-            <div>
-                <h2 class="text-2xl lg:text-3xl font-bold text-teal-600 mb-1">الأكثر تأجيرًا</h2>
-                <p class="text-gray-600 text-base">استعرض الأكثر تأجيرًا المضافة مع أفضل المميزات والتحديثات أولًا بأول.</p>
+            <div class="flex items-center gap-3 mb-2 justify-start">
+                <div class="h-8 w-1 bg-teal-500 rounded-full"></div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-teal-600">الأكثر تأجيرًا</h2>
             </div>
             <a href="{{ route('about') }}" class="text-teal-600 text-sm hover:text-teal-700 font-medium">من نحن ←</a>
         </div>
+        <p class="text-gray-600 text-base mb-6">استعرض الأكثر تأجيرًا المضافة مع أفضل المميزات والتحديثات أولًا بأول.</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @if(isset($mostRented) && $mostRented->count())
@@ -269,14 +270,15 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between mb-8">
-            <div>
-                <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-1">هكون قريب منك</h2>
-                <p class="text-gray-600 text-base">
-                    استعرض منتجات متاحة في منطقتك <span class="text-teal-600 font-bold">القصيم</span>
-                </p>
+            <div class="flex items-center gap-3 mb-2 justify-start">
+                <div class="h-8 w-1 bg-teal-500 rounded-full"></div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-teal-600">هكون قريب منك</h2>
             </div>
             <a href="#" class="text-teal-600 text-sm hover:text-teal-700 font-medium">عرض الكل ←</a>
         </div>
+        <p class="text-gray-600 text-base mb-6">
+            استعرض منتجات متاحة في منطقتك <span class="text-teal-600 font-bold">القصيم</span>
+        </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @if(isset($featuredProducts) && $featuredProducts->count())

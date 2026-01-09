@@ -1,6 +1,6 @@
 @props(['product'])
 
-<div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col h-full">
+<div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col h-full hover:border-teal-500 cursor-pointer">
     <!-- Image Section -->
     <div class="relative h-48 w-full bg-gray-50 overflow-hidden">
         @if($product->primary_image)
