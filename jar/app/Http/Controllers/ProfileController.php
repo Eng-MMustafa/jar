@@ -402,20 +402,29 @@ class ProfileController extends Controller
     /**
      * Show new rental orders page (for lenders)
      */
-    public function newRentalOrders()
+    public function newRentalOrders(Request $request)
     {
-        $bookings = \App\Models\Booking::whereHas('product', function($q) {
+        $query = \App\Models\Booking::whereHas('product', function($q) {
             $q->where('user_id', auth()->id());
         })
-        ->where('status', '!=', 'awaiting_payment')
-        ->with(['product.images', 'user'])
-        ->latest()
-        ->get();
+        ->with(['product.images', 'user']);
 
-        // Calculate pending count for sidebar badge if needed, though usually handled by view composer or shared data
-        // For now, we just pass the bookings to the view
-        
-        return view('pages.new-rental-orders', compact('bookings'));
+        $status = $request->get('status', 'all');
+
+        if ($status == 'pending') {
+            $query->whereIn('status', ['pending', 'submitted']);
+        } elseif ($status == 'approved') {
+            $query->where('status', 'approved');
+        } elseif ($status == 'rejected') {
+            $query->where('status', 'rejected');
+        } else {
+            // All: exclude awaiting_payment (drafts)
+            $query->where('status', '!=', 'awaiting_payment');
+        }
+
+        $bookings = $query->latest()->get();
+
+        return view('pages.new-rental-orders', compact('bookings', 'status'));
     }
 
     /**
