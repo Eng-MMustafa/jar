@@ -24,64 +24,88 @@
     <!-- Orders List -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="space-y-4">
-            @forelse($bookings as $booking)
-                <div class="request-card bg-white rounded-lg shadow-sm border border-gray-100 p-4">
-                    <div class="flex gap-4 items-start">
-                        <div class="flex-1 text-right">
-                            <div class="flex items-start justify-between gap-4">
+            @for ($i = 0; $i < 6; $i++)
+            <div class="bg-white rounded-lg shadow hover:shadow-md transition-shadow overflow-hidden">
+                <div class="p-6">
+                    <!-- Header -->
+                    <div class="flex justify-between items-start mb-4 pb-4 border-b border-gray-200">
+                        <div>
+                            <h3 class="font-semibold text-gray-900 text-lg">عرارة للإيجار اليومي</h3>
+                            <p class="text-sm text-gray-600 mt-1">رقم الطلب: <span class="font-medium">#98873</span></p>
+                        </div>
+                        @if($i % 3 == 0)
+                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">موافق عليه</span>
+                        @elseif($i % 3 == 1)
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">قيد الانتظار</span>
+                        @else
+                        <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">مرفوض</span>
+                        @endif
+                    </div>
+
+                    <!-- Details Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                        <!-- Dates -->
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">التواريخ</p>
+                            <p class="text-sm font-medium text-gray-900">من 28 - 12 - 2025</p>
+                            <p class="text-sm font-medium text-gray-900">إلى 28 - 12 - 2025</p>
+                        </div>
+
+                        <!-- Tenant -->
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">المستأجر</p>
+                            <div class="flex items-center gap-2">
+                                <img src="https://via.placeholder.com/32" alt="User" class="w-8 h-8 rounded-full">
                                 <div>
-                                    <h3 class="text-lg font-semibold text-gray-900">{{ $booking->product?->name ?? 'منتج محجوز' }}</h3>
-                                    <div class="text-sm text-gray-500 mt-1">المستأجر: <strong class="text-gray-800">{{ $booking->user?->getFullNameAttribute() ?? 'مستخدم' }}</strong></div>
-                                    <div class="text-sm text-gray-500">من: {{ $booking->start_date->format('d - m - Y') }} إلى: {{ $booking->end_date->format('d - m - Y') }}</div>
+                                    <p class="text-sm font-medium text-gray-900">خالد عبدالله</p>
+                                    <p class="text-xs text-gray-500">مستخدم جديد</p>
                                 </div>
-
-                                <div class="w-36 text-left">
-                                    @php $status = $booking->status; @endphp
-                                    @if(in_array($status, ['approved','confirmed']))
-                                        <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-50 text-green-700 border border-green-100">موافقة</span>
-                                    @elseif(in_array($status, ['submitted','pending']))
-                                        <span class="px-3 py-1 rounded-full text-sm font-medium bg-yellow-50 text-yellow-700 border border-yellow-100">قيد الإنتظار</span>
-                                    @else
-                                        <span class="px-3 py-1 rounded-full text-sm font-medium bg-red-50 text-red-700 border border-red-100">مرفوض</span>
-                                    @endif
-
-                                    <div class="mt-4 text-sm font-semibold text-teal-600">إجمالي السعر: {{ number_format($booking->total, 2) }} ر.س</div>
-                                </div>
-                            </div>
-
-                            @if($booking->notes)
-                                <div class="mt-3 p-3 bg-gray-50 rounded text-sm text-gray-700">{{ $booking->notes }}</div>
-                            @endif
-
-                            <div class="mt-4 flex gap-3">
-                                @if($booking->status === 'pending' || $booking->status === 'submitted')
-                                    <form action="{{ route('bookings.approve', ['booking' => $booking->id]) }}" method="POST" class="flex-1">
-                                        @csrf
-                                        <button class="w-full py-2 rounded-lg bg-green-100 text-green-800 font-semibold">موافقة</button>
-                                    </form>
-                                    <form action="{{ route('bookings.reject', ['booking' => $booking->id]) }}" method="POST" class="flex-1">
-                                        @csrf
-                                        <button class="w-full py-2 rounded-lg bg-red-100 text-red-800 font-semibold">رفض</button>
-                                    </form>
-                                @else
-                                    <a href="{{ route('bookings.payment', ['booking' => $booking->id]) }}" class="py-2 px-4 rounded-lg bg-gray-100 text-gray-700">عرض التفاصيل</a>
-                                @endif
                             </div>
                         </div>
 
-                        <div style="width:140px;flex-shrink:0;text-align:center;height:140px;">
-                            <img src="{{ $booking->product && $booking->product->images->first() ? asset($booking->product->images->first()->image_path) : asset('images/placeholder.svg') }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid #eee;">
+                        <!-- Price -->
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">السعر</p>
+                            <p class="text-lg font-bold text-teal-600">ر.س 120</p>
+                        </div>
+
+                        <!-- Date Applied -->
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">تاريخ الطلب</p>
+                            <p class="text-sm font-medium text-gray-900">29 يونيو 2024</p>
+                            <p class="text-xs text-gray-500">9:22 PM</p>
                         </div>
                     </div>
+
+                    <!-- Messages -->
+                    @if($i % 2 == 0)
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                        <p class="text-sm text-green-700">تم قبول طلب الإيجار برقم #98873 بنجاح. سيتم التواصل معك قريباً بخصوص المنتج المضاف.</p>
+                    </div>
+                    @endif
+
+                    <!-- Action Buttons -->
+                    @if($i % 3 == 1)
+                    <div class="flex gap-3 pt-4 border-t border-gray-200">
+                        <button class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition-colors">
+                            ✓ موافقة
+                        </button>
+                        <button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg font-medium transition-colors">
+                            ✕ رفض
+                        </button>
+                    </div>
+                    @endif
                 </div>
-            @empty
-                <div class="text-center py-12">
-                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
-                    </svg>
-                    <p class="mt-4 text-gray-600">لا توجد طلبات جديدة حالياً</p>
-                </div>
-            @endforelse
+            </div>
+            @endfor
+        </div>
+
+        <!-- Empty State -->
+        <div class="text-center py-12">
+            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+            </svg>
+            <p class="mt-4 text-gray-600">لا توجد طلبات جديدة حالياً</p>
         </div>
     </div>
 </div>

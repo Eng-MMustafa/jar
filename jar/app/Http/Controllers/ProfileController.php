@@ -406,9 +406,11 @@ class ProfileController extends Controller
     {
         $bookings = \App\Models\Booking::whereHas('product', function($q) {
             $q->where('user_id', auth()->id());
-        })->with(['product.images', 'user'])
-          ->latest()
-          ->get();
+        })
+        ->where('status', '!=', 'awaiting_payment')
+        ->with(['product.images', 'user'])
+        ->latest()
+        ->get();
 
         // Calculate pending count for sidebar badge if needed, though usually handled by view composer or shared data
         // For now, we just pass the bookings to the view

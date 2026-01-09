@@ -27,6 +27,7 @@ class BookingController extends Controller
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after_or_equal:start_date',
             'quantity' => 'nullable|integer|min:1',
+            'transfer_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:5120',
         ]);
 
         $product = Product::findOrFail($validated['product_id']);
@@ -42,6 +43,12 @@ class BookingController extends Controller
 
         $total = ($nights * $pricePerNight * $quantity) + ($deposit * $quantity);
 
+        $transferProofPath = null;
+        if ($request->hasFile('transfer_proof')) {
+            $file = $request->file('transfer_proof');
+            $transferProofPath = $file->store('bookings/transfers', 'public');
+        }
+
         $booking = \App\Models\Booking::create([
             'user_id' => $request->user()->id,
             'product_id' => $product->id,
@@ -52,10 +59,13 @@ class BookingController extends Controller
             'price_per_night' => $pricePerNight,
             'security_deposit' => $deposit,
             'total' => $total,
-            'status' => 'pending',
+            'status' => 'pending', // Set directly to pending as receipt is provided
+            'transfer_proof_path' => $transferProofPath,
+            'transfer_status' => 'submitted',
+            'transfer_submitted_at' => now(),
         ]);
 
-        return redirect()->route('bookings.payment', ['booking' => $booking->id]);
+        return redirect()->route('profile.bookings')->with('success', 'تم إرسال طلب الحجز والإيصال بنجاح. بانتظار الموافقة.');
     }
 
     // Show payment (bank transfer) page for a booking
@@ -90,6 +100,7 @@ class BookingController extends Controller
             $booking->update([
                 'transfer_proof_path' => $path,
                 'transfer_status' => 'submitted',
+                'status' => 'pending',
                 'transfer_submitted_at' => now(),
                 'transfer_note' => $validated['transfer_note'] ?? null,
             ]);
