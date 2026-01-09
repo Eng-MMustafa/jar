@@ -59,11 +59,14 @@
         transition: all 0.3s ease;
         display: flex;
         flex-direction: column;
+        border: 1px solid transparent;
     }
 
     .product-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        border-color: #0d9488;
+        cursor: pointer;
     }
 
     .product-image {
@@ -218,32 +221,41 @@
     }
 </style>
 
-<div class="container">
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <a href="{{ route('home') }}">الرئيسية</a>
-        <span>></span>
-        <span>جميع المنتجات</span>
+<div style="max-width: 1200px; margin: 0 auto; padding: 1rem 1rem 0; font-family: 'IBM Plex Sans Arabic', sans-serif; direction: rtl;">
+    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
+        <a href="{{ route('home') }}" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="{{ asset('images/home-2.png') }}" alt="home" style="width: 20px; height: 20px; object-fit: contain;">
+        </a>
+        <img src="{{ asset('images/alt-arrow-left.png') }}" alt="arrow" style="width: 16px; height: 16px; object-fit: contain; opacity: 0.5;">
+        <span style="color: #666; font-size: 0.9rem;">جميع المنتجات</span>
     </div>
+</div>
 
+<div class="container">
     <!-- Filter Header -->
-    <div class="filter-header">
-        <form method="GET" action="{{ route('products.index') }}" style="display: flex; gap: 1rem; width: 100%; justify-content: flex-end; align-items: center;">
-            <button type="submit" style="background: #0d9488; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600; font-family: 'IBM Plex Sans Arabic', sans-serif;">بحث</button>
+    <div class="filter-header" style="flex-wrap: wrap; gap: 2rem;">
+        <!-- Search Section -->
+        <div style="display: flex; gap: 1rem; align-items: center; justify-content: flex-start; width: 100%; min-width: 400px;">
+            <form method="GET" action="{{ route('products.index') }}" style="display: flex; gap: 0.5rem; margin-right: 64px; border: 1px solid #ddd; border-radius: 10px; width: 100%; max-width: 600px; background: white;">
+                <input type="text" name="search" placeholder="البحث عن منتج..." value="{{ request('search') }}"
+                       style="flex: 1; outline: none; border-radius: 5px; padding: 12px 8px; font-size: 0.95rem; font-family: 'IBM Plex Sans Arabic', sans-serif; text-align: right; text-indent: 1em; border: none;">
+                <img src="{{ asset('images/rounded-magnifer.png') }}" alt="search" style="width: 24px; height: 24px; object-fit: contain; margin: 10px;">
+            </form>
+        </div>
 
-            <input type="text" name="search" placeholder="البحث عن منتج..."
-                   value="{{ request('search') }}" style="width: 200px;">
+        <!-- Filter & Sort -->
+        <div style="display: flex; gap: 1rem; align-items: center; width: 100%;">
+            <div style="flex: 1;">
+                <button style="background: none; border: 1px solid #ddd; padding: 0.7rem 1rem; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: #666;">
+                    <img src="{{ asset('images/filter.png') }}" alt="filter" style="width: 20px; height: 20px;">
+                    <span>تصفية</span>
+                </button>
+            </div>
 
-            <select name="category" style="width: 150px;">
-                <option value="">جميع الأقسام</option>
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}"
-                        {{ request('category') == $category->id ? 'selected' : '' }}>
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            </select>
-        </form>
+            <button type="submit" form="search-form" style="width: 100%; max-width: 200px; background: #e0f2f1; color: #0d9488; border: none; padding: 1rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-family: 'IBM Plex Sans Arabic', sans-serif;" onmouseover="this.style.backgroundColor='#00a5a5'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e0f2f1'; this.style.color='#0d9488';">
+                تطبيق
+            </button>
+        </div>
     </div>
 
     <!-- Products Grid -->

@@ -307,13 +307,12 @@
 
     .tabs-header {
         display: flex;
-        border-bottom: 2px solid #e0e0e0;
+        border-bottom: 2px solid #0d9488;
         direction: rtl;
     }
 
     .tab-btn {
-        flex: 1;
-        padding: 1.2rem;
+        padding: 1.2rem 2rem;
         background: white;
         border: none;
         cursor: pointer;
@@ -326,7 +325,8 @@
     }
 
     .tab-btn.active {
-        color: #0d9488;
+        background-color: #0d9488;
+        color: white;
         border-bottom: 3px solid #0d9488;
         margin-bottom: -2px;
     }
@@ -377,6 +377,9 @@
     .reviews-main-content {
         flex: 2;
         min-width: 0;
+        background: white;
+        padding: 1em;
+        border-radius: 10px;
     }
 
     .reviews-sidebar {
@@ -432,7 +435,7 @@
         align-items: center;
         gap: 1rem;
         margin-bottom: 2rem;
-        justify-content: flex-end;
+        justify-content: space-between;
     }
 
     .reviews-sort select {
@@ -459,7 +462,7 @@
 
     .review-item {
         padding: 1.2rem;
-        background: #f9f9f9;
+        background: white;
         border-radius: 8px;
         text-align: right;
         direction: rtl;
@@ -467,7 +470,7 @@
 
     .review-header {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         margin-bottom: 0.8rem;
         gap: 1rem;
@@ -534,6 +537,13 @@
         cursor: pointer;
         font-family: 'IBM Plex Sans Arabic', sans-serif;
         font-weight: 600;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+
+    .btn-load-more:hover {
+        background-color: #00a5a5;
+        color: white;
     }
 
     /* Comment Form */
@@ -660,6 +670,10 @@
 
     .description-content li {
         margin-bottom: 0.5rem;
+        width: fit-content;
+        padding: 1em 2em;
+        border-radius: 15px;
+        background: #f5f5f5;
     }
 
     /* Related Products */
@@ -672,7 +686,7 @@
     .related-products h2 {
         font-size: 1.25rem;
         font-weight: 700;
-        color: #333;
+        color: #00a5a5;
         text-align: center;
         margin-bottom: 1rem;
         position: relative;
@@ -696,117 +710,6 @@
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* larger cards to sit side-by-side */
         gap: 1.75rem;
         align-items: start;
-    }
-
-    .product-card { max-width: 320px; width: 100%; } /* allow larger cards */
-
-    .product-card {
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    }
-
-    .product-image {
-        width: 100%;
-        height: 160px; /* slightly taller for larger cards */
-        overflow: hidden;
-        position: relative;
-        background: #f0f0f0;
-    }
-
-    .product-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .rating-badge {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        background: rgba(255,255,255,0.95);
-        padding: 6px 12px;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 0.9rem;
-        font-weight: bold;
-    }
-
-    .rating-star {
-        color: #ffc107;
-        font-size: 1rem;
-    }
-
-    .card-info {
-        padding: 0.9rem;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        text-align: right;
-        direction: rtl;
-    }
-
-    .card-title {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #333;
-        margin-bottom: 0.4rem;
-        line-height: 1.3;
-    }
-
-    .card-description {
-        font-size: 0.8rem;
-        color: #666;
-        margin-bottom: 0.4rem;
-        line-height: 1.3;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    .card-footer {
-        padding-top: 0.8rem;
-        border-top: 1px solid #eee;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .card-price {
-        font-weight: 700;
-        color: #0d9488;
-        font-size: 1rem;
-    }
-
-    .card-btn {
-        background: #0d9488;
-        color: white;
-        padding: 0.6rem 1.2rem;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 0.85rem;
-        font-weight: 600;
-        font-family: 'IBM Plex Sans Arabic', sans-serif;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .card-btn:hover {
-        background: #0f766e;
     }
 
     @media (max-width: 768px) {
@@ -1161,17 +1064,19 @@
                 <div class="reviews-main-content">
                     <!-- Sort Options -->
                     <div class="reviews-sort">
-                        <select>
-                            <option>الأحدث</option>
-                            <option>الأقدم</option>
-                            <option>الأعلى تقييماً</option>
-                        </select>
-                        <span>:ترتيب حسب</span>
+                        <h3 style="font-size: 1.2rem; color: #333; margin: 0;">تعليقات المستخدمين</h3>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <select>
+                                <option>الأحدث</option>
+                                <option>الأقدم</option>
+                                <option>الأعلى تقييماً</option>
+                            </select>
+                            <span>:ترتيب حسب</span>
+                        </div>
                     </div>
 
                     <!-- Reviews List -->
                     <div class="reviews-list">
-                        <h3>تعليقات المستخدمين</h3>
 
                         {{-- تعليق: التعليقات القادمة من قاعدة البيانات ستظهر هنا --}}
 
@@ -1250,7 +1155,7 @@
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-1">منتجات موصى بها</h2>
+                <h2 class="text-2xl font-bold text-[#00a5a5] mb-1">منتجات موصى بها</h2>
                 <p class="text-gray-600 text-sm">استعرض منتجات مشابهة أو موصى بها</p>
             </div>
 
@@ -1259,9 +1164,9 @@
                     $relatedProducts = \App\Models\Product::where('category_id', $product->category_id)
                         ->where('id', '!=', $product->id)
                         ->where('is_active', true)
-                        ->with('images')
-                            ->take(3)
-                            ->get();
+                        ->with('images') // Ensure images are loaded
+                        ->take(3)
+                        ->get();
 
                     if($relatedProducts->count() < 3) {
                         $relatedProducts = \App\Models\Product::where('id', '!=', $product->id)
@@ -1273,34 +1178,7 @@
                 @endphp
 
                 @forelse($relatedProducts as $relProduct)
-                    <div class="bg-white rounded-lg shadow hover:shadow-xl transition overflow-hidden">
-                        <div class="bg-gray-200 h-48 flex items-center justify-center overflow-hidden relative group">
-                            @if($relProduct->images && $relProduct->images->first())
-                                <img src="{{ asset($relProduct->images->first()->image_path) }}" alt="{{ $relProduct->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                            @else
-                                <img src="{{ asset('images/placeholder.svg') }}" alt="placeholder" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                            @endif
-                            @if(!empty($relProduct->city))
-                                <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-3 py-1 rounded-full">{{ $relProduct->city }}</span>
-                            @endif
-                        </div>
-
-                        <div class="p-4">
-                            <div class="flex items-center gap-1 mb-2">
-                                <span class="text-yellow-400">★</span>
-                                <span class="text-sm text-gray-700">{{ number_format($relProduct->rating ?? 0, 1) }}</span>
-                            </div>
-                            <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">{{ $relProduct->name }}</h3>
-                            <p class="text-gray-500 text-xs mb-3">{{ $relProduct->city ?? '' }}</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-teal-700 font-bold">{{ $relProduct->rental_price_daily ?? $relProduct->price ?? 0 }} ر.س</span>
-                                <a href="{{ route('products.show', $relProduct->slug) }}"
-                                   style="display: inline-block; width: 100%; padding: 0.5rem; background: #0d9488; color: white; text-align: center; border-radius: 5px; text-decoration: none; transition: background 0.3s ease; font-family: 'IBM Plex Sans Arabic', sans-serif;">
-                                    عرض التفاصيل
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <x-product-card :product="$relProduct" />
                 @empty
                     <div class="col-span-1 text-center text-gray-500">لا توجد منتجات موصى بها</div>
                 @endforelse
