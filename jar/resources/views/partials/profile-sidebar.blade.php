@@ -105,15 +105,7 @@
         <div class="profile-header-info">
             <h2>{{ auth()->user()->full_name ?? auth()->user()->name }}</h2>
             <p>{{ auth()->user()->email }}</p>
-            @if(auth()->user()->type === 'renter')
-                <span class="status-badge">
-                    <i class="fas fa-check-circle"></i> مستأجر
-                </span>
-            @elseif(auth()->user()->type === 'lender')
-                <span class="status-badge">
-                    <i class="fas fa-check-circle"></i> مؤجر
-                </span>
-            @endif
+            {{-- Status Badge Removed --}}
         </div>
         <div class="profile-avatar">
             <img src="{{ auth()->user()->avatar ? asset(auth()->user()->avatar) : asset('images/avatar.svg') }}" alt="{{ auth()->user()->name }}" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
