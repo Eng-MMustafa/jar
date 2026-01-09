@@ -103,7 +103,12 @@
                     </div>
 
                     <div class="flex justify-end">
-                        <button type="button" id="next-step-btn" class="btn btn-primary px-8">التالي: رفع الإيصال</button>
+                        <button type="button" id="next-step-btn" class="btn btn-primary px-8 flex items-center gap-2">
+                            التالي: رفع الإيصال
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
 
@@ -154,8 +159,18 @@
                     </div>
 
                     <div class="flex gap-3 justify-between">
-                        <button type="button" id="prev-step-btn" class="btn btn-secondary">عودة</button>
-                        <button type="submit" id="submit-booking" class="btn btn-primary" disabled>إتمام الطلب</button>
+                        <button type="button" id="prev-step-btn" class="btn btn-secondary flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            عودة
+                        </button>
+                        <button type="submit" id="submit-booking" class="btn btn-primary flex items-center gap-2" disabled>
+                            إتمام الطلب
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </form>
