@@ -422,7 +422,19 @@
                     <div class="bookings-list">
                         @foreach($bookings as $booking)
                             <div class="booking-item">
-                                <span class="status-badge">{{ ucfirst($booking->status) }}</span>
+                                @php
+                                    $statusLabels = [
+                                        'pending' => 'قيد الانتظار',
+                                        'approved' => 'موافق عليه',
+                                        'rejected' => 'مرفوض',
+                                        'awaiting_payment' => 'بانتظار الدفع',
+                                        'submitted' => 'تم الإرسال',
+                                        'cancelled' => 'ملغي',
+                                        'completed' => 'مكتمل',
+                                    ];
+                                    $statusLabel = $statusLabels[$booking->status] ?? $booking->status;
+                                @endphp
+                                <span class="status-badge">{{ $statusLabel }}</span>
                                 <div class="booking-thumb">
                                     <img src="{{ $booking->product && $booking->product->images->first() ? asset($booking->product->images->first()->image_path) : asset('images/placeholder.svg') }}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">
                                 </div>
