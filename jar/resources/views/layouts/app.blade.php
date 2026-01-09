@@ -499,10 +499,10 @@
                             <img src="{{ asset('images/images/image (3).png') }}" alt="Visa">
                         </div>
                         <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
-                            <img src="{{ asset('images/images/image.svg') }}" alt="PayPal">
+                            <img src="{{ asset('images/images/paypal-footer.svg') }}" alt="PayPal">
                         </div>
                         <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
-                            <img src="{{ asset('images/images/image2.svg') }}" alt="Mada">
+                            <img src="{{ asset('images/images/mada-footer.svg') }}" alt="Mada">
                         </div>
                     </div>
                     <div class="text-white text-sm font-medium text-right">
@@ -529,10 +529,10 @@
                                     <span>الرقم الضريبي : <span class="font-bold">546233552</span></span>
                                 </div>
                                 <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
-                                    <img src="{{ asset('images/images/image (4).png') }}" alt="Visa">
+                                    <img src="{{ asset('images/images/visa-1.png') }}" alt="Visa">
                                 </div>
                                 <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
-                                    <img src="{{ asset('images/images/image (3).png') }}" alt="Visa">
+                                    <img src="{{ asset('images/images/visa-2.png') }}" alt="Visa">
                                 </div>
                                 <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
                                     <img src="{{ asset('images/images/image.svg') }}" alt="PayPal">
@@ -552,7 +552,7 @@
 
         <!-- Decorative Pattern Strip -->
         <div class="w-full h-4 overflow-hidden relative z-10">
-            <img src="{{ asset('images/Images/TJAR-PATTERN_PATTERN 2 (1) 1.png') }}" alt="pattern" class="w-full h-full object-cover opacity-100">
+            <img src="{{ asset('images/images/TJAR-PATTERN_PATTERN 2 (1) 1.png') }}" alt="pattern" class="w-full h-full object-cover opacity-100">
         </div>
     </footer>
     <script>

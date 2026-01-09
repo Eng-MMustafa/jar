@@ -85,7 +85,7 @@
                             </a>
                         </div>
                         <div class="w-24 flex-shrink-0 flex items-center justify-center">
-                            <img src="{{ asset('images/Images/Frame 29.png') }}" alt="خيمة" class="w-full h-auto object-contain rounded-lg group-hover:scale-110 transition duration-300">
+                            <img src="{{ asset('images/images/Frame 29.png') }}" alt="خيمة" class="w-full h-auto object-contain rounded-lg group-hover:scale-110 transition duration-300">
                         </div>
                     </div>
                 </div>
