@@ -98,6 +98,56 @@
 .site-footer .footer-social { color: rgba(255,255,255,0.7); }
 .site-footer .payments img { opacity: 0.95 }
 
+/* Custom Rent Button */
+.rent-btn {
+    background-color: #00A5A5;
+    color: white;
+    padding: 12px 8px;
+    border-radius: 5px;
+    min-width: 150px;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rent-btn:hover {
+    color: white;
+}
+
+.rent-btn:hover .text {
+    padding-inline-start: 1em;
+    transition: padding-inline-start 0.3s ease-in-out;
+}
+
+.rent-btn:hover .img-container {
+    transform: rotate(-180deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.rent-btn:hover .img-container img {
+    transform: rotate(135deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.img-container {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
 .bg-teal-500 {
     background-color: #008484;
 }

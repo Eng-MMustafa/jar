@@ -35,8 +35,11 @@
                                 <span>القصيم</span>
                             </p>
                         </div>
-                        <a href="#" class="transform hover:scale-105 transition-transform duration-200 block w-fit">
-                            <img src="{{ asset('images/buttons (1).svg') }}" alt="احجز الآن" class="h-12 w-auto object-contain">
+                        <a href="#" class="transform rent-btn hover:scale-105 transition-transform duration-200 block w-fit">
+                            <span class="text">احجز الآن</span>
+                            <span class="img-container">
+                                <img src="{{ asset('images/arrow-left-up.png') }}" alt="احجز الآن" />
+                            </span>
                         </a>
                     </div>
 
@@ -74,8 +77,11 @@
                                     <span>القصيم</span>
                                 </p>
                             </div>
-                            <a href="#" class="transform hover:scale-105 transition-transform duration-200 block w-fit ml-auto">
-                                <img src="{{ asset('images/buttons (1).svg') }}" alt="احجز الآن" class="h-10 w-auto object-contain">
+                            <a href="#" class="transform rent-btn hover:scale-105 transition-transform duration-200 block w-fit ml-auto">
+                                <span class="text">احجز الآن</span>
+                                <span class="img-container">
+                                    <img src="{{ asset('images/arrow-left-up.png') }}" alt="احجز الآن" />
+                                </span>
                             </a>
                         </div>
                         <div class="w-24 flex-shrink-0 flex items-center justify-center">
@@ -109,8 +115,11 @@
                                     <span>القصيم</span>
                                 </p>
                             </div>
-                            <a href="#" class="transform hover:scale-105 transition-transform duration-200 block w-fit ml-auto">
-                                <img src="{{ asset('images/buttons (1).svg') }}" alt="احجز الآن" class="h-10 w-auto object-contain">
+                            <a href="#" class="transform rent-btn hover:scale-105 transition-transform duration-200 block w-fit ml-auto">
+                                <span class="text">احجز الآن</span>
+                                <span class="img-container">
+                                    <img src="{{ asset('images/arrow-left-up.png') }}" alt="احجز الآن" />
+                                </span>
                             </a>
                         </div>
                         <div class="w-24 flex-shrink-0 flex items-center justify-center">
