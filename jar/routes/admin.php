@@ -88,9 +88,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/content/{content}/restore', [StaticContentController::class, 'restore'])->name('content.restore');
         
         // Reports & Analytics
-        Route::get('/reports', function () {
-            return view('admin.reports.index');
-        })->name('reports.index');
+        Route::get('/reports', [App\Http\Controllers\Admin\ReportsController::class, 'index'])->name('reports.index');
         
         // Audit Logs
         Route::get('/audit-logs', function (\Illuminate\Http\Request $request) {
