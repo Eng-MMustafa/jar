@@ -48,8 +48,8 @@
                         <a href="https://www.instagram.com/sa.tjar/?igsh=azE3aTJjOTBkZms0#" target="_blank" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="#" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
-                            <i class="fa-brands fa-snapchat"></i>
+                        <a href="https://wa.me/966502622021" target="_blank" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
+                            <i class="fa-brands fa-whatsapp"></i>
                         </a>
                         <a href="https://x.com/sa_tjar?s=11&t=eNTjknsmhQes-wpRYcxIWg" target="_blank" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
                             <i class="fa-brands fa-twitter"></i>
@@ -292,8 +292,8 @@
                     <a href="https://www.instagram.com/sa.tjar/?igsh=azE3aTJjOTBkZms0#" target="_blank" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
-                        <i class="fa-brands fa-snapchat"></i>
+                    <a href="https://wa.me/966502622021" target="_blank" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
+                        <i class="fa-brands fa-whatsapp"></i>
                     </a>
                     <a href="https://x.com/sa_tjar?s=11&t=eNTjknsmhQes-wpRYcxIWg" target="_blank" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
                         <i class="fa-brands fa-twitter"></i>
@@ -447,9 +447,9 @@
                         <a href="https://www.instagram.com/sa.tjar/?igsh=azE3aTJjOTBkZms0#" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <!-- Snapchat -->
-                        <a href="#" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
-                            <i class="fab fa-snapchat-ghost"></i>
+                        <!-- Whatsapp -->
+                        <a href="https://wa.me/966502622021" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                            <i class="fab fa-whatsapp"></i>
                         </a>
                         <!-- X (Twitter) -->
                         <a href="https://x.com/sa_tjar?s=11&t=eNTjknsmhQes-wpRYcxIWg" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
@@ -519,9 +519,9 @@
                         <a href="https://www.instagram.com/sa.tjar/?igsh=azE3aTJjOTBkZms0#" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <!-- Snapchat -->
-                        <a href="#" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
-                            <i class="fab fa-snapchat-ghost"></i>
+                        <!-- Whatsapp -->
+                        <a href="https://wa.me/966502622021" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                            <i class="fab fa-whatsapp"></i>
                         </a>
                         <!-- X (Twitter) -->
                         <a href="https://x.com/sa_tjar?s=11&t=eNTjknsmhQes-wpRYcxIWg" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
