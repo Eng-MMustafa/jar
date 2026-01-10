@@ -6,10 +6,10 @@
 <section class="py-16 bg-gray-50" dir="rtl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen">
-            
+
             <!-- Right side: Content sections -->
             <div class="space-y-8 order-1">
-                
+
                 <!-- من نحن Section -->
                 <div class="text-right">
                     <h1 class="text-4xl font-bold text-teal-600 mb-6 text-right">من نحن</h1>
@@ -61,10 +61,10 @@
             <div class="flex flex-col items-center justify-center relative order-2">
                 <!-- Background decorative icons -->
                 <div class="absolute top-10 left-10">
-                    <img src="{{ asset('images/Images/Frame 29.png') }}" alt="خيمة" class="w-16 h-16 object-cover rounded-lg opacity-30">
+                    <img src="{{ asset('images/images/Frame 29.png') }}" alt="خيمة" class="w-16 h-16 object-cover rounded-lg opacity-30">
                 </div>
                 <div class="absolute top-20 right-20">
-                    <img src="{{ asset('images/Images/Image.png') }}" alt="معدات" class="w-12 h-12 object-cover rounded-lg opacity-30">
+                    <img src="{{ asset('images/images/Image.png') }}" alt="معدات" class="w-12 h-12 object-cover rounded-lg opacity-30">
                 </div>
                 <div class="absolute bottom-32 left-20">
                     <svg class="w-12 h-12 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
@@ -74,7 +74,7 @@
 
                 <!-- Main person image -->
                 <div class="relative z-10">
-                    <img src="{{ asset('images/Images/Image_513xwd513xwd513x 1.png') }}" alt="شخص مع لابتوب" class="w-80 h-80 object-cover rounded-full">
+                    <img src="{{ asset('images/images/Image_513xwd513xwd513x 1.png') }}" alt="شخص مع لابتوب" class="w-80 h-80 object-cover rounded-full">
                     <!-- Speech bubble -->
                     <div class="absolute -top-5 -right-10 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                         تم جاهز...
@@ -97,7 +97,7 @@
             <!-- Product 1 -->
             <div class="bg-white rounded-lg shadow hover:shadow-xl transition overflow-hidden">
                 <div class="bg-gray-200 h-48 flex items-center justify-center overflow-hidden relative group">
-                    <img src="{{ asset('images/Images/Frame 29.png') }}" alt="خيمة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <img src="{{ asset('images/images/Frame 29.png') }}" alt="خيمة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                     <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-3 py-1 rounded-full">بريدة</span>
                 </div>
                 <div class="p-4">
@@ -122,7 +122,7 @@
             <!-- Product 2 -->
             <div class="bg-white rounded-lg shadow hover:shadow-xl transition overflow-hidden">
                 <div class="bg-gray-200 h-48 flex items-center justify-center overflow-hidden relative group">
-                    <img src="{{ asset('images/Images/Image.png') }}" alt="أغطية" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <img src="{{ asset('images/images/Image.png') }}" alt="أغطية" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                     <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-3 py-1 rounded-full">بريدة</span>
                 </div>
                 <div class="p-4">
@@ -147,7 +147,7 @@
             <!-- Product 3 -->
             <div class="bg-white rounded-lg shadow hover:shadow-xl transition overflow-hidden">
                 <div class="bg-gray-200 h-48 flex items-center justify-center overflow-hidden relative group">
-                    <img src="{{ asset('images/Images/Image-4.png') }}" alt="حقيبة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <img src="{{ asset('images/images/Image-4.png') }}" alt="حقيبة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                     <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-3 py-1 rounded-full">بريدة</span>
                 </div>
                 <div class="p-4">

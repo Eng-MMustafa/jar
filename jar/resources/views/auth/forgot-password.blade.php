@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="flex justify-center py-8">
-                    <img src="{{ asset('images/Images/Frame 1597883798.png') }}" alt="Man with laptop" class="w-full max-w-md h-auto drop-shadow-lg">
+                    <img src="{{ asset('images/images/Frame 1597883798.png') }}" alt="Man with laptop" class="w-full max-w-md h-auto drop-shadow-lg">
                 </div>
             </div>
 
@@ -44,12 +44,12 @@
                                 <div class="flex items-center px-4 bg-gray-50 border-l border-gray-300">
                                     <span class="text-sm font-semibold text-gray-700">+966</span>
                                 </div>
-                                <input 
-                                    name="email" 
-                                    type="tel" 
+                                <input
+                                    name="email"
+                                    type="tel"
                                     inputmode="numeric"
-                                    value="{{ old('email') }}" 
-                                    required 
+                                    value="{{ old('email') }}"
+                                    required
                                     class="flex-1 px-4 py-3 outline-none text-gray-900 placeholder-gray-400"
                                     placeholder="05xxxxxxxx"
                                 >
@@ -70,8 +70,8 @@
                         @endif
 
                         <!-- Submit Button -->
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             class="w-full py-3 px-4 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white font-bold rounded-lg transition transform hover:scale-105 flex items-center justify-center"
                         >
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@
 
                         <!-- Back to Login -->
                         <div class="text-center text-sm text-gray-600 pt-4 border-t border-gray-200">
-                            تذكرت كلمة المرور؟ 
+                            تذكرت كلمة المرور؟
                             <a href="{{ route('login') }}" class="text-teal-600 hover:text-teal-700 font-semibold">تسجيل الدخول</a>
                         </div>
                     </form>

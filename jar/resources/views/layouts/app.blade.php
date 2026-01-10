@@ -414,12 +414,12 @@
             opacity: 0.5; /* High opacity to ensure visibility */
             pointer-events: none;
             /* Default (Mobile) */
-            background-image: url('{{ asset('images/Images/TJAR-PATTERN_WHITE (2) 1.png') }}');
+            background-image: url('{{ asset('images/images/TJAR-PATTERN_WHITE (2) 1.png') }}');
         }
         @media (min-width: 768px) {
             .footer-pattern {
                 /* Desktop */
-                background-image: url('{{ asset('images/Images/TJAR-PATTERN_WHITE (2) 1.png') }}');
+                background-image: url('{{ asset('images/images/TJAR-PATTERN_WHITE (2) 1.png') }}');
                 background-size: 600px auto; /* Slightly larger on desktop */
                 background-repeat: repeat;
                 opacity: 0.5;

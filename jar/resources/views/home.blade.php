@@ -45,7 +45,7 @@
 
                     <!-- Image Section -->
                     <div class="lg:w-2/5 flex items-center justify-center p-6 lg:p-8">
-                        <img src="{{ asset('images/Images/image 4.png') }}" alt="بلايستيشن 5" class="max-h-64 lg:max-h-72 object-contain group-hover:scale-110 transition duration-300">
+                        <img src="{{ asset('images/images/image 4.png') }}" alt="بلايستيشن 5" class="max-h-64 lg:max-h-72 object-contain group-hover:scale-110 transition duration-300">
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                             </a>
                         </div>
                         <div class="w-24 flex-shrink-0 flex items-center justify-center">
-                            <img src="{{ asset('images/Images/Image (2).png') }}" alt="سماعات" class="w-full h-auto object-contain rounded-lg group-hover:scale-110 transition duration-300">
+                            <img src="{{ asset('images/images/Image (2).png') }}" alt="سماعات" class="w-full h-auto object-contain rounded-lg group-hover:scale-110 transition duration-300">
                         </div>
                     </div>
                 </div>
@@ -247,19 +247,19 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Banner 1 -->
             <div class="rounded-xl h-48 overflow-hidden relative group shadow-lg">
-                <img src="{{ asset('images/Images/image 17.png') }}" alt="عروض مميزة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                <img src="{{ asset('images/images/image 17.png') }}" alt="عروض مميزة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent group-hover:from-black/40 transition duration-300"></div>
             </div>
 
             <!-- Banner 2 -->
             <div class="rounded-xl h-48 overflow-hidden relative group shadow-lg">
-                <img src="{{ asset('images/Images/image 18.png') }}" alt="خدمات متنوعة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                <img src="{{ asset('images/images/image 18.png') }}" alt="خدمات متنوعة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent group-hover:from-black/40 transition duration-300"></div>
             </div>
 
             <!-- Banner 3 -->
             <div class="rounded-xl h-48 overflow-hidden relative group shadow-lg">
-                <img src="{{ asset('images/Images/image 19.png') }}" alt="تجربة مميزة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                <img src="{{ asset('images/images/image 19.png') }}" alt="تجربة مميزة" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent group-hover:from-black/40 transition duration-300"></div>
             </div>
         </div>

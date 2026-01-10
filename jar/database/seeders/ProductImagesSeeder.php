@@ -40,7 +40,7 @@ class ProductImagesSeeder extends Seeder
             if (isset($images[$imageIndex])) {
                 ProductImage::create([
                     'product_id' => $product->id,
-                    'image_path' => 'images/Images/' . $images[$imageIndex],
+                    'image_path' => 'images/images/' . $images[$imageIndex],
                     'alt_text' => $product->name,
                     'is_primary' => true,
                     'sort_order' => 1,
@@ -50,7 +50,7 @@ class ProductImagesSeeder extends Seeder
                 if ($imageIndex + 1 < count($images)) {
                     ProductImage::create([
                         'product_id' => $product->id,
-                        'image_path' => 'images/Images/' . $images[($imageIndex + 1) % count($images)],
+                        'image_path' => 'images/images/' . $images[($imageIndex + 1) % count($images)],
                         'alt_text' => $product->name . ' - صورة إضافية',
                         'is_primary' => false,
                         'sort_order' => 2,

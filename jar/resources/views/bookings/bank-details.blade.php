@@ -238,7 +238,7 @@
             <!-- Right Section - Bank Details -->
             <div class="bank-section">
                 <div class="bank-section-title">بيانات الحساب البنكي</div>
-                
+
                 <div class="bank-details-list">
                     <div class="bank-detail-item">
                         <div class="detail-label">إسم صاحب الحساب</div>
@@ -265,7 +265,7 @@
             <!-- Left Section - Additional Info -->
             <div class="bank-section">
                 <div class="bank-section-title">ملاحظات هامة</div>
-                
+
                 <div class="bank-details-list">
                     <div class="bank-detail-item">
                         <div class="detail-label">المدة الزمنية</div>
@@ -307,7 +307,7 @@
 
 <!-- Footer Pattern -->
 <div style="width:100vw; overflow:hidden; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); height:2rem;">
-    <img src="{{ asset('images/Images/TJAR-PATTERN_PATTERN 2 (1) 1.png') }}" alt="pattern" style="width:100%; height:100%; object-fit:cover; display:block;">
+    <img src="{{ asset('images/images/TJAR-PATTERN_PATTERN 2 (1) 1.png') }}" alt="pattern" style="width:100%; height:100%; object-fit:cover; display:block;">
 </div>
 
 <!-- Copy Toast Notification -->
@@ -318,7 +318,7 @@
 <script>
     function copyBankDetails(event) {
         event.preventDefault();
-        
+
         const bankDetails = `
 إسم صاحب الحساب: قهدن بنك التنمية
 إسم البنك: بنك الراجحي أعمال
@@ -336,7 +336,7 @@
     function showToast() {
         const toast = document.getElementById('copyToast');
         toast.classList.add('show');
-        
+
         setTimeout(() => {
             toast.classList.remove('show');
         }, 3000);
