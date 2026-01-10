@@ -579,8 +579,22 @@
                             <option value="جدة" @selected(old('city') == 'جدة')>جدة</option>
                             <option value="الدمام" @selected(old('city') == 'الدمام')>الدمام</option>
                             <option value="مكة" @selected(old('city') == 'مكة')>مكة</option>
+                            <option value="القصيم" @selected(old('city') == 'القصيم')>القصيم</option>
                             <option value="المدينة" @selected(old('city') == 'المدينة')>المدينة</option>
                             <option value="القصيم" @selected(old('city') == 'القصيم')>القصيم</option>
+                            <option value="بريدة" @selected(old('city') == 'بريدة')>بريدة</option>
+                            <option value="عنيزة" @selected(old('city') == 'عنيزة')>عنيزة</option>
+                            <option value="الرس" @selected(old('city') == 'الرس')>الرس</option>
+                            <option value="المذنب" @selected(old('city') == 'المذنب')>المذنب</option>
+                            <option value="البكيرية" @selected(old('city') == 'البكيرية')>البكيرية</option>
+                            <option value="البدائع" @selected(old('city') == 'البدائع')>البدائع</option>
+                            <option value="الأسياح" @selected(old('city') == 'الأسياح')>الأسياح</option>
+                            <option value="عيون الجواء" @selected(old('city') == 'عيون الجواء')>عيون الجواء</option>
+                            <option value="رياض الخبراء" @selected(old('city') == 'رياض الخبراء')>رياض الخبراء</option>
+                            <option value="الشماسية" @selected(old('city') == 'الشماسية')>الشماسية</option>
+                            <option value="النبهانية" @selected(old('city') == 'النبهانية')>النبهانية</option>
+                            <option value="ضرية" @selected(old('city') == 'ضرية')>ضرية</option>
+                            <option value="عقلة الصقور" @selected(old('city') == 'عقلة الصقور')>عقلة الصقور</option>
                             <option value="الشرقية" @selected(old('city') == 'الشرقية')>الشرقية</option>
                             <option value="عسير" @selected(old('city') == 'عسير')>عسير</option>
                             <option value="تبوك" @selected(old('city') == 'تبوك')>تبوك</option>

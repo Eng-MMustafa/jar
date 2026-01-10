@@ -35,12 +35,12 @@
                                 <span class="text-red-500">*</span> الاسم كامل
                             </label>
                             <div class="relative">
-                                <input 
-                                    id="name" 
-                                    name="name" 
-                                    type="text" 
-                                    value="{{ old('name') }}" 
-                                    required 
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    value="{{ old('name') }}"
+                                    required
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-gray-900 placeholder-gray-400"
                                     placeholder="ادخل الاسم كامل"
                                 >
@@ -62,11 +62,11 @@
                                 <div class="flex items-center px-4 bg-gray-50 border-l border-gray-300">
                                     <span class="text-sm font-semibold text-gray-700">+966</span>
                                 </div>
-                                <input 
-                                    name="phone" 
-                                    type="tel" 
+                                <input
+                                    name="phone"
+                                    type="tel"
                                     inputmode="numeric"
-                                    value="{{ old('phone') }}" 
+                                    value="{{ old('phone') }}"
                                     required
                                     class="flex-1 px-4 py-3 outline-none text-gray-900 placeholder-gray-400"
                                     placeholder="05xxxxxxxx"
@@ -83,8 +83,8 @@
                                 <span class="text-red-500">*</span> المدينة
                             </label>
                             <div class="relative">
-                                <select 
-                                    name="city" 
+                                <select
+                                    name="city"
                                     required
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-gray-900 appearance-none bg-white"
                                 >
@@ -92,11 +92,25 @@
                                     <option value="riyadh">الرياض</option>
                                     <option value="jeddah">جدة</option>
                                     <option value="mecca">مكة</option>
+                                    <option value="qassim">القصيم</option>
                                     <option value="medina">المدينة</option>
                                     <option value="khobar">الخبر</option>
                                     <option value="dammam">الدمام</option>
                                     <option value="abha">أبها</option>
                                     <option value="qassim">القصيم</option>
+                                    <option value="بريدة">بريدة</option>
+                                    <option value="عنيزة">عنيزة</option>
+                                    <option value="الرس">الرس</option>
+                                    <option value="المذنب">المذنب</option>
+                                    <option value="البكيرية">البكيرية</option>
+                                    <option value="البدائع">البدائع</option>
+                                    <option value="الأسياح">الأسياح</option>
+                                    <option value="عيون الجواء">عيون الجواء</option>
+                                    <option value="رياض الخبراء">رياض الخبراء</option>
+                                    <option value="الشماسية">الشماسية</option>
+                                    <option value="النبهانية">النبهانية</option>
+                                    <option value="ضرية">ضرية</option>
+                                    <option value="عقلة الصقور">عقلة الصقور</option>
                                 </select>
                                 <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -113,11 +127,11 @@
                                 <span class="text-red-500">*</span> كلمة المرور
                             </label>
                             <div class="relative">
-                                <input 
-                                    id="password" 
-                                    name="password" 
-                                    type="password" 
-                                    required 
+                                <input
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    required
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-gray-900 placeholder-gray-400"
                                     placeholder="••••••••"
                                 >
@@ -139,11 +153,11 @@
                                 <span class="text-red-500">*</span> تأكيد كلمة المرور
                             </label>
                             <div class="relative">
-                                <input 
-                                    id="password_confirmation" 
-                                    name="password_confirmation" 
-                                    type="password" 
-                                    required 
+                                <input
+                                    id="password_confirmation"
+                                    name="password_confirmation"
+                                    type="password"
+                                    required
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-gray-900 placeholder-gray-400"
                                     placeholder="••••••••"
                                 >
@@ -167,8 +181,8 @@
                         @endif
 
                         <!-- Submit Button -->
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             class="w-full py-3 px-4 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white font-bold rounded-lg transition transform hover:scale-105 flex items-center justify-center"
                         >
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,7 +193,7 @@
 
                         <!-- Sign In Link -->
                         <div class="text-center text-sm text-gray-600 pt-4 border-t border-gray-200">
-                            هل لديك حساب من قبل؟ 
+                            هل لديك حساب من قبل؟
                             <a href="{{ route('login') }}" class="text-teal-600 hover:text-teal-700 font-semibold">تسجيل الدخول</a>
                         </div>
                     </form>
@@ -198,7 +212,7 @@
     function togglePassword(fieldId) {
         const field = document.getElementById(fieldId);
         const eyeIcon = document.getElementById(fieldId === 'password' ? 'eyeIcon1' : 'eyeIcon2');
-        
+
         if (field.type === 'password') {
             field.type = 'text';
             eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-4.803m5.604-1.888A3.375 3.375 0 1015.75 12m0 0a6.369 6.369 0 01-7.625 6.375"></path>';

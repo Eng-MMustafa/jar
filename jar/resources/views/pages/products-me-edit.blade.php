@@ -401,6 +401,20 @@
                             <option value="الدمام" @selected(old('city', $product->city) == 'الدمام')>الدمام</option>
                             <option value="المدينة" @selected(old('city', $product->city) == 'المدينة')>المدينة</option>
                             <option value="مكة" @selected(old('city', $product->city) == 'مكة')>مكة</option>
+                            <option value="القصيم" @selected(old('city', $product->city) == 'القصيم')>القصيم</option>
+                            <option value="بريدة" @selected(old('city', $product->city) == 'بريدة')>بريدة</option>
+                            <option value="عنيزة" @selected(old('city', $product->city) == 'عنيزة')>عنيزة</option>
+                            <option value="الرس" @selected(old('city', $product->city) == 'الرس')>الرس</option>
+                            <option value="المذنب" @selected(old('city', $product->city) == 'المذنب')>المذنب</option>
+                            <option value="البكيرية" @selected(old('city', $product->city) == 'البكيرية')>البكيرية</option>
+                            <option value="البدائع" @selected(old('city', $product->city) == 'البدائع')>البدائع</option>
+                            <option value="الأسياح" @selected(old('city', $product->city) == 'الأسياح')>الأسياح</option>
+                            <option value="عيون الجواء" @selected(old('city', $product->city) == 'عيون الجواء')>عيون الجواء</option>
+                            <option value="رياض الخبراء" @selected(old('city', $product->city) == 'رياض الخبراء')>رياض الخبراء</option>
+                            <option value="الشماسية" @selected(old('city', $product->city) == 'الشماسية')>الشماسية</option>
+                            <option value="النبهانية" @selected(old('city', $product->city) == 'النبهانية')>النبهانية</option>
+                            <option value="ضرية" @selected(old('city', $product->city) == 'ضرية')>ضرية</option>
+                            <option value="عقلة الصقور" @selected(old('city', $product->city) == 'عقلة الصقور')>عقلة الصقور</option>
                         </select>
                     </div>
 

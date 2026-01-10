@@ -539,8 +539,22 @@
                                     <option value="جدة" @selected(auth()->user()->city === 'جدة')>جدة</option>
                                     <option value="الدمام" @selected(auth()->user()->city === 'الدمام')>الدمام</option>
                                     <option value="مكة" @selected(auth()->user()->city === 'مكة')>مكة</option>
+                                    <option value="القصيم" @selected(auth()->user()->city === 'القصيم')>القصيم</option>
                                     <option value="المدينة" @selected(auth()->user()->city === 'المدينة')>المدينة</option>
                                     <option value="القصيم" @selected(auth()->user()->city === 'القصيم')>القصيم</option>
+                                    <option value="بريدة" @selected(auth()->user()->city === 'بريدة')>بريدة</option>
+                                    <option value="عنيزة" @selected(auth()->user()->city === 'عنيزة')>عنيزة</option>
+                                    <option value="الرس" @selected(auth()->user()->city === 'الرس')>الرس</option>
+                                    <option value="المذنب" @selected(auth()->user()->city === 'المذنب')>المذنب</option>
+                                    <option value="البكيرية" @selected(auth()->user()->city === 'البكيرية')>البكيرية</option>
+                                    <option value="البدائع" @selected(auth()->user()->city === 'البدائع')>البدائع</option>
+                                    <option value="الأسياح" @selected(auth()->user()->city === 'الأسياح')>الأسياح</option>
+                                    <option value="عيون الجواء" @selected(auth()->user()->city === 'عيون الجواء')>عيون الجواء</option>
+                                    <option value="رياض الخبراء" @selected(auth()->user()->city === 'رياض الخبراء')>رياض الخبراء</option>
+                                    <option value="الشماسية" @selected(auth()->user()->city === 'الشماسية')>الشماسية</option>
+                                    <option value="النبهانية" @selected(auth()->user()->city === 'النبهانية')>النبهانية</option>
+                                    <option value="ضرية" @selected(auth()->user()->city === 'ضرية')>ضرية</option>
+                                    <option value="عقلة الصقور" @selected(auth()->user()->city === 'عقلة الصقور')>عقلة الصقور</option>
                                     <option value="الشرقية" @selected(auth()->user()->city === 'الشرقية')>الشرقية</option>
                                     <option value="عسير" @selected(auth()->user()->city === 'عسير')>عسير</option>
                                     <option value="تبوك" @selected(auth()->user()->city === 'تبوك')>تبوك</option>

@@ -182,3 +182,50 @@ Route::get('/fix-storage', function () {
         return 'Error: ' . $e->getMessage();
     }
 });
+
+// Clear Cache Route
+Route::get('/clear-cache', function () {
+    try {
+        Artisan::call('cache:clear');
+        Artisan::call('view:clear');
+        Artisan::call('route:clear');
+        Artisan::call('config:clear');
+        Artisan::call('optimize:clear');
+        return 'Application cache cleared! (cache, view, route, config, optimize)';
+    } catch (\Exception $e) {
+        return 'Error clearing cache: ' . $e->getMessage();
+    }
+});
+
+// Fix Sessions Route
+Route::get('/fix-sessions', function () {
+    try {
+        $path = storage_path('framework/sessions');
+
+        // Check if directory exists
+        if (!file_exists($path)) {
+            mkdir($path, 0755, true);
+        }
+
+        // Try to set permissions
+        chmod($path, 0755);
+
+        // Clean up old session files (files older than 30 days)
+        $files = glob($path . '/*');
+        $count = 0;
+        $now = time();
+
+        foreach ($files as $file) {
+            if (is_file($file) && basename($file) !== '.gitignore') {
+                if ($now - filemtime($file) > 30 * 24 * 60 * 60) { // 30 days
+                    unlink($file);
+                    $count++;
+                }
+            }
+        }
+
+        return "Sessions directory fixed! Permissions set to 0755. Cleaned $count old session files.";
+    } catch (\Exception $e) {
+        return 'Error fixing sessions: ' . $e->getMessage();
+    }
+});

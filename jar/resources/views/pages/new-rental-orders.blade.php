@@ -300,8 +300,13 @@
                                     </div>
                                     
                                     <div class="tenant-info">
-                                        <img src="{{ $booking->user->avatar ? asset($booking->user->avatar) : 'https://ui-avatars.com/api/?name=' . urlencode($booking->user->first_name) }}" class="tenant-avatar" alt="User">
-                                        <span>المستأجر: {{ $booking->user->first_name }} {{ $booking->user->last_name }}</span>
+                                        @if($booking->user)
+                                            <img src="{{ $booking->user->avatar ? asset($booking->user->avatar) : 'https://ui-avatars.com/api/?name=' . urlencode($booking->user->first_name) }}" class="tenant-avatar" alt="User">
+                                            <span>المستأجر: {{ $booking->user->first_name }} {{ $booking->user->last_name }}</span>
+                                        @else
+                                            <img src="{{ asset('images/avatar.svg') }}" class="tenant-avatar" alt="User">
+                                            <span>المستأجر: مستخدم محذوف</span>
+                                        @endif
                                     </div>
 
                                     <div class="actions-row">

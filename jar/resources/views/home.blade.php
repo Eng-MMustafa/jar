@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="flex items-center justify-between mb-8">
             <div class="flex items-center gap-3 mb-2 justify-start">
                 <div class="h-8 w-1 bg-teal-500 rounded-full"></div>
-                <h2 class="text-2xl lg:text-3xl font-bold text-teal-600">هكون قريب منك</h2>
+                <h2 class="text-2xl lg:text-3xl font-bold text-teal-600">قريبين منكم</h2>
             </div>
             <a href="#" class="text-teal-600 text-sm hover:text-teal-700 font-medium">عرض الكل ←</a>
         </div>

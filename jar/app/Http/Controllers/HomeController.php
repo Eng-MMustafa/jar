@@ -24,7 +24,7 @@ class HomeController extends Controller
             $mostRented = $query->orderByDesc('created_at')->take(3)->get();
         }
 
-        // Featured / "أكثر قيمة" -> "هكون قريب منك" (Products in Al-Qassim)
+        // Featured / "أكثر قيمة" -> "قريبين منكم" (Products in Al-Qassim)
         $featuredProducts = Product::with('images','category')
             ->active()
             ->where(function($q) {
@@ -47,4 +47,4 @@ class HomeController extends Controller
 
         return view('home', compact('mostRented', 'featuredProducts', 'categories'));
     }
-} 
+}
