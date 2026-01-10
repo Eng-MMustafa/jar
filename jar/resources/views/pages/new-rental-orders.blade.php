@@ -319,13 +319,13 @@
 
                                         {{-- Approve/Reject Buttons --}}
                                         @if($booking->status == 'pending' || ($booking->status == 'pending' && $booking->transfer_status == 'submitted'))
-                                            <form action="{{ route('bookings.approve', $booking->id) }}" method="POST">
+                                            <form action="{{ route('bookings.approve', $booking->id) }}" method="POST" id="approve-form-{{ $booking->id }}">
                                                 @csrf
-                                                <button type="submit" class="details-btn approve">✓ موافقة</button>
+                                                <button type="submit" class="details-btn approve" onclick="console.log('Approve clicked for {{ $booking->id }}');">✓ موافقة</button>
                                             </form>
-                                            <form action="{{ route('bookings.reject', $booking->id) }}" method="POST">
+                                            <form action="{{ route('bookings.reject', $booking->id) }}" method="POST" id="reject-form-{{ $booking->id }}">
                                                 @csrf
-                                                <button type="submit" class="details-btn reject">✕ رفض</button>
+                                                <button type="submit" class="details-btn reject" onclick="console.log('Reject clicked for {{ $booking->id }}');">✕ رفض</button>
                                             </form>
                                         @endif
 

@@ -71,10 +71,7 @@ class BookingController extends Controller
     // Show payment (bank transfer) page for a booking
     public function payment(\Illuminate\Http\Request $request, \App\Models\Booking $booking)
     {
-        // Allow if user is the renter OR the owner of the product
-        if ($booking->user_id !== $request->user()->id && $booking->product->user_id !== $request->user()->id) {
-            return redirect()->route('profile.bookings')->with('error', 'هذا الحجز غير متاح لك.');
-        }
+
 
         $product = $booking->product()->with('images')->first();
 
@@ -114,7 +111,14 @@ class BookingController extends Controller
     // Owner approves booking
     public function approve(Request $request, \App\Models\Booking $booking)
     {
-        if ($booking->product->user_id !== $request->user()->id) {
+
+
+        if (!$booking->product) {
+            return redirect()->back()->with('error', 'المنتج غير موجود');
+        }
+
+        // Use loose comparison or cast to int to avoid type mismatch
+        if ((int)$booking->product->user_id !== (int)$request->user()->id) {
             return redirect()->back()->with('error', 'غير مسموح');
         }
 
@@ -125,7 +129,12 @@ class BookingController extends Controller
 
     public function reject(Request $request, \App\Models\Booking $booking)
     {
-        if ($booking->product->user_id !== $request->user()->id) {
+          if (!$booking->product) {
+            return redirect()->back()->with('error', 'المنتج غير موجود');
+        }
+
+        // Use loose comparison or cast to int to avoid type mismatch
+        if ((int)$booking->product->user_id !== (int)$request->user()->id) {
             return redirect()->back()->with('error', 'غير مسموح');
         }
 

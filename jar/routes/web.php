@@ -191,6 +191,7 @@ Route::get('/clear-cache', function () {
         Artisan::call('route:clear');
         Artisan::call('config:clear');
         Artisan::call('optimize:clear');
+        Artisan::call('route:clear');
         return 'Application cache cleared! (cache, view, route, config, optimize)';
     } catch (\Exception $e) {
         return 'Error clearing cache: ' . $e->getMessage();
