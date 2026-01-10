@@ -85,6 +85,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
     Route::post('/bookings/{booking}/approve', [App\Http\Controllers\BookingController::class, 'approve'])->name('bookings.approve');
     Route::post('/bookings/{booking}/reject', [App\Http\Controllers\BookingController::class, 'reject'])->name('bookings.reject');
 
+    // Booking Details
+    Route::get('/bookings/{booking}/details', [App\Http\Controllers\BookingController::class, 'show'])->name('bookings.show');
+
     // My Products Management routes
     Route::get('/products-me', [ProfileController::class, 'myProducts'])->name('my-products.index');
     Route::get('/products-me/create', [ProfileController::class, 'createProduct'])->name('my-products.create');

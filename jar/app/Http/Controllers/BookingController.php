@@ -129,7 +129,7 @@ class BookingController extends Controller
 
     public function reject(Request $request, \App\Models\Booking $booking)
     {
-          if (!$booking->product) {
+        if (!$booking->product) {
             return redirect()->back()->with('error', 'المنتج غير موجود');
         }
 
@@ -141,5 +141,18 @@ class BookingController extends Controller
         $booking->update(['status' => 'rejected']);
 
         return redirect()->back()->with('success', 'تم رفض الطلب');
+    }
+
+    public function show(Request $request, \App\Models\Booking $booking)
+    {
+        // Allow access if user is the renter OR the product owner
+        $isRenter = $booking->user_id == $request->user()->id;
+        $isOwner = $booking->product && $booking->product->user_id == $request->user()->id;
+
+        if (!$isRenter && !$isOwner) {
+            abort(403, 'غير مصرح لك بعرض هذا الحجز');
+        }
+
+        return view('pages.booking-details', compact('booking', 'isOwner', 'isRenter'));
     }
 }
