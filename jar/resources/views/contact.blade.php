@@ -54,8 +54,26 @@
         <aside class="contact-card contact-info">
             <h4>معلومات التواصل</h4>
             <p><strong>البريد الإلكتروني:</strong> <a href="mailto:Support@tjar.sa">Support@tjar.sa</a></p>
-            <p><strong>الهاتف:</strong> <a href="tel:+966556734562">+966556734562</a></p>
+            <p><strong>الهاتف:</strong> <a href="tel:+966502622021">⁦+966 50 262 2021⁩</a></p>
             <p style="margin-top:1rem;">يمكنك أيضاً التواصل عبر صفحاتنا على وسائل التواصل الاجتماعي أو عن طريق زيارة مكاتبنا خلال ساعات العمل.</p>
+            <div style="display:flex; gap:1rem; justify-content:flex-start; margin-top:0.75rem; margin-bottom:0.5rem;">
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@sa.tjar?_r=1&_t=ZS-92xWpSiKfOq" target="_blank" style="color:#0d9488;font-size:1.4rem;text-decoration:none;">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/sa.tjar/?igsh=azE3aTJjOTBkZms0#" target="_blank" style="color:#0d9488;font-size:1.4rem;text-decoration:none;">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <!-- Snapchat -->
+                <a href="#" style="color:#0d9488;font-size:1.4rem;text-decoration:none;">
+                    <i class="fab fa-snapchat-ghost"></i>
+                </a>
+                <!-- X (Twitter) -->
+                <a href="https://x.com/sa_tjar?s=11&t=eNTjknsmhQes-wpRYcxIWg" target="_blank" style="color:#0d9488;font-size:1.4rem;text-decoration:none;">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
             <hr style="margin:12px 0;border:none;border-top:1px solid #eef6f6">
             <p style="color:#666;font-size:0.95rem">نحن نحترم خصوصيتك — لن نشارك معلوماتك مع طرف ثالث. سنحاول الرد خلال 48 ساعة عمل.</p>
         </aside>

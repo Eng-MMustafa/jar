@@ -27,9 +27,9 @@
             <div class="flex items-center justify-between py-2 text-xs lg:text-sm">
                 <!-- Right: Contact -->
                 <div class="flex items-center gap-4">
-                    <a href="tel:+966556734562" class="flex items-center gap-2 text-gray-600 hover:text-teal-600 transition-colors">
+                    <a href="tel:+966502622021" class="flex items-center gap-2 text-gray-600 hover:text-teal-600 transition-colors">
                         <img src="{{ asset('images/Icons/call.svg') }}" class="w-4 h-4" alt="phone">
-                        <span class="font-medium font-sans" dir="ltr">+966556734562</span>
+                        <span class="font-medium font-sans" dir="ltr">⁦+966 50 262 2021⁩</span>
                     </a>
                     <span class="text-gray-300">|</span>
                     <a href="mailto:Support@tjar.sa" class="flex items-center gap-2 text-gray-600 hover:text-teal-600 transition-colors">
@@ -42,16 +42,16 @@
                 <div class="flex items-center gap-6">
                     <!-- Social Icons -->
                     <div class="flex items-center gap-2">
-                         <a href="#" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
+                         <a href="https://www.tiktok.com/@sa.tjar?_r=1&_t=ZS-92xWpSiKfOq" target="_blank" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
                             <i class="fa-brands fa-tiktok"></i>
                         </a>
-                        <a href="#" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
+                        <a href="https://www.instagram.com/sa.tjar/?igsh=azE3aTJjOTBkZms0#" target="_blank" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
                         <a href="#" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
                             <i class="fa-brands fa-snapchat"></i>
                         </a>
-                        <a href="#" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
+                        <a href="https://x.com/sa_tjar?s=11&t=eNTjknsmhQes-wpRYcxIWg" target="_blank" class="w-7 h-7 flex items-center justify-center rounded text-black hover:text-black transition-all">
                             <i class="fa-brands fa-twitter"></i>
                         </a>
                     </div>
@@ -286,16 +286,16 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-3 pt-2 justify-center">
-                    <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
+                    <a href="https://www.tiktok.com/@sa.tjar?_r=1&_t=ZS-92xWpSiKfOq" target="_blank" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
                         <i class="fa-brands fa-tiktok"></i>
                     </a>
-                    <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
+                    <a href="https://www.instagram.com/sa.tjar/?igsh=azE3aTJjOTBkZms0#" target="_blank" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                     <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
                         <i class="fa-brands fa-snapchat"></i>
                     </a>
-                    <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
+                    <a href="https://x.com/sa_tjar?s=11&t=eNTjknsmhQes-wpRYcxIWg" target="_blank" class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded text-gray-500">
                         <i class="fa-brands fa-twitter"></i>
                     </a>
                 </div>
@@ -440,11 +440,11 @@
                     </p>
                     <div class="flex gap-3 justify-start" aria-label="social links">
                         <!-- TikTok -->
-                        <a href="#" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                        <a href="https://www.tiktok.com/@sa.tjar?_r=1&_t=ZS-92xWpSiKfOq" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
                             <i class="fab fa-tiktok"></i>
                         </a>
                         <!-- Instagram -->
-                        <a href="#" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                        <a href="https://www.instagram.com/sa.tjar/?igsh=azE3aTJjOTBkZms0#" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <!-- Snapchat -->
@@ -452,7 +452,7 @@
                             <i class="fab fa-snapchat-ghost"></i>
                         </a>
                         <!-- X (Twitter) -->
-                        <a href="#" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                        <a href="https://x.com/sa_tjar?s=11&t=eNTjknsmhQes-wpRYcxIWg" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
@@ -510,6 +510,24 @@
             <!-- Bottom Section: Logo, Payments, Copyright -->
             <div class="border-t border-teal-800/50 pt-8 pb-8" dir="rtl">
                 <div class="md:hidden flex flex-col gap-6">
+                    <div class="flex gap-3 justify-center" aria-label="social links">
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@sa.tjar?_r=1&_t=ZS-92xWpSiKfOq" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/sa.tjar/?igsh=azE3aTJjOTBkZms0#" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <!-- Snapchat -->
+                        <a href="#" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                            <i class="fab fa-snapchat-ghost"></i>
+                        </a>
+                        <!-- X (Twitter) -->
+                        <a href="https://x.com/sa_tjar?s=11&t=eNTjknsmhQes-wpRYcxIWg" target="_blank" class="social-btn w-10 h-10 rounded-lg border border-teal-500/50 flex items-center justify-center hover:bg-teal-600 transition text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
                     <div class="flex items-center gap-2 justify-center">
                         <div class="bg-white rounded h-8 w-12 flex items-center justify-center p-1">
                             <img src="{{ asset('images/images/image (4).png') }}" alt="Visa">
